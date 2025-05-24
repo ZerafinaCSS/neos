@@ -1,0 +1,1761 @@
+/*============================================================
+
+
+                           ~ neos ~
+                      Theme: Tumblr Blue
+                      
+Inspired by the "Low-contrast classic" tumblr color palette
+
+
+==============================================================
+>> A1 COLOR GUIDE
+==============================================================
+
+1) Grayblue: https://coolors.co/1a2735-26323f-263b53-31455c-36465d-3d4c62-48566a-596578
+  
+    grayblue1:      #1A2735
+    grayblue2:      #26323F
+    grayblue3:      #263B53
+    grayblue4:      #31455C
+    grayblue5:      #36465D
+    grayblue6:      #3D4C62
+    grayblue7:      #48566A
+    grayblue8:      #596578
+  
+2) Accent blue: https://coolors.co/529ecc-29abe6-00b8ff
+
+    blue1:          #529ECC    => same as icon1
+    blue2:          #29ABE6
+    blue3:          #00B8FF
+
+3) Gray: https://coolors.co/b3b3b3-d9d9d9-f2f2f2
+  
+    gray1:          #F2F2F2
+    gray2:          #D9D9D9
+    gray3:          #B3B3B3    => main font color => replaces #111, #2A2A2A
+  
+    black:          #000000
+  
+4) Transparent grays (for borders, shadows etc.)
+  
+    transparent1:   #FFFFFF21
+    transparent2:   #BFBFBF26
+    transparent3:   #A1A1A1A6
+    transparent4:   #00000080
+
+5) Roles and states + system messages: https://coolors.co/9381d9-7c5cff-57b76f-01cf35-d79b50-ff8a00-d97568-ff4930
+   => also used for some tag types
+  
+    system1:        #9381D9
+    system2:        #7C5CFF
+    system3:        #57B76F
+    system4:        #01CF35
+    system5:        #D79B50
+    system6:        #FF8A00
+    system7:        #D97568
+    system8:        #FF4930
+
+6) Icon colors: https://coolors.co/529ecc-56bc8a-cdae00-d38a25-d9664a-d977ba-af73d4
+   => also used them for the rainbow hover on the header title and a few other places like the tags
+  
+    icon1:          #529ECC    => same as blue1
+    icon2:          #56BC8A
+    icon3:          #CDAE00
+    icon4:          #D38A25
+    icon5:          #D9664A
+    icon6:          #D977BA
+    icon7:          #AF73D4
+
+
+/*============================================================
+>> A2 BASIC LAYOUT SETTINGS ETC.
+============================================================*/
+
+body,
+.toggled form,
+.dynamic form,
+.secondary,
+.dropdown {
+  color: #B3B3B3; /* main font color */
+}
+
+#outer {
+  background-color: #1A2735; /* main background color */
+}
+
+/* font size */
+#header,
+#main.dashboard,
+#dashboard,
+#dashboard.own,
+#main,
+#modal .content,
+#proxy-notice {
+  font-size: 0.9rem; /* change font size here */
+}
+
+/*============================================================
+>> A3 FONTS
+============================================================*/
+/* Not all the fonts are freely available but Helvetica or Arial should be installed on most devices.
+Additionally, I recommend downloading and installing the open source font "Instrument Sans": https://fonts.google.com/specimen/Instrument+Sans */
+
+/* main font family */
+body,
+input,
+textarea,
+.toggled form,
+.dynamic form,
+.secondary,
+.dropdown,
+blockquote,
+pre,
+.prompt .blurb h6,
+.bookmark .user .meta,
+a.work,
+span.symbol,
+.heading .actions,
+.heading .action,
+.heading span.actions,
+button,
+span.unread,
+.replied,
+span.claimed,
+.actions span.defaulted,
+.datetime {
+  font-family: "Favorit", "Instrument Sans", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+}
+
+/* headings font family */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading {
+  font-family: "Favorit Modern", "Instrument Sans", "Favorit", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+}
+
+/* "code" font family */
+kbd,
+tt,
+code,
+var,
+pre,
+samp,
+textarea#skin_css,
+.css.module blockquote pre,
+.splash .news .meta {
+  font-family: Courier, monospace;
+  font-size: 0.95em;
+}
+
+/*============================================================
+>> 02 ELEMENTS
+============================================================*/
+
+/*========== links ==========*/
+
+a,
+a:link,
+a.work,
+.blurb h4 a:link,
+.filters p a {
+  color: #529ECC; /* link color */
+}
+
+a:hover,
+a:visited:hover,
+.blurb .heading a:hover,
+.blurb .heading a:visited:hover,
+div.preface .byline a:hover,
+.fandom.index.group a.tag:hover,
+h2.heading a.tag:hover,
+.filters p a:hover {
+  color: #00B8FF; /* link hover color */
+}
+
+a:visited,
+.blurb .heading a:visited {
+  color: #596578; /* different color for visited links */ 
+}
+
+/*========== tables ==========*/
+
+table,
+thead td,
+tbody tr {
+  background-color: #36465D;
+  border-color: #48566A;
+}
+
+thead,
+tfoot,
+tfoot td {
+  border-color: #48566A;
+}
+
+thead th,
+tbody th {
+  background-color: #263B53;
+  border-color: #48566A;
+}
+
+tr:hover,
+col.name {
+  background: #48566A;
+  border-color: #48566A;
+}
+
+/*============================================================
+>> 03 REGION: HEADER
+============================================================*/
+
+#header {
+  background: transparent;
+  border-color: #BFBFBF26;
+  box-shadow: none;
+}
+
+/*========== header title/heading ==========*/
+
+#header .heading a {
+  color: #B3B3B3; /* change title/heading color here */
+  font-family: "Bookman Old Style", Georgia, Serif;
+  font-size: 1.3em;
+}
+
+/* new title/heading */
+#header .heading a::before {
+  content: "fanblr";
+}
+
+/* rainbow gradient on hover */
+#header .heading a:hover,
+#header .heading a:hover::before {
+  background-clip: text;
+  background-image: linear-gradient(to right, #529ECC, #56BC8A, #CDAE00, #D38A25, #D9664A, #D977BA, #AF73D4);
+  color: transparent;
+}
+
+/*========== header dropdown menus ==========*/
+
+#header .dropdown-menu,
+#small_login {
+  border-radius: 3px;
+  box-shadow: 0 2.5px 15px #00000080;
+}
+
+/* arrow on top of menu */
+#header .primary:not(:has(.open)) li.dropdown:hover::before,
+#header #greeting:not(:has(.open)) li.dropdown:hover::before,
+#header .open::before {
+  border-color: #36465D;
+  filter: unset;
+}
+
+/*===== header navigation / dropdown toggles =====*/
+
+/* header navigation */
+#header .user a,
+#header .user a:visited,
+#header .primary a {
+  color: #B3B3B3;
+}
+
+/* currently selected dropdown toggle */
+#header .dropdown:hover a, 
+#header .dropdown a:focus,
+#header .user a:hover,
+#header .user a:focus,
+#header .open a {
+  color: #F2F2F2 !important;
+}
+
+/*===== header dropdown menu list =====*/
+
+#header .menu {
+  background: #36465D;
+  border: none;
+}
+
+/* header dropdown list items */
+#header .dropdown .menu a {
+  color: #B3B3B3 !important;
+}
+
+/* header dropdown list items hover */
+#header .dropdown .menu a:hover,
+#header .dropdown .menu a:focus {
+  background: #48566A;
+  color: #B3B3B3 !important;
+}
+
+/*===== header icons =====*/
+
+/* user icon (replaces the "Hi, [username]!") */
+#header #greeting a.dropdown-toggle[href*="/users/"] {
+  background-image: url(https://i.ibb.co/VR2xSgJ/zerafina-header-icon-user-tumblr.png);
+}
+
+/* "Post" icon */
+#header #greeting a.dropdown-toggle[href*="/works/new"] {
+  background-image: url(https://i.ibb.co/ymNNFb70/zerafina-header-icon-new-work-tumblr.png);
+}
+
+/* "Log Out" icon */
+#header #greeting a[href*="/users/logout"] {
+  background-image: url(https://i.ibb.co/p67W6qhk/zerafina-header-icon-logout-tumblr.png);
+}
+
+/* settings for the icons */
+#header #greeting a.dropdown-toggle[href*="/users/"],
+#header #greeting a.dropdown-toggle[href*="/works/new"],
+#header #greeting a[href*="/users/logout"] {
+  width: 16px;
+  height: 16px; 
+  filter: invert(77%) sepia(16%) saturate(0%) hue-rotate(238deg) brightness(93%) contrast(83%); /* adjust filters to change header icon colors */
+}
+
+/* colors for header icons hover + active */
+#header #greeting .dropdown:hover a.dropdown-toggle,
+#header #greeting .dropdown:active a.dropdown-toggle,
+#header #greeting a[href*="/users/logout"]:hover,
+#header #greeting a[href*="/users/logout"]:active {
+  filter: invert(99%) sepia(2%) saturate(416%) hue-rotate(305deg) brightness(118%) contrast(90%);
+}
+
+/*========== primary navigation ==========*/
+/* this is the header navigation bar with Fandoms, Browse, Search and About and the search bar */
+
+#header nav:has(> .primary) {
+  border-color: #BFBFBF26 !important; /* border color here is important for the mobile skin */
+}
+
+#header .primary {
+  justify-content: center;
+}
+
+#header .primary > li > a  {
+  font-weight: bold;
+}
+
+/*===== primary navigation: header search bar =====*/
+
+/* search bar icon */
+#header li.search::before {
+  color: #596578;
+  transform: rotate(285deg)
+}
+
+/* this changes the look of header search bar */
+#header #search .text {
+  background-color: #26323F;
+  border: none;
+  border-radius: 9999px;
+}
+
+/* how the search bar looks when selected */
+#header #search input:focus {
+  color: #B3B3B3;
+  outline: 2px solid #529ECC;
+  border-color: #529ECC;
+}
+
+/*========== CONTEXT: collections ==========*/
+
+/* collection header */
+#header h2.collections {
+  background: #529ECC;
+  border: none;
+  color: #F2F2F2;
+  font-weight: bold;
+}
+
+/*============================================================
+>> 04 REGION: DASHBOARD
+============================================================*/
+
+#dashboard,
+#dashboard.own {
+  background-color: transparent;
+  border-color: #FFFFFF21 !important; /* needs to be like this for tablet + mobile skin */
+}
+
+#dashboard ul {
+  border-color: #FFFFFF21;
+}
+
+#dashboard a,
+#dashboard span {
+  color: #B3B3B3;
+}
+
+#dashboard a:hover {
+  background: #BFBFBF26;
+  color: #B3B3B3;
+}
+
+#dashboard .current {
+  background-color: #BFBFBF26;
+  color: #D9D9D9;
+}
+
+#dashboard .secondary {
+  background-color: #36465D;
+  border: none;
+  box-shadow: 0 2.5px 15px #00000080;
+}
+
+/*============================================================
+>> 06 REGION: FOOTER
+============================================================*/
+
+#footer {
+  color: #B3B3B3;
+  background: transparent;
+  border-top: 1px solid #FFFFFF21;
+}
+
+/* headings for footer sections */
+#footer .heading {
+  color: #B3B3B3;
+}
+
+/* links in footer */
+#footer a {
+  color: #529ECC;
+}
+
+/*============================================================
+>> 07 INTERACTIONS
+============================================================*/
+
+/*========== nesting ==========*/
+
+fieldset,
+fieldset dl dl,
+fieldset fieldset,
+fieldset fieldset dl dl,
+fieldset fieldset fieldset,
+dd.hideme,
+form blockquote.userstuff,
+form.single fieldset {
+  background-color: #36465D;
+  border: none;
+  border-radius: 8px;
+}
+
+fieldset fieldset,
+div.comment-preview.userstuff {
+  background-color: #3D4C62;
+  border: 1px solid #BFBFBF26;
+}
+
+/*========== form rules ==========*/
+
+input,
+form.search input[type="text"],
+textarea,
+select {
+  background-color: transparent;
+  border-color: #FFFFFF21;
+  border-radius: 4px;
+  color: #B3B3B3;
+}
+
+textarea {
+  background-color: #263B53;
+  border-radius: 8px;
+}
+
+input[type="text"]:focus,
+.search input[type="text"]:focus,
+input#user_password:focus,
+select:focus,
+textarea:focus {
+  background-color: transparent;
+  border-color: #529ECC;
+  outline: 2px solid #529ECC;
+}
+
+select:not(select[multiple]):hover {
+  background-color: #48566A
+}
+
+option,
+.actions option,
+form code,
+form dd.required {
+  color: #B3B3B3;
+}
+
+option:hover,
+option:checked,
+option:checked:hover,
+option:active,
+option:active:hover,
+option:focus,
+option:focus:hover {
+  background: #529ECC;
+  color: #F2F2F2;
+}
+
+option:hover {
+  background: linear-gradient(to right, #48566A, #29ABE6);
+  color: #F2F2F2;
+}
+
+form dt {
+  border-color: #FFFFFF21;
+}
+
+/* legends = little heading boxes on forms */
+form.verbose legend,
+.verbose form legend,
+form.single legend {
+  background-color: #48566A;
+  border-color: #FFFFFF21;
+  border-radius: 8px;
+  color: #D9D9D9;
+}
+
+/*========== INPUT ELEMENTS: checkboxes, radio buttons etc. ==========*/
+
+input[type="checkbox"],
+input[type="radio"],
+.filters [type="radio"],
+.filters [type="checkbox"],
+.actions input[type="checkbox"],
+label.action input[type="checkbox"] {
+  background-color: transparent;
+  border-color: #FFFFFF21;
+  color: #3D4C62;
+}
+
+/* hover and focus for checkbox + radio buttons */
+input[type="checkbox"]:hover,
+input[type="checkbox"]:focus,
+input[type="radio"]:hover,
+input[type="radio"]:focus,
+.actions input[type="checkbox"]:hover,
+.actions input[type="checkbox"]:focus,
+label.action input[type="checkbox"]:hover,
+label.action input[type="checkbox"]:focus,
+.filters [type="checkbox"]:hover:not(:checked)::before,
+.filters [type="checkbox"]:focus:not(:checked)::before {
+  background-color: transparent;
+  border-color: #00B8FF;
+  outline: none;
+  color: #00B8FF;
+}
+
+/* disabled checkbox + radio buttons */
+input[type="checkbox"]:disabled,
+input[type="radio"]:disabled {
+  background-color: #48566A !important;
+  border-color: transparent !important;
+  color: #B3B3B3;
+}
+
+input[type="checkbox"]:disabled::before {
+  color: #B3B3B3;
+}
+
+/*===== CHECKBOXES =====*/
+
+/* checked checkboxes */
+input[type="checkbox"]:checked,
+.actions input[type="checkbox"]:checked,
+label.action input[type="checkbox"]:checked {
+  background-color: #529ECC;
+  border-color: #529ECC;
+  color: #596578;
+}
+
+/* checkmark symbol */
+input[type="checkbox"]::before,
+.filters [type="checkbox"]::before,
+.actions input[type="checkbox"]::before {
+  color: #1A2735;
+}
+
+/* filters checkbox symbols */
+.filters [type="checkbox"]:not(:checked)::before {
+  color: #FFFFFF21;
+}
+
+/* hover for checked checkboxes */
+input[type="checkbox"]:checked:hover,
+.actions input[type="checkbox"]:checked:hover,
+label.action input[type="checkbox"]:checked:hover {
+  background-color: #00B8FF;
+  border-color: #00B8FF;
+}
+
+/*===== RADIO BUTTONS =====*/
+
+input[type="radio"]:checked,
+.filters [type="radio"]:checked {
+  background-color: transparent;
+  border: 3.5px solid #529ECC;
+  box-shadow: none;
+}
+
+/*===== FILE UPLOAD BUTTON =====*/
+
+input[type="file"] {
+  background: #31455C;
+}
+
+/*========== WIDGET: LIVE VALIDATION ==========*/
+
+.LV_invalid {
+  background: #FF4930;
+  color: #000000;
+}
+
+.LV_invalid_field,
+input.LV_invalid_field:hover,
+input.LV_invalid_field:active,
+input.LV_invalid_field:focus,
+textarea.LV_invalid_field:hover,
+textarea.LV_invalid_field:active,
+textarea.LV_invalid_field:focus {
+  border-color: #FF4930;
+  outline-color: #FF4930;
+}
+
+.LV_invalid::before {
+  border-color: #FF4930 transparent;
+}
+
+/*========== WIDGET: AUTO COMPLETE ==========*/
+
+.autocomplete .notice,
+.autocomplete div.dropdown ul {
+  background: #48566A;
+  border: none;
+  box-shadow: 0 2.5px 15px #00000080;
+  color: #D9D9D9;
+}
+
+.autocomplete .dropdown ul li:hover,
+.autocomplete .dropdown li.selected {
+  background: #596578;
+  color: #D9D9D9;
+}
+
+.required .autocomplete {
+  color: #D9D9D9;
+}
+
+/*========== WIDGET: SORTABLE LIST ==========*/
+
+.ui-sortable li,
+.ui-sortable li:hover {
+  background: #36465D;
+  border-color: #FFFFFF21;
+}
+
+.ui-sortable li:hover:not(.ui-sortable ul.actions li:hover),
+.ui-draggable form {
+  box-shadow: 0 2.5px 15px #00000080;
+}
+
+/*========== WIDGET: DATEPICKER, TIMEPICKER ==========*/
+
+#ui-datepicker-div {
+  background: #3D4C62;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 2.5px 15px #00000080;
+}
+
+.ui-datepicker table {
+  background: #36465D;
+}
+
+.ui-datepicker td {
+  border-color: #596578;
+}
+
+.ui-datepicker tr:hover {
+  background: transparent;
+}
+
+.ui-datepicker td:hover {
+  background: #596578;
+}
+
+/*========== TOOLTIP ==========*/
+
+.search [role="tooltip"],
+.qtip-content,
+.stats dd::after /* stats hover text */ {
+  background: #48566A;
+  border: none;
+  box-shadow: 0 2.5px 10px #00000080;
+  color: #D9D9D9;
+}
+
+/*========== WIDGET: MODAL DIALOGS ==========*/
+/* = dialog box/popup window that is displayed on top of the page, when you click on a help symbol for example */
+
+#modal {
+  background: #36465D;
+  border: none;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+#modal .content {
+  border-color: #FFFFFF21;
+}
+
+#modal.img a {
+  color: #FFFFFF21;
+}
+
+/*========== WIDGET: TOGGLED FORMS (SHOW/HIDE bookmark and collection) ==========*/
+
+.toggled form,
+.dynamic form {
+  background-color: #36465D;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #00000080;
+}
+
+/*========== INTERACTION: POST (work, chapter, comment, news, feedback, challenge etc) ==========*/
+
+.post .required .warnings,
+dd.required {
+  color: #B3B3B3;
+}
+
+/*============================================================
+>> 08 ACTIONS: BUTTONS
+============================================================*/
+
+.actions a,
+.actions a:link,
+.actions a:visited,
+.actions label,
+.actions button,
+.action,
+.action:link,
+.action:visited,
+.action a,
+.action a:link,
+.action a:visited,
+button,
+label.action,
+.actions input,
+input[type="submit"],
+.current,
+.announcement input[type="submit"],
+.announcement .action,
+input::file-selector-button {
+  padding: 4px 14px;
+  background: transparent;
+  border: 1.5px solid #FFFFFF21;
+  border-radius: 18px;
+  color: #B3B3B3;
+  box-shadow: none;
+}
+
+/* I want the pagination ans alphabet buttons to be rounder */
+.pagination.actions li:not(.next) a,
+.pagination.actions li .current,
+.actions.alphabet a {
+  padding-inline: 9px;
+}
+
+/*========== subtypes and modes ==========*/
+
+/* hover + focus */
+.actions a:hover,
+.actions input:hover,
+.actions a:focus,
+.actions input:focus,
+.actions button:hover,
+.actions button:focus,
+label.action:hover,
+.action:hover,
+.action:focus,
+.action a:hover,
+.action a:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+input::file-selector-button:hover,
+input::file-selector-button:focus,
+.listbox > .heading .action a:hover,
+.listbox > .heading .action a:focus {
+  background: #529ECC;
+  border: 1.5px solid transparent;
+  color: #1A2735;
+}
+
+/* currently selected */
+.actions a:active,
+.current,
+a.current,
+a.current:hover,
+a:link.current,
+.current a:visited {
+  background: #FFFFFF21;
+  border-color: transparent;
+}
+
+.actions label.disabled {
+  background-color: #FFFFFF21;
+}
+
+.actions .disabled select,
+.actions .disabled select:hover {
+  background-color: transparent;
+  border-color: #D9D9D9;
+  color: #B3B3B3;
+}
+
+/* button to delete added tags (idk if it is anywhere else) */
+.delete a,
+span.delete,
+span.delete a {
+  color: inherit;
+  font-size: 1.2em;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.delete a:hover {
+  color: #596578;
+}
+
+.secondary {
+  background-color: #36465D; 
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 15px #00000080;
+  padding: 0.25em 0.429em;
+}
+
+/*============================================================
+>> 09 ROLES AND STATES
+============================================================*/
+
+.own,
+li.blurb.own {
+  background-color: #26323F;
+}
+
+.draft {
+  border-color: #F2F2F2;
+}
+
+span.unread,
+.replied,
+span.claimed,
+.actions span.defaulted {
+  border-radius: 40px;
+}
+
+span.claimed,
+.actions span.defaulted {
+  background-color: #FFFFFF21;
+  border-color: #F2F2F2;
+  color: #B3B3B3;
+}
+
+.draggable,
+.droppable,
+span.requested {
+  color: #D97568;
+}
+
+.nominations .unreviewed {
+  background-color: #D79B50;
+  border-color: #D79B50;
+  color: #000000;
+}
+
+.replied,
+.nominations .approved {
+  background-color: #57B76F;
+  border-color: #57B76F;
+  color: #000000;
+}
+
+span.unread,
+.nominations .rejected {
+  background-color: #D97568;
+  border-color: #D97568;
+  color: #000000;
+}
+
+span.offered {
+  color: #57B76F;
+}
+
+span.offered.requested {
+  color: #D79B50;
+}
+
+/*========== CONTEXTS ==========*/
+
+.comment span.unreviewed {
+  background-color: #FFFFFF21;
+}
+
+/*============================================================
+>> 10 TYPES OF DATA, GROUPS OF DATA
+============================================================*/
+
+/*========== TYPE: TAGS ==========*/
+
+/* general formatting for the tags */
+/* excluding fandom tags, fav tags on splash page and heading tags in some places */
+a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
+.tags a[data-remote="true"],
+.unwrangled,
+.added.tag {
+  padding: 0 2px 0 0;
+  margin: 2px 4px 2px 0;
+  border: none;
+  border-radius: 0;
+  font-size: 0.95em;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(#A1A1A1A6); /* use background image with gradient here in preparation for different colored tag groups (see below) */
+}
+
+h5.fandoms.heading a.tag {
+  margin-right: 8px !important;
+}
+
+/* add hashtag */
+a.tag:not(.fandom.index.group a.tag, h2.heading a.tag)::before {
+  content: "#";
+}
+
+/* tag hover */
+a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag):hover,
+.listbox .heading a.tag:visited:hover,
+.tags a[data-remote="true"]:hover {
+  background: #00B8FF !important;
+  border-radius: 1rem;
+  color: #1A2735 !important;
+  box-shadow: 0 0 0 2px #00B8FF;
+}
+
+/* hover for tags that are not in little boxes */
+.fandom.index.group a.tag:hover,
+h2.heading a.tag:hover {
+  background-color: transparent;
+}
+
+/* unwrangled tags */
+.unwrangled {
+  padding-inline: 4px;
+  background-color: transparent;
+  border: 1px dashed #596578;
+  border-radius: 40px;
+}
+
+/* fandom tags */
+h5.fandoms.heading a.tag,
+dd.fandom.tags a {
+  background-image: linear-gradient(to right, #D977BA, #7C5CFF) !important;
+}
+
+/* warning tags */
+li.warnings a.tag,
+dd.warning.tags a {
+  background-image: linear-gradient(to right, #FF4930, #D97568) !important;
+}
+
+/* relationship tags */
+li.relationships a.tag,
+dd.relationship.tags a {
+  background-image: linear-gradient(to right, #FF8A00, #D38A25) !important;
+}
+
+/* character tags */
+li.characters a.tag,
+dd.character.tags a {
+  background-image: linear-gradient(to right, #56BC8A, #56BC8A) !important;
+}
+
+/* the following code deals with added tags
+(and other added elements that look like added tags) */
+
+.autocomplete li.added,
+.post .meta dd ul li.added {
+  padding: 4px 10px;
+  border-radius: 18px;
+  background: #BFBFBF26 !important;
+  color: #B3B3B3;
+  column-gap: 8px;
+}
+
+li.added:hover {
+  background: #FFFFFF21 !important;
+}
+
+li.added span.delete,
+li.added:hover .delete a {
+  color: #A1A1A1A6;
+}
+
+li.added:hover .delete a:hover {
+  color: #29ABE6;
+}
+
+/*===== definition lists (subscriptions, related works, edit multiple works) =====*/
+
+dl.index dt,
+dl.index dd {
+  background-color: transparent;
+  border-color: #BFBFBF26;
+}
+
+dl.index dt {
+  background-color: #26323F;
+  border-color: #BFBFBF26;
+}
+
+/*========== TYPES ==========*/
+
+/* idk what this is */
+.actions .reindex a {
+  border-color: #D97568;
+}
+
+/* color of the series dividers */
+span.series .divider {
+  color: #FFFFFF21;
+}
+
+/* make text visible again after hiding the comma */
+dd.series span {
+  color: #B3B3B3;
+}
+
+.statistics .index li:nth-of-type(even) {
+  background-color: #26323F;
+}
+
+/*============================================================
+>> 11 GROUP: LISTBOX
+============================================================*/
+
+.listbox,
+fieldset fieldset.listbox,
+.tagset .media .listbox {
+  background-color: #26323F;
+  border-color: #BFBFBF26;
+  border-radius: 8px;
+}
+
+.listbox > .heading,
+.listbox > .heading a:not(.action a, .actions a),
+.listbox > .heading a:visited:not(.action a:visited, .actions a:visited) {
+  color: #B3B3B3;
+}
+
+.listbox .index {
+  background-color: #1A2735;
+  border-color: #BFBFBF26;
+}
+
+/* border at the bottom only in some cases */
+.listbox .index:has(+ .actions[role="navigation"], + h4, + .actions #expand-fandoms) {
+  border-color: #BFBFBF26;
+}
+
+/*============================================================
+>> 12 GROUP: META
+============================================================*/
+
+dl.meta {
+  background-color: #26323F;
+  border-color: #BFBFBF26;
+  border-radius: 8px;
+}
+
+/*============================================================
+>> 13 GROUP: BLURB
+============================================================*/
+
+li.blurb,
+.blurb .blurb,
+.region.own + .dashboard li.blurb.own {
+  padding: 0.75rem 0.75rem 0.5rem;
+  background-color: #263B53;
+}
+
+li.blurb,
+li.picture.blurb,
+.listbox li.blurb,
+.toggled.blurb {
+  border: none;
+  border-radius: 8px;
+}
+
+/*==========  blurb header ==========*/
+
+.blurb .header ul.required-tags,
+.picture.blurb:has(.icon) > .header,
+.mystery.blurb:has(.icon) > .header {
+  border-color: #FFFFFF21;
+}
+
+/* ========== various little mods ==========*/
+
+/* mod: blurbs on the manage collection items pages */
+.item dl.visibility {
+  background-color: #36465D;
+}
+
+/*===== mod: BOOKMARK =====*/
+
+/* number of bookmarks */
+.bookmark .count a {
+  color: #B3B3B3; /* this is technically not necessary because the symbol is hidden anyway */
+}
+
+.bookmark .count a:hover,
+.bookmark .count a:focus {
+  color: #529ECC; /* this is technically not necessary because the symbol is hidden anyway */
+}
+
+.bookmark .user {
+  padding: 0.75em 0;
+  background-color: transparent;
+  border: none;
+  border-top: 1px solid #FFFFFF21;
+  border-radius: 0;
+  margin: 0;
+}
+
+.bookmark .short.user:not(.recent .bookmark .short.user):last-of-type {
+  border-bottom: 1px solid #FFFFFF21;
+}
+
+.bookmark div.user .datetime {
+  right: 0;
+}
+
+/*===== mod: READING =====*/
+
+/* "last visited" (History) */
+.reading h4.viewed {
+  background: linear-gradient(to right, #BFBFBF26, transparent);
+  border: none;
+  border-radius: 0;
+  margin-inline: -0.75rem;
+  padding-inline: 0.75rem;
+}
+
+/*============================================================
+>> 14 GROUP: PREFACE (= work prefaces)
+============================================================*/
+
+.chapter .preface,
+.preface h3  {
+  border-color: #FFFFFF21;
+}
+
+/*============================================================
+>> 15 GROUP: COMMENTS
+============================================================*/
+
+/* comment body */
+li.comment:not(:has(.edit_comment)) {
+  padding: 0.75rem 0.75rem 0.5rem;
+  background-color: #263B53;
+  border: none;
+  border-radius: 8px;
+}
+
+/*============================================================
+>> 16 ZONE: SYSTEM
+============================================================*/
+
+/*========== ZONE: SYSTEM: SPLASH PAGE ==========*/
+
+/* headings */
+.splash > .module h3 {
+  border-color: #BFBFBF26;
+  color: #B3B3B3;
+}
+
+/*===== module: "Find your favorites" =====*/
+
+/* color of the little arrows */
+.splash .browse li a::before {
+  color: #FFFFFF21;
+}
+
+/*===== module: favorite tags =====*/
+
+.splash .favorite a.tag {
+  border-radius: 1rem;
+  color: #B3B3B3;
+}
+
+.splash .favorite li:nth-of-type(odd) a.tag {
+  background-color: #26323F;
+}
+
+.splash .favorite a.tag:hover {
+  background: #29ABE6 !important;
+  color: #1A2735 !important;
+}
+
+/*===== module: news =====*/
+
+.splash .news li {
+  border-color: #BFBFBF26;
+}
+
+/*========== ZONE: SYSTEM: FAQS ==========*/
+
+.faq .categories h3 {
+  border-color: #BFBFBF26;
+}
+
+.faq .example,
+.guideline .example {
+  border-color: #7C5CFF;
+}
+
+/*========== ZONE: SYSTEM: TOS (Terms of Service) POPUP ==========*/
+
+.tos .userstuff nav.toc > details > summary {
+  border-color: #BFBFBF26;
+}
+
+#tos_prompt {
+  background: #263B53;
+}
+
+#tos_prompt .heading {
+  background: #529ECC;
+  border-color: #FFFFFF21;
+  color: #B3B3B3;
+}
+
+#tos_prompt [disabled] {
+  background: #BFBFBF26;
+}
+
+/*========== ZONE: SYSTEM: PROXY NOTICE ==========*/
+
+#proxy-notice {
+  background: #D97568;
+  border-color: #FF4930;
+}
+
+/*============================================================
+>> 17 ZONE: HOME
+============================================================*/
+
+.home .header h2 {
+  border-color: #FFFFFF21;
+}
+
+/* puts CSS code on skins pages in scrollable boxes */
+.skins.home .css.module blockquote {
+  background-color: #00000080;
+  border: none;
+  border-radius: 8px;
+  color: #529ECC;
+}
+
+/*============================================================
+>> 18 ZONE: SEARCH/BROWSE
+============================================================*/
+
+/*========== INTERACTION: FILTER ==========*/
+
+/* filters expander */
+.filters .expander,
+.filters .expanded .expander {
+  color: #B3B3B3;
+}
+
+/* filters expander arrow */
+.filters .expander::before {
+  color: #596578;
+}
+/*===== javascript =====*/
+/* only relevant for mobile but it's better to keep it here */
+
+.javascript {
+  background: #36465D;
+}
+
+/*============================================================
+>> 19 ZONE: TAGS, TAGSETS, and TAG WRANGLING
+============================================================*/
+
+/* subtags */
+.tree.index ul {
+  border-left: 1.5px solid #BFBFBF26;
+}
+
+/*============================================================
+>> 21 USERSTUFF
+============================================================*/
+/* userstuff = displaying content inputted by a user into a textarea */
+
+/*========== headings ==========*/
+
+.userstuff h2 {
+  color: #B3B3B3;
+}
+
+.userstuff h3 {
+  border-color: #BFBFBF26;
+}
+
+/*========== quotes and stresses ==========*/
+
+.userstuff blockquote,
+.splash .userstuff blockquote {
+  border-color: #FFFFFF21;
+}
+
+.userstuff hr {
+  border-color: #BFBFBF26;
+}
+
+/*============================================================
+>> 22 SYSTEM MESSAGES
+============================================================*/
+
+/* notices */
+.notice,
+.comment_notice,
+.kudos_notice,
+ul.notes, .caution,
+.error, div.error,
+.comment_error,
+.kudos_error,
+.alert.flash,
+form .notice,
+form ul.notes {
+  background-color: #9381D9;
+  border: none;
+  border-radius: 4px;
+  color: #000000;
+  box-shadow: none;
+}
+
+/* colors for warnings */
+.caution {
+  background-color: #D79B50;
+}
+
+/* colors for alerts/error messages */
+.error,
+div.error,
+.comment_error,
+.kudos_error,
+.alert.flash,
+.required.notice {
+  background-color: #D97568;
+  color: #000000;
+}
+
+.required {
+  color: #D97568;
+}
+
+/* link hover */
+.notice a:hover,
+.error a:hover,
+.announcement .userstuff a:hover,
+.announcement input[type="submit"]:hover,
+.announcement .action:hover {
+  color: inherit;
+  filter: opacity(40%);
+}
+
+
+/*========== ADMIN ANNOUNCEMENT BANNERS ==========*/
+
+.announcement {
+  background: #9381D9;
+}
+
+.announcement.event {
+  background: #57B76F;
+}
+
+.announcement.alert {
+  background: #D79B50;
+}
+
+.announcement .userstuff,
+.event .userstuff,
+.alert .userstuff {
+  color: #000000 !important;
+}
+
+/*========== thermometer JavaScript widget for fundraising drives ==========*/
+
+.announcement .thermometer .track {
+  background: #000000;
+}
+
+.announcement .thermometer .progress .amount {
+  color: #000000;
+}
+
+/* progress bar */
+.announcement .thermometer .track div.progress {
+  background-image: linear-gradient(to right, #7C5CFF, #00B8FF) !important;
+}
+
+/*========== SYMBOLS (mostly help button) ==========*/
+
+span.symbol {
+  color: #1A2735;
+}
+
+span.symbol span {
+  padding: 0.25em;
+}
+
+.question a:hover {
+  background-color: #529ECC;
+  border-color: #529ECC;
+  color: #36465D;
+}
+
+span.question {
+  background-color: #529ECC;
+  border-color: #F2F2F2;
+}
+
+/*========== SYMBOLS KEY (help content) ==========*/
+
+#symbols-key dl {
+  background-color: transparent;
+  border-color: #FFFFFF21;
+}
+
+/*============================================================
+>> Z1 REPLACE THE ICONS AND IMAGES
+============================================================*/ 
+
+/*========== ICONS FOR USERS, COLLECTIONS, TAGS etc. ==========*/
+
+/* border + background for uploaded icons */
+.icon img:not(img[src*="/images/skins/iconsets/default/"]) {
+  background: transparent;
+  border: none;
+}
+
+/* default user icon */
+img[src$="/images/skins/iconsets/default/icon_user.png"] {
+  background: #3D4C62; /* change background color here */
+  border: none;
+}
+
+/* anon + guest comment icons */
+.comment .icon .anonymous,
+.comment .icon .visitor {
+  background-color: #48566A; /* change background color here */
+  border: none;
+}
+
+/* collection icon */
+.collection .icon,
+img[src$="/images/skins/iconsets/default/icon_collection.png"] {
+  background: #529ECC; /* change background color here */
+  border: none;
+  border-radius: 8px;
+}
+
+/* tag icons */
+.tagset .primary .icon, 
+.tag .primary .icon,
+.index .tagset .icon {
+  background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_tag_02.png");
+  background-size: cover;
+  background-color: #529ECC; /* change background color here */
+  border: none;
+  border-radius: 8px;
+}
+
+/* icon for unrevealed works */
+.index .mystery .icon {
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_anon_01.png");
+  background-size: cover;
+  background-color: #529ECC; /* change background color here */
+  border: none;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+/* admin icon => seen on news posts */
+.admin .primary .icon {
+  background-color: #48566A; /* change background color here */
+  border: none;
+}
+
+/* default icon for skins */
+.skins .primary .icon:not(:has(a .icon)),
+.index .skins .icon:not(:has(a .icon)) {
+  background-color: #529ECC; /* change icon color here */
+  border: none;
+  border-radius: 8px;
+}
+
+/*========== CONTENT SYMBOLS ==========*/
+
+/* rounded corners for content symbols */
+.blurb ul.required-tags li span,
+.bookmark .status span:not(.status .private),
+#symbols-key dl img,
+#bookmark-symbols-key img {
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+/* empty symbols boxes (no rating, category or warning) */
+.required-tags .rating-notrated,
+.required-tags .category-none, 
+.required-tags .warning-no, 
+.status .count,
+img[src$="/images/skins/iconsets/default/rating-notrated.png"],
+img[src$="/images/skins/iconsets/default/category-none.png"],
+img[src$="/images/skins/iconsets/default/warning-no.png"] {
+  background: #48566A; /* change background color here */
+  box-shadow: none;
+}
+/*===== Rating =====*/
+
+/* General Audiences */
+.required-tags .rating-general-audience,
+img[src$="/images/skins/iconsets/default/rating-general-audience.png"] { 
+  background-color: #56BC8A; /* change background color here */
+}
+
+/* Teen And Up Audiences */
+.required-tags .rating-teen,
+img[src$="/images/skins/iconsets/default/rating-teen.png"] { 
+  background-color: #CDAE00; /* change background color here */
+}
+
+/* Mature */
+.required-tags .rating-mature,
+img[src$="/images/skins/iconsets/default/rating-mature.png"] { 
+  background-color: #D38A25; /* change background color here */ 
+}
+
+/* Explicit */
+.required-tags .rating-explicit,
+img[src$="/images/skins/iconsets/default/rating-explicit.png"] { 
+  background-color: #D9664A; /* change background color here */
+}
+
+/*===== Relationships, pairings, orientations =====*/
+
+/* F/F */
+.required-tags .category-femslash, 
+img[src$="/images/skins/iconsets/default/category-femslash.png"] {
+  background-color: #D9664A; /* change background color here */
+}
+
+/* F/M */
+.required-tags .category-het, 
+img[src$="/images/skins/iconsets/default/category-het.png"] {
+  background-color: #AF73D4; /* change background color here */
+}
+
+/* Gen */
+.required-tags .category-gen,
+img[src$="/images/skins/iconsets/default/category-gen.png"] {
+  background-color: #56BC8A; /* change background color here */
+}
+
+/* M/M */
+.required-tags .category-slash,
+img[src$="/images/skins/iconsets/default/category-slash.png"] {
+  background-color: #529ECC; /* change background color here */
+}
+
+/* Multi */
+.required-tags .category-multi,
+img[src$="/images/skins/iconsets/default/category-multi.png"] {
+  background: conic-gradient(from 360deg, #AF73D4 0% 25%, #529ECC 25% 50%, #D9664A 50% 75%, #56BC8A 75% 100%); /* conic gradient with the colors of the relationship icons */
+}
+
+/* Other relationships */
+.required-tags .category-other, 
+img[src$="/images/skins/iconsets/default/category-other.png"] {
+  background-color: #D977BA; /* change background color here */
+}
+
+/*===== Content warnings =====*/
+
+/* Author chose not to warn */
+.required-tags .warning-choosenotto, 
+img[src$="/images/skins/iconsets/default/warning-choosenotto.png"] {
+  background-color: #D38A25; /* change background color here */
+}
+
+/* Warnings apply */
+.required-tags .warning-yes,
+img[src$="/images/skins/iconsets/default/warning-yes.png"] { 
+  background-color: #D9664A; /* change background color here */
+}
+
+/* External work */
+.required-tags .external-work,
+img[src$="/images/skins/iconsets/default/warning-external-work.png"] {
+  background-color: #529ECC; /* change background color here */
+}
+
+/*===== Completion status =====*/
+
+/* uncomplete/unfulfilled */
+.required-tags .complete-no, 
+img[src$="/images/skins/iconsets/default/complete-no.png"] { 
+  background-color: #D9664A; /* change background color here */ 
+}
+
+/* completed/filled */
+.required-tags .complete-yes,
+img[src$="/images/skins/iconsets/default/complete-yes.png"] { 
+  background-color: #56BC8A; /* change background color here */
+}
+
+/*===== Bookmark symbols =====*/
+
+/* Rec */
+.status .rec,
+img[src$="/images/skins/iconsets/default/bookmark-rec.png"] { 
+  background-color: #D977BA; /* change background color here */
+}
+
+.bookmark .blurb p.status a:not(.short a):has(.rec)::before {
+  border-inline-color: #D977BA; /* ribbon color */
+}
+
+/* Public bookmark */
+.status .public, 
+img[src$="/images/skins/iconsets/default/bookmark-public.png"] { 
+  background-color: #56BC8A; /* change background color here */
+}
+
+.bookmark .blurb p.status a:not(.short a):has(.public)::before {
+  border-inline-color: #56BC8A; /* ribbon color */
+}
+
+/* Private bookmark */
+.status .private .text, 
+img[src$="/images/skins/iconsets/default/bookmark-private.png"] {
+  background-color: #529ECC; /* change background color here */
+}
+
+.bookmark .blurb p.status a:not(.short a):has(.private)::before {
+  border-inline-color: #529ECC; /* ribbon color */
+}
+
+/* Hidden bookmark */
+.status .hidden, 
+img[src$="/images/skins/iconsets/default/bookmark-hidden.png"] {
+  color: #D9664A; /* change background color here */
+}
+
+.bookmark .blurb p.status a:not(.short a):has(.hidden)::before {
+  border-inline-color: #D9664A; /* ribbon color */
+}
+
+/*========== KUDOS AND RSS FEED SYMBOLS ==========*/
+
+/* new rss symbol */
+.actions li a.rss::before {
+  background-color: #D38A25; /* background color */
+}
+
+/* new kudos symbol */
+/* adding this with a pseudo element is necessary because otherwise the font color would also change when you use filters */
+div:has(> p.kudos)::before {
+  filter: invert(45%) sepia(53%) saturate(639%) hue-rotate(325deg) brightness(98%) contrast(90%); /* adjust filter values to change color */
+}
+
+/*========== LOCK SYMBOL for restricted works ==========*/
+
+img[src$="/images/lockblue.png"] {
+  filter: invert(100%) opacity(0.5);
+}
+
+/*============================================================
+>> Z2 STATS ICONS WITH HOVER TEXT
+============================================================*/
+
+/* change color of the icons */
+.stats dd:not(.skins .stats dd)::before {
+  filter: invert(100%) opacity(0.25);
+}
+
+/* text container ("tooltip") */
+.stats dd::after {
+  font-size: 0.8rem;
+}
+
+/*============================================================
+>> Z3 MISCELLANEOUS
+============================================================*/
+
+/* change date colors */
+.blurb .datetime,
+.comment .datetime,
+.splash .news .meta {
+  color: #A1A1A1A6;
+}
+
+* {
+  scrollbar-color: #A1A1A1A6 #FFFFFF21;
+}
+
+/* text selection */
+*::selection {
+  background-color: #29ABE6;
+  color: #1A2735;
+}
+
+/*========== stat chart on statistics page ==========*/
+/* ISSUE: filters here do not work on tablet/mobile for me */
+
+/* change color of chart */
+#stat_chart g > rect {
+  filter: hue-rotate(205deg) brightness(140%); /* adjust filter values to change color */
+}
+
+/* change chart text color */
+g text {
+  filter: invert(100%) brightness(70%); /* adjust filter values to change color */
+}
+
+/*========== rich text editor ==========*/
+/* ISSUE: haven't found a way to change the font (works when applying skin directly in Firefox browser but not after saving it to AO3) :/ */
+/* changing colors also doesn't work on mobile for me but filters do work */
+
+.tox {
+  filter: opacity(0.3) invert(100%) saturate(200%) hue-rotate(90deg) brightness(100%) contrast(110%);
+}
+
+/* border colors */
+.tox,
+.tox * {
+  border-color: unset !important;
+}

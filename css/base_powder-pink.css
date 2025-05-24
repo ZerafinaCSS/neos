@@ -1,0 +1,3994 @@
+/*============================================================
+
+
+                           ~ neos ~
+
+            a site skin for the Archive of Our Own
+                        by ZerafinaCSS
+
+
+==============================================================
+LINKS & CREDITS
+==============================================================
+
+CODE & INSTRUCTIONS:
+
+- Code (GitHub):       https://github.com/ZerafinaCSS/neos
+- Instructions (AO3):  [TO-DO: insert AO3 link here]
+
+CREDITS:
+
+- Base:                "Archive 2.0 skin" by A03           https://archiveofourown.org/skins/873
+- Inspired by:         "Tide" by ElectricAlice             https://github.com/electricalice/Ao3-tide
+                       "Flat Squares Skin" by milkfatzero  https://ao3-skins.dreamwidth.org/6156.html
+
+FIND ME ON:
+
+- GitHub:              https://github.com/ZerafinaCSS
+- AO3:                 https://archiveofourown.org/users/Zerafina/pseuds/ZerafinaCSS
+- Tumblr:              https://www.tumblr.com/zerafinacss
+
+
+==============================================================
+DIRECTORY
+==============================================================
+
+>> A1 COLOR GUIDE
+>> A2 BASIC LAYOUT SETTINGS ETC.
+>> A3 FONTS
+>> 02 ELEMENTS
+>> 03 REGION: HEADER
+>> 04 REGION: DASHBOARD
+>> 05 REGION: MAIN
+>> 06 REGION: FOOTER
+>> 07 INTERACTIONS
+>> 08 ACTIONS: BUTTONS
+>> 09 ROLES AND STATES
+>> 10 TYPES OF DATA, GROUPS OF DATA
+>> 11 GROUP: LISTBOX
+>> 12 GROUP: META
+>> 13 GROUP: BLURB
+>> 14 GROUP: PREFACE
+>> 15 GROUP: COMMENTS
+>> 16 ZONE: SYSTEM
+>> 17 ZONE: HOME
+>> 18 ZONE: SEARCH/BROWSE
+>> 19 ZONE: TAGS, TAGSETS, and TAG WRANGLING
+>> 21 USERSTUFF
+>> 22 SYSTEM MESSAGES
+>> Z1 REPLACE THE ICONS AND IMAGES
+>> Z2 STATS ICONS WITH HOVER TEXT
+>> Z3 MISCELLANEOUS
+
+
+==============================================================
+>> A1 COLOR GUIDE: Powder & Pink Base Theme
+==============================================================
+
+1) Pink + cream: https://coolors.co/ffffff-f9d2e2-fd8abc-ff66a8-d44e8b-a8366e-6c2d52-361628
+
+    color1:           #FFFFFF => white elements
+    color2:           #F9D2E2
+    color3:           #FD8ABC
+    color4:           #FF66A8
+    color5:           #D44E8B
+    color6:           #A8366E
+    color7:           #6C2D52 => main font color, replaces #111, #2A2A2A
+    color8:           #361628 => darker font color
+
+2) Grey/darker cream: https://coolors.co/fcfcfc-f7f6f5-edeaea-d8d2d2-bbb2b2-a29696-897979
+
+   Background elements (mainly):
+
+    background1:      #FCFCFC
+    background2:      #F7F6F5
+    background3:      #EDEAEA
+
+   Borders + some other elements:
+
+    accent1:          #D8D2D2
+    accent2:          #BBB2B2
+    accent3:          #A29696
+    accent4:          #897979
+    transparent:      #89797925 => accent4 with transparency
+
+3) Roles and states + system messages: https://coolors.co/deeaf7-2e6cb2-cffff2-008f85-fff7e5-856114-fcdce2-c72c53
+
+    system1:          #DEEAF7
+    system2:          #2E6CB2
+    system3:          #CFFFF2
+    system4:          #008F85
+    system5:          #FFF7E5
+    system6:          #A77916
+    system7:          #FCDCE2
+    system8:          #C72C53
+
+4) Icon colors: https://coolors.co/4cb7c3-5e96d6-b268cf-d44e8b
+
+    icon1:            #4CB7C3
+    icon2:            #5E96D6
+    icon3:            #B268CF
+    icon4:            #EA5A9A
+
+5) Tag colors: https://coolors.co/f3cedf-ebd8f3-dbeaf0
+
+    tag-warning:      #F3CEDF;
+  	tag-relationship: #EBD8F3;
+  	tag-character:    #DBEAF0;
+
+
+/*============================================================
+>> A2 BASIC LAYOUT SETTINGS ETC.
+============================================================*/
+
+/* this wraps everything (header, inner, footer) */
+#outer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #F7F6F5;
+}
+
+/* this is where the content is */
+#inner {
+  min-height: 70vh;
+  display: flex;
+  flex-grow: 1; /* this makes the footer stay at the bottom of the screen */
+  flex-flow: row;
+  justify-content: flex-start;
+}
+
+/* the main font color is set here */
+body,
+.toggled form,
+.dynamic form,
+.secondary,
+.dropdown {
+  color: #6C2D52; /* main font color */
+}
+
+/* this gets rid of some spaces/gaps I don't like */
+.blurb li,
+.stats > *,
+.meta ul li {
+  padding-left: 0;
+}
+
+/* remove dotted outline on some active and focused elements */
+a:active,
+a:focus,
+a:focus img,
+button:focus,
+#footer a:focus,
+.submit input:focus,
+.filters input:focus + .indicator + span,
+.filters .expander:focus {
+  outline: none;
+}
+
+/*============================================================
+>> A3 FONTS
+============================================================*/
+
+/* main font family */
+body,
+input,
+textarea,
+.toggled form,
+.dynamic form,
+.secondary,
+.dropdown,
+blockquote,
+pre,
+.prompt .blurb h6,
+.bookmark .user .meta,
+a.work,
+span.symbol,
+.heading .actions,
+.heading .action,
+.heading span.actions,
+button,
+span.unread,
+.replied,
+span.claimed,
+.actions span.defaulted {
+  font-family: Verdana, Helvetica, "Trebuchet MS", "Lucida Sans", Arial, sans-serif, 'GNU Unifont';
+}
+
+/* headings font family */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading {
+  font-family: Verdana, Helvetica, "Trebuchet MS", "Lucida Sans", Arial, sans-serif, 'GNU Unifont';
+}
+
+/* "code" font family */
+kbd,
+tt,
+code,
+var,
+pre,
+samp,
+textarea#skin_css,
+.css.module blockquote pre,
+.splash .news .meta,
+.datetime {
+  font-family: Consolas, Monaco, Courier, monospace;
+  font-size: 0.9em;
+}
+
+/*============================================================
+>> 02 ELEMENTS
+============================================================*/
+/* see "Archive: (2) elements skin" by AO3 */
+
+/*========== links ==========*/
+
+a,
+a:link,
+a.work,
+.blurb h4 a:link,
+.filters p a {
+  color: #D44E8B; /* link color */
+  border-bottom: none; /* remove the link underline */
+}
+
+a:hover,
+a:visited:hover,
+.blurb .heading a:hover,
+.blurb .heading a:visited:hover,
+div.preface .byline a:hover,
+.fandom.index.group a.tag:hover,
+h2.heading a.tag:hover,
+.filters p a:hover {
+  color: #D44E8B; /* link hover color */
+  border-bottom: 1px solid; /* underline for link hover */
+}
+
+a:visited,
+.blurb .heading a:visited {
+  color: #897979; /* different color for visited links */
+}
+
+/* remove border on images that are links */
+a img {
+  border: 0;
+}
+
+/*========== text ==========*/
+
+/* h2 headings */
+h2 {
+  font-size: 1.8em;
+  line-height: 1.2;
+}
+
+h2.heading:has(+ .navigation.actions.module) {
+  display: block;
+  margin-top: 0;
+}
+
+/* horizontal rule/line to separate content */
+hr {
+  border: 0;
+  border-bottom: 3px double;
+}
+
+/* emphasis, cite, italic */
+em,
+cite,
+i {
+  font-style: italic; /* this is oblique in default skin but I want true italics */
+}
+
+/*========== tables ==========*/
+
+table {
+  background-color: #EDEAEA;
+  border: 1px solid #BBB2B2;
+}
+
+thead,
+tfoot,
+tbody tr {
+  border-color: #BBB2B2;
+}
+
+thead th {
+  background-color: #F7F6F5;
+  border-color: #BBB2B2;
+}
+
+thead td {
+  background-color: #D8D2D2;
+  border-color: #EDEAEA;
+}
+
+tbody th {
+  background-color: #F7F6F5;
+  border-color: #BBB2B2;
+}
+
+tfoot td {
+  border-color: #A29696;
+}
+
+td {
+  padding: 0.25em 0.5em;
+}
+
+tr:hover,
+col.name {
+  background-color: #FCFCFC;
+}
+
+/*============================================================
+>> 03 REGION: HEADER
+============================================================*/
+/* see "Archive 2.0: (3) region header skin" by AO3 */
+
+/* this is the header */
+#header {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  position: unset;
+  display: flex;
+  align-items: flex-start;
+  align-content: center;
+  flex-wrap: wrap;
+  column-gap: 1.25em;
+  box-sizing: border-box;
+  z-index: 100;
+  background-color: #FCFCFC;
+  border-bottom: 1px solid #BBB2B2;
+  box-shadow: 0 0.1em 0.5em #89797925;
+}
+
+/* header elements */
+#header > h1,
+#header > h2,
+#header > nav .user,
+#header > nav .dropdown-toggle,
+#header li.search {
+  min-height: 38px; /* CHANGE HEIGHT OF HEADER HERE */
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* this removes the space before the header title */
+#header div.clear {
+  display: none;
+}
+
+/*========== logo and title/heading ==========*/
+
+#header .heading {
+  margin-left: 14px;
+  padding: 0;
+  order: 1;
+}
+
+/* hide "Archive of Our Own" title/heading and setup for new one */
+#header .heading a {
+  visibility: hidden;
+  overflow: hidden;
+  font-size: 1.15em;
+  letter-spacing: -200em;
+  font-weight: bold; /* make title bold */
+  color: #6C2D52; /* change title/heading color here */
+}
+
+/* new title/heading */
+#header .heading a::before {
+  letter-spacing: 0; /* reset letter-spacing; DO NOT DELETE */
+  visibility: visible;
+  content: "AO3";
+}
+
+/* gradient text on hover */
+#header .heading a:hover,
+#header .heading a:hover::before {
+  background-clip: text;
+  background-image: linear-gradient(125deg, #FF66A8, #A8366E);
+  color: transparent;
+}
+
+/* hide "beta" and AO3 logo */
+#header .heading sup,
+#header .logo {
+  display: none;
+}
+
+/*========== header dropdown menus ==========*/
+
+#header .dropdown-menu,
+#small_login {
+  width: unset;
+  min-width: 15em;
+  padding: 0.25em 0;
+  border: 1px solid;
+  border-radius: 0.25rem;
+  font-size: 0.95em;
+  box-sizing: border-box;
+  box-shadow: 0 0.25em 0.5em #89797925;
+  z-index: 5;
+}
+
+/* add arrow on top of menu */
+#header .primary:not(:has(.open)) li.dropdown:hover::before,
+#header #greeting:not(:has(.open)) li.dropdown:hover::before,
+#header .open::before {
+  content: "";
+  position: absolute;
+  width: 0; 
+  height: 0; 
+  border-right: 8px solid transparent !important;
+  border-left: 8px solid transparent !important;
+  border-bottom: 8px solid #FCFCFC;
+  filter: drop-shadow(0 -1px #A29696);
+  transform: translate(-50%, 31px);
+  z-index: 6;
+}
+
+#greeting .dropdown-menu {
+  transform: translateX(1.5em);
+  z-index: 7;
+}
+
+#header #greeting:not(:has(.open)) li.dropdown:hover::before,
+#header #greeting .open::before {
+  transform: translate(5%, 31px);
+  z-index: 8;
+}
+
+/* menu list items */
+#header .menu li {
+  margin: 0 0.25em;
+  border-bottom: none;
+  text-align: left;
+}
+
+/* menu list item links */
+#header .dropdown .menu li a {
+  max-width: unset;
+  background-color: transparent;
+  display: block;
+  padding: 0.5em;
+  color: inherit;
+  border-radius: 0.25rem;
+}
+
+/*===== colors for header navigation / dropdown toggles =====*/
+
+/* header navigation */
+#header .user a,
+#header .user a:visited,
+#header .primary a {
+  color: #6C2D52;
+}
+
+/* currently selected dropdown toggle */
+#header .dropdown:hover a, 
+#header .dropdown a:focus,
+#header .user a:hover,
+#header .user a:focus,
+#header .open a {
+  color: #FF66A8 !important;
+  background-color: transparent;
+}
+
+/*===== colors for header dropdown menu list =====*/
+
+#header .menu {
+  background-image: none;
+  background-color: #FCFCFC;
+  border-color: #A29696;
+}
+
+/* header dropdown list items */
+#header .dropdown .menu a {
+  color: #6C2D52 !important;
+}
+
+/* header dropdown list items hover */
+#header .dropdown .menu a:hover,
+#header .dropdown .menu a:focus {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF !important;
+}
+
+/*========== login and greeting (= user actions in header) ==========*/
+
+/* placement */
+#login,
+#greeting {
+  order: 3;
+  width: auto;
+  margin-right: 14px;
+  margin-left: auto;
+  background-color: transparent;
+}
+
+/* remove margin and padding */
+#header .user,
+#header .user a,
+#small_login .action,
+#greeting .user > li {
+  margin: 0;
+  padding: 0;
+}
+
+#greeting .user > li {
+  line-height: 0;
+}
+
+/* hide small user icon */
+#greeting p.icon {
+  display: none;
+}
+
+/*===== replace user actions buttons with icons =====*/
+
+/* user icon (replaces the "Hi, [username]!") */
+#header #greeting a.dropdown-toggle[href*="/users/"] {
+  background-image: url(https://images.squidge.org/images/2025/05/01/zerafina_header_icon_user.png);
+}
+
+/* "Post" icon */
+#header #greeting a.dropdown-toggle[href*="/works/new"] {
+  background-image: url(https://images.squidge.org/images/2025/05/01/zerafina_header_icon_new-work.png);
+}
+
+/* "Log Out" icon */
+#header #greeting a[href*="/users/logout"] {
+  background-image: url(https://images.squidge.org/images/2025/05/01/zerafina_header_icon_logout.png);
+}
+
+/* settings for the icons */
+#header #greeting a.dropdown-toggle[href*="/users/"],
+#header #greeting a.dropdown-toggle[href*="/works/new"],
+#header #greeting a[href*="/users/logout"] {
+  display: inline-block;
+  width: 18px;
+  height: 18px; 
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  text-indent: -9999px;
+  line-height: 0;
+  color: transparent !important;
+  filter: invert(20%) sepia(10%) saturate(5089%) hue-rotate(278deg) brightness(92%) contrast(86%); /* adjust filters to change header icon colors */
+}
+
+/* colors for header icons hover + active */
+#header #greeting .dropdown:hover a.dropdown-toggle,
+#header #greeting .dropdown:active a.dropdown-toggle,
+#header #greeting a[href*="/users/logout"]:hover,
+#header #greeting a[href*="/users/logout"]:active {
+  filter: invert(57%) sepia(47%) saturate(1755%) hue-rotate(299deg) brightness(100%) contrast(105%);
+}
+
+/* gap between icons (works because of "display: flex" above) */
+#header > nav .user {
+  column-gap: 0.5em;
+}
+
+/*========== primary navigation ==========*/
+/* this is the header navigation bar with Fandoms, Browse, Search and About and the search bar */
+
+#header nav:has(> .primary) {
+  order: 2;
+  flex: 1;
+  max-width: 100%;
+  border-color: #BBB2B2 !important; /* border color here is important for the mobile skin */
+}
+
+#header .primary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-content: center;
+  align-items: center;
+  background: none; /* remove red background-image and fallback color */
+  box-shadow: none;
+}
+
+/* remove space before navigation */
+#header .primary > li.dropdown:first-of-type {
+  margin-left: 0;
+}
+
+/*===== primary navigation: header search bar =====*/
+
+#header .search {
+  margin: 0;
+}
+
+#header li.search {
+  margin-inline: 1.25em;
+}
+
+/* add search bar icon */
+#header li.search::before {
+  position: absolute;
+  left: 0.4em;
+  content: "\002315"; /* this is a unicode symbol that looks like a magnifying glass */
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #897979;
+  z-index: 1;
+}
+
+/* remove weird empty space before the search bar */
+#header li.search form label {
+  display: none;
+}
+
+/* this changes the look of header search bar */
+#header #search .text {
+  max-width: 20vw;
+  min-width: 170px;
+  margin: 0;
+  padding-left: 1.8em; /* make room for the search icon icon */
+  background-color: #FFFFFF;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  box-shadow: none;
+  transition: width 0.15s;
+}
+
+/* how the search bar looks when selected */
+#header #search input:focus {
+  color: #6C2D52;
+  outline: 1px solid #FF66A8;
+  border-color: #FF66A8;
+}
+
+/* hide search button */
+#header #search .button,
+#header #search span.actions {
+  display: none;
+}
+
+/*========== CONTEXT: collections ==========*/
+
+/* collection header */
+#header h2.collections {
+  display: block;
+  min-height: unset;
+  max-height: unset;
+  width: 100%;
+  padding: 0.25em 14px;
+  font-size: 1.25em;
+  background-color: #A8366E;
+  color: #FFFFFF;
+  border-inline: none;
+  border-top: 1px solid #BBB2B2;
+  order: 4;
+}
+
+/* collection picture header */
+#header .collections {
+  max-height: 15vh;
+  background-position: center;
+  background-size: auto 100%;
+}
+
+/*============================================================
+>> 04 REGION: DASHBOARD
+============================================================*/
+/* see "Archive: (4) region dashboard skin" by AO3 */
+/* #2 of the 4 regions shown on every page */
+
+/* create sticky dashboard */
+#dashboard,
+#dashboard.own {
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  width: 18%;
+  min-width: 150px; /* prevent sidebar from getting too narrow */
+  max-width: 230px; /* prevent sidebar from getting too wide */
+  padding: 0.5em 0.5em 0 0.5em;
+  overflow-y: auto;
+  overflow-x: visible;
+  border: 0;
+  border-right: 1px solid;
+  border-radius: 0;
+  box-sizing: border-box;
+  scrollbar-color: transparent transparent;
+  background-color: #EDEAEA;
+  border-color: #D8D2D2 !important; /* needs to be like this for tablet + mobile skin */
+  font-size: 0.875em;
+}
+
+#dashboard ul {
+  float: none;
+  display: block;
+  padding: 0.429em 0;
+  text-align: left;
+  border-top: 1px solid #D8D2D2;
+  position: relative;
+}
+
+#dashboard ul:not(.secondary):first-of-type {
+  border-top: 0;
+}
+
+#dashboard a,
+#dashboard span {
+  display: block;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-block: 1px;
+  padding: 0.429em;
+  border-radius: 0.25rem;
+  line-height: 1.286;
+  color: #6C2D52;
+}
+
+#dashboard a:hover {
+  background: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+}
+
+#dashboard .current {
+  background-color: #D8D2D2;
+}
+
+#dashboard .secondary {
+  margin-block: 0.25em;
+  padding: 0.25em;
+  border: 1px solid #BBB2B2;
+  background-color: #FCFCFC;
+  box-shadow: 0 0.2em 0.35em #89797925;
+}
+
+/*============================================================
+>> 05 REGION: MAIN
+============================================================*/
+/* see "Archive: (5) region main skin" by AO3 */
+/* #3 of the 4 regions shown on every page */
+
+#main,
+#main.dashboard {
+  min-height: unset;
+  max-width: 100%;
+  flex-grow: 1;
+  margin: 0;
+  padding: 1.5em 5%; /* narrower layout */
+  box-sizing: border-box;
+  font-size: 0.875em; /* change this to make font bigger */
+  line-height: 1.286;
+}
+
+#main.dashboard {
+  width: 82%; /* dashboard 18% wide is so #main with dahsboard should take up the remaining space */
+}
+
+/* hide the error message pictures */
+#main.errors,
+#main.error-502,
+#main.error-503-maintenance,
+#main.session {
+  background: none;
+}
+
+#main.errors p,
+#main.errors .heading {
+  margin-right: 0;
+}
+
+/*============================================================
+>> 06 REGION: FOOTER
+============================================================*/
+/* see "Archive: (6) region footer skin" by AO3 */
+/* #4 of the 4 regions shown on every page */
+
+#footer {
+  width: 100%;
+  max-width: 100%;
+  padding: 3% 5%;
+  font-size: 0.8em;
+  color: #6C2D52;
+  background: linear-gradient(160deg, #D8D2D2, #F9D2E2);
+  border: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#footer ul.navigation.actions {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 5%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#footer ul li.module {
+  flex-basis: 25%;
+  width: unset;
+  max-width: unset;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#footer ul li.module ul.menu {
+  width: 100%;
+}
+
+/* headings for footer sections */
+#footer .heading {
+  color: #6C2D52;
+  font-weight: bold;
+}
+
+/* links in footer */
+#footer a {
+  color: #A8366E;
+  border-bottom: 0;
+}
+
+/* hover for links in footer */
+#footer a:hover {
+  border-bottom: 1px solid;
+}
+
+/*============================================================
+>> 07 INTERACTIONS
+============================================================*/
+/* see "Archive: (7) interactions skin" by AO3 */
+
+/*========== nesting ==========*/
+
+fieldset,
+form dl,
+fieldset dl dl,
+fieldset fieldset fieldset,
+fieldset fieldset dl dl,
+dd.hideme,
+form blockquote.userstuff,
+form.single fieldset {
+  background-color: #EDEAEA;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  margin: 0.643em 0;
+  padding: 0.634em;
+  box-shadow: none;
+}
+
+fieldset dl,
+fieldset.actions,
+fieldset dl fieldset dl {
+  background-color: transparent;
+  border: none;
+}
+
+fieldset fieldset {
+  background-color: #EDEAEA;
+}
+
+fieldset dd dl,
+form .meta dd,
+fieldset dl fieldset dl,
+dd fieldset {
+  margin: 0.643em 0;
+}
+
+/*========== form rules ==========*/
+
+label {
+  margin-right: 0;
+}
+
+fieldset > fieldset > dl > dt > label {
+  font-weight: bold;
+}
+
+fieldset > ul > li:has(label input[type="radio"]) {
+  margin: 0 !important;
+}
+
+input,
+textarea {
+  width: 100%;
+  max-width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #6C2D52;
+}
+
+input[type="text"]:focus,
+.search input[type="text"]:focus,
+input#user_password:focus,
+select:focus,
+textarea:focus {
+  background-color: #FFFFFF;
+  border-color: #FF66A8;
+  outline: 1px solid #FF66A8;
+}
+
+select {
+  vertical-align: middle;
+  width: 100%;
+  min-width: 10.5em;
+  padding: 0.15em 0.25em;
+  color: #6C2D52;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  background-color: #FFFFFF;
+}
+
+select:not(select[multiple]):hover {
+  background-color: #EDEAEA
+}
+
+.datetime select {
+  width: fit-content;
+}
+
+option,
+.actions option,
+form code {
+  color: #6C2D52;
+}
+
+option:hover,
+option:checked,
+option:checked:hover,
+option:active,
+option:active:hover,
+option:focus,
+option:focus:hover {
+  background: #EDEAEA;
+  color: #6C2D52;
+  border-radius: 0.25rem;
+}
+
+option:hover {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+}
+
+form dt {
+  display: inline-block;
+  width: 25%;
+  min-width: unset;
+  border-bottom: 1px solid #BBB2B2;
+  box-sizing: border-box;
+}
+
+form dd,
+form dd.any {
+  width: 75%;
+  box-sizing: border-box;
+}
+
+form dd + dd {
+  width: 100%;
+}
+
+form dd.required {
+  color: #6C2D52;
+}
+
+form fieldset#parent-options dd:has(ul)  {
+	margin: 0;
+}
+
+/* legends = little heading boxes on forms */
+form.verbose legend,
+.verbose form legend,
+form.single legend {
+  font-weight: bold;
+  background-color: #F7F6F5;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  box-shadow: none;
+}
+
+/* styling the preview box for the "Comment Formatting and Preview" userscript => https://greasyfork.org/en/scripts/484002-ao3-comment-formatting-and-preview */
+div.comment-preview.userstuff {
+  margin-top: 0.429em;
+  background: transparent;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+}
+
+/*========== INPUT ELEMENTS: checkboxes, radio buttons etc. ==========*/
+
+/* remove browser-specific appearance of checkbox + radio buttons and apply new styling */
+input[type="checkbox"],
+input[type="radio"],
+.filters [type="radio"],
+.filters [type="checkbox"],
+.actions input[type="checkbox"],
+label.action input[type="checkbox"] {
+  appearance: none;
+  user-select: none;
+  display: inline-block;
+  position: relative;
+  height: 1em;
+  width: 1em;
+  top: 0.1em;
+  margin: 0;
+  box-sizing: border-box;
+  box-shadow: none;
+  background-image: none !important;
+  background-color: #FFFFFF;
+  border: 1.5px solid #A29696;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+/* hover and focus for checkbox + radio buttons */
+input[type="checkbox"]:hover,
+input[type="radio"]:hover,
+.actions input[type="checkbox"]:hover,
+label.action input[type="checkbox"]:hover,
+.filters [type="checkbox"]:hover:not(:checked)::before {
+  border-color: #FF66A8;
+  color: #FF66A8;
+}
+
+/* disabled checkbox + radio buttons */
+input[type="checkbox"]:disabled,
+input[type="radio"]:disabled {
+  background-color: #897979 !important;
+  border-color: #897979 !important;
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  padding-left: 0;
+}
+
+/* attempt at fixing positioning of checkbox labels */
+/* I probably made this unnecessarily complicated and idek if it works everywhere */
+ul:not(ul.actions) li:has(input[type="checkbox"] + label):not(:has(fieldset)),
+ul:not(ul.actions) li:has(input[type="radio"] + label):not(:has(fieldset)),
+ul:not(ul.actions) li:not(.blurb ul li) > label:has(input[type="checkbox"]),
+ul:not(ul.actions) li:not(.blurb ul li) > label:has(input[type="radio"]) {
+  display: flex !important;
+  align-items: baseline;
+  column-gap: 0.5em;
+  margin: 0;
+  padding-block: 0.3215em;
+  width: fit-content;
+}
+
+/*===== CHECKBOXES =====*/
+
+/* checked checkboxes */
+input[type="checkbox"]:checked,
+.actions input[type="checkbox"]:checked,
+label.action input[type="checkbox"]:checked {
+  background-color: #A8366E;
+  border-color: #A8366E;
+  color: #FFFFFF;
+}
+
+/* this is to replace the checkmark symbol */
+input[type="checkbox"]::before,
+.filters [type="checkbox"]::before,
+.actions input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  height: inherit;
+  width: 50%;
+  border-bottom: 0.25em solid;
+  border-right: 0.25em solid;
+  transform: translate(15%, -20%) scale(0.5) rotate(45deg);
+  color: #FFFFFF;
+  opacity: 0;
+}
+
+/* cross for "exclude" filter checkboxes */
+.filters .exclude [type="checkbox"]::before {
+  content: "\002716\fe0e"; /* unicode cross */
+  width: 100%;
+  border: none;
+  transform: unset;
+  font-size: 0.75em;
+  line-height: 1;
+  text-align: center;
+}
+
+/* make checkmark visible when checked */
+input[type="checkbox"]:checked::before,
+.filters [type="checkbox"]:checked::before,
+.actions input[type="checkbox"]:checked::before {
+  opacity: 1;
+}
+
+/* filters checkbox symbols should be visible always */
+.filters [type="checkbox"]:not(:checked)::before {
+  color: #A29696;
+  opacity: 1;
+}
+
+/* hover for checked checkboxes */
+input[type="checkbox"]:checked:hover,
+.actions input[type="checkbox"]:checked:hover,
+label.action input[type="checkbox"]:checked:hover {
+  background-color: #FF66A8;
+  border-color: #FF66A8;
+}
+
+.actions input[type="checkbox"] {
+  vertical-align: baseline;
+}
+
+/* hide filter checkbox dublicates */
+.filters [type="radio"] + .indicator,
+.filters [type="checkbox"] + .indicator {
+  display: none;
+}
+
+/*===== RADIO BUTTONS =====*/
+
+input[type="radio"],
+.filters [type="radio"] {
+  border-radius: 100%; /* make them round again */
+}
+
+input[type="radio"]:checked,
+.filters [type="radio"]:checked {
+  background-image: none;
+  background-color: #A8366E;
+  border-color: #A8366E;
+  box-shadow: inset 0 0 0 2.5px;
+  color: #FFFFFF
+}
+
+/*===== FILE UPLOAD BUTTON =====*/
+
+input[type="file"] {
+  background: #D8D2D2;
+}
+
+input::file-selector-button {
+  box-shadow: none !important;
+}
+
+/*========== WIDGET: CHARACTER COUNTER ==========*/
+
+p.character_counter {
+  font-size: 0.85em;
+}
+
+/*========== WIDGET: LIVE VALIDATION ==========*/
+
+.LV_validation_message {
+  display: block;
+}
+
+.LV_invalid {
+  background: #FCDCE2;
+  border: 1px solid #C72C53;
+  border-radius: 0.25rem;
+  color: #C72C53;
+  box-shadow: none;
+}
+
+.LV_invalid_field,
+input.LV_invalid_field:hover,
+input.LV_invalid_field:active,
+textarea.LV_invalid_field:hover,
+textarea.LV_invalid_field:active {
+  border: 1px solid #C72C53;
+}
+
+.LV_invalid::before {
+  border-color: #C72C53 transparent;
+}
+
+/*========== WIDGET: AUTO COMPLETE ==========*/
+
+.autocomplete div.dropdown {
+  background: transparent;
+}
+
+/* style like a tooltip */
+.autocomplete div.dropdown ul {
+  background: #FCFCFC;
+  color: #6C2D52;
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  box-shadow: none;
+}
+
+.autocomplete .dropdown ul li {
+  border-radius: 0.25rem;
+  padding: 0.1em 0.35em;
+}
+
+.autocomplete .dropdown ul li:hover,
+.autocomplete .dropdown li.selected {
+  background: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+}
+
+.required .autocomplete {
+  color: #6C2D52;
+}
+
+/* style like a tooltip */
+.autocomplete .notice {
+  background: #FCFCFC;
+  font-size: 0.95em;
+  color: #6C2D52;
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+}
+
+/*========== WIDGET: SORTABLE LIST ==========*/
+
+.ui-sortable li,
+.ui-sortable li:hover {
+  background: #EDEAEA;
+  border: 1px solid #D8D2D2;
+  border-radius: 0.25rem;
+  box-shadow: none;
+}
+
+.ui-sortable li:hover:not(.ui-sortable ul.actions li:hover) {
+  box-shadow: 0 0.2em 0.35em #89797925;
+}
+
+.ui-draggable form {
+  box-shadow: 0 0.2em 0.35em #89797925;
+}
+
+/*========== WIDGET: DATEPICKER, TIMEPICKER ==========*/
+
+#ui-datepicker-div {
+  background: #FCFCFC;
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.2em 0.35em #89797925;
+}
+
+.ui-datepicker-header a {
+  cursor: pointer;
+}
+
+/* prevent table moving slightly down when link:hover because of underline */
+.ui-datepicker-header a:not(:hover) {
+  border-bottom: 1px solid transparent; /* width should be same as hover for links */
+}
+
+.ui-datepicker table {
+  background: #EDEAEA;
+}
+
+.ui-datepicker td {
+  border-color: #BBB2B2;
+}
+
+.ui-datepicker tr:hover {
+  background: #D8D2D2;
+}
+
+.ui-datepicker td:hover {
+  background: #F7F6F5
+}
+
+/*========== TOOLTIP ==========*/
+
+.search [role="tooltip"],
+.qtip-content {
+  background: #FCFCFC;
+  color: #6C2D52;
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  padding: 0.429em;
+  z-index: 6;
+}
+
+.qtip-content {
+  font-size: 1.15em;
+  border-top-left-radius: 0;
+}
+
+/*========== WIDGET: MODAL DIALOGS ==========*/
+/* = dialog box/popup window that is displayed on top of the page, when you click on a help symbol for example */
+
+#modal {
+  background: #F7F6F5;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+}
+
+#modal .content {
+  border-bottom: 1px solid #BBB2B2;
+}
+
+#modal .footer {
+  align-content: center;
+  overflow: auto;
+  padding-right: 5em;
+  line-height: unset;
+}
+
+#modal.img a {
+  color: #FFFFFF;
+}
+
+/*========== MODE: DYNAMIC ==========*/
+
+div.dynamic {
+  background: transparent;
+}
+
+/*========== mods: SINGLE ==========*/
+/* for prominent simple forms consisting of one text input, e.g., on the blocked user page */
+
+form.single input[type="submit"] {
+  vertical-align: unset;
+}
+
+/*========== WIDGET: TOGGLED FORMS (SHOW/HIDE bookmark and collection) ==========*/
+
+.toggled form,
+.dynamic form {
+  padding: 0.643em;
+  background-color: #F7F6F5;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.2em 0.35em #89797925;
+  margin-bottom: 0.429em;
+}
+
+.toggled form dd,
+.toggled form dt,
+.dynamic form dd,
+.dynamic form dt {
+  width: 100%;
+  padding: 2px;
+}
+
+.toggled form dl,
+.dynamic form dl {
+  margin: 0;
+  padding: 0.643em 0;
+}
+
+.dynamic form fieldset,
+.toggled form fieldset,
+.toggled form dl,
+.secondary .toggled form,
+.secondary form {
+  overflow: visible;
+}
+
+.toggled form p.footnote,
+.dynamic form p.footnote {
+  margin-bottom: 0.643em;
+  line-height: 1;
+}
+
+/*========== INTERACTION: POST (work, chapter, comment, news, feedback, challenge etc) ==========*/
+
+.post .required .warnings,
+dd.required {
+  font-weight: normal;
+  color: #6C2D52;
+}
+
+/*============================================================
+>> 08 ACTIONS: BUTTONS
+============================================================*/
+/* see "Archive: (8) actions skin" by AO3 */
+/* subtypes: .action, .navigation, .sorting, .submit, .cancel, .close, .delete, .pagination, .current, .landmark, #skiplinks, input[type="submit"], button */
+
+.actions a,
+.actions a:link,
+.actions a:visited,
+.actions label,
+.actions button,
+.action,
+.action:link,
+.action:visited,
+.action a,
+.action a:link,
+.action a:visited,
+button,
+label.action,
+.actions input,
+input[type="submit"],
+.current,
+.announcement input[type="submit"],
+.announcement .action,
+input::file-selector-button {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+label.action,
+.actions label {
+  box-shadow: none;
+}
+
+input[type="submit"] {
+  height: auto; /* DO NOT DELETE */
+}
+
+/*========== subtypes and modes ==========*/
+
+/* hover + focus */
+.actions a:hover,
+.actions input:hover,
+.actions a:focus,
+.actions input:focus,
+.actions button:hover,
+.actions button:focus,
+label.action:hover,
+.action:hover,
+.action:focus,
+.action a:hover,
+.action a:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+input::file-selector-button:hover,
+input::file-selector-button:focus,
+.listbox > .heading .action a:hover,
+.listbox > .heading .action a:focus {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+
+/* currently selected */
+.actions a:active,
+.current,
+a.current,
+a.current:hover,
+a:link.current,
+.current a:visited {
+  background: #D8D2D2;
+  border-color: #BBB2B2;
+  color: #6C2D52;
+  box-shadow: none;
+  cursor: default;
+}
+
+.actions label.disabled {
+  background-color: #D8D2D2;
+}
+
+.actions .disabled select,
+.actions .disabled select:hover {
+  background-color: transparent;
+  color: #6C2D52;
+  border-color: #897979;
+}
+
+/* button to delete added tags (idk if it is anywhere else) */
+.delete a,
+span.delete,
+span.delete a {
+  color: #C72C53;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+}
+
+.delete a:hover {
+  color: #361628;
+}
+
+.secondary {
+  position: absolute;
+  background-color: #FCFCFC; 
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.2em 0.35em #89797925;
+}
+
+/* prevent the "Unsubscribe" button from becoming too large */
+.subscriptions-index .edit_subscription > input[type="submit"]  {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/*========== attempt to fix the spacing ==========*/
+/* I hate this so much ... */
+
+ul.actions:not(.navigation) > *:not(:first-child),
+fieldset.actions li:not(:first-child) {
+  padding-left: 0.2em;
+}
+
+.heading .actions:not(:last-child),
+.heading .action:not(:last-child),
+.heading span.actions:not(:last-child) {
+  margin-right: 0.5em;  
+}
+
+/*========== CONTEXTS ==========*/
+
+/* placement of secondary menus in fics */
+.chapter .secondary,
+.download .secondary {
+  top: unset;
+  right: unset;
+  left: 50%;
+  width: fit-content;
+  transform: translate(-50%, 2.6em);
+}
+
+.dashboard .header .landmark {
+  display: none;
+}
+
+/*===== buttons with the the "to top" arrows and "expand"/"contract" symbols =====*/
+/* anywhere else? */
+
+.listbox > .heading .action:has(a) {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.listbox > .heading .action a {
+  padding-inline: 0.3em;
+  color: inherit;
+}
+
+/*============================================================
+>> 09 ROLES AND STATES
+============================================================*/
+/* see "Archive: (9) roles states skin" by AO3 */
+
+.own,
+.draft,
+.draft .wrapper,
+.unread,
+.child,
+.unwrangled,
+.unreviewed {
+  opacity: 1;
+}
+
+.own,
+li.blurb.own {
+  background-color: #F7F6F5;
+}
+
+.draft .wrapper {
+  background-color: transparent;
+}
+
+.draft {
+  background-color: transparent;
+  border: 1.5px dotted #A29696;
+  border-radius: 0.25rem;
+}
+
+span.unread,
+.replied,
+span.claimed,
+.actions span.defaulted {
+  border-radius: 0.25rem;
+}
+
+span.claimed,
+.actions span.defaulted {
+  background-color: #D8D2D2;
+  border: 1px solid #A29696;
+  color: #6C2D52;
+}
+
+.draggable,
+.droppable,
+span.requested {
+  color: #C72C53;
+}
+
+.nominations .unreviewed {
+  background-color: #FFF7E5;
+  border: 1px solid #A77916;
+  color: #A77916;
+}
+
+.replied,
+.nominations .approved {
+  background-color: #CFFFF2;
+  border: 1px solid #008F85;
+  color: #008F85;
+}
+
+span.unread,
+.nominations .rejected {
+  background-color: #FCDCE2;
+  border: 1px solid #C72C53;
+  color: #C72C53;
+}
+
+span.offered {
+  color: #008F85;
+}
+
+span.offered.requested {
+  color: #A77916;
+}
+
+/*========== Arrows for the accordion widget ==========*/
+
+.collapsed:after {
+  content: "";
+  border-style: solid;
+  border-width: 0 0.15em 0.15em 0;
+  display: inline-block;
+  padding: 0.2em;
+  margin: 0 0 0.2em 0.5em;
+  transform: rotate(45deg);
+}
+
+.expanded:after {
+  content: "";
+  border-style: solid;
+  border-width: 0 0.15em 0.15em 0;
+  display: inline-block;
+  padding: 0.2em;
+  margin: 0 0 -0.05em 0.5em;
+  transform: rotate(-135deg);
+}
+
+/*========== CONTEXTS ==========*/
+.comment span.unreviewed {
+  background-color: #FCFCFC;
+}
+
+/*============================================================
+>> 10 TYPES OF DATA, GROUPS OF DATA
+============================================================*/
+/* see "Archive: (10) types groups skin" by AO3 */
+
+/*========== TYPE: TAGS ==========*/
+
+ul .tags.commas {
+  text-align: left;
+}
+
+/* hide commas between tags */
+.commas:has(.tag, a[data-remote="true"]) li::after {
+  content: " "; /* leave space here to keep tag groups separated */
+}
+
+/* reset space between tags */
+.commas:has(.tag) li {
+  padding: 0;
+}
+
+/* general formatting for the tags */
+/* excluding fandom tags, fav tags on splash page and heading tags in some places */
+a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
+.tags a[data-remote="true"],
+.unwrangled,
+.added.tag {
+  display: inline-flex;
+  text-decoration: none;
+  padding: 0.15em 0.5em;
+  margin: 0.2em 0;
+  line-height: 1.25;
+  border: 1px solid #89797925;
+  border-radius: 0.25rem;
+  background-color: #89797925;
+  color: #361628;
+  font-size: 0.9em;
+}
+
+/* hide commas between blurb fandom tags */
+/* this is a terrible solution - it changes the fandom tags as well so they have to be "repaired" again (see below) */
+h5.fandoms.heading {
+  letter-spacing: -10px;
+  color: transparent;
+}
+
+/* repair and format fandom tags */
+h5.fandoms.heading a.tag {
+  letter-spacing: 0;
+  margin-right: 0.35em !important;
+  font-weight: bold;
+}
+
+/* tag hover */
+a.tag:not(.fandom.index.group a.tag, h2.heading a.tag):hover,
+.listbox .heading a.tag:visited:hover,
+.tags a[data-remote="true"]:hover {
+  background: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  background-origin: border-box; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  color: #FFFFFF;
+  border-color: transparent;
+}
+
+/* hover for tags that are not in little boxes */
+.fandom.index.group a.tag:hover,
+h2.heading a.tag:hover {
+  background-color: transparent;
+}
+
+/* unwrangled tags */
+.unwrangled {
+  background-color: transparent;
+  border: 1px dashed #897979;
+}
+
+/* warning tags */
+li.warnings a.tag,
+dd.warning.tags a{
+  font-weight: normal;
+  background-color: #F3CEDF !important;
+}
+
+/* relationship tags */
+li.relationships a.tag,
+dd.relationship.tags a {
+  background-color: #EBD8F3 !important;
+}
+
+/* character tags */
+li.characters a.tag,
+dd.character.tags a {
+  background-color: #DBEAF0 !important;
+}
+
+/* create right facing triangle before "show" on hidden tags */
+.tags a[data-remote="true"]::before {
+  content: "";
+  display: inline-block;
+  margin-right: 0.35em;
+  margin-bottom: 0.025em;
+  border-block: 0.35em solid transparent;
+  border-left: 0.5em solid;
+}
+
+h2.heading a.tag {
+ line-height: inherit;
+}
+
+/* the following code deals with added tags
+(and other added elements that look like added tags) */
+
+.autocomplete li.added,
+.post .meta dd ul li.added {
+  display: inline-flex;
+  align-content: center;
+  align-items: center;
+  column-gap: 0.4em;
+  margin: 0 0.4em 0.4em 0;
+}
+
+.filters li.added {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 0;
+}
+
+li.added:hover {
+  background: #FCDCE2;
+  border-color: #C72C53;
+  color: #C72C53;
+}
+
+li.added:hover .delete a {
+  color: #C72C53;
+}
+
+li.added:hover .delete a:hover {
+  color: #FF66A8;
+}
+
+ul .autocomplete:has(.added) li.input {
+  display: none;
+}
+
+/*========== GROUP CLOUD (= tag clouds) ==========*/
+
+a.cloud1 {
+  font-size: 0.9em !important;
+}
+
+a.cloud2 {
+  font-size: 1em !important;
+}
+
+a.cloud3 {
+  font-size: 1.1em !important;
+}
+
+a.cloud4 {
+  font-size: 1.2em !important;
+}
+
+a.cloud5 {
+  font-size: 1.3em !important;
+}
+
+a.cloud6 {
+  font-size: 1.4em !important;
+}
+
+a.cloud7 {
+  font-size: 1.5em !important;
+}
+
+a.cloud8 {
+  font-size: 1.6em !important;
+}
+
+/*========== GROUPS ==========*/
+
+.wrapper,
+#outer.wrapper,
+#inner.wrapper {
+  box-shadow: none;
+}
+
+/*===== definition lists (subscriptions, related works, edit multiple works) =====*/
+
+dl.index dt,
+dl.index dd {
+  padding: 0.643em;
+  border: 1px solid #BBB2B2;
+  background-color: #FCFCFC;
+}
+
+dl.index dt {
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+dl.index dt a:first-of-type {
+  font-weight: bold;
+}
+
+dl.index dd {
+  border-top: 0;
+  border-radius: 0 0 0.25rem 0.25rem;
+  margin-inline: 0;
+}
+
+/*========== TYPES ==========*/
+
+/* idk what this is */
+.actions .reindex a {
+  border-bottom: 3px solid #C72C53;
+}
+
+/* this makes each series in the blurb be displayed in a separate line */
+.blurb ul.series li:not(:first-of-type) {
+  display: block;
+  margin-block: 0.5em 0;
+}
+
+/* color of the series dividers */
+span.series .divider {
+  color: #BBB2B2;
+}
+
+/* this makes each series in the mata box be displayed in a separate line */
+span.series:not(:first-of-type) {
+  display: block;
+  margin-top: 0.5em;
+}
+
+/* hide comma between series in meta box */
+/* this is kind of a workaround but there seems to be no better way to do this */
+dd.series {
+  color: transparent;
+}
+
+/* make text visible again after hiding the comma */
+dd.series span {
+  color: #6C2D52;
+}
+
+.icon a {
+  border: 0 !important;
+}
+
+.statistics .index li:nth-of-type(even) {
+  background-color: #EDEAEA;
+  border-radius: 0.25rem;
+}
+
+/*============================================================
+>> 11 GROUP: LISTBOX
+============================================================*/
+/* see "Archive 2.0: (11) group listbox skin by AO3" by AO3 */
+
+.listbox,
+fieldset fieldset.listbox {
+  clear: right;
+  background-color: #EDEAEA;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  padding: 0;
+  margin: 0.643em auto 1em auto;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.listbox > .listbox {
+  margin: 0.649em;
+}
+
+.listbox > .heading {
+  margin: 0;
+  padding: 0.5em;
+  color: #6C2D52;
+}
+
+.listbox > .heading a:not(.action a, .actions a),
+.listbox > .heading a:visited:not(.action a:visited, .actions a:visited) {
+  color: #6C2D52;
+}
+
+.listbox .index {
+  width: auto;
+  padding: 0.643em;
+  margin: 0;
+  float: none;
+  clear: right;
+  background-color: #F7F6F5;
+  box-shadow: none;
+  box-sizing: border-box;
+  border-top: 1px solid #BBB2B2;
+}
+
+/* border at the bottom only in some cases */
+.listbox .index:has(+ .actions[role="navigation"], + h4, + .actions #expand-fandoms) {
+  border-bottom: 1px solid #BBB2B2;
+}
+
+/* mods: alphabet, medium */
+.alphabet .listbox li,
+.media .listbox {
+  margin-inline: 0;
+}
+
+/*========== placement of listbox buttons ==========*/
+/* this is such a mess */
+
+#user-fandoms.listbox .actions,
+.listbox > .actions.pagination {
+  margin: 0.643em;
+  padding: 0;
+}
+
+.listbox > .actions[role="navigation"]:not(.pagination) {
+  margin: 0;
+  padding: 0;
+}
+
+.listbox > p.actions {
+  margin: 0;
+}
+
+.listbox > .actions[role="navigation"]:not(.pagination) a {
+  margin: 0.643em 0.429em;
+}
+
+/*========== fix tagset media listboxes ==========*/
+
+.tagset .media .listbox {
+  width: 49.5%;
+  margin-right: 1%;
+  box-sizing: border-box;
+  background-color: #EDEAEA;
+  border-color: #BBB2B2;
+}
+
+.tagset .media .listbox:nth-child(even) {
+  margin-right: 0;
+}
+
+/*========== INTERACTION context ==========*/
+
+.listbox .many {
+  max-height: 35vh;
+}
+
+/*============================================================
+>> 12 GROUP: META
+============================================================*/
+/* see "Archive: (12) group meta skin" by AO3 */
+
+dl.meta {
+  background-color: #FCFCFC;
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+}
+
+.meta dt {
+  min-width: unset;
+  width: 25%;
+}
+
+.meta dd {
+  width: 75%;
+}
+
+/* move meta tags up a tiny bit */
+dl.meta dd ul {
+  margin-top: -0.15em;
+}
+
+.meta dd ul li {
+  padding-inline-end: 0;
+}
+
+/*========== CONTEXTS ==========*/
+
+.news dl.meta {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/*============================================================
+>> 13 GROUP: BLURB
+============================================================*/
+/* see "Archive: (13) group blurb skin" by AO3 */
+
+li.blurb,
+.blurb .blurb,
+.region.own + .dashboard li.blurb.own {
+  padding: 0.75em 0.75em 0.643em;
+  background-color: #FCFCFC;
+}
+
+li.blurb,
+li.picture.blurb,
+.listbox li.blurb,
+.toggled.blurb {
+  border: 1px solid #D8D2D2;
+  border-radius: 0.25rem;
+}
+
+/* bold title */
+.blurb .header h4.heading a:first-child {
+  font-weight: bold;
+}
+
+/* change size of the lock for restricted works */
+.blurb .header img {
+  width: 0.8em;
+  height: 0.8em;
+  vertical-align: baseline;
+}
+
+/*========== new blurb header layout starts here ==========*/
+
+.blurb:not(.picture.blurb, .mystery.blurb:not(.own)) .header {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  justify-content: space-between;
+}
+
+/* remove the space for the icons on the right side */
+.blurb .header .heading {
+  margin: 0;
+}
+
+/* work title + author etc */
+.blurb .header h4.heading {
+  order: 1;
+  flex: 1;
+  padding-right: 11ch;
+  box-sizing: border-box;
+  font-size: 1em;
+  text-align: left;
+  word-break: break-word;
+}
+
+/* fandoms tags are also part of header but I'm moving them down */
+.blurb h5.fandoms.heading {
+  order: 4;
+  margin-top: 0.5em;
+}
+
+/* hide blank space on promts with no fandom */
+.blurb h5.fandoms.heading:not(:has(a.tag)) {
+  height: 0;
+}
+
+/* change position of content icons */
+.blurb .header ul.required-tags {
+  order: 3;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.25em;
+  position: unset;
+  width: 100%;
+  margin-top: 0.429em;
+  padding-top: 0.643em;
+  border-top: 1px solid #D8D2D2;
+}
+
+/* this is also needed to change position of content icons */
+.blurb ul.required-tags, 
+.blurb ul.required-tags li,
+.blurb ul.required-tags li+li+li,
+.blurb ul.required-tags li+li+li+li, 
+.blurb ul.required-tags li a {
+  position: unset;
+  width: unset;
+  height: unset;
+  margin: 0;
+  padding: 0;
+}
+
+.blurb .datetime {
+  top: 0; /* leave this here for bookmarks */
+  padding: 0; /* leave this here for own mystery blurbs */
+}
+
+.blurb .header p.notice {
+  order: 6;
+  width: 100%;
+  margin: 0.5em 0 0 0;
+}
+
+/*========== modification: PICTURE ==========*/
+/* for indices with icon pictures, e.g. collections, users, skins + mystery blurbs */
+
+/* formatting picture blurb header */
+.picture.blurb:has(.icon) > .header,
+.mystery.blurb:has(.icon) > .header {
+  min-height: 45px;
+  margin: 0;
+  padding-bottom: 0.75em;
+  border-bottom: 1px solid #D8D2D2;
+}
+
+/* remove the border for user picture blurbs without descriptions or buttons */
+.user.pseud.picture.blurb:not(:has(blockquote, ul.actions)) > .header {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* make picture blurb icons smaller */
+.picture .icon img,
+.index .picture .icon {
+  height: 45px;
+  width: 45px;
+  border-radius: 0.25rem; /* also give them rounded corners */
+}
+
+/* space for picture blurb icon */
+.blurb:has(.icon) > .header h4,
+.blurb:has(.icon) > .header h5 {
+  margin-left: 45px;
+  padding-left: 0.75em;
+}
+
+/* mods on collections (anywhere else?) */
+.blurb:has(.icon) .header ul {
+	margin: 0.429em 0 0 45px;
+  padding-left: 0.75em;
+}
+
+/* ========== various little mods ==========*/
+
+/* mod: blurbs on the manage collection items pages */
+.item dl.visibility {
+  background-color: #EDEAEA;
+}
+
+/*===== mod: BOOKMARK =====*/
+
+.bookmark .blurb h4.heading {
+  padding-right: 14ch;
+}
+
+/* bookmark icon placement for blurbs */
+.bookmark p.status {
+  width: 25px;
+  margin: 0;
+  top: 5px;
+  right: 0.75em; /* same as blurb padding */
+}
+
+/* create bookmark ribbon */
+.bookmark .blurb p.status a:not(.short a)::before {
+  content: "";
+  height: 40px;
+  top: -5px;
+  position: absolute;
+  box-sizing: border-box;
+  border-inline: 13px solid; /* width */
+  border-bottom: 5.5px solid transparent;
+  border-radius: 0 0 0.2rem 0.2rem;
+  z-index: -1;
+}
+
+/* hide number of bookmarks icon => can be found in the stats anyway */
+.bookmark span.count {
+  display: none;
+}
+
+/* number of bookmarks */
+.bookmark .count a {
+  color: #6C2D52; /* this is technically not necessary because the symbol is hidden anyway */
+}
+
+.bookmark .count a:hover,
+.bookmark .count a:focus {
+  color: #FF66A8; /* this is technically not necessary because the symbol is hidden anyway */
+}
+
+/* move date next to bookmark icon */
+.bookmark p.status:has(span.text) + .header .datetime  {
+  margin-right: 33px;
+}
+
+.bookmark .user {
+  border: 1px solid #D8D2D2;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  padding: 0.643em;
+  word-break: break-word;
+}
+
+.bookmark .user .meta {
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+}
+
+.bookmark .user .byline {
+  font-weight: bold;
+  margin: 0 6em 0 0;
+}
+
+.bookmark .module:has(.meta) > .byline,
+.bookmark .short:has(.meta) > .header {
+  margin-bottom: 0.649em;
+}
+
+.bookmark div.user .datetime {
+  top: 0.7em;
+  right: 0.75em;
+}
+
+/* the following part is for the overview pages of who has bookmarked a specific work */
+
+.bookmark .short.blurb .header {
+  display: flex;
+  min-height: 25px;
+  column-gap: 0.643em;
+}
+
+.bookmark .short.blurb:has(.meta) .header {
+	margin-bottom: 0.429em;
+}
+
+.bookmark .short.blurb .header h5 {
+  order: 2;
+  flex: 1;
+  margin: 0;
+}
+
+.bookmark .short.blurb .header .datetime {
+  position: unset;
+  order: 3;
+  min-width: 11ch;
+  margin-left: auto;
+}
+
+.bookmark .short.blurb .header .status {
+  position: unset;
+  order: 1;
+}
+
+/*===== mod: READING =====*/
+
+/* "last visited" */
+.reading h4.viewed {
+  background-color: #EDEAEA;
+  font-size: 1em;
+  padding: 0.25em 0.429em;
+  border: 1px solid #BBB2B2;
+  border-left: 5px solid #BBB2B2;
+  border-radius: 0.25rem;
+}
+
+.reading .deleted h4.viewed {
+  background-color: transparent;
+}
+
+/* mod: PROMPT */
+.prompt .blurb h6 {
+  display: none; /* hide this to get rid of the weird space before and after promt summary; not sure if this affects anything else */
+}
+
+/*============================================================
+>> 14 GROUP: PREFACE (= work prefaces)
+============================================================*/
+/* see "Archive: (14) group preface skin" by AO3 */
+
+div.preface {
+  margin-inline: 5%;
+  padding-inline: 0;
+}
+
+.chapter .preface {
+  border-top: 1.5px solid;
+}
+
+.preface h2.title {
+  font-weight: bold;
+}
+
+.preface h3 {
+  border-bottom: 1.5px solid;
+  margin-bottom: 1em;
+}
+
+div.afterword {
+  margin-bottom: 1em;
+}
+
+/*============================================================
+>> 15 GROUP: COMMENTS
+============================================================*/
+/* see "Archive: (15) group comments skin" by AO3  */
+
+div.comment {
+  border: 0;
+}
+
+/* comment body */
+li.comment:not(:has(.edit_comment)) {
+  border: 1px solid #D8D2D2;
+  border-radius: 0.25rem;
+  background-color: #FCFCFC;
+  padding: 0.643em 0.643em 0.429em 0.643em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* comment icon => make them smaller than default size */
+.comment div.icon,
+.comment .icon,
+.abbreviated .icon {
+  margin: 0;
+  width: 45px;
+  height: 45px;
+  order: 1;
+}
+
+/* comment byline */
+.comment h4.byline {
+  background-color: transparent;
+  padding: 0 0 0 0.642em;
+  margin: 0;
+  line-height: 1.25;
+  order: 2;
+  flex-basis: 0;
+  flex-grow: 1;
+  align-content: center;
+  font-size: 1em;
+  word-break: break-word;
+}
+
+/* comment text */
+.comment .userstuff,
+.splash .comment .userstuff {
+  margin: 0;
+  padding: 0.643em 0;
+  min-height: unset;
+  order: 3;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* date posted */
+.comment .posted {
+  width: 100%;
+  font-size: 1em;
+}
+
+/* "last edited" */
+.comment .edited {
+  order: 4;
+  width: 100%;
+  margin: 1em 0;
+}
+
+/* comment buttons */
+.comment ul.actions {
+  order: 5;
+}
+
+/* reply form */
+.comment div:has(.post.comment) {
+  margin-top: 0.429em;
+  width: 100%;
+  order: 7;
+}
+
+/* edit comment */
+li.comment:has(.edit_comment) {
+  border: none;
+}
+
+/* thread indent */
+.thread .thread {
+  margin-left: 3%;
+}
+
+/*============================================================
+>> 16 ZONE: SYSTEM
+============================================================*/
+/* see "Archive: (16) zone system skin" by AO3 */
+
+.system .userstuff {
+  max-width: unset;
+}
+
+/*========== ZONE: SYSTEM: SPLASH PAGE ==========*/
+
+/* create flexbox layout */
+.splash {
+  box-sizing: border-box;
+  max-width: unset;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* headings */
+.splash > .module h3 {
+  border-bottom: 1.5px solid;
+  color: #6C2D52;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+/* modules (fovorite tags, news, unread messages etc.) */
+.splash > .module,
+.logged-in .splash > .module {
+  margin-inline: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.logged-in .splash > .module {
+  width: 49%;
+}
+
+/*===== module: "Find your favorites" =====*/
+
+/* color of the little arrows */
+.splash .browse li a::before {
+  color: #6C2D52;
+}
+
+/*===== module: favorite tags =====*/
+
+.splash .favorite a.tag {
+  border: 0;
+  background-color: transparent;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+}
+
+.splash .favorite li:nth-of-type(odd) a.tag {
+  background-color: #EDEAEA;
+}
+
+/*===== module: news =====*/
+
+.splash .news h4 {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.splash .news li {
+  border-bottom: 1.5px solid #D8D2D2;
+}
+
+.splash .news li:last-of-type {
+  border-bottom: none;
+}
+
+/*========== ZONE: SYSTEM: FAQS ==========*/
+
+.faq .categories h3 {
+  border-color: #6C2D52;
+}
+
+.faq .example,
+.guideline .example {
+  border: 1px solid #2E6CB2;
+}
+
+/*========== ZONE: SYSTEM: TOS (Terms of Service) POPUP ==========*/
+
+.tos .userstuff nav.toc > details > summary {
+  border-color: inherit;
+}
+
+#tos_prompt {
+  background: #F7F6F5;
+}
+
+#tos_prompt .heading {
+  background: #FF66A8;
+  color: #FFFFFF;
+  border-bottom: 1px solid #A8366E
+}
+
+#tos_prompt [disabled] {
+  background: #BBB2B2;
+  box-shadow: none;
+}
+
+/*========== ZONE: SYSTEM: PROXY NOTICE ==========*/
+
+#proxy-notice {
+  background: #FCDCE2;
+  border-bottom: 1px solid #C72C53;
+}
+
+/*============================================================
+>> 17 ZONE: HOME
+============================================================*/
+/* see "Archive: (17) zone home skin" by AO3 */
+
+/* user home, collections and challenges home, tag home, admin comms home 
+--this zone always shows a dashboard styled in region-dashboard and its parent is #main.dashboard */
+
+.home .primary.header.module {
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.home .header h2 {
+  margin-block: 0.429em 0;
+  width: 100%;
+  height: fit-content;
+  border-bottom: 1.5px solid #D8D2D2;
+}
+
+.home .header ul.actions {
+  margin-left: 100px;
+  width: 100%;
+  text-align: right;
+}
+
+.home .header .userstuff {
+  margin: 0;
+  padding-top: 2em;
+}
+
+.home .header .type {
+  margin: 0 0 0.643em 0;
+}
+
+.home .header dl.stats {
+  margin-left: auto;
+  width: 100%;
+}
+
+/* puts CSS code on skins pages in scrollable boxes */
+.skins.home .css.module blockquote {
+  max-height: 60vh;
+  overflow: auto;
+  margin-inline: 0;
+  padding: 0.643em;
+  border-radius: 0.25rem;
+  border: 1px solid #6C2D52;
+  background-color: #6C2D52;
+  color: #F9D2E2;
+}
+
+/*============================================================
+>> 18 ZONE: SEARCH/BROWSE
+============================================================*/
+/* see "Archive: (18) zone searchbrowse skin" by AO3 */
+
+/*========== INDEX PAGES (with filters) ==========*/
+
+/* some pages are marked as "filtered" but there are no filters ... */
+/* so they don't need the space on the right for the filters */
+.filtered .index:not(:has(+ form.filters)) {
+  width: 100%;
+}
+
+/*========== INTERACTION: SEARCH ==========*/
+
+form.search input[type="text"] {
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  background-image: none;
+  background-color: #FFFFFF;
+  color: #6C2D52;
+}
+
+li.search fieldset {
+  padding: 0 0.429em;
+  font-size: 1em;
+}
+
+/*========== INTERACTION: FILTER ==========*/
+
+/* sticky filters box */
+form.filters {
+  position: sticky;
+  top: 2vh;
+  overflow-x: visible;
+  overflow-y: scroll;
+  overflow-wrap: anywhere;
+  box-sizing: border-box;
+  max-height: 96vh;
+  width: 25%;
+  max-width: 400px;
+  border-radius: 0.25rem;
+  margin-block: 0.643em !important; /* same as blurbs */
+  padding: 0 0.643em 0 2%; /* leave a little more space on the right for the scrollbar */
+  scrollbar-color: #BBB2B2 transparent;
+}
+
+/* hide scrollbar here except for hover */
+form.filters:not(:hover) {
+  scrollbar-color: transparent transparent;
+}
+
+/* prevent the filter box from overlapping the pagination buttons */
+.region:has(ol.pagination.actions) form.filters {
+  margin-bottom: 4.5em !important;
+}
+
+.filters fieldset {
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  background: transparent;
+  border: none;
+}
+
+.filters fieldset li {
+  margin: 0;
+  padding: 0;
+}
+
+.filters dt.heading {
+  margin-block: 1.5em 0.5em !important;
+}
+
+.filters dt.more.heading {
+  margin-bottom: 0 !important;
+}
+
+form.filters dl,
+form.filters dt,
+form.filters dl dl {
+  margin: 0;
+  overflow: visible;
+  border: none;
+}
+
+.filters dd .expandable,
+#inbox-filters dd ul {
+  padding: 0 0 0.429em 1em;
+}
+
+.filters .submit,
+.filters .group {
+  text-align: unset;
+  width: 100%;
+}
+
+.filters .submit:first-of-type:not(:only-of-type) input {
+  margin-top: 0;
+}
+
+.filters .autocomplete input,
+.filters select {
+  min-width: unset;
+}
+
+/* make heading bold when filters are active */
+.filters dt:has(+ dd input:checked) .expander,
+.filters dt.words:has(+ dd input[value]) .expander,
+.filters dt.dates:has(+ dd input[value]) .expander {
+  font-weight: bold;
+}
+
+/* filters expander */
+.filters .expander,
+.filters .expanded .expander {
+  background-image: none; /* remove expander arrow */
+  color: #6C2D52;
+  box-shadow: none;
+  padding-left: 1em;
+}
+
+/* create new filters expander arrow */
+.filters .expander::before {
+  content: "";
+  position: absolute;
+  left: 0.2em;
+  top: 0.6em;
+  border-block: 0.3em solid transparent;
+  border-left: 0.5em solid;
+}
+
+/* rotate arrow when expanded */
+.filters .expanded .expander::before {
+  transform: rotate(90deg);
+}
+
+.filters .group dt.search,
+.filters .group dt.bookmarker,
+.filters dd {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.filters dt:not(.filter-toggle, .filters .range dt),
+.filters .more dt.search,
+.filters dt.autocomplete.search {
+  margin-block: 1em 0.25em;
+}
+
+.filters .warning {
+  font-weight: 400;
+}
+
+.filters ul li > label {
+	padding-block: 0.25em !important;
+}
+
+/*===== style range filters (wordcount, date updated) =====*/
+
+.filters dl.range {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 0.5em;
+  align-items: baseline;
+}
+
+.filters dl.range dt {
+  grid-column: 1;
+}
+
+.filters dl.range dd {
+  grid-column: 2;
+}
+
+/*===== javascript =====*/
+/* only relevant for mobile but it's better to keep it here */
+
+.javascript {
+  background: #EDEAEA;
+}
+
+/*============================================================
+>> 19 ZONE: TAGS, TAGSETS, and TAG WRANGLING
+============================================================*/
+/* see "Archive: (19) zone tags skin" by AO3 */
+
+/* scrollable tag-listboxes */
+.tag.home.profile .listbox > .tags.index {
+  max-height: 60vh;
+  overflow: auto;
+}
+
+/* subtags */
+.tree.index ul {
+  background-color: transparent;
+  border-left: 1px solid #BBB2B2;
+  border-top: 0;
+  margin-left: 0.643em;
+  padding-block: 0;
+  padding-right: 0;
+}
+
+/*========== TAGSETS ==========*/
+/* tagsets look terrible with the default skin and I didn't really make it much better */
+
+.tagset .tags li.listbox {
+  padding: 0;
+}
+
+/*reviewing nominations*/
+dl.nomination {
+  border-radius: 0;
+}
+
+.nomination dt {
+  background-color: transparent;
+}
+
+.nomination dd.autocomplete ul,
+.nomination dd.autocomplete li {
+  margin: 0;
+}
+
+/*============================================================
+>> 21 USERSTUFF
+============================================================*/
+/* see "Archive: (21) userstuff skin" by AO3 */
+/* userstuff = displaying content inputted by a user into a textarea */
+
+
+
+.userstuff p,
+.userstuff details {
+  margin: 1em auto; /* slightly narrower space between paragraphs than in default AO3 skin */
+}
+
+/* lists */
+.userstuff li,
+.userstuff ol ul li {
+  margin-block: 0.5em; /* reduce space (line height) between list items */
+}
+
+/*========== bio on profile page ==========*/
+
+.bio.module {
+  margin-block: 0.5em;
+}
+
+.bio.module .userstuff {
+  margin-inline: 0;
+}
+
+/*========== headings ==========*/
+
+.userstuff h2 {
+  color: #6C2D52;
+}
+
+.userstuff h3 {
+  border-color: inherit;
+}
+
+/*========== quotes and stresses ==========*/
+
+.userstuff blockquote,
+.splash .userstuff blockquote {
+  margin-inline-start: 0.75em;
+  padding: 0.75em;
+  border-inline-start: 2px solid #D8D2D2;
+}
+
+.userstuff blockquote blockquote {
+  padding: 0.25em;
+  border: 0;
+}
+
+.userstuff hr {
+  border: 1px solid #BBB2B2;
+}
+
+/*========== expected behaviours, exceptioning ==========*/
+
+/* WORK MARGINS */
+#workskin {
+  max-width: 70em; /* slightly more narrow than default */
+  margin: 0 auto;
+  padding: 0 2%;
+}
+
+/*============================================================
+>> 22 SYSTEM MESSAGES
+============================================================*/
+/* see "Archive: (22) system messages skin" by AO3 */
+
+.footnote {
+  font-size: 0.9em;
+  text-align: right;
+}
+
+/* formatting for all messages */
+.notice,
+.comment_notice,
+.kudos_notice,
+ul.notes,
+.caution,
+.error,
+div.error,
+.comment_error,
+.kudos_error,
+.alert.flash,
+form .notice,
+form ul.notes {
+  margin-inline: 0;
+  padding: 0.429em;
+  border: 1px solid;
+  border-left: 5px solid;
+  border-radius: 0.25rem;
+  box-shadow: none;
+  line-height: 1.2em;
+}
+
+ul.notes,
+form ul.notes,
+.error ul,
+.notice ul,
+.caution ul,
+.alert.flash ul {
+  padding: 0.25em 2em;
+}
+
+ul.notes li,
+.error ul li,
+.notice ul li,
+.caution ul li,
+.alert.flash ul li {
+  padding-left: 0.5em;
+}
+
+/* colors for general notices */
+.notice,
+.comment_notice,
+.kudos_notice,
+ul.notes {
+  color: #2E6CB2;
+  background-color: #DEEAF7;
+  border-color: currentColor;
+}
+
+/* colors for warnings */
+.caution {
+  color: #A77916;
+  background-color: #FFF7E5;
+  border-color: currentColor;
+}
+
+/* colors for alerts/error messages */
+.error,
+div.error,
+.comment_error,
+.kudos_error,
+.alert.flash,
+.required.notice {
+  color: #C72C53;
+  background-color: #FCDCE2;
+  border-color: currentColor;
+}
+
+.required {
+  color: #C72C53;
+}
+
+/* links */
+.notice a,
+.notice a:visited,
+.error a,
+.error a:visited,
+.announcement .userstuff a,
+.announcement .userstuff a:visited {
+  color: inherit !important;
+  border-bottom: 1px solid;
+}
+
+/* link hover */
+.notice a:hover,
+.error a:hover,
+.announcement .userstuff a:hover,
+.announcement input[type="submit"]:hover,
+.announcement .action:hover {
+  filter: opacity(60%);
+}
+
+/*========== ADMIN ANNOUNCEMENT BANNERS ==========*/
+
+.announcement {
+  display: flex;
+  align-items: end;
+  border-bottom: 1px solid #00000020;
+  padding: 1em 0 1em 2em;
+  z-index: 1;
+  background: #DEEAF7;
+}
+
+.announcement .userstuff {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  color: #361628;
+  border: 0;
+  font-size: 0.95em;
+  word-break: break-word;
+}
+
+.announcement .userstuff p {
+  margin: 0;
+}
+
+/* button placement */
+.announcement p.submit {
+  position: unset;
+  text-align: center;
+  width: 2em;
+  z-index: 3;
+}
+
+/* button */
+.announcement input[type="submit"],
+.announcement .action {
+  line-height: 1;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none;
+  font-size: 0.95em;
+  color: #361628;
+}
+
+.announcement.event {
+  background: #C72C53;
+}
+
+.event .userstuff {
+  background: transparent;
+  color: #FFFFFF;
+}
+
+.announcement.alert {
+  background: #FFF7E5;
+}
+
+.alert .userstuff {
+  background: transparent;
+  color: #361628;
+}
+
+/*========== thermometer JavaScript widget for fundraising drives ==========*/
+
+.announcement .thermometer-content {
+  height: 1.5em;
+  width: 50%;
+  margin-top: 1em;
+}
+
+.announcement .thermometer .track {
+  background: #FFFFFF;
+  border: 1.5px solid;
+  border-radius: 9999px;
+  margin: 0.5em 0;
+}
+
+.announcement .thermometer .goal .amount {
+  padding-left: 0.5em;
+}
+
+.announcement .thermometer .progress .amount {
+  top: 0;
+  right: 0.2em;
+  left: unset;
+  color: #FFFFFF;
+}
+
+/* progress bar */
+.announcement .thermometer .track div.progress {
+  background-image: linear-gradient(to right, #CFFFF2 -25%, #008F85 50%) !important;
+  border-radius: 9999px;
+}
+
+/*========== SYMBOLS (mostly help button) ==========*/
+
+span.symbol {
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  line-height: 1.4;
+  border: none;
+  border-radius: 100%;
+  text-align: center;
+  color: #FFFFFF;
+  vertical-align: unset;
+}
+
+span.symbol span {
+  padding: 0;
+}
+
+.symbols a,
+.symbol a {
+  text-decoration: none;
+  border: none;
+}
+
+.question a:hover {
+  background-color: #FF66A8;
+  border-color: #FF66A8;
+  color: #EDEAEA;
+  cursor: help;
+}
+
+span.question {
+  background-color: #D44E8B;
+  box-shadow: none;
+  vertical-align: super;
+}
+
+a.question {
+  border: none; /* keep this here so there is no link underline */
+}
+
+.heading a.question,
+.help.symbol.question {
+  font-size: 0.75em;
+}
+
+/*========== SYMBOLS KEY (help content) ==========*/
+
+#symbols-key h4 {
+  margin: 1em 0;
+}
+
+dl#symbols-key dt img:not(#symbols-key dl img) {
+  display: none;
+}
+
+dl#symbols-key dd {
+  margin: 0;
+}
+
+#symbols-key dl {
+  width: auto;
+  margin: 0;
+  padding: 0.643em 0.643em 0 0.643em ;
+  border: 1px solid #D8D2D2;
+  border-radius: 0.25rem;
+  background-color: #FCFCFC;
+}
+
+#symbols-key dl dd,
+#bookmark-symbols-key dd {
+  margin: -25px auto 15px 35px;
+}
+
+/*============================================================
+>> Z1 REPLACE THE ICONS AND IMAGES
+============================================================*/ 
+
+/*========== ICONS FOR USERS, COLLECTIONS, TAGS etc. ==========*/
+
+/* rounded corners */
+.icon,
+.icon img,
+.comment div.icon {
+  border-radius: 100%;
+  border: none;
+}
+
+/* border + white background for uploaded icons */
+.icon img:not(img[src*="/images/skins/iconsets/default/"]) {
+  box-sizing: border-box;
+  border: 1px solid #D8D2D2;
+  background: #FFFFFF;
+}
+
+/* default user icon */
+img[src$="/images/skins/iconsets/default/icon_user.png"] {
+  box-sizing: border-box;
+  content: url("https://images.squidge.org/images/2025/02/15/zerafina_icon_user-default_02.png"); /* url of new icon */
+  background: radial-gradient(#D44E8B 60%, #D8D2D2 60% ); /* change icon color here */
+  border: 1px solid #BBB2B2; /* change border width and color here */
+}
+
+/* anon comment icon */
+.comment .icon .anonymous {
+  box-sizing: border-box;
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_anon_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #A29696; /* change background color here */
+  border: 1px solid #00000025; /* change border width and color here */
+}
+
+/* guest comment icon */
+.comment .icon .visitor { 
+  box-sizing: border-box;
+  background: url("https://images.squidge.org/images/2025/02/15/zerafina_icon_user-visitor_02.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #A29696; /* change background color here */
+  border: 1px solid #00000025; /* change border width and color here */
+}
+
+/* default collection icon */
+img[src$="/images/skins/iconsets/default/icon_collection.png"] {
+  box-sizing: border-box;
+  content: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_collection_02.png"); /* url of new icon */
+  background: linear-gradient(transparent, #ffffff50 45% 55%, transparent); /* subtle gradient */
+  background-color: #D44E8B; /* change background color here */
+  border: 1px solid #00000025; /* change border width and color here */
+}
+
+/* tag icons */
+.tagset .primary .icon, 
+.tag .primary .icon,
+.index .tagset .icon {
+  box-sizing: border-box;
+  background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_tag_02.png"), /* url of new icon */
+    linear-gradient(transparent, #FFFFFF50 45% 55%, transparent); /* subtle gradient */
+  background-size: cover;
+  background-color: #D44E8B; /* change background color here */
+  border: 1px solid #00000025; /* change border width and color here */
+}
+
+/* icon for unrevealed works */
+.index .mystery .icon {
+  box-sizing: border-box;
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_anon_01.png"), /* url of new icon */
+    linear-gradient(transparent, #FFFFFF50 45% 55%, transparent); /* subtle gradient */
+  background-size: cover;
+  background-color: #D44E8B; /* change background color here */
+  border: 1px solid #D8D2D2; /* change width and color of outer border here */
+  box-shadow: inset 0 0 0 3px #FFFFFF; /* change width and color of inner border here */
+}
+
+/* admin icon => seen on news posts */
+.admin .primary .icon {
+  box-sizing: border-box;
+  background: url("https://images.squidge.org/images/2025/02/22/zerafina_icon_admin_03.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #D44E8B; /* change background color here */
+  border: 1px solid #00000025; /* change border width and color here */
+}
+
+/* default icon for skins */
+.skins .primary .icon:not(:has(a .icon)),
+.index .skins .icon:not(:has(a .icon)) {
+  box-sizing: border-box;
+  background: url("https://images.squidge.org/images/2025/02/15/zerafina_icon_skins_02.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #D44E8B; /* change icon color here */
+  border: 1px solid #00000025; /* change border width and color here */
+}
+
+/* remove default skin icon under uploaded icons */
+.skins .primary .icon:has(a img.icon) {
+  background: none;
+}
+
+/*========== CONTENT SYMBOLS ==========*/
+
+/* rounded corners for content symbols */
+.blurb ul.required-tags li span,
+.bookmark .status span:not(.status .private),
+#symbols-key dl img,
+#bookmark-symbols-key img {
+  border-radius: 0.25rem;
+}
+
+/* sets the size of the symbols keys icons */
+#symbols-key dl img,
+#bookmark-symbols-key img {
+  width: 0 !important;
+  height: 0 !important;
+  padding: 25px 0 0 25px;
+}
+
+/* borders for content symbols - I used "box-shadow" instead of "border" so it doesn't mess with the size of the icons */
+/* just delete part if you don't want the borders */
+.blurb ul.required-tags li span,
+#symbols-key dl img {
+  box-sizing: border-box;
+  box-shadow: inset 0 0 0 1px; /* change border width here */
+}
+
+/* empty symbols boxes (no rating, category or warning) */
+.required-tags .rating-notrated,
+.required-tags .category-none, 
+.required-tags .warning-no, 
+.status .count,
+img[src$="/images/skins/iconsets/default/rating-notrated.png"],
+img[src$="/images/skins/iconsets/default/category-none.png"],
+img[src$="/images/skins/iconsets/default/warning-no.png"] {
+  background: #FFFFFF; /* change background color here */
+  color: #D8D2D2; /* change border color here */
+}
+
+/*
+Most of the following content symbols have transparent borders, allowing the background to show through.
+This automatically gives the icons borders that have a slightly darker color than the background color.
+You can replace the border color with any other rgb, rgba, or hex color, transparent or not.
+*/
+
+/*===== Rating =====*/
+
+/* General Audiences */
+.required-tags .rating-general-audience,
+img[src$="/images/skins/iconsets/default/rating-general-audience.png"] { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_rating-gen_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #4CB7C3; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
+
+/* Teen And Up Audiences */
+.required-tags .rating-teen,
+img[src$="/images/skins/iconsets/default/rating-teen.png"] { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_rating-teen_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #5E96D6; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
+
+/* Mature */
+.required-tags .rating-mature,
+img[src$="/images/skins/iconsets/default/rating-mature.png"] { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_rating-mature_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #B268CF; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
+
+/* Explicit */
+.required-tags .rating-explicit,
+img[src$="/images/skins/iconsets/default/rating-explicit.png"] { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_rating-explicit_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #EA5A9A; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
+
+/*===== Relationships, pairings, orientations =====*/
+
+/* F/F */
+.required-tags .category-femslash, 
+img[src$="/images/skins/iconsets/default/category-femslash.png"] {
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_category-ff_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #EA5A9A; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
+
+/* F/M */
+.required-tags .category-het, 
+img[src$="/images/skins/iconsets/default/category-het.png"] {
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_category-mf_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #B268CF; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
+
+/* Gen */
+.required-tags .category-gen,
+img[src$="/images/skins/iconsets/default/category-gen.png"] {
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_category-gen_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #4CB7C3; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
+
+/* M/M */
+.required-tags .category-slash,
+img[src$="/images/skins/iconsets/default/category-slash.png"] {
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_category-mm_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #5E96D6; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
+
+/* Multi */
+.required-tags .category-multi,
+img[src$="/images/skins/iconsets/default/category-multi.png"] {
+  background: conic-gradient(from 360deg, #B268CF 0% 25%, #5E96D6 25% 50%, #EA5A9A 50% 75%, #4CB7C3 75% 100%); /* conic gradient with the colors of the relationship icons */
+  color: #0000001a; /* change border color here */
+}
+
+/* Other relationships */
+.required-tags .category-other, 
+img[src$="/images/skins/iconsets/default/category-other.png"] {
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_category-other_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #897979; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
+
+/*===== Content warnings =====*/
+
+/* Author chose not to warn */
+.required-tags .warning-choosenotto, 
+img[src$="/images/skins/iconsets/default/warning-choosenotto.png"] {
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_warning-choosenotto_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #B268CF; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
+
+/* Warnings apply */
+.required-tags .warning-yes,
+img[src$="/images/skins/iconsets/default/warning-yes.png"] { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_warning-yes_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #EA5A9A; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
+
+/* External work */
+.required-tags .external-work,
+img[src$="/images/skins/iconsets/default/warning-external-work.png"] {
+  background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_warning-external-work_02.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #5E96D6; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
+
+/*===== Completion status =====*/
+
+/* uncomplete/unfulfilled */
+.required-tags .complete-no, 
+img[src$="/images/skins/iconsets/default/complete-no.png"] { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_complete-no_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #EA5A9A; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
+
+/* completed/filled */
+.required-tags .complete-yes,
+img[src$="/images/skins/iconsets/default/complete-yes.png"] { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_complete-yes_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #4CB7C3; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
+
+/*===== Bookmark symbols =====*/
+
+/* Rec */
+.status .rec,
+img[src$="/images/skins/iconsets/default/bookmark-rec.png"] { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_bookmark-rec_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #EA5A9A; /* change background color here */
+}
+
+.bookmark .blurb p.status a:not(.short a):has(.rec)::before {
+  border-inline-color: #EA5A9A; /* ribbon color */
+}
+
+/* Public bookmark */
+.status .public, 
+img[src$="/images/skins/iconsets/default/bookmark-public.png"] { 
+  background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_bookmark-public_02.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #4CB7C3; /* change background color here */
+}
+
+.bookmark .blurb p.status a:not(.short a):has(.public)::before {
+  border-inline-color: #4CB7C3; /* ribbon color */
+}
+
+/* Private bookmark */
+.status .private .text, 
+img[src$="/images/skins/iconsets/default/bookmark-private.png"] {
+  font-size: inherit;
+  text-indent: -9999px;
+  white-space: nowrap;
+  background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_bookmark-locked_02.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #B268CF; /* change background color here */
+}
+
+.bookmark .blurb p.status a:not(.short a):has(.private)::before {
+  border-inline-color: #B268CF; /* ribbon color */
+}
+
+/* Hidden bookmark */
+.status .hidden, 
+img[src$="/images/skins/iconsets/default/bookmark-hidden.png"] {
+  background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_bookmark-hidden_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: currentColor;
+  color: #897979; /* change background color here */
+}
+
+.bookmark .blurb p.status a:not(.short a):has(.hidden)::before {
+  border-inline-color: #897979; /* ribbon color */
+}
+
+/*========== KUDOS AND RSS FEED SYMBOLS ==========*/
+
+/* hide old rss symbol */
+a.rss span {
+  padding: 0;
+  background: none;
+}
+
+/* setup for the new rss symbol */
+.actions li a.rss {
+  display: inline-flex;
+  align-content: center;
+  align-items: center;
+  column-gap: 0.3em;
+}
+
+/* new rss symbol */
+.actions li a.rss::before {
+  content: "";
+  height: 0.85em;
+  width: 0.85em;
+  background-image: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_rss_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #FF66A8; /* background color */
+  box-shadow: inset 0 0 0 1px; /* border */
+  border-radius: 2px;
+  color: #00000025; /* change border color here */
+}
+
+/* hide old kudos symbol */
+p.kudos {
+  background: none;
+}
+
+/* new kudos symbol */
+div:has(> p.kudos)::before {
+  content: "";
+  height: 55px;
+  width: 55px;
+  position: absolute;
+  background-image: url("https://images.squidge.org/images/2025/04/17/zerafina_icon_kudos_03.png"); /* url of new icon */
+  background-size: cover;
+  filter: invert(48%) sepia(53%) saturate(3274%) hue-rotate(304deg) brightness(89%) contrast(85%); /* adjust filter values to change color */
+}
+
+/*========== LOCK SYMBOL for restricted works ==========*/
+
+img[src$="/images/lockblue.png"] {
+  content: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_lock_01.png"); /* url of new icon */
+  filter: invert(20%) sepia(10%) saturate(5089%) hue-rotate(278deg) brightness(92%) contrast(86%); /* adjust filter values to change color */
+}
+
+/*============================================================
+>> Z2 STATS ICONS WITH HOVER TEXT
+============================================================*/
+
+/*========== STATS ICONS ==========*/
+
+/* slight adjustment to align stats with other elements */
+/* not the prettiest solution but it works ... */
+dl.stats {
+  margin-right: -0.25em;
+}
+
+/*===== setup for the stats icons =====*/
+
+/* hide the text before the stats */
+.stats dt:not(.skins .stats dt) {
+  display: none;
+}
+
+.stats dd:not(.skins .stats dd)::before {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-bottom: -0.1em;
+  margin-right: 5px;
+  content: "";
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center;
+  filter: invert(89%) sepia(5%) saturate(274%) hue-rotate(314deg) brightness(82%) contrast(87%); /* changes the color of the icons */
+}
+
+/*===== stats icons (images) =====*/
+
+/* language */
+.stats dd.language::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_language_black.png);
+}
+
+/* words */
+.stats dd.words::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_words_black.png);
+}
+
+/* works */
+.stats dd.works::before,
+.stats dd:has(a[href$=works])::before /* works in collection */ {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_works_black.png);
+}
+
+/* chapters */
+.stats dd.chapters::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_chapters_black.png);
+}
+
+/* comments */
+.stats dd.comments::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_comments_black.png);
+}
+
+/* kudos */
+.stats dd.kudos::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_kudos_black.png);
+}
+
+/* bookmarks */
+.stats dd.bookmarks::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_bookmarks_black.png);
+  margin-right: 2px !important; /* needs less space, as the icon is narrower than the others */
+}
+
+/* related works (external bookmarks) */
+.stats dd.inspired::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_related-works_black.png);
+}
+
+/* hits */
+.stats dd.hits::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_hits_black.png);
+}
+
+/* collections */
+.stats dd.collections::before,
+.stats dd:has(a[href$=collections])::before /* subcollections*/ {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_collection_black.png);
+}
+
+/* date published */
+.stats dd.published::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_published_black.png);
+}
+
+/* date updated/completed */
+/* I have not found a way to display a different icon for each case */
+.stats dd.status::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_updated_black.png);
+}
+
+/* completion status (series) */
+.series.meta.group .stats dd:nth-of-type(3)::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_complete_black.png);
+}
+
+/* subscriptions (statistics page) */
+.stats dd.subscriptions::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_subscriptions_black.png);
+}
+
+/* comment threads (statistics page) */
+.statistics .stats dd.comments::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_comment-threads_black.png);
+}
+
+/* fandoms */
+.stats dd:has(a[href$=fandoms])::before,
+.tagset .stats dd:nth-of-type(1)::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_fandoms_black.png);
+}
+
+/* collections: bookmarked items */
+.collection.blurb .stats dd:has(a[href$=bookmarks])::before  {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icons_bookmarked-items_black.png);
+}
+
+/* collections: promts/requests */
+.stats dd:has(a[href$=requests])::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_promts_black.png);
+}
+
+/* tagsets: characters */
+.tagset .stats dd:nth-of-type(2)::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_characters_black.png);
+}
+
+/* tagests: relationships */
+.tagset .stats dd:nth-of-type(3)::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_relationships_black.png);
+}
+
+/* tagsets: additional tags*/
+.tagset .stats dd:nth-of-type(4)::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_tags-additional_black.png);
+}
+
+/* tagsets: freeform tags *//* example: https://archiveofourown.org/tag_sets/19213 */
+.tagset .meta .stats dd:nth-of-type(4)::before {
+  background: url(https://images.squidge.org/images/2024/05/05/stats_icon_tags-freeform_black.png);
+}
+
+/*========== STATS HOVER TEXT ==========*/
+
+/*===== general formatting/styling stuff =====*/
+
+/* text container (tooltip) */
+.stats dd::after {
+  display: none;
+  position: absolute;
+  z-index: 99999;
+  margin: 2em 0 0 -4em;
+  padding: 0.3em;
+  border-radius: 0.25rem;
+  border: 1px solid #A29696;
+  background: #FFFFFF;
+  font-size: 0.8em;
+  line-height: 1em;
+  text-align: center;
+  word-break: break-word; /* prevent overflow by breaking the word if necessary - not the best solution */
+  white-space: normal; /* see comment above */
+}
+
+/* makes text appear on hover */
+.stats dd:hover::after {
+  display: inline-block;
+}
+
+/* this is to prevent the hover text from breaking or getting cut off in some places */
+/* haven't found a better solution yet :/ */
+.statistics .stats dd:last-of-type::after,
+.index .stats dd:last-of-type:has(a[href$=bookmarks])::after,
+.stats dd.inspired::after,
+.tagset .index .stats dd:last-of-type::after {
+  right: 0;
+}
+
+/*===== hover text for individual stats =====*/
+
+/* language */
+.stats dd.language::after {
+  content: "Language";
+}
+
+/* words */
+.stats dd.words::after {
+  content: "Words";
+}
+
+/* works */
+.stats dd.works::after,
+.stats dd:has(a[href$=works])::after /* works in collection */ {
+  content: "Works";
+}
+
+/* chapters */
+.stats dd.chapters::after {
+  content: "Chapters";
+}
+
+/* comments */
+.stats dd.comments::after {
+  content: "Comments";
+}
+
+/* kudos */
+.stats dd.kudos::after {
+  content: "Kudos";
+}
+
+/* bookmarks */
+.stats dd.bookmarks::after {
+  content: "Bookmarks";
+}
+
+/* related works (external bookmarks) */
+.stats dd.inspired::after {
+  content: "Related Works";
+}
+
+/* hits */
+.stats dd.hits::after {
+  content: "Hits";
+}
+
+/* collections */
+.stats dd.collections::after {
+  content: "Collections";
+}
+
+/* date published */
+.stats dd.published::after {
+  content: "Published";
+}
+
+/* date updated/completed */
+.stats dd.status::after {
+  content: "Updated";
+}
+
+/* completion status (series) */
+.series.meta.group .stats dd:nth-of-type(3)::after {
+  content: "Complete";
+}
+
+/* subscriptions (statistics page) */
+.stats dd.subscriptions::after {
+  content: "Subscriptions";
+}
+
+/* comment threads (statistics page) */
+.statistics .stats dd.comments::after {
+  content: "Comment Threads";
+}
+
+/* fandoms */
+.stats dd:has(a[href$=fandoms])::after,
+.tagset .stats dd:nth-of-type(1)::after {
+  content: "Fandoms";
+}
+
+/* tagsets: characters */
+.tagset .stats dd:nth-of-type(2)::after {
+  content: "Characters";
+}
+
+/* tagests: relationships */
+.tagset .stats dd:nth-of-type(3)::after {
+  content: "Relationships";
+}
+
+/* tagsets: additional tags*/
+.tagset .stats dd:nth-of-type(4)::after {
+  content: "Additional Tags";
+}
+
+/* tagsets: freeform tags */
+.tagset .meta .stats dd:nth-of-type(4)::after {
+  content: "Freeforms";
+}
+
+/* collections: promts/requests */
+.stats dd:has(a[href$=requests])::after {
+  content: "Prompts";
+}
+
+/* collections: challenges/subcollections */
+.collections-index .stats dd:has(a[href$=collections])::after {
+  content: "Challenges/Subcollections";
+}
+
+/* collections: bookmarked items */
+.collection.blurb .stats dd:has(a[href$=bookmarks])::after  {
+  content: "Bookmarked Items";
+}
+
+/*============================================================
+>> Z3 MISCELLANEOUS
+============================================================*/
+
+/* scrollbar */
+* {
+  scrollbar-color: #BBB2B2 #D8D2D2;
+  scrollbar-width: thin;
+}
+
+/* text selection */
+*::selection {
+  background-color: #FF66A8;
+  color: #FFFFFF;
+}
+
+/*========== fix the Fandoms Index ==========*/
+/* still not perfect but it's okay for now */
+
+.media-index .media.fandom.index.group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between
+}
+
+.media-index .media .listbox {
+  box-sizing: border-box;
+  width: 49%;
+  margin-block: 1%;
+}
+
+/*========== statistics page ==========*/
+
+/*=====stat chart =====*/
+/* ISSUE: filters here do not work on tablet/mobile for me */
+
+#stat_chart {
+  border-radius: 0.25rem; /* can't add border because it causes a weird error */
+  margin-top: 1em;
+  overflow: clip;
+}
+
+/* make chart background transparent */
+rect {
+  filter: opacity(0)
+}
+
+/* change color of chart */
+#stat_chart g > rect {
+  filter: brightness(0) saturate(100%) invert(34%) sepia(12%) saturate(3983%) hue-rotate(284deg) brightness(88%) contrast(96%);
+}
+
+/*===== fandoms index: place work title and stats next to each other (if possible) =====*/
+
+.statistics .fandom ul li,
+.statistics .fandom ul li > dl > dd > dl {
+	margin: 0;
+}
+
+.statistics .fandom ul li > dl {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1em;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 0.3em;
+}
+
+.statistics .fandom ul li > dl > dt {
+  margin-block: 0.3em;
+}
+
+.statistics .fandom ul li > dl > dd {
+  margin-left: auto;
+  margin-block: 0.3em;
+}
+
+/*========== rich text editor ==========*/
+/* ISSUE: haven't found a way to change the font (works when applying skin directly in Firefox browser but not after saving it to AO3) :/ */
+/* changing colors also doesn't work on mobile for me but filters do work */
+
+.tox {
+  border-radius: 0.25rem;
+}
+
+/* border colors */
+.tox,
+.tox * {
+  border-color: #A29696 !important;
+}
+
+/* toolbar (top) and statusbar (bottom) */
+.tox .tox-toolbar,
+.tox .tox-statusbar,
+.tox .tox-statusbar__path-item {
+  background-color: #EDEAEA;
+  color: #6C2D52;
+}
+
+/* toolbar icons background */
+.tox .tox-tbtn--enabled,
+.tox .tox-tbtn:hover {
+  background: #BBB2B2;
+}
+
+/* toolbar icons color */
+.tox .tox-tbtn svg {
+  filter: brightness(0) saturate(100%) invert(34%) sepia(12%) saturate(3983%) hue-rotate(284deg) brightness(88%) contrast(96%);
+}
+
+/* text edit area */
+.tox .tox-edit-area__iframe {
+  background-color: #FFFFFF;
+}
