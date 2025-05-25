@@ -18,7 +18,7 @@ CODE & INSTRUCTIONS:
 
 CREDITS:
 
-- Base:                "Archive 2.0 skin" by AO3           https://archiveofourown.org/skins/873
+- Base:                "Archive 2.0 skin" by A03           https://archiveofourown.org/skins/873
 - Inspired by:         "Tide" by ElectricAlice             https://github.com/electricalice/Ao3-tide
                        "Flat Squares Skin" by milkfatzero  https://ao3-skins.dreamwidth.org/6156.html
 
@@ -113,8 +113,8 @@ DIRECTORY
 5) Tag colors: https://coolors.co/f3cedf-ebd8f3-dbeaf0
 
     tag-warning:      #F3CEDF;
-  	tag-relationship: #EBD8F3;
-  	tag-character:    #DBEAF0;
+    tag-relationship: #EBD8F3;
+    tag-character:    #DBEAF0;
 
 
 /*============================================================
@@ -985,7 +985,7 @@ form dd.required {
 }
 
 form fieldset#parent-options dd:has(ul)  {
-	margin: 0;
+  margin: 0;
 }
 
 /* legends = little heading boxes on forms */
@@ -1513,6 +1513,7 @@ span.delete a {
 .subscriptions-index .edit_subscription > input[type="submit"]  {
   white-space: nowrap;
   text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 /*========== attempt to fix the spacing ==========*/
@@ -2192,7 +2193,7 @@ li.picture.blurb,
 
 /* mods on collections (anywhere else?) */
 .blurb:has(.icon) .header ul {
-	margin: 0.429em 0 0 45px;
+  margin: 0.429em 0 0 45px;
   padding-left: 0.75em;
 }
 
@@ -2288,7 +2289,7 @@ li.picture.blurb,
 }
 
 .bookmark .short.blurb:has(.meta) .header {
-	margin-bottom: 0.429em;
+  margin-bottom: 0.429em;
 }
 
 .bookmark .short.blurb .header h5 {
@@ -2773,7 +2774,7 @@ form.filters dl dl {
 }
 
 .filters ul li > label {
-	padding-block: 0.25em !important;
+  padding-block: 0.25em !important;
 }
 
 /*===== style range filters (wordcount, date updated) =====*/
@@ -3934,7 +3935,7 @@ rect {
 
 .statistics .fandom ul li,
 .statistics .fandom ul li > dl > dd > dl {
-	margin: 0;
+  margin: 0;
 }
 
 .statistics .fandom ul li > dl {
