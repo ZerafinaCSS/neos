@@ -1515,7 +1515,7 @@ img[src$="/images/lockblue.png"] {
 
 /* make chart background transparent */
 rect {
-filter: opacity(0)
+  filter: opacity(0)
 }
 
 /* change color of chart */
@@ -1525,7 +1525,7 @@ filter: opacity(0)
 
 /* change chart text color */
 g text {
-	filter: invert(81%) sepia(6%) saturate(1465%) hue-rotate(307deg) brightness(94%) contrast(103%);
+  filter: invert(81%) sepia(6%) saturate(1465%) hue-rotate(307deg) brightness(94%) contrast(103%);
 }
 
 /*========== rich text editor ==========*/
@@ -1533,7 +1533,7 @@ g text {
 /* changing colors also doesn't work on mobile for me but filters do work */
 
 .tox {
-	filter: invert(100%) saturate(200%) hue-rotate(195deg) brightness(70%) contrast(80%);
+  filter: invert(100%) saturate(200%) hue-rotate(195deg) brightness(70%) contrast(80%);
 }
 
 /* border colors */
