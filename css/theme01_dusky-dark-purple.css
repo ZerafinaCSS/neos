@@ -60,7 +60,7 @@
 
 #outer {
   background-color: #262029; /* main background color */
-}                
+}
 
 body,
 .toggled form,
@@ -167,7 +167,7 @@ tfoot td {
 #header #greeting:not(:has(.open)) li.dropdown:hover::before,
 #header .open::before {
   border-color: #1F1B21;
-	filter: drop-shadow(0 -1px #472E44);
+  filter: drop-shadow(0 -1px #472E44);
 }
 
 /*===== header navigation / dropdown toggles =====*/
@@ -256,7 +256,7 @@ tfoot td {
 /* collection header */
 #header h2.collections {
   background: #872D55;
-	border-color: #55354E;
+  border-color: #55354E;
   color: #F7CFD2;
 }
 
@@ -286,7 +286,7 @@ tfoot td {
 
 #dashboard .current {
   background-color: #7F416E;
-	color: #F7CFD2;
+  color: #F7CFD2;
 }
 
 #dashboard .secondary {
@@ -302,7 +302,7 @@ tfoot td {
 #footer {
   color: #BD8A96;
   background: linear-gradient(to bottom, #262029, #1F1B21);
-	border-top: 1px solid #472E44;
+  border-top: 1px solid #472E44;
 }
 
 /* headings for footer sections */
@@ -845,7 +845,7 @@ dl.index dd {
 }
 
 dl.index dt {
-	background: #302433;
+  background: #302433;
 }
 
 /*========== TYPES ==========*/
@@ -1090,7 +1090,7 @@ form.search input[type="text"] {
 
 /* filters expander arrow */
 .filters .expander::before {
-	color: #7F416E;
+  color: #7F416E;
 }
 /*===== javascript =====*/
 /* only relevant for mobile but it's better to keep it here */
@@ -1388,7 +1388,7 @@ img[src$="/images/skins/iconsets/default/category-multi.png"] {
 .required-tags .category-other, 
 img[src$="/images/skins/iconsets/default/category-other.png"] {
   background-color: #7F416E; /* change background color here */
-	color: #ffffff1a; /* change border color here */
+  color: #ffffff1a; /* change border color here */
 }
 
 /*===== Content warnings =====*/
@@ -1514,8 +1514,8 @@ img[src$="/images/lockblue.png"] {
 /* ISSUE: filters here do not work on tablet/mobile for me */
 
 /* make chart background transparent */
-rect { 
-	filter: opacity(0)
+rect {
+filter: opacity(0)
 }
 
 /* change color of chart */
