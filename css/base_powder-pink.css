@@ -192,7 +192,7 @@ span.unread,
 .replied,
 span.claimed,
 .actions span.defaulted {
-  font-family: Verdana, Helvetica, "Trebuchet MS", "Lucida Sans", Arial, sans-serif, 'GNU Unifont';
+  font-family: Verdana, Helvetica, "Trebuchet MS", "Lucida Sans", Arial, sans-serif, "GNU Unifont";
 }
 
 /* headings font family */
@@ -203,7 +203,7 @@ h4,
 h5,
 h6,
 .heading {
-  font-family: Verdana, Helvetica, "Trebuchet MS", "Lucida Sans", Arial, sans-serif, 'GNU Unifont';
+  font-family: Verdana, Helvetica, "Trebuchet MS", "Lucida Sans", Arial, sans-serif, "GNU Unifont";
 }
 
 /* "code" font family */
@@ -596,6 +596,7 @@ col.name {
   align-content: center;
   align-items: center;
   background: none; /* remove red background-image and fallback color */
+  box-sizing: border-box;
   box-shadow: none;
 }
 
@@ -764,12 +765,12 @@ col.name {
   margin: 0;
   padding: 1.5em 5%; /* narrower layout */
   box-sizing: border-box;
-  font-size: 0.875em; /* change this to make font bigger */
+  font-size: 0.875em; /* change the font size here */
   line-height: 1.286;
 }
 
 #main.dashboard {
-  width: 82%; /* dashboard 18% wide is so #main with dahsboard should take up the remaining space */
+  width: 82%; /* dashboard is 18% wide so #main with dahsboard should take up the remaining space */
 }
 
 /* hide the error message pictures */
@@ -1639,7 +1640,7 @@ span.offered.requested {
   color: #A77916;
 }
 
-/*========== Arrows for the accordion widget ==========*/
+/*========== arrows for the accordion widget ==========*/
 
 .collapsed:after {
   content: "";
@@ -2205,6 +2206,10 @@ li.picture.blurb,
 }
 
 /*===== mod: BOOKMARK =====*/
+
+.bookmark.index {
+  overflow: hidden;
+}
 
 .bookmark .blurb h4.heading {
   padding-right: 14ch;
@@ -2902,11 +2907,12 @@ dl.nomination {
 
 /*========== expected behaviours, exceptioning ==========*/
 
-/* WORK MARGINS */
+/* work margins and text */
 #workskin {
   max-width: 70em; /* slightly more narrow than default */
   margin: 0 auto;
   padding: 0 2%;
+  font-size: 1.1em; /* change font size of works here */
 }
 
 /*============================================================
@@ -3142,6 +3148,7 @@ span.question {
   background-color: #D44E8B;
   box-shadow: none;
   vertical-align: super;
+  font-size: 0.9em;
 }
 
 a.question {
