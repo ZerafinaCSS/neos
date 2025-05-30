@@ -151,7 +151,7 @@ tfoot td {
 #header .heading a:hover,
 #header .heading a:hover::before {
   background-clip: text;
-  background-image: linear-gradient(to right, #BD8A96, #F7CFD2);
+  background-image: linear-gradient(to right, #E882A9, #F7CFD2);
   color: transparent;
 }
 
