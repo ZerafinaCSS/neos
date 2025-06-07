@@ -254,8 +254,8 @@ tfoot td {
 /*========== CONTEXT: collections ==========*/
 
 /* collection header */
-#header h2.collections {
-  background: #872D55;
+#header h2 {
+  background-color: #872D55;
   border-color: #55354E;
   color: #F7CFD2;
 }
@@ -1309,6 +1309,7 @@ img[src$="/images/skins/iconsets/default/icon_collection.png"] {
 }
 
 /*========== CONTENT SYMBOLS ==========*/
+
 .blurb ul.required-tags li span,
 #symbols-key dl img {
   box-shadow: none;
