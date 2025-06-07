@@ -660,25 +660,20 @@ col.name {
 /*========== CONTEXT: collections ==========*/
 
 /* collection header */
-#header h2.collections {
+#header h2 {
   display: block;
   min-height: unset;
-  max-height: unset;
+  max-height: 30vh;
   width: 100%;
   padding: 0.25em 14px;
   font-size: 1.25em;
   background-color: #A8366E;
+  background-size: auto 100%;
+  background-position: center;
   color: #FFFFFF;
   border-inline: none;
   border-top: 1px solid #BBB2B2;
   order: 4;
-}
-
-/* collection picture header */
-#header .collections {
-  max-height: 15vh;
-  background-position: center;
-  background-size: auto 100%;
 }
 
 /*============================================================
@@ -2087,7 +2082,7 @@ li.picture.blurb,
 
 /*========== new blurb header layout starts here ==========*/
 
-.blurb:not(.picture.blurb, .mystery.blurb:not(.own)) .header {
+.blurb .header:has(ul.required-tags) {
   display: flex;
   flex-wrap: wrap;
   margin: 0;
@@ -2147,6 +2142,7 @@ li.picture.blurb,
   padding: 0;
 }
 
+/* position of date posted */
 .blurb .datetime {
   top: 0; /* leave this here for bookmarks */
   padding: 0; /* leave this here for own mystery blurbs */
@@ -2187,14 +2183,9 @@ li.picture.blurb,
 
 /* space for picture blurb icon */
 .blurb:has(.icon) > .header h4,
-.blurb:has(.icon) > .header h5 {
+.blurb:has(.icon) > .header h5,
+.blurb > .header > .mods.commas {
   margin-left: 45px;
-  padding-left: 0.75em;
-}
-
-/* mods on collections (anywhere else?) */
-.blurb:has(.icon) .header ul {
-  margin: 0.429em 0 0 45px;
   padding-left: 0.75em;
 }
 
@@ -2207,7 +2198,7 @@ li.picture.blurb,
 
 /*===== mod: BOOKMARK =====*/
 
-.bookmark.index {
+.bookmarks-index .bookmark.index {
   overflow: hidden;
 }
 
