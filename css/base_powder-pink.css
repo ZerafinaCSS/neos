@@ -139,10 +139,18 @@ DIRECTORY
 }
 
 /* the main font color is set here */
-body,
-.toggled form,
-.dynamic form,
-.secondary,
+body {
+  color: #6C2D52; /* main font color */
+}
+.toggled form {
+  color: #6C2D52; /* main font color */
+}
+.dynamic form {
+  color: #6C2D52; /* main font color */
+}
+.secondary {
+  color: #6C2D52; /* main font color */
+}
 .dropdown {
   color: #6C2D52; /* main font color */
 }
@@ -228,28 +236,75 @@ textarea#skin_css,
 
 /*========== links ==========*/
 
-a,
-a:link,
-a.work,
-.blurb h4 a:link,
+a {
+  color: #D44E8B; /* link color */
+  border-bottom: none; /* remove the link underline */
+}
+
+a:link {
+  color: #D44E8B; /* link color */
+  border-bottom: none; /* remove the link underline */
+}
+
+a.work {
+  color: #D44E8B; /* link color */
+  border-bottom: none; /* remove the link underline */
+}
+
+.blurb h4 a:link {
+  color: #D44E8B; /* link color */
+  border-bottom: none; /* remove the link underline */
+}
+
 .filters p a {
   color: #D44E8B; /* link color */
   border-bottom: none; /* remove the link underline */
 }
 
-a:hover,
-a:visited:hover,
-.blurb .heading a:hover,
-.blurb .heading a:visited:hover,
-div.preface .byline a:hover,
-.fandom.index.group a.tag:hover,
-h2.heading a.tag:hover,
+a:hover {
+  color: #D44E8B; /* link hover color */
+  border-bottom: 1px solid; /* underline for link hover */
+}
+
+a:visited:hover {
+  color: #D44E8B; /* link hover color */
+  border-bottom: 1px solid; /* underline for link hover */
+}
+
+.blurb .heading a:hover {
+  color: #D44E8B; /* link hover color */
+  border-bottom: 1px solid; /* underline for link hover */
+}
+
+.blurb .heading a:visited:hover {
+  color: #D44E8B; /* link hover color */
+  border-bottom: 1px solid; /* underline for link hover */
+}
+
+div.preface .byline a:hover {
+  color: #D44E8B; /* link hover color */
+  border-bottom: 1px solid; /* underline for link hover */
+}
+
+.fandom.index.group a.tag:hover {
+  color: #D44E8B; /* link hover color */
+  border-bottom: 1px solid; /* underline for link hover */
+}
+
+h2.heading a.tag:hover {
+  color: #D44E8B; /* link hover color */
+  border-bottom: 1px solid; /* underline for link hover */
+}
+
 .filters p a:hover {
   color: #D44E8B; /* link hover color */
   border-bottom: 1px solid; /* underline for link hover */
 }
 
-a:visited,
+a:visited {
+  color: #897979; /* different color for visited links */
+}
+
 .blurb .heading a:visited {
   color: #897979; /* different color for visited links */
 }
@@ -292,8 +347,14 @@ table {
   border: 1px solid #BBB2B2;
 }
 
-thead,
-tfoot,
+thead {
+  border-color: #BBB2B2;
+}
+
+tfoot {
+  border-color: #BBB2B2;
+}
+
 tbody tr {
   border-color: #BBB2B2;
 }
@@ -321,7 +382,10 @@ td {
   padding: 0.25em 0.5em;
 }
 
-tr:hover,
+tr:hover {
+  background-color: #FCFCFC;
+}
+
 col.name {
   background-color: #FCFCFC;
 }
@@ -392,7 +456,11 @@ col.name {
 }
 
 /* gradient text on hover */
-#header .heading a:hover,
+#header .heading a:hover {
+  background-clip: text;
+  background-image: linear-gradient(125deg, #FF66A8, #A8366E);
+  color: transparent;
+}
 #header .heading a:hover::before {
   background-clip: text;
   background-image: linear-gradient(125deg, #FF66A8, #A8366E);
@@ -407,7 +475,18 @@ col.name {
 
 /*========== header dropdown menus ==========*/
 
-#header .dropdown-menu,
+#header .dropdown-menu {
+  width: unset;
+  min-width: 15em;
+  padding: 0.25em 0;
+  border: 1px solid;
+  border-radius: 0.25rem;
+  font-size: 0.95em;
+  box-sizing: border-box;
+  box-shadow: 0 0.25em 0.5em #89797925;
+  z-index: 5;
+}
+
 #small_login {
   width: unset;
   min-width: 15em;
@@ -421,8 +500,30 @@ col.name {
 }
 
 /* add arrow on top of menu */
-#header .primary:not(:has(.open)) li.dropdown:hover::before,
-#header #greeting:not(:has(.open)) li.dropdown:hover::before,
+#header .primary:not(:has(.open)) li.dropdown:hover::before {
+  content: "";
+  position: absolute;
+  width: 0; 
+  height: 0; 
+  border-right: 8px solid transparent !important;
+  border-left: 8px solid transparent !important;
+  border-bottom: 8px solid #FCFCFC;
+  filter: drop-shadow(0 -1px #A29696);
+  transform: translate(-50%, 31px);
+  z-index: 6;
+}
+#header #greeting:not(:has(.open)) li.dropdown:hover::before {
+  content: "";
+  position: absolute;
+  width: 0; 
+  height: 0; 
+  border-right: 8px solid transparent !important;
+  border-left: 8px solid transparent !important;
+  border-bottom: 8px solid #FCFCFC;
+  filter: drop-shadow(0 -1px #A29696);
+  transform: translate(-50%, 31px);
+  z-index: 6;
+}
 #header .open::before {
   content: "";
   position: absolute;
@@ -467,17 +568,33 @@ col.name {
 /*===== colors for header navigation / dropdown toggles =====*/
 
 /* header navigation */
-#header .user a,
-#header .user a:visited,
+#header .user a {
+  color: #6C2D52;
+}
+#header .user a:visited {
+  color: #6C2D52;
+}
 #header .primary a {
   color: #6C2D52;
 }
 
 /* currently selected dropdown toggle */
-#header .dropdown:hover a, 
-#header .dropdown a:focus,
-#header .user a:hover,
-#header .user a:focus,
+#header .dropdown:hover a {
+  color: #FF66A8 !important;
+  background-color: transparent;
+}
+#header .dropdown a:focus {
+  color: #FF66A8 !important;
+  background-color: transparent;
+}
+#header .user a:hover {
+  color: #FF66A8 !important;
+  background-color: transparent;
+}
+#header .user a:focus {
+  color: #FF66A8 !important;
+  background-color: transparent;
+}
 #header .open a {
   color: #FF66A8 !important;
   background-color: transparent;
@@ -497,7 +614,10 @@ col.name {
 }
 
 /* header dropdown list items hover */
-#header .dropdown .menu a:hover,
+#header .dropdown .menu a:hover {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF !important;
+}
 #header .dropdown .menu a:focus {
   background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
   color: #FFFFFF !important;
@@ -660,25 +780,20 @@ col.name {
 /*========== CONTEXT: collections ==========*/
 
 /* collection header */
-#header h2.collections {
+#header h2 {
   display: block;
   min-height: unset;
-  max-height: unset;
+  max-height: 30vh;
   width: 100%;
   padding: 0.25em 14px;
   font-size: 1.25em;
   background-color: #A8366E;
+  background-size: auto 100%;
+  background-position: center;
   color: #FFFFFF;
   border-inline: none;
   border-top: 1px solid #BBB2B2;
   order: 4;
-}
-
-/* collection picture header */
-#header .collections {
-  max-height: 15vh;
-  background-position: center;
-  background-size: auto 100%;
 }
 
 /*============================================================
@@ -688,7 +803,25 @@ col.name {
 /* #2 of the 4 regions shown on every page */
 
 /* create sticky dashboard */
-#dashboard,
+#dashboard {
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  width: 18%;
+  min-width: 150px; /* prevent sidebar from getting too narrow */
+  max-width: 230px; /* prevent sidebar from getting too wide */
+  padding: 0.5em 0.5em 0 0.5em;
+  overflow-y: auto;
+  overflow-x: visible;
+  border: 0;
+  border-right: 1px solid;
+  border-radius: 0;
+  box-sizing: border-box;
+  scrollbar-color: transparent transparent;
+  background-color: #EDEAEA;
+  border-color: #D8D2D2 !important; /* needs to be like this for tablet + mobile skin */
+  font-size: 0.875em;
+}
 #dashboard.own {
   position: sticky;
   top: 0;
@@ -722,7 +855,17 @@ col.name {
   border-top: 0;
 }
 
-#dashboard a,
+#dashboard a {
+  display: block;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-block: 1px;
+  padding: 0.429em;
+  border-radius: 0.25rem;
+  line-height: 1.286;
+  color: #6C2D52;
+}
+
 #dashboard span {
   display: block;
   max-width: 100%;
@@ -851,13 +994,69 @@ col.name {
 
 /*========== nesting ==========*/
 
-fieldset,
-form dl,
-fieldset dl dl,
-fieldset fieldset fieldset,
-fieldset fieldset dl dl,
-dd.hideme,
-form blockquote.userstuff,
+fieldset {
+  background-color: #EDEAEA;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  margin: 0.643em 0;
+  padding: 0.634em;
+  box-shadow: none;
+}
+
+form dl {
+  background-color: #EDEAEA;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  margin: 0.643em 0;
+  padding: 0.634em;
+  box-shadow: none;
+}
+
+fieldset dl dl {
+  background-color: #EDEAEA;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  margin: 0.643em 0;
+  padding: 0.634em;
+  box-shadow: none;
+}
+
+fieldset fieldset fieldset {
+  background-color: #EDEAEA;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  margin: 0.643em 0;
+  padding: 0.634em;
+  box-shadow: none;
+}
+
+fieldset fieldset dl dl {
+  background-color: #EDEAEA;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  margin: 0.643em 0;
+  padding: 0.634em;
+  box-shadow: none;
+}
+
+dd.hideme {
+  background-color: #EDEAEA;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  margin: 0.643em 0;
+  padding: 0.634em;
+  box-shadow: none;
+}
+
+form blockquote.userstuff {
+  background-color: #EDEAEA;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  margin: 0.643em 0;
+  padding: 0.634em;
+  box-shadow: none;
+}
+
 form.single fieldset {
   background-color: #EDEAEA;
   border: 1px solid #BBB2B2;
@@ -899,7 +1098,17 @@ fieldset > ul > li:has(label input[type="radio"]) {
   margin: 0 !important;
 }
 
-input,
+input {
+  width: 100%;
+  max-width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #6C2D52;
+}
+
 textarea {
   width: 100%;
   max-width: 100%;
@@ -911,10 +1120,30 @@ textarea {
   color: #6C2D52;
 }
 
-input[type="text"]:focus,
-.search input[type="text"]:focus,
-input#user_password:focus,
-select:focus,
+input[type="text"]:focus {
+  background-color: #FFFFFF;
+  border-color: #FF66A8;
+  outline: 1px solid #FF66A8;
+}
+
+.search input[type="text"]:focus {
+  background-color: #FFFFFF;
+  border-color: #FF66A8;
+  outline: 1px solid #FF66A8;
+}
+
+input#user_password:focus {
+  background-color: #FFFFFF;
+  border-color: #FF66A8;
+  outline: 1px solid #FF66A8;
+}
+
+select:focus {
+  background-color: #FFFFFF;
+  border-color: #FF66A8;
+  outline: 1px solid #FF66A8;
+}
+
 textarea:focus {
   background-color: #FFFFFF;
   border-color: #FF66A8;
@@ -940,18 +1169,54 @@ select:not(select[multiple]):hover {
   width: fit-content;
 }
 
-option,
-.actions option,
+option {
+  color: #6C2D52;
+}
+
+.actions option {
+  color: #6C2D52;
+}
+
 form code {
   color: #6C2D52;
 }
 
-option:hover,
-option:checked,
-option:checked:hover,
-option:active,
-option:active:hover,
-option:focus,
+option:hover {
+  background: #EDEAEA;
+  color: #6C2D52;
+  border-radius: 0.25rem;
+}
+
+option:checked {
+  background: #EDEAEA;
+  color: #6C2D52;
+  border-radius: 0.25rem;
+}
+
+option:checked:hover {
+  background: #EDEAEA;
+  color: #6C2D52;
+  border-radius: 0.25rem;
+}
+
+option:active {
+  background: #EDEAEA;
+  color: #6C2D52;
+  border-radius: 0.25rem;
+}
+
+option:active:hover {
+  background: #EDEAEA;
+  color: #6C2D52;
+  border-radius: 0.25rem;
+}
+
+option:focus {
+  background: #EDEAEA;
+  color: #6C2D52;
+  border-radius: 0.25rem;
+}
+
 option:focus:hover {
   background: #EDEAEA;
   color: #6C2D52;
@@ -990,8 +1255,20 @@ form fieldset#parent-options dd:has(ul)  {
 }
 
 /* legends = little heading boxes on forms */
-form.verbose legend,
-.verbose form legend,
+form.verbose legend {
+  font-weight: bold;
+  background-color: #F7F6F5;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  box-shadow: none;
+}
+.verbose form legend {
+  font-weight: bold;
+  background-color: #F7F6F5;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  box-shadow: none;
+}
 form.single legend {
   font-weight: bold;
   background-color: #F7F6F5;
@@ -1011,11 +1288,96 @@ div.comment-preview.userstuff {
 /*========== INPUT ELEMENTS: checkboxes, radio buttons etc. ==========*/
 
 /* remove browser-specific appearance of checkbox + radio buttons and apply new styling */
-input[type="checkbox"],
-input[type="radio"],
-.filters [type="radio"],
-.filters [type="checkbox"],
-.actions input[type="checkbox"],
+input[type="checkbox"] {
+  appearance: none;
+  user-select: none;
+  display: inline-block;
+  position: relative;
+  height: 1em;
+  width: 1em;
+  top: 0.1em;
+  margin: 0;
+  box-sizing: border-box;
+  box-shadow: none;
+  background-image: none !important;
+  background-color: #FFFFFF;
+  border: 1.5px solid #A29696;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+input[type="radio"] {
+  appearance: none;
+  user-select: none;
+  display: inline-block;
+  position: relative;
+  height: 1em;
+  width: 1em;
+  top: 0.1em;
+  margin: 0;
+  box-sizing: border-box;
+  box-shadow: none;
+  background-image: none !important;
+  background-color: #FFFFFF;
+  border: 1.5px solid #A29696;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+.filters [type="radio"] {
+  appearance: none;
+  user-select: none;
+  display: inline-block;
+  position: relative;
+  height: 1em;
+  width: 1em;
+  top: 0.1em;
+  margin: 0;
+  box-sizing: border-box;
+  box-shadow: none;
+  background-image: none !important;
+  background-color: #FFFFFF;
+  border: 1.5px solid #A29696;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+.filters [type="checkbox"] {
+  appearance: none;
+  user-select: none;
+  display: inline-block;
+  position: relative;
+  height: 1em;
+  width: 1em;
+  top: 0.1em;
+  margin: 0;
+  box-sizing: border-box;
+  box-shadow: none;
+  background-image: none !important;
+  background-color: #FFFFFF;
+  border: 1.5px solid #A29696;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+.actions input[type="checkbox"] {
+  appearance: none;
+  user-select: none;
+  display: inline-block;
+  position: relative;
+  height: 1em;
+  width: 1em;
+  top: 0.1em;
+  margin: 0;
+  box-sizing: border-box;
+  box-shadow: none;
+  background-image: none !important;
+  background-color: #FFFFFF;
+  border: 1.5px solid #A29696;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
 label.action input[type="checkbox"] {
   appearance: none;
   user-select: none;
@@ -1036,17 +1398,32 @@ label.action input[type="checkbox"] {
 }
 
 /* hover and focus for checkbox + radio buttons */
-input[type="checkbox"]:hover,
-input[type="radio"]:hover,
-.actions input[type="checkbox"]:hover,
-label.action input[type="checkbox"]:hover,
+input[type="checkbox"]:hover {
+  border-color: #FF66A8;
+  color: #FF66A8;
+}
+input[type="radio"]:hover {
+  border-color: #FF66A8;
+  color: #FF66A8;
+}
+.actions input[type="checkbox"]:hover {
+  border-color: #FF66A8;
+  color: #FF66A8;
+}
+label.action input[type="checkbox"]:hover {
+  border-color: #FF66A8;
+  color: #FF66A8;
+}
 .filters [type="checkbox"]:hover:not(:checked)::before {
   border-color: #FF66A8;
   color: #FF66A8;
 }
 
 /* disabled checkbox + radio buttons */
-input[type="checkbox"]:disabled,
+input[type="checkbox"]:disabled {
+  background-color: #897979 !important;
+  border-color: #897979 !important;
+}
 input[type="radio"]:disabled {
   background-color: #897979 !important;
   border-color: #897979 !important;
@@ -1074,8 +1451,16 @@ ul:not(ul.actions) li:not(.blurb ul li) > label:has(input[type="radio"]) {
 /*===== CHECKBOXES =====*/
 
 /* checked checkboxes */
-input[type="checkbox"]:checked,
-.actions input[type="checkbox"]:checked,
+input[type="checkbox"]:checked {
+  background-color: #A8366E;
+  border-color: #A8366E;
+  color: #FFFFFF;
+}
+.actions input[type="checkbox"]:checked {
+  background-color: #A8366E;
+  border-color: #A8366E;
+  color: #FFFFFF;
+}
 label.action input[type="checkbox"]:checked {
   background-color: #A8366E;
   border-color: #A8366E;
@@ -1083,8 +1468,28 @@ label.action input[type="checkbox"]:checked {
 }
 
 /* this is to replace the checkmark symbol */
-input[type="checkbox"]::before,
-.filters [type="checkbox"]::before,
+input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  height: inherit;
+  width: 50%;
+  border-bottom: 0.25em solid;
+  border-right: 0.25em solid;
+  transform: translate(15%, -20%) scale(0.5) rotate(45deg);
+  color: #FFFFFF;
+  opacity: 0;
+}
+.filters [type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  height: inherit;
+  width: 50%;
+  border-bottom: 0.25em solid;
+  border-right: 0.25em solid;
+  transform: translate(15%, -20%) scale(0.5) rotate(45deg);
+  color: #FFFFFF;
+  opacity: 0;
+}
 .actions input[type="checkbox"]::before {
   content: "";
   position: absolute;
@@ -1122,8 +1527,14 @@ input[type="checkbox"]:checked::before,
 }
 
 /* hover for checked checkboxes */
-input[type="checkbox"]:checked:hover,
-.actions input[type="checkbox"]:checked:hover,
+input[type="checkbox"]:checked:hover {
+  background-color: #FF66A8;
+  border-color: #FF66A8;
+}
+.actions input[type="checkbox"]:checked:hover {
+  background-color: #FF66A8;
+  border-color: #FF66A8;
+}
 label.action input[type="checkbox"]:checked:hover {
   background-color: #FF66A8;
   border-color: #FF66A8;
@@ -1146,7 +1557,14 @@ input[type="radio"],
   border-radius: 100%; /* make them round again */
 }
 
-input[type="radio"]:checked,
+input[type="radio"]:checked {
+  background-image: none;
+  background-color: #A8366E;
+  border-color: #A8366E;
+  box-shadow: inset 0 0 0 2.5px;
+  color: #FFFFFF
+}
+
 .filters [type="radio"]:checked {
   background-image: none;
   background-color: #A8366E;
@@ -1185,10 +1603,22 @@ p.character_counter {
   box-shadow: none;
 }
 
-.LV_invalid_field,
-input.LV_invalid_field:hover,
-input.LV_invalid_field:active,
-textarea.LV_invalid_field:hover,
+.LV_invalid_field {
+  border: 1px solid #C72C53;
+}
+
+input.LV_invalid_field:hover {
+  border: 1px solid #C72C53;
+}
+
+input.LV_invalid_field:active {
+  border: 1px solid #C72C53;
+}
+
+textarea.LV_invalid_field:hover {
+  border: 1px solid #C72C53;
+}
+
 textarea.LV_invalid_field:active {
   border: 1px solid #C72C53;
 }
@@ -1217,7 +1647,11 @@ textarea.LV_invalid_field:active {
   padding: 0.1em 0.35em;
 }
 
-.autocomplete .dropdown ul li:hover,
+.autocomplete .dropdown ul li:hover {
+  background: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+}
+
 .autocomplete .dropdown li.selected {
   background: linear-gradient(90deg, #D44E8B, #FD8ABC);
   color: #FFFFFF;
@@ -1238,7 +1672,13 @@ textarea.LV_invalid_field:active {
 
 /*========== WIDGET: SORTABLE LIST ==========*/
 
-.ui-sortable li,
+.ui-sortable li {
+  background: #EDEAEA;
+  border: 1px solid #D8D2D2;
+  border-radius: 0.25rem;
+  box-shadow: none;
+}
+
 .ui-sortable li:hover {
   background: #EDEAEA;
   border: 1px solid #D8D2D2;
@@ -1290,7 +1730,15 @@ textarea.LV_invalid_field:active {
 
 /*========== TOOLTIP ==========*/
 
-.search [role="tooltip"],
+.search [role="tooltip"] {
+  background: #FCFCFC;
+  color: #6C2D52;
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  padding: 0.429em;
+  z-index: 6;
+}
+
 .qtip-content {
   background: #FCFCFC;
   color: #6C2D52;
@@ -1344,7 +1792,15 @@ form.single input[type="submit"] {
 
 /*========== WIDGET: TOGGLED FORMS (SHOW/HIDE bookmark and collection) ==========*/
 
-.toggled form,
+.toggled form {
+  padding: 0.643em;
+  background-color: #F7F6F5;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.2em 0.35em #89797925;
+  margin-bottom: 0.429em;
+}
+
 .dynamic form {
   padding: 0.643em;
   background-color: #F7F6F5;
@@ -1384,7 +1840,11 @@ form.single input[type="submit"] {
 
 /*========== INTERACTION: POST (work, chapter, comment, news, feedback, challenge etc) ==========*/
 
-.post .required .warnings,
+.post .required .warnings {
+  font-weight: normal;
+  color: #6C2D52;
+}
+
 dd.required {
   font-weight: normal;
   color: #6C2D52;
@@ -1396,24 +1856,222 @@ dd.required {
 /* see "Archive: (8) actions skin" by AO3 */
 /* subtypes: .action, .navigation, .sorting, .submit, .cancel, .close, .delete, .pagination, .current, .landmark, #skiplinks, input[type="submit"], button */
 
-.actions a,
-.actions a:link,
-.actions a:visited,
-.actions label,
-.actions button,
-.action,
-.action:link,
-.action:visited,
-.action a,
-.action a:link,
-.action a:visited,
-button,
-label.action,
-.actions input,
-input[type="submit"],
-.current,
-.announcement input[type="submit"],
-.announcement .action,
+.actions a {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+.actions a:link {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+.actions a:visited {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+.actions label {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+.actions button {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+.action {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+.action:link {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+.action:visited {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+.action a {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+.action a:link {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+.action a:visited {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+button {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+label.action {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+.actions input {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+input[type="submit"] {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+.current {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+.announcement input[type="submit"] {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
+.announcement .action {
+  height: auto;
+  padding: 0.25em 0.75em;
+  background: #FCFCFC;
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  border: 1px solid #A29696;
+  border-radius: 0.25rem;
+  color: #6C2D52;
+  white-space: normal; /* prevent overflow */
+  box-shadow: 0 1.5px 0px 0px #89797925;
+}
+
 input::file-selector-button {
   height: auto;
   padding: 0.25em 0.75em;
@@ -1438,22 +2096,102 @@ input[type="submit"] {
 /*========== subtypes and modes ==========*/
 
 /* hover + focus */
-.actions a:hover,
-.actions input:hover,
-.actions a:focus,
-.actions input:focus,
-.actions button:hover,
-.actions button:focus,
-label.action:hover,
-.action:hover,
-.action:focus,
-.action a:hover,
-.action a:focus,
-input[type="submit"]:hover,
-input[type="submit"]:focus,
-input::file-selector-button:hover,
-input::file-selector-button:focus,
-.listbox > .heading .action a:hover,
+.actions a:hover {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+.actions input:hover {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+.actions a:focus {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+.actions input:focus {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+.actions button:hover {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+.actions button:focus {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+label.action:hover {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+.action:hover {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+.action:focus {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+.action a:hover {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+.action a:focus {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+input[type="submit"]:hover {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+input[type="submit"]:focus {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+input::file-selector-button:hover {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+input::file-selector-button:focus {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
+.listbox > .heading .action a:hover {
+  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  color: #FFFFFF;
+  border-color: #D44E8B;
+  box-shadow: none;
+}
 .listbox > .heading .action a:focus {
   background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
   color: #FFFFFF;
@@ -1462,11 +2200,41 @@ input::file-selector-button:focus,
 }
 
 /* currently selected */
-.actions a:active,
-.current,
-a.current,
-a.current:hover,
-a:link.current,
+.actions a:active {
+  background: #D8D2D2;
+  border-color: #BBB2B2;
+  color: #6C2D52;
+  box-shadow: none;
+  cursor: default;
+}
+.current {
+  background: #D8D2D2;
+  border-color: #BBB2B2;
+  color: #6C2D52;
+  box-shadow: none;
+  cursor: default;
+}
+a.current {
+  background: #D8D2D2;
+  border-color: #BBB2B2;
+  color: #6C2D52;
+  box-shadow: none;
+  cursor: default;
+}
+a.current:hover {
+  background: #D8D2D2;
+  border-color: #BBB2B2;
+  color: #6C2D52;
+  box-shadow: none;
+  cursor: default;
+}
+a:link.current {
+  background: #D8D2D2;
+  border-color: #BBB2B2;
+  color: #6C2D52;
+  box-shadow: none;
+  cursor: default;
+}
 .current a:visited {
   background: #D8D2D2;
   border-color: #BBB2B2;
@@ -1479,7 +2247,12 @@ a:link.current,
   background-color: #D8D2D2;
 }
 
-.actions .disabled select,
+.actions .disabled select {
+  background-color: transparent;
+  color: #6C2D52;
+  border-color: #897979;
+}
+
 .actions .disabled select:hover {
   background-color: transparent;
   color: #6C2D52;
@@ -1487,8 +2260,22 @@ a:link.current,
 }
 
 /* button to delete added tags (idk if it is anywhere else) */
-.delete a,
-span.delete,
+.delete a {
+  color: #C72C53;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+}
+span.delete {
+  color: #C72C53;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+}
 span.delete a {
   color: #C72C53;
   margin: 0;
@@ -1577,7 +2364,10 @@ fieldset.actions li:not(:first-child) {
   opacity: 1;
 }
 
-.own,
+.own {
+  background-color: #F7F6F5;
+}
+
 li.blurb.own {
   background-color: #F7F6F5;
 }
@@ -1599,15 +2389,26 @@ span.claimed,
   border-radius: 0.25rem;
 }
 
-span.claimed,
+span.claimed {
+  background-color: #D8D2D2;
+  border: 1px solid #A29696;
+  color: #6C2D52;
+}
+
 .actions span.defaulted {
   background-color: #D8D2D2;
   border: 1px solid #A29696;
   color: #6C2D52;
 }
 
-.draggable,
-.droppable,
+.draggable {
+  color: #C72C53;
+}
+
+.droppable {
+  color: #C72C53;
+}
+
 span.requested {
   color: #C72C53;
 }
@@ -1618,14 +2419,24 @@ span.requested {
   color: #A77916;
 }
 
-.replied,
+.replied {
+  background-color: #CFFFF2;
+  border: 1px solid #008F85;
+  color: #008F85;
+}
+
 .nominations .approved {
   background-color: #CFFFF2;
   border: 1px solid #008F85;
   color: #008F85;
 }
 
-span.unread,
+span.unread {
+  background-color: #FCDCE2;
+  border: 1px solid #C72C53;
+  color: #C72C53;
+}
+
 .nominations .rejected {
   background-color: #FCDCE2;
   border: 1px solid #C72C53;
@@ -1690,9 +2501,42 @@ ul .tags.commas {
 
 /* general formatting for the tags */
 /* excluding fandom tags, fav tags on splash page and heading tags in some places */
-a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
-.tags a[data-remote="true"],
-.unwrangled,
+a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag) {
+  display: inline-flex;
+  text-decoration: none;
+  padding: 0.15em 0.5em;
+  margin: 0.2em 0;
+  line-height: 1.25;
+  border: 1px solid #89797925;
+  border-radius: 0.25rem;
+  background-color: #89797925;
+  color: #361628;
+  font-size: 0.9em;
+}
+.tags a[data-remote="true"] {
+  display: inline-flex;
+  text-decoration: none;
+  padding: 0.15em 0.5em;
+  margin: 0.2em 0;
+  line-height: 1.25;
+  border: 1px solid #89797925;
+  border-radius: 0.25rem;
+  background-color: #89797925;
+  color: #361628;
+  font-size: 0.9em;
+}
+.unwrangled {
+  display: inline-flex;
+  text-decoration: none;
+  padding: 0.15em 0.5em;
+  margin: 0.2em 0;
+  line-height: 1.25;
+  border: 1px solid #89797925;
+  border-radius: 0.25rem;
+  background-color: #89797925;
+  color: #361628;
+  font-size: 0.9em;
+}
 .added.tag {
   display: inline-flex;
   text-decoration: none;
@@ -1721,8 +2565,18 @@ h5.fandoms.heading a.tag {
 }
 
 /* tag hover */
-a.tag:not(.fandom.index.group a.tag, h2.heading a.tag):hover,
-.listbox .heading a.tag:visited:hover,
+a.tag:not(.fandom.index.group a.tag, h2.heading a.tag):hover {
+  background: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  background-origin: border-box; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  color: #FFFFFF;
+  border-color: transparent;
+}
+.listbox .heading a.tag:visited:hover {
+  background: linear-gradient(90deg, #D44E8B, #FD8ABC);
+  background-origin: border-box; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  color: #FFFFFF;
+  border-color: transparent;
+}
 .tags a[data-remote="true"]:hover {
   background: linear-gradient(90deg, #D44E8B, #FD8ABC);
   background-origin: border-box; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
@@ -1743,20 +2597,27 @@ h2.heading a.tag:hover {
 }
 
 /* warning tags */
-li.warnings a.tag,
+li.warnings a.tag{
+  font-weight: normal;
+  background-color: #F3CEDF !important;
+}
 dd.warning.tags a{
   font-weight: normal;
   background-color: #F3CEDF !important;
 }
 
 /* relationship tags */
-li.relationships a.tag,
+li.relationships a.tag {
+  background-color: #EBD8F3 !important;
+}
 dd.relationship.tags a {
   background-color: #EBD8F3 !important;
 }
 
 /* character tags */
-li.characters a.tag,
+li.characters a.tag {
+  background-color: #DBEAF0 !important;
+}
 dd.character.tags a {
   background-color: #DBEAF0 !important;
 }
@@ -1855,7 +2716,12 @@ a.cloud8 {
 
 /*===== definition lists (subscriptions, related works, edit multiple works) =====*/
 
-dl.index dt,
+dl.index dt {
+  padding: 0.643em;
+  border: 1px solid #BBB2B2;
+  background-color: #FCFCFC;
+}
+
 dl.index dd {
   padding: 0.643em;
   border: 1px solid #BBB2B2;
@@ -1925,7 +2791,17 @@ dd.series span {
 ============================================================*/
 /* see "Archive 2.0: (11) group listbox skin by AO3" by AO3 */
 
-.listbox,
+.listbox {
+  clear: right;
+  background-color: #EDEAEA;
+  border: 1px solid #BBB2B2;
+  border-radius: 0.25rem;
+  padding: 0;
+  margin: 0.643em auto 1em auto;
+  overflow: hidden;
+  box-shadow: none;
+}
+
 fieldset fieldset.listbox {
   clear: right;
   background-color: #EDEAEA;
@@ -1947,7 +2823,10 @@ fieldset fieldset.listbox {
   color: #6C2D52;
 }
 
-.listbox > .heading a:not(.action a, .actions a),
+.listbox > .heading a:not(.action a, .actions a) {
+  color: #6C2D52;
+}
+
 .listbox > .heading a:visited:not(.action a:visited, .actions a:visited) {
   color: #6C2D52;
 }
@@ -2058,16 +2937,36 @@ dl.meta dd ul {
 ============================================================*/
 /* see "Archive: (13) group blurb skin" by AO3 */
 
-li.blurb,
-.blurb .blurb,
+li.blurb {
+  padding: 0.75em 0.75em 0.643em;
+  background-color: #FCFCFC;
+}
+
+.blurb .blurb {
+  padding: 0.75em 0.75em 0.643em;
+  background-color: #FCFCFC;
+}
+
 .region.own + .dashboard li.blurb.own {
   padding: 0.75em 0.75em 0.643em;
   background-color: #FCFCFC;
 }
 
-li.blurb,
-li.picture.blurb,
-.listbox li.blurb,
+li.blurb {
+  border: 1px solid #D8D2D2;
+  border-radius: 0.25rem;
+}
+
+li.picture.blurb {
+  border: 1px solid #D8D2D2;
+  border-radius: 0.25rem;
+}
+
+.listbox li.blurb {
+  border: 1px solid #D8D2D2;
+  border-radius: 0.25rem;
+}
+
 .toggled.blurb {
   border: 1px solid #D8D2D2;
   border-radius: 0.25rem;
@@ -2087,7 +2986,7 @@ li.picture.blurb,
 
 /*========== new blurb header layout starts here ==========*/
 
-.blurb:not(.picture.blurb, .mystery.blurb:not(.own)) .header {
+.blurb .header:has(ul.required-tags) {
   display: flex;
   flex-wrap: wrap;
   margin: 0;
@@ -2147,6 +3046,7 @@ li.picture.blurb,
   padding: 0;
 }
 
+/* position of date posted */
 .blurb .datetime {
   top: 0; /* leave this here for bookmarks */
   padding: 0; /* leave this here for own mystery blurbs */
@@ -2162,7 +3062,12 @@ li.picture.blurb,
 /* for indices with icon pictures, e.g. collections, users, skins + mystery blurbs */
 
 /* formatting picture blurb header */
-.picture.blurb:has(.icon) > .header,
+.picture.blurb:has(.icon) > .header {
+  min-height: 45px;
+  margin: 0;
+  padding-bottom: 0.75em;
+  border-bottom: 1px solid #D8D2D2;
+}
 .mystery.blurb:has(.icon) > .header {
   min-height: 45px;
   margin: 0;
@@ -2187,14 +3092,9 @@ li.picture.blurb,
 
 /* space for picture blurb icon */
 .blurb:has(.icon) > .header h4,
-.blurb:has(.icon) > .header h5 {
+.blurb:has(.icon) > .header h5,
+.blurb > .header > .mods.commas {
   margin-left: 45px;
-  padding-left: 0.75em;
-}
-
-/* mods on collections (anywhere else?) */
-.blurb:has(.icon) .header ul {
-  margin: 0.429em 0 0 45px;
   padding-left: 0.75em;
 }
 
@@ -2207,7 +3107,7 @@ li.picture.blurb,
 
 /*===== mod: BOOKMARK =====*/
 
-.bookmark.index {
+.bookmarks-index .bookmark.index {
   overflow: hidden;
 }
 
@@ -2246,7 +3146,10 @@ li.picture.blurb,
   color: #6C2D52; /* this is technically not necessary because the symbol is hidden anyway */
 }
 
-.bookmark .count a:hover,
+.bookmark .count a:hover {
+  color: #FF66A8; /* this is technically not necessary because the symbol is hidden anyway */
+}
+
 .bookmark .count a:focus {
   color: #FF66A8; /* this is technically not necessary because the symbol is hidden anyway */
 }
@@ -2536,7 +3439,10 @@ li.comment:has(.edit_comment) {
   border-color: #6C2D52;
 }
 
-.faq .example,
+.faq .example {
+  border: 1px solid #2E6CB2;
+}
+
 .guideline .example {
   border: 1px solid #2E6CB2;
 }
@@ -2737,7 +3643,12 @@ form.filters dl dl {
 }
 
 /* filters expander */
-.filters .expander,
+.filters .expander {
+  background-image: none; /* remove expander arrow */
+  color: #6C2D52;
+  box-shadow: none;
+  padding-left: 1em;
+}
 .filters .expanded .expander {
   background-image: none; /* remove expander arrow */
   color: #6C2D52;
@@ -2889,7 +3800,12 @@ dl.nomination {
 
 /*========== quotes and stresses ==========*/
 
-.userstuff blockquote,
+.userstuff blockquote {
+  margin-inline-start: 0.75em;
+  padding: 0.75em;
+  border-inline-start: 2px solid #D8D2D2;
+}
+
 .splash .userstuff blockquote {
   margin-inline-start: 0.75em;
   padding: 0.75em;
@@ -2965,9 +3881,21 @@ ul.notes li,
 }
 
 /* colors for general notices */
-.notice,
-.comment_notice,
-.kudos_notice,
+.notice {
+  color: #2E6CB2;
+  background-color: #DEEAF7;
+  border-color: currentColor;
+}
+.comment_notice {
+  color: #2E6CB2;
+  background-color: #DEEAF7;
+  border-color: currentColor;
+}
+.kudos_notice {
+  color: #2E6CB2;
+  background-color: #DEEAF7;
+  border-color: currentColor;
+}
 ul.notes {
   color: #2E6CB2;
   background-color: #DEEAF7;
@@ -2982,11 +3910,31 @@ ul.notes {
 }
 
 /* colors for alerts/error messages */
-.error,
-div.error,
-.comment_error,
-.kudos_error,
-.alert.flash,
+.error {
+  color: #C72C53;
+  background-color: #FCDCE2;
+  border-color: currentColor;
+}
+div.error {
+  color: #C72C53;
+  background-color: #FCDCE2;
+  border-color: currentColor;
+}
+.comment_error {
+  color: #C72C53;
+  background-color: #FCDCE2;
+  border-color: currentColor;
+}
+.kudos_error {
+  color: #C72C53;
+  background-color: #FCDCE2;
+  border-color: currentColor;
+}
+.alert.flash {
+  color: #C72C53;
+  background-color: #FCDCE2;
+  border-color: currentColor;
+}
 .required.notice {
   color: #C72C53;
   background-color: #FCDCE2;
@@ -3051,7 +3999,16 @@ div.error,
 }
 
 /* button */
-.announcement input[type="submit"],
+.announcement input[type="submit"] {
+  line-height: 1;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none;
+  font-size: 0.95em;
+  color: #361628;
+}
 .announcement .action {
   line-height: 1;
   margin: 0 !important;
@@ -3245,8 +4202,22 @@ img[src$="/images/skins/iconsets/default/icon_collection.png"] {
 }
 
 /* tag icons */
-.tagset .primary .icon, 
-.tag .primary .icon,
+.tagset .primary .icon {
+  box-sizing: border-box;
+  background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_tag_02.png"), /* url of new icon */
+    linear-gradient(transparent, #FFFFFF50 45% 55%, transparent); /* subtle gradient */
+  background-size: cover;
+  background-color: #D44E8B; /* change background color here */
+  border: 1px solid #00000025; /* change border width and color here */
+}
+.tag .primary .icon {
+  box-sizing: border-box;
+  background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_tag_02.png"), /* url of new icon */
+    linear-gradient(transparent, #FFFFFF50 45% 55%, transparent); /* subtle gradient */
+  background-size: cover;
+  background-color: #D44E8B; /* change background color here */
+  border: 1px solid #00000025; /* change border width and color here */
+}
 .index .tagset .icon {
   box-sizing: border-box;
   background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_tag_02.png"), /* url of new icon */
@@ -3277,7 +4248,13 @@ img[src$="/images/skins/iconsets/default/icon_collection.png"] {
 }
 
 /* default icon for skins */
-.skins .primary .icon:not(:has(a .icon)),
+.skins .primary .icon:not(:has(a .icon)) {
+  box-sizing: border-box;
+  background: url("https://images.squidge.org/images/2025/02/15/zerafina_icon_skins_02.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #D44E8B; /* change icon color here */
+  border: 1px solid #00000025; /* change border width and color here */
+}
 .index .skins .icon:not(:has(a .icon)) {
   box-sizing: border-box;
   background: url("https://images.squidge.org/images/2025/02/15/zerafina_icon_skins_02.png"); /* url of new icon */
@@ -3318,12 +4295,30 @@ img[src$="/images/skins/iconsets/default/icon_collection.png"] {
 }
 
 /* empty symbols boxes (no rating, category or warning) */
-.required-tags .rating-notrated,
-.required-tags .category-none, 
-.required-tags .warning-no, 
-.status .count,
-img[src$="/images/skins/iconsets/default/rating-notrated.png"],
-img[src$="/images/skins/iconsets/default/category-none.png"],
+.required-tags .rating-notrated {
+  background: #FFFFFF; /* change background color here */
+  color: #D8D2D2; /* change border color here */
+}
+.required-tags .category-none {
+  background: #FFFFFF; /* change background color here */
+  color: #D8D2D2; /* change border color here */
+}
+.required-tags .warning-no {
+  background: #FFFFFF; /* change background color here */
+  color: #D8D2D2; /* change border color here */
+}
+.status .count {
+  background: #FFFFFF; /* change background color here */
+  color: #D8D2D2; /* change border color here */
+}
+img[src$="/images/skins/iconsets/default/rating-notrated.png"] {
+  background: #FFFFFF; /* change background color here */
+  color: #D8D2D2; /* change border color here */
+}
+img[src$="/images/skins/iconsets/default/category-none.png"] {
+  background: #FFFFFF; /* change background color here */
+  color: #D8D2D2; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/warning-no.png"] {
   background: #FFFFFF; /* change background color here */
   color: #D8D2D2; /* change border color here */
@@ -3338,7 +4333,12 @@ You can replace the border color with any other rgb, rgba, or hex color, transpa
 /*===== Rating =====*/
 
 /* General Audiences */
-.required-tags .rating-general-audience,
+.required-tags .rating-general-audience { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_rating-gen_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #4CB7C3; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/rating-general-audience.png"] { 
   background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_rating-gen_01.png"); /* url of new icon */
   background-size: cover;
@@ -3347,7 +4347,12 @@ img[src$="/images/skins/iconsets/default/rating-general-audience.png"] {
 }
 
 /* Teen And Up Audiences */
-.required-tags .rating-teen,
+.required-tags .rating-teen { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_rating-teen_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #5E96D6; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/rating-teen.png"] { 
   background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_rating-teen_01.png"); /* url of new icon */
   background-size: cover;
@@ -3356,7 +4361,12 @@ img[src$="/images/skins/iconsets/default/rating-teen.png"] {
 }
 
 /* Mature */
-.required-tags .rating-mature,
+.required-tags .rating-mature { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_rating-mature_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #B268CF; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/rating-mature.png"] { 
   background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_rating-mature_01.png"); /* url of new icon */
   background-size: cover;
@@ -3365,7 +4375,12 @@ img[src$="/images/skins/iconsets/default/rating-mature.png"] {
 }
 
 /* Explicit */
-.required-tags .rating-explicit,
+.required-tags .rating-explicit { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_rating-explicit_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #EA5A9A; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/rating-explicit.png"] { 
   background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_rating-explicit_01.png"); /* url of new icon */
   background-size: cover;
@@ -3376,7 +4391,12 @@ img[src$="/images/skins/iconsets/default/rating-explicit.png"] {
 /*===== Relationships, pairings, orientations =====*/
 
 /* F/F */
-.required-tags .category-femslash, 
+.required-tags .category-femslash {
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_category-ff_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #EA5A9A; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/category-femslash.png"] {
   background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_category-ff_01.png"); /* url of new icon */
   background-size: cover;
@@ -3385,7 +4405,12 @@ img[src$="/images/skins/iconsets/default/category-femslash.png"] {
 }
 
 /* F/M */
-.required-tags .category-het, 
+.required-tags .category-het {
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_category-mf_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #B268CF; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/category-het.png"] {
   background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_category-mf_01.png"); /* url of new icon */
   background-size: cover;
@@ -3394,7 +4419,12 @@ img[src$="/images/skins/iconsets/default/category-het.png"] {
 }
 
 /* Gen */
-.required-tags .category-gen,
+.required-tags .category-gen {
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_category-gen_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #4CB7C3; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/category-gen.png"] {
   background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_category-gen_01.png"); /* url of new icon */
   background-size: cover;
@@ -3403,7 +4433,12 @@ img[src$="/images/skins/iconsets/default/category-gen.png"] {
 }
 
 /* M/M */
-.required-tags .category-slash,
+.required-tags .category-slash {
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_category-mm_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #5E96D6; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/category-slash.png"] {
   background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_category-mm_01.png"); /* url of new icon */
   background-size: cover;
@@ -3412,14 +4447,22 @@ img[src$="/images/skins/iconsets/default/category-slash.png"] {
 }
 
 /* Multi */
-.required-tags .category-multi,
+.required-tags .category-multi {
+  background: conic-gradient(from 360deg, #B268CF 0% 25%, #5E96D6 25% 50%, #EA5A9A 50% 75%, #4CB7C3 75% 100%); /* conic gradient with the colors of the relationship icons */
+  color: #0000001a; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/category-multi.png"] {
   background: conic-gradient(from 360deg, #B268CF 0% 25%, #5E96D6 25% 50%, #EA5A9A 50% 75%, #4CB7C3 75% 100%); /* conic gradient with the colors of the relationship icons */
   color: #0000001a; /* change border color here */
 }
 
 /* Other relationships */
-.required-tags .category-other, 
+.required-tags .category-other {
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_category-other_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #897979; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/category-other.png"] {
   background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_category-other_01.png"); /* url of new icon */
   background-size: cover;
@@ -3430,7 +4473,12 @@ img[src$="/images/skins/iconsets/default/category-other.png"] {
 /*===== Content warnings =====*/
 
 /* Author chose not to warn */
-.required-tags .warning-choosenotto, 
+.required-tags .warning-choosenotto {
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_warning-choosenotto_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #B268CF; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/warning-choosenotto.png"] {
   background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_warning-choosenotto_01.png"); /* url of new icon */
   background-size: cover;
@@ -3439,7 +4487,12 @@ img[src$="/images/skins/iconsets/default/warning-choosenotto.png"] {
 }
 
 /* Warnings apply */
-.required-tags .warning-yes,
+.required-tags .warning-yes { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_warning-yes_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #EA5A9A; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/warning-yes.png"] { 
   background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_warning-yes_01.png"); /* url of new icon */
   background-size: cover;
@@ -3448,7 +4501,12 @@ img[src$="/images/skins/iconsets/default/warning-yes.png"] {
 }
 
 /* External work */
-.required-tags .external-work,
+.required-tags .external-work {
+  background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_warning-external-work_02.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #5E96D6; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/warning-external-work.png"] {
   background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_warning-external-work_02.png"); /* url of new icon */
   background-size: cover;
@@ -3459,7 +4517,12 @@ img[src$="/images/skins/iconsets/default/warning-external-work.png"] {
 /*===== Completion status =====*/
 
 /* uncomplete/unfulfilled */
-.required-tags .complete-no, 
+.required-tags .complete-no { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_complete-no_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #EA5A9A; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/complete-no.png"] { 
   background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_complete-no_01.png"); /* url of new icon */
   background-size: cover;
@@ -3468,7 +4531,12 @@ img[src$="/images/skins/iconsets/default/complete-no.png"] {
 }
 
 /* completed/filled */
-.required-tags .complete-yes,
+.required-tags .complete-yes { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_complete-yes_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #4CB7C3; /* change background color here */
+  color: #0000001a; /* change border color here */
+}
 img[src$="/images/skins/iconsets/default/complete-yes.png"] { 
   background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_complete-yes_01.png"); /* url of new icon */
   background-size: cover;
@@ -3479,7 +4547,11 @@ img[src$="/images/skins/iconsets/default/complete-yes.png"] {
 /*===== Bookmark symbols =====*/
 
 /* Rec */
-.status .rec,
+.status .rec { 
+  background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_bookmark-rec_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #EA5A9A; /* change background color here */
+}
 img[src$="/images/skins/iconsets/default/bookmark-rec.png"] { 
   background: url("https://images.squidge.org/images/2025/02/09/zerafina_icon_bookmark-rec_01.png"); /* url of new icon */
   background-size: cover;
@@ -3491,7 +4563,11 @@ img[src$="/images/skins/iconsets/default/bookmark-rec.png"] {
 }
 
 /* Public bookmark */
-.status .public, 
+.status .public { 
+  background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_bookmark-public_02.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #4CB7C3; /* change background color here */
+}
 img[src$="/images/skins/iconsets/default/bookmark-public.png"] { 
   background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_bookmark-public_02.png"); /* url of new icon */
   background-size: cover;
@@ -3503,7 +4579,14 @@ img[src$="/images/skins/iconsets/default/bookmark-public.png"] {
 }
 
 /* Private bookmark */
-.status .private .text, 
+.status .private .text {
+  font-size: inherit;
+  text-indent: -9999px;
+  white-space: nowrap;
+  background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_bookmark-locked_02.png"); /* url of new icon */
+  background-size: cover;
+  background-color: #B268CF; /* change background color here */
+}
 img[src$="/images/skins/iconsets/default/bookmark-private.png"] {
   font-size: inherit;
   text-indent: -9999px;
@@ -3518,7 +4601,12 @@ img[src$="/images/skins/iconsets/default/bookmark-private.png"] {
 }
 
 /* Hidden bookmark */
-.status .hidden, 
+.status .hidden {
+  background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_bookmark-hidden_01.png"); /* url of new icon */
+  background-size: cover;
+  background-color: currentColor;
+  color: #897979; /* change background color here */
+}
 img[src$="/images/skins/iconsets/default/bookmark-hidden.png"] {
   background: url("https://images.squidge.org/images/2025/02/16/zerafina_icon_bookmark-hidden_01.png"); /* url of new icon */
   background-size: cover;
@@ -3972,21 +5060,31 @@ rect {
 }
 
 /* border colors */
-.tox,
+.tox {
+  border-color: #A29696 !important;
+}
 .tox * {
   border-color: #A29696 !important;
 }
 
 /* toolbar (top) and statusbar (bottom) */
-.tox .tox-toolbar,
-.tox .tox-statusbar,
+.tox .tox-toolbar {
+  background-color: #EDEAEA;
+  color: #6C2D52;
+}
+.tox .tox-statusbar {
+  background-color: #EDEAEA;
+  color: #6C2D52;
+}
 .tox .tox-statusbar__path-item {
   background-color: #EDEAEA;
   color: #6C2D52;
 }
 
 /* toolbar icons background */
-.tox .tox-tbtn--enabled,
+.tox .tox-tbtn--enabled {
+  background: #BBB2B2;
+}
 .tox .tox-tbtn:hover {
   background: #BBB2B2;
 }
