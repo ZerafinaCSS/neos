@@ -12,7 +12,7 @@ Inspired by the "Low-contrast classic" tumblr color palette
 ==============================================================
 
 1) Grayblue: https://coolors.co/1a2735-26323f-263b53-31455c-36465d-3d4c62-48566a-596578
-  
+
     grayblue1:      #1A2735
     grayblue2:      #26323F
     grayblue3:      #263B53
@@ -21,7 +21,7 @@ Inspired by the "Low-contrast classic" tumblr color palette
     grayblue6:      #3D4C62
     grayblue7:      #48566A
     grayblue8:      #596578
-  
+
 2) Accent blue: https://coolors.co/529ecc-29abe6-00b8ff
 
     blue1:          #529ECC    => same as icon1
@@ -33,9 +33,9 @@ Inspired by the "Low-contrast classic" tumblr color palette
     gray1:          #F2F2F2
     gray2:          #D9D9D9
     gray3:          #B3B3B3    => main font color => replaces #111, #2A2A2A
-  
+
     black:          #000000
-  
+
 4) Transparent grays (for borders, shadows etc.)
   
     transparent1:   #FFFFFF21
@@ -45,7 +45,7 @@ Inspired by the "Low-contrast classic" tumblr color palette
 
 5) Roles and states + system messages: https://coolors.co/9381d9-7c5cff-57b76f-01cf35-d79b50-ff8a00-d97568-ff4930
    => also used for some tag types
-  
+
     system1:        #9381D9
     system2:        #7C5CFF
     system3:        #57B76F
@@ -57,7 +57,7 @@ Inspired by the "Low-contrast classic" tumblr color palette
 
 6) Icon colors: https://coolors.co/529ecc-56bc8a-cdae00-d38a25-d9664a-d977ba-af73d4
    => also used them for the rainbow hover on the header title and a few other places like the tags
-  
+
     icon1:          #529ECC    => same as blue1
     icon2:          #56BC8A
     icon3:          #CDAE00
@@ -366,8 +366,8 @@ col.name {
 /*========== CONTEXT: collections ==========*/
 
 /* collection header */
-#header h2.collections {
-  background: #529ECC;
+#header h2 {
+  background-color: #529ECC;
   border: none;
   color: #F2F2F2;
   font-weight: bold;
@@ -810,14 +810,14 @@ a:link.current,
 }
 
 .actions label.disabled {
-  background-color: #FFFFFF21;
+  background-color: #BFBFBF26;
 }
 
 .actions .disabled select,
 .actions .disabled select:hover {
   background-color: transparent;
-  border-color: #D9D9D9;
-  color: #B3B3B3;
+  border-color: #FFFFFF21;
+  color: #A1A1A1A6;
 }
 
 /* button to delete added tags (idk if it is anywhere else) */
@@ -1094,12 +1094,12 @@ li.blurb,
 .region.own + .dashboard li.blurb.own {
   padding: 0.75rem 0.75rem 0.5rem;
   background-color: #263B53;
+  border-color: #FFFFFF21;
 }
 
 li.blurb,
 li.picture.blurb,
-.listbox li.blurb,
-.toggled.blurb {
+.listbox li.blurb {
   border: none;
   border-radius: 8px;
 }
