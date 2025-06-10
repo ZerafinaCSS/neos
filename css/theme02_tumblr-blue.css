@@ -367,7 +367,7 @@ col.name {
 
 /* collection header */
 #header h2 {
-  background-color: #529ECC;
+  background-color: #529ECC !important;
   border: none;
   color: #F2F2F2;
   font-weight: bold;
