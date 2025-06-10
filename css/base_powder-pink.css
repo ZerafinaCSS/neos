@@ -667,9 +667,8 @@ col.name {
   width: 100%;
   padding: 0.25em 14px;
   font-size: 1.25em;
-  background-color: #A8366E;
-  background-size: auto 100%;
-  background-position: center;
+  background-color: #A8366E !important;
+  background-size: auto 100% !important;
   color: #FFFFFF;
   border-inline: none;
   border-top: 1px solid #BBB2B2;
