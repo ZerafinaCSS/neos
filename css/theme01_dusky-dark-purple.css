@@ -255,7 +255,7 @@ tfoot td {
 
 /* collection header */
 #header h2 {
-  background-color: #872D55;
+  background-color: #872D55 !important;
   border-color: #55354E;
   color: #F7CFD2;
 }
