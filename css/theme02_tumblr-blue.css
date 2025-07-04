@@ -435,13 +435,14 @@ col.name {
 /*========== nesting ==========*/
 
 fieldset,
+form dl,
 fieldset dl dl,
 fieldset fieldset,
 fieldset fieldset dl dl,
 fieldset fieldset fieldset,
 dd.hideme,
 form blockquote.userstuff,
-form.single fieldset {
+form.single fieldset  {
   background-color: #36465D;
   border: none;
   border-radius: 8px;
