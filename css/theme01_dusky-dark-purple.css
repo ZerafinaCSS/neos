@@ -10,7 +10,7 @@
 ==============================================================
 
 1) Purple + rose: https://coolors.co/161417-872d55-ad396f-d44e8d-e882a9-bd8a96-f3cace
-	
+
     color1:         #161417
     color2:         #872D55
     color3:         #AD396F   => same as icon4
@@ -18,15 +18,15 @@
     color5:         #E882A9
     color6:         #BD8A96   => main font color => replaces #111, #2A2A2A
     color7:         #F7CFD2
-	
+
 2) Darker purple + violet: https://coolors.co/1f1b21-262029-302433-472e44-55354e-7f416e-a94c8d
-	
+
    Background elements (mainly):
   
     background1:    #1F1B21
     background2:    #262029
     background3:    #302433
-	
+
    Borders + some other elements:
   
     accent1:        #472E44
@@ -34,7 +34,7 @@
     accent3:        #7F416E
     accent4:        #A94C8D
     transparent:    #A94C8D30 => accent4 with transparency
-	
+
 3) Roles and states + system messages: https://coolors.co/131a2a-6d8dd1-051c1a-1a9d93-171111-d06864-200811-cc376b
   
     system1:        #131A2A
@@ -45,7 +45,7 @@
     system6:        #D06864
     system7:        #200811
     system8:        #CC376B
-	
+
 4) Icon colors: https://coolors.co/5e73c8-694cb8-9b37a4-ad316b
   
     icon1:          #5E73C8
@@ -770,6 +770,37 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
   color: #BD8A96;
 }
 
+/* unwrangled tags */
+.unwrangled {
+  background-color: transparent;
+  border-color: #A94C8D;
+}
+
+/* fandom tags */
+h5.fandoms.heading a.tag,
+dd.fandom.tags a {
+  background-color: #9B37A4 !important;
+  color: #F7CFD2 !important;
+}
+
+/* warning tags */
+[class^=warning] a.tag {
+  background-color: #AD396F !important;
+  color: #F7CFD2 !important;
+}
+
+/* relationship tags */
+[class^=relationship] a.tag {
+  background-color: #694CB8 !important;
+  color: #F7CFD2 !important;
+}
+
+/* character tags */
+[class^=character] a.tag {
+  background-color: #7F416E !important;
+  color: #F7CFD2 !important;
+}
+
 /* tag hover */
 a.tag:not(.fandom.index.group a.tag, h2.heading a.tag):hover,
 .listbox .heading a.tag:visited:hover,
@@ -783,41 +814,6 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag):hover,
 .fandom.index.group a.tag:hover,
 h2.heading a.tag:hover {
   background-color: transparent;
-}
-
-/* unwrangled tags */
-.unwrangled {
-  background-color: transparent;
-  border-color: #A94C8D;
-}
-
-/* fandom tags */
-h5.fandoms.heading a.tag,
-dd.fandom.tags a {
-  background-color: #9B37A4 !important;
-  color: #F7CFD2 !important;
-
-}
-
-/* warning tags */
-li.warnings a.tag,
-dd.warning.tags a{
-  background-color: #AD396F !important;
-  color: #F7CFD2 !important;
-}
-
-/* relationship tags */
-li.relationships a.tag,
-dd.relationship.tags a {
-  background-color: #694CB8 !important;
-  color: #F7CFD2 !important;
-}
-
-/* character tags */
-li.characters a.tag,
-dd.character.tags a {
-  background-color: #7F416E !important;
-  color: #F7CFD2 !important;
 }
 
 /* the following code deals with added tags
@@ -922,7 +918,7 @@ li.picture.blurb,
   border-color: #55354E;
 }
 
-/*==========  blurb header ==========*/
+/*========== blurb header ==========*/
 
 .blurb .header ul.required-tags,
 .picture.blurb:has(.icon) > .header,
@@ -966,7 +962,7 @@ li.picture.blurb,
 ============================================================*/
 
 .chapter .preface,
-.preface h3  {
+.preface h3 {
   border-color: #472E44;
 }
 
@@ -1092,6 +1088,7 @@ form.search input[type="text"] {
 .filters .expander::before {
   color: #7F416E;
 }
+
 /*===== javascript =====*/
 /* only relevant for mobile but it's better to keep it here */
 
@@ -1327,6 +1324,7 @@ img[src$="/images/skins/iconsets/default/warning-no.png"] {
   color: #ffffff1a; /* change border color here */
   box-shadow: inset 0 0 0 1px; /* change border width here */
 }
+
 /*===== Rating =====*/
 
 /* General Audiences */
