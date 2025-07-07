@@ -1714,6 +1714,28 @@ h5.fandoms.heading a.tag {
   font-weight: bold;
 }
 
+/* unwrangled tags */
+.unwrangled {
+  background-color: transparent;
+  border: 1px dashed #897979;
+}
+
+/* warning tags */
+[class^=warning] a.tag {
+  font-weight: normal;
+  background-color: #F3CEDF !important;
+}
+
+/* relationship tags */
+[class^=relationship] a.tag {
+  background-color: #EBD8F3 !important;
+}
+
+/* character tags */
+[class^=character] a.tag {
+  background-color: #DBEAF0 !important;
+}
+
 /* tag hover */
 a.tag:not(.fandom.index.group a.tag, h2.heading a.tag):hover,
 .listbox .heading a.tag:visited:hover,
@@ -1728,31 +1750,6 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag):hover,
 .fandom.index.group a.tag:hover,
 h2.heading a.tag:hover {
   background-color: transparent;
-}
-
-/* unwrangled tags */
-.unwrangled {
-  background-color: transparent;
-  border: 1px dashed #897979;
-}
-
-/* warning tags */
-li.warnings a.tag,
-dd.warning.tags a{
-  font-weight: normal;
-  background-color: #F3CEDF !important;
-}
-
-/* relationship tags */
-li.relationships a.tag,
-dd.relationship.tags a {
-  background-color: #EBD8F3 !important;
-}
-
-/* character tags */
-li.characters a.tag,
-dd.character.tags a {
-  background-color: #DBEAF0 !important;
 }
 
 /* create right facing triangle before "show" on hidden tags */
@@ -2425,6 +2422,12 @@ li.comment:not(:has(.edit_comment)) {
 /* comment buttons */
 .comment ul.actions {
   order: 5;
+}
+
+/* delete confirmation */
+.comment div[id^="delete_comment"] {
+  order: 6;
+  width: 100%;
 }
 
 /* reply form */
