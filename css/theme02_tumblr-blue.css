@@ -29,7 +29,7 @@ Inspired by the "Low-contrast classic" tumblr color palette
     blue3:          #00B8FF
 
 3) Gray: https://coolors.co/b3b3b3-d9d9d9-f2f2f2
-  
+
     gray1:          #F2F2F2
     gray2:          #D9D9D9
     gray3:          #B3B3B3    => main font color => replaces #111, #2A2A2A
@@ -37,7 +37,7 @@ Inspired by the "Low-contrast classic" tumblr color palette
     black:          #000000
 
 4) Transparent grays (for borders, shadows etc.)
-  
+
     transparent1:   #FFFFFF21
     transparent2:   #BFBFBF26
     transparent3:   #A1A1A1A6
@@ -337,7 +337,7 @@ col.name {
   justify-content: center;
 }
 
-#header .primary > li > a  {
+#header .primary > li > a {
   font-weight: bold;
 }
 
@@ -442,7 +442,7 @@ fieldset fieldset dl dl,
 fieldset fieldset fieldset,
 dd.hideme,
 form blockquote.userstuff,
-form.single fieldset  {
+form.single fieldset {
   background-color: #36465D;
   border: none;
   border-radius: 8px;
@@ -941,22 +941,6 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag)::before {
   content: "#";
 }
 
-/* tag hover */
-a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag):hover,
-.listbox .heading a.tag:visited:hover,
-.tags a[data-remote="true"]:hover {
-  background: #00B8FF !important;
-  border-radius: 1rem;
-  color: #1A2735 !important;
-  box-shadow: 0 0 0 2px #00B8FF;
-}
-
-/* hover for tags that are not in little boxes */
-.fandom.index.group a.tag:hover,
-h2.heading a.tag:hover {
-  background-color: transparent;
-}
-
 /* unwrangled tags */
 .unwrangled {
   padding-inline: 4px;
@@ -972,21 +956,34 @@ dd.fandom.tags a {
 }
 
 /* warning tags */
-li.warnings a.tag,
-dd.warning.tags a {
+[class^=warning] a.tag {
   background-image: linear-gradient(to right, #FF4930, #D97568) !important;
 }
 
 /* relationship tags */
-li.relationships a.tag,
-dd.relationship.tags a {
+[class^=relationship] a.tag {
   background-image: linear-gradient(to right, #FF8A00, #D38A25) !important;
 }
 
 /* character tags */
-li.characters a.tag,
-dd.character.tags a {
+[class^=character] a.tag {
   background-image: linear-gradient(to right, #56BC8A, #56BC8A) !important;
+}
+
+/* tag hover */
+a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag):hover,
+.listbox .heading a.tag:visited:hover,
+.tags a[data-remote="true"]:hover {
+  background: #00B8FF !important;
+  border-radius: 1rem;
+  color: #1A2735 !important;
+  box-shadow: 0 0 0 2px #00B8FF;
+}
+
+/* hover for tags that are not in little boxes */
+.fandom.index.group a.tag:hover,
+h2.heading a.tag:hover {
+  background-color: transparent;
 }
 
 /* the following code deals with added tags
@@ -1105,7 +1102,7 @@ li.picture.blurb,
   border-radius: 8px;
 }
 
-/*==========  blurb header ==========*/
+/*========== blurb header ==========*/
 
 .blurb .header ul.required-tags,
 .picture.blurb:has(.icon) > .header,
@@ -1165,7 +1162,7 @@ li.picture.blurb,
 ============================================================*/
 
 .chapter .preface,
-.preface h3  {
+.preface h3 {
   border-color: #FFFFFF21;
 }
 
@@ -1292,6 +1289,7 @@ li.comment:not(:has(.edit_comment)) {
 .filters .expander::before {
   color: #596578;
 }
+
 /*===== javascript =====*/
 /* only relevant for mobile but it's better to keep it here */
 
@@ -1540,6 +1538,7 @@ img[src$="/images/skins/iconsets/default/warning-no.png"] {
   background: #48566A; /* change background color here */
   box-shadow: none;
 }
+
 /*===== Rating =====*/
 
 /* General Audiences */
