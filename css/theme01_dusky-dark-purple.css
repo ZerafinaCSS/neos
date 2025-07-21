@@ -1463,11 +1463,11 @@ img[src$="/images/skins/iconsets/default/bookmark-private.png"] {
 /* Hidden bookmark */
 .status .hidden, 
 img[src$="/images/skins/iconsets/default/bookmark-hidden.png"] {
-  color: #55354E; /* change background color here */
+  background-color: #55354E; /* change background color here */
 }
 
 .bookmark .blurb p.status a:not(.short a):has(.hidden)::before {
-  border-inline-color: #A94C8D; /* ribbon color */
+  border-inline-color: #55354E; /* ribbon color */
 }
 
 /*========== KUDOS AND RSS FEED SYMBOLS ==========*/
