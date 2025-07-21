@@ -1675,7 +1675,7 @@ img[src$="/images/skins/iconsets/default/bookmark-private.png"] {
 /* Hidden bookmark */
 .status .hidden, 
 img[src$="/images/skins/iconsets/default/bookmark-hidden.png"] {
-  color: #D9664A; /* change background color here */
+  background-color: #D9664A; /* change background color here */
 }
 
 .bookmark .blurb p.status a:not(.short a):has(.hidden)::before {
