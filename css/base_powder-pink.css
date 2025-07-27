@@ -149,7 +149,6 @@ body,
 
 /* this gets rid of some spaces/gaps I don't like */
 .blurb li,
-.stats > *,
 .meta ul li {
   padding-left: 0;
 }
@@ -374,34 +373,29 @@ col.name {
   order: 1;
 }
 
-/* hide "Archive of Our Own" title/heading and setup for new one */
+/* reset heading styling */
 #header .heading a {
-  visibility: hidden;
-  overflow: hidden;
-  font-size: 1.15em;
-  letter-spacing: -200em;
-  font-weight: 700; /* make title bold */
-  color: #6C2D52; /* change title/heading color here */
+  line-height: 1;
+  font-size: 1em;
 }
 
 /* new title/heading */
 #header .heading a::before {
-  letter-spacing: 0; /* reset letter-spacing; DO NOT DELETE */
-  visibility: visible;
   content: "AO3";
+  font-weight: 700; /* make title bold */
+  font-size: 1.15em;
+  color: #6C2D52; /* change title/heading color here */
 }
 
-/* gradient text on hover */
-#header .heading a:hover,
-#header .heading a:hover::before {
+/* gradient text on hover etc. */
+#header .heading a:is(:hover, :focus, :active)::before {
   background-clip: text;
   background-image: linear-gradient(125deg, #FF66A8, #A8366E);
   color: transparent;
 }
 
-/* hide "beta" and AO3 logo */
-#header .heading sup,
-#header .logo {
+/* hide "Archive of Our Own beta" title + logo */
+#header .heading a * {
   display: none;
 }
 
@@ -420,7 +414,7 @@ col.name {
   z-index: 5;
 }
 
-/* add arrow on top of menu */
+/* add arrow on top of dropdown menu */
 #header .primary:not(:has(.open)) li.dropdown:hover::before,
 #header #greeting:not(:has(.open)) li.dropdown:hover::before,
 #header .open::before {
@@ -436,71 +430,61 @@ col.name {
   z-index: 6;
 }
 
+/* arrow placement for greeting/user menu */
 #greeting .dropdown-menu {
   transform: translateX(1.5em);
   z-index: 7;
 }
 
+/* cont. arrow placement for greeting/user menu */
 #header #greeting:not(:has(.open)) li.dropdown:hover::before,
 #header #greeting .open::before {
   transform: translate(5%, 31px);
   z-index: 8;
 }
 
-/* menu list items */
-#header .menu li {
-  margin: 0 0.25em;
-  border-bottom: none;
-  text-align: left;
-}
-
-/* menu list item links */
-#header .dropdown .menu li a {
-  max-width: unset;
-  background-color: transparent;
-  display: block;
-  padding: 0.5em;
-  color: inherit;
-  border-radius: 0.25rem;
-}
-
-/*===== colors for header navigation / dropdown toggles =====*/
-
-/* header navigation */
-#header .user a,
-#header .user a:visited,
-#header .primary a {
-  color: #6C2D52;
-}
-
-/* currently selected dropdown toggle */
-#header .dropdown:hover a, 
-#header .dropdown a:focus,
-#header .user a:hover,
-#header .user a:focus,
-#header .open a {
-  color: #FF66A8 !important;
-  background-color: transparent;
-}
-
-/*===== colors for header dropdown menu list =====*/
-
-#header .menu {
+/* dropdown menu */
+#header .navigation .dropdown .menu {
   background-image: none;
   background-color: #FCFCFC;
   border-color: #A29696;
 }
 
-/* header dropdown list items */
-#header .dropdown .menu a {
-  color: #6C2D52 !important;
+/* dropdown menu list items */
+#header .navigation .dropdown .menu li {
+  margin: 0 0.25em;
+  border-bottom: none;
+  text-align: left;
 }
 
-/* header dropdown list items hover */
-#header .dropdown .menu a:hover,
-#header .dropdown .menu a:focus {
+/* dropdown menu list item links */
+#header .navigation .dropdown:is(*) .menu li a {
+  max-width: unset;
+  background-color: transparent;
+  display: block;
+  padding: 0.5em;
+  color: #6C2D52;
+  border-radius: 0.25rem;
+}
+
+/* dropdown menu list item links hover etc. */
+#header .navigation .dropdown .menu li a:is(:hover, :focus, :active) {
   background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
-  color: #FFFFFF !important;
+  color: #FFFFFF;
+}
+
+/*========== header navigation / dropdown toggles ==========*/
+
+/* header navigation */
+#header .navigation a {
+  background: transparent;
+  color: #6C2D52;
+}
+
+/* currently selected dropdown toggle */
+#header .navigation .dropdown:is(.open, :hover, :focus, :active) > a {
+  background: transparent;
+  color: #FF66A8;
 }
 
 /*========== login and greeting (= user actions in header) ==========*/
@@ -536,42 +520,33 @@ col.name {
 /*===== replace user actions buttons with icons =====*/
 
 /* user icon (replaces the "Hi, [username]!") */
-#header #greeting a.dropdown-toggle[href*="/users/"] {
-  background-image: url("https://i.ibb.co/CcTHKR1/zerafina-header-icon-user.png");
+#header #greeting .dropdown > a[href*="/users/"] {
+  content: url("https://i.ibb.co/CcTHKR1/zerafina-header-icon-user.png");
 }
 
 /* "Post" icon */
-#header #greeting a.dropdown-toggle[href*="/works/new"] {
-  background-image: url("https://i.ibb.co/mVn7sTrk/zerafina-header-icon-new-work.png");
+#header #greeting .dropdown > a[href*="/works/new"] {
+  content: url("https://i.ibb.co/mVn7sTrk/zerafina-header-icon-new-work.png");
 }
 
 /* "Log Out" icon */
 #header #greeting a[href*="/users/logout"] {
-  background-image: url("https://i.ibb.co/27fbpWrV/zerafina-header-icon-logout.png");
+  content: url("https://i.ibb.co/27fbpWrV/zerafina-header-icon-logout.png");
 }
 
 /* settings for the icons */
-#header #greeting a.dropdown-toggle[href*="/users/"],
-#header #greeting a.dropdown-toggle[href*="/works/new"],
-#header #greeting a[href*="/users/logout"] {
+#header #greeting > ul > li > a {
   display: inline-block;
+  height: 18px;
   width: 18px;
-  height: 18px; 
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  text-indent: -9999px;
-  line-height: 0;
-  color: transparent !important;
+  padding: 10px 0;
+  background: transparent;
   filter: invert(20%) sepia(10%) saturate(5089%) hue-rotate(278deg) brightness(92%) contrast(86%); /* adjust filters to change header icon colors */
 }
 
-/* colors for header icons hover + active */
-#header #greeting .dropdown:hover a.dropdown-toggle,
-#header #greeting .dropdown:active a.dropdown-toggle,
-#header #greeting a[href*="/users/logout"]:hover,
-#header #greeting a[href*="/users/logout"]:active {
-  filter: invert(57%) sepia(47%) saturate(1755%) hue-rotate(299deg) brightness(100%) contrast(105%);
+/* colors for header icons when selected */
+#header #greeting > ul > li:is(.open, :hover, :focus, :active) > a {
+  filter: invert(57%) sepia(47%) saturate(1755%) hue-rotate(299deg) brightness(100%) contrast(105%); /* adjust filters to change colors */
 }
 
 /* gap between icons (works because of "display: flex" above) */
@@ -940,19 +915,14 @@ form code {
   color: #6C2D52;
 }
 
-option:hover,
-option:checked,
-option:checked:hover,
-option:active,
-option:active:hover,
-option:focus,
-option:focus:hover {
+option:is(:checked, :hover, :focus, :active),
+option:checked:is(:checked, :hover, :focus, :active) {
   background: #EDEAEA;
   color: #6C2D52;
   border-radius: 0.25rem;
 }
 
-option:hover {
+option:is(:hover, :focus, :active) {
   background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
   color: #FFFFFF;
 }
@@ -1180,10 +1150,8 @@ p.character_counter {
 }
 
 .LV_invalid_field,
-input.LV_invalid_field:hover,
-input.LV_invalid_field:active,
-textarea.LV_invalid_field:hover,
-textarea.LV_invalid_field:active {
+input.LV_invalid_field:is(:hover, :focus, :active),
+textarea.LV_invalid_field:is(:hover, :focus, :active) {
   border: 1px solid #C72C53;
 }
 
@@ -1391,16 +1359,13 @@ dd.required {
 /* subtypes: .action, .navigation, .sorting, .submit, .cancel, .close, .delete, .pagination, .current, .landmark, #skiplinks, input[type="submit"], button */
 
 .actions a,
-.actions a:link,
-.actions a:visited,
+.actions a:is(:link, :visited),
 .actions label,
 .actions button,
 .action,
-.action:link,
-.action:visited,
+.action:is(:link, :visited),
 .action a,
-.action a:link,
-.action a:visited,
+.action a:is(:link, :visited),
 button,
 label.action,
 .actions input,
@@ -1432,23 +1397,15 @@ input[type="submit"] {
 /*========== subtypes and modes ==========*/
 
 /* hover + focus */
-.actions a:hover,
-.actions input:hover,
-.actions a:focus,
-.actions input:focus,
-.actions button:hover,
-.actions button:focus,
-label.action:hover,
-.action:hover,
-.action:focus,
-.action a:hover,
-.action a:focus,
-input[type="submit"]:hover,
-input[type="submit"]:focus,
-input::file-selector-button:hover,
-input::file-selector-button:focus,
-.listbox > .heading .action a:hover,
-.listbox > .heading .action a:focus {
+.actions a:is(:hover, :focus),
+.actions input:is(:hover, :focus),
+.actions button:is(:hover, :focus),
+label.action:is(:hover, :focus),
+.action:is(:hover, :focus),
+.action a:is(:hover, :focus),
+input[type="submit"]:is(:hover, :focus),
+input::file-selector-button:is(:hover, :focus),
+.listbox > .heading .action a:is(:hover, :focus) {
   background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
   color: #FFFFFF;
   border-color: #D44E8B;
@@ -2020,11 +1977,13 @@ dl.meta {
 
 .meta dt {
   min-width: unset;
-  width: 25%;
+  width: 26.5%;
+  box-sizing: border-box;
 }
 
 .meta dd {
-  width: 75%;
+  width: 73.5%;
+  box-sizing: border-box;
 }
 
 /* move meta tags up a tiny bit */
@@ -3576,20 +3535,32 @@ img[src$="/images/lockblue.png"] {
 
 /*========== STATS ICONS ==========*/
 
-/* slight adjustment to align stats with other elements */
+/* adjust space on right side */
+.stats:not(.skins .stats) dd {
+  margin-inline: 0 1em;
+  padding: 0;
+}
+
+/* slight adjustments to align stats with other elements */
 /* not the prettiest solution but it works ... */
-dl.stats {
-  margin-right: -0.25em;
+dl.stats:not(.skins .stats) {
+  margin-right: -1em;
+  word-spacing: -0.3em;
+}
+
+dl.meta.statistics dd {
+  padding-left: 5px;
 }
 
 /*===== setup for the stats icons =====*/
 
 /* hide the text before the stats */
-.stats dt:not(.skins .stats dt) {
+.stats:not(.skins .stats) dt {
   display: none;
 }
 
-.stats dd:not(.skins .stats dd)::before {
+.stats:not(.skins .stats) dd::before,
+dl.statistics dt::before {
   display: inline-block;
   width: 1em;
   height: 1em;
@@ -3602,7 +3573,7 @@ dl.stats {
   filter: invert(89%) sepia(5%) saturate(274%) hue-rotate(314deg) brightness(82%) contrast(87%); /* changes the color of the icons */
 }
 
-/*===== stats icons (images) =====*/
+/*======= stats icons (images) =======*/
 
 /* language */
 .stats dd.language::before {
@@ -3610,7 +3581,8 @@ dl.stats {
 }
 
 /* words */
-.stats dd.words::before {
+.stats dd.words::before,
+dl.statistics dt.words::before {
   background-image: url("https://i.ibb.co/7x2N2zV8/zerafina-stats-icon-words-01.png");
 }
 
@@ -3631,14 +3603,15 @@ dl.stats {
 }
 
 /* kudos */
-.stats dd.kudos::before {
+.stats dd.kudos::before,
+dl.statistics dt.kudos::before {
   background-image: url("https://i.ibb.co/5gPnsXN4/zerafina-stats-icon-kudos-01.png");
 }
 
 /* bookmarks */
-.stats dd.bookmarks::before {
-  background-image: url("https://i.ibb.co/RTCp3HDc/zerafina-stats-icon-bookmarks-01.png");
-  margin-right: 2px !important; /* needs less space, as the icon is narrower than the others */
+.stats dd.bookmarks::before,
+dl.statistics dt.bookmarks::before {
+  background-image: url("https://i.ibb.co/DDgZz4Gw/zerafina-stats-icon-bookmarks-02.png");
 }
 
 /* related works (external bookmarks) */
@@ -3647,14 +3620,15 @@ dl.stats {
 }
 
 /* hits */
-.stats dd.hits::before {
+.stats dd.hits::before,
+dl.statistics dt.hits::before {
   background-image: url("https://i.ibb.co/Zz7mY8yL/zerafina-stats-icon-hits-01.png");
 }
 
 /* collections */
 .stats dd.collections::before,
 .stats dd:has(a[href$=collections])::before /* subcollections*/ {
-  background: url("https://i.ibb.co/ks5VXnDZ/zerafina-stats-icon-collection-01.png");
+  background-image: url("https://i.ibb.co/ks5VXnDZ/zerafina-stats-icon-collection-01.png");
 }
 
 /* date published */
@@ -3674,19 +3648,21 @@ dl.stats {
 }
 
 /* subscriptions (statistics page) */
-.stats dd.subscriptions::before {
+.stats dd.subscriptions::before,
+dl.statistics dt.subscriptions::before {
   background-image: url("https://i.ibb.co/VY57wxPD/zerafina-stats-icon-subscriptions-01.png");
 }
 
 /* comment threads (statistics page) */
-.statistics .stats dd.comments::before {
+.statistics .stats dd.comments::before,
+dl.statistics dt.comment::before {
   background-image: url("https://i.ibb.co/078f2nh/zerafina-stats-icon-comment-threads-01.png");
 }
 
 /* fandoms */
 .stats dd:has(a[href$=fandoms])::before,
 .tagset .stats dd:nth-of-type(1)::before {
-  background: url("https://i.ibb.co/tPpqR5g3/zerafina-stats-icon-fandoms-01.png");
+  background-image: url("https://i.ibb.co/tPpqR5g3/zerafina-stats-icon-fandoms-01.png");
 }
 
 /* collections: bookmarked items */
