@@ -220,23 +220,17 @@ col.name {
 
 /*========== header title/heading ==========*/
 
-#header .heading a {
+/* new title/heading */
+#header .heading a::before {
+  content: "fanblr";
   color: #B3B3B3; /* change title/heading color here */
   font-family: "Bookman Old Style", Georgia, Serif;
   font-size: 1.3em;
 }
 
-/* new title/heading */
-#header .heading a::before {
-  content: "fanblr";
-}
-
-/* rainbow gradient on hover */
-#header .heading a:hover,
-#header .heading a:hover::before {
-  background-clip: text;
+/* rainbow gradient on hover etc. */
+#header .heading a:is(:hover, :focus, :active)::before {
   background-image: linear-gradient(to right, #529ECC, #56BC8A, #CDAE00, #D38A25, #D9664A, #D977BA, #AF73D4);
-  color: transparent;
 }
 
 /*========== header dropdown menus ==========*/
@@ -255,75 +249,63 @@ col.name {
   filter: unset;
 }
 
-/*===== header navigation / dropdown toggles =====*/
-
-/* header navigation */
-#header .user a,
-#header .user a:visited,
-#header .primary a {
-  color: #B3B3B3;
-}
-
-/* currently selected dropdown toggle */
-#header .dropdown:hover a, 
-#header .dropdown a:focus,
-#header .user a:hover,
-#header .user a:focus,
-#header .open a {
-  color: #F2F2F2 !important;
-}
-
-/*===== header dropdown menu list =====*/
-
-#header .menu {
+/* dropdown menu */
+#header .navigation .dropdown .menu {
   background: #36465D;
   border: none;
 }
 
-/* header dropdown list items */
-#header .dropdown .menu a {
+/* dropdown menu list item links */
+#header .navigation .dropdown:is(*) .menu li a {
   color: #B3B3B3 !important;
 }
 
-/* header dropdown list items hover */
-#header .dropdown .menu a:hover,
-#header .dropdown .menu a:focus {
+/* dropdown menu list item links hover etc. */
+#header .navigation .dropdown .menu li a:is(:hover, :focus, :active) {
   background: #48566A;
   color: #B3B3B3 !important;
+}
+
+/*===== header navigation / dropdown toggles =====*/
+
+/* header navigation */
+#header .navigation a {
+  color: #B3B3B3;
+}
+
+/* currently selected dropdown toggle */
+#header .navigation .dropdown:is(.open, :hover, :focus, :active) > a {
+  color: #F2F2F2 !important;
 }
 
 /*===== header icons =====*/
 
 /* user icon (replaces the "Hi, [username]!") */
-#header #greeting a.dropdown-toggle[href*="/users/"] {
-  background-image: url(https://i.ibb.co/VR2xSgJ/zerafina-header-icon-user-tumblr.png);
+#header #greeting .dropdown > a[href*="/users/"] {
+  content: url(https://i.ibb.co/VR2xSgJ/zerafina-header-icon-user-tumblr.png);
 }
 
 /* "Post" icon */
-#header #greeting a.dropdown-toggle[href*="/works/new"] {
-  background-image: url(https://i.ibb.co/ymNNFb70/zerafina-header-icon-new-work-tumblr.png);
+#header #greeting .dropdown > a[href*="/works/new"] {
+  content: url(https://i.ibb.co/ymNNFb70/zerafina-header-icon-new-work-tumblr.png);
 }
 
 /* "Log Out" icon */
 #header #greeting a[href*="/users/logout"] {
-  background-image: url(https://i.ibb.co/p67W6qhk/zerafina-header-icon-logout-tumblr.png);
+  content: url(https://i.ibb.co/p67W6qhk/zerafina-header-icon-logout-tumblr.png);
 }
 
 /* settings for the icons */
-#header #greeting a.dropdown-toggle[href*="/users/"],
-#header #greeting a.dropdown-toggle[href*="/works/new"],
-#header #greeting a[href*="/users/logout"] {
+#header #greeting > ul > li > a {
+  height: 16px;
   width: 16px;
-  height: 16px; 
+  padding: 11px 0;
   filter: invert(77%) sepia(16%) saturate(0%) hue-rotate(238deg) brightness(93%) contrast(83%); /* adjust filters to change header icon colors */
 }
 
-/* colors for header icons hover + active */
-#header #greeting .dropdown:hover a.dropdown-toggle,
-#header #greeting .dropdown:active a.dropdown-toggle,
-#header #greeting a[href*="/users/logout"]:hover,
-#header #greeting a[href*="/users/logout"]:active {
-  filter: invert(99%) sepia(2%) saturate(416%) hue-rotate(305deg) brightness(118%) contrast(90%);
+/* colors for header icons when selected */
+#header #greeting > ul > li:is(.open, :hover, :focus, :active) > a {
+  filter: invert(99%) sepia(2%) saturate(416%) hue-rotate(305deg) brightness(118%) contrast(90%); /* adjust filters to change colors */
 }
 
 /*========== primary navigation ==========*/
@@ -492,18 +474,13 @@ form dd.required {
   color: #B3B3B3;
 }
 
-option:hover,
-option:checked,
-option:checked:hover,
-option:active,
-option:active:hover,
-option:focus,
-option:focus:hover {
+option:is(:checked, :hover, :focus, :active),
+option:checked:is(:checked, :hover, :focus, :active) {
   background: #529ECC;
   color: #F2F2F2;
 }
 
-option:hover {
+option:is(:hover, :focus, :active) {
   background: linear-gradient(to right, #48566A, #29ABE6);
   color: #F2F2F2;
 }
@@ -618,12 +595,8 @@ input[type="file"] {
 }
 
 .LV_invalid_field,
-input.LV_invalid_field:hover,
-input.LV_invalid_field:active,
-input.LV_invalid_field:focus,
-textarea.LV_invalid_field:hover,
-textarea.LV_invalid_field:active,
-textarea.LV_invalid_field:focus {
+input.LV_invalid_field:is(:hover, :focus, :active),
+textarea.LV_invalid_field:is(:hover, :focus, :active) {
   border-color: #FF4930;
   outline-color: #FF4930;
 }
@@ -741,16 +714,13 @@ dd.required {
 ============================================================*/
 
 .actions a,
-.actions a:link,
-.actions a:visited,
+.actions a:is(:link, :visited),
 .actions label,
 .actions button,
 .action,
-.action:link,
-.action:visited,
+.action:is(:link, :visited),
 .action a,
-.action a:link,
-.action a:visited,
+.action a:is(:link, :visited),
 button,
 label.action,
 .actions input,
@@ -777,23 +747,15 @@ input::file-selector-button {
 /*========== subtypes and modes ==========*/
 
 /* hover + focus */
-.actions a:hover,
-.actions input:hover,
-.actions a:focus,
-.actions input:focus,
-.actions button:hover,
-.actions button:focus,
-label.action:hover,
-.action:hover,
-.action:focus,
-.action a:hover,
-.action a:focus,
-input[type="submit"]:hover,
-input[type="submit"]:focus,
-input::file-selector-button:hover,
-input::file-selector-button:focus,
-.listbox > .heading .action a:hover,
-.listbox > .heading .action a:focus {
+.actions a:is(:hover, :focus),
+.actions input:is(:hover, :focus),
+.actions button:is(:hover, :focus),
+label.action:is(:hover, :focus),
+.action:is(:hover, :focus),
+.action a:is(:hover, :focus),
+input[type="submit"]:is(:hover, :focus),
+input::file-selector-button:is(:hover, :focus),
+.listbox > .heading .action a:is(:hover, :focus) {
   background: #529ECC;
   border: 1.5px solid transparent;
   color: #1A2735;
@@ -1705,8 +1667,8 @@ img[src$="/images/lockblue.png"] {
 >> Z2 STATS ICONS WITH HOVER TEXT
 ============================================================*/
 
-/* change color of the icons */
-.stats dd:not(.skins .stats dd)::before {
+.stats:not(.skins .stats) dd::before,
+dl.statistics dt::before {
   filter: invert(100%) opacity(0.25);
 }
 
