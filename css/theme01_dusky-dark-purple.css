@@ -143,16 +143,14 @@ tfoot td {
 
 /*========== header title/heading ==========*/
 
-#header .heading a {
+/* new title/heading */
+#header .heading a::before {
   color: #E882A9; /* change title/heading color here */
 }
 
-/* gradient text on hover */
-#header .heading a:hover,
-#header .heading a:hover::before {
-  background-clip: text;
+/* gradient text on hover etc. */
+#header .heading a:is(:hover, :focus, :active)::before {
   background-image: linear-gradient(to right, #E882A9, #F7CFD2);
-  color: transparent;
 }
 
 /*========== header dropdown menus ==========*/
@@ -170,58 +168,45 @@ tfoot td {
   filter: drop-shadow(0 -1px #472E44);
 }
 
-/*===== header navigation / dropdown toggles =====*/
-
-/* header navigation */
-#header .user a,
-#header .user a:visited,
-#header .primary a {
-  color: #E882A9;
-}
-
-/* currently selected dropdown toggle */
-#header .dropdown:hover a, 
-#header .dropdown a:focus,
-#header .user a:hover,
-#header .user a:focus,
-#header .open a {
-  color: #F7CFD2 !important;
-}
-
-/*===== header dropdown menu list =====*/
-
-#header .menu {
+/* dropdown menu */
+#header .navigation .dropdown .menu {
   background-color: #1F1B21;
   border-color: #472E44;
 }
 
-/* header dropdown list items */
-#header .dropdown .menu a {
-  color: #BD8A96 !important;
+/* dropdown menu list item links */
+#header .navigation .dropdown:is(*) .menu li a {
+  color: #BD8A96;
 }
 
-/* header dropdown list items hover */
-#header .dropdown .menu a:hover,
-#header .dropdown .menu a:focus {
+/* dropdown menu list item links hover etc. */
+#header .navigation .dropdown .menu li a:is(:hover, :focus, :active) {
   background: linear-gradient(to right, #872D55, #D44E8D);
-  color: #F7CFD2 !important;
+  color: #F7CFD2;
+}
+
+/*===== header navigation / dropdown toggles =====*/
+
+/* header navigation */
+#header .navigation a {
+  color: #E882A9;
+}
+
+/* currently selected dropdown toggle */
+#header .navigation .dropdown:is(.open, :hover, :focus, :active) > a {
+  color: #F7CFD2;
 }
 
 /*===== header icons =====*/
 
 /* change header icon colors */
-#header #greeting a.dropdown-toggle[href*="/users/"],
-#header #greeting a.dropdown-toggle[href*="/works/new"],
-#header #greeting a[href*="/users/logout"] {
-  filter: invert(65%) sepia(17%) saturate(1064%) hue-rotate(289deg) brightness(96%) contrast(85%);
+#header #greeting > ul > li > a {
+  filter: invert(65%) sepia(17%) saturate(1064%) hue-rotate(289deg) brightness(96%) contrast(85%); /* adjust filters to change header icon colors */
 }
 
-/* colors for header icons hover + active */
-#header #greeting .dropdown:hover a.dropdown-toggle,
-#header #greeting .dropdown:active a.dropdown-toggle,
-#header #greeting a[href*="/users/logout"]:hover,
-#header #greeting a[href*="/users/logout"]:active {
-  filter: invert(83%) sepia(6%) saturate(1040%) hue-rotate(307deg) brightness(104%) contrast(94%);
+/* colors for header icons when selected */
+#header #greeting > ul > li:is(.open, :hover, :focus, :active) > a {
+  filter: invert(83%) sepia(6%) saturate(1040%) hue-rotate(307deg) brightness(104%) contrast(94%); /* adjust filters to change colors */
 }
 
 /*========== primary navigation ==========*/
@@ -365,18 +350,13 @@ form dd.required {
   color: #BD8A96;
 }
 
-option:hover,
-option:checked,
-option:checked:hover,
-option:active,
-option:active:hover,
-option:focus,
-option:focus:hover {
+option:is(:checked, :hover, :focus, :active),
+option:checked:is(:checked, :hover, :focus, :active) {
   background: #302433;
   color: #BD8A96;
 }
 
-option:hover {
+option:is(:hover, :focus, :active) {
   background: linear-gradient(to right, #872D55, #D44E8D);
   color: #F7CFD2;
 }
@@ -483,10 +463,8 @@ input[type="file"] {
 }
 
 .LV_invalid_field,
-input.LV_invalid_field:hover,
-input.LV_invalid_field:active,
-textarea.LV_invalid_field:hover,
-textarea.LV_invalid_field:active {
+input.LV_invalid_field:is(:hover, :focus, :active),
+textarea.LV_invalid_field:is(:hover, :focus, :active) {
   border-color: #CC376B;
 }
 
@@ -604,16 +582,13 @@ dd.required {
 ============================================================*/
 
 .actions a,
-.actions a:link,
-.actions a:visited,
+.actions a:is(:link, :visited),
 .actions label,
 .actions button,
 .action,
-.action:link,
-.action:visited,
+.action:is(:link, :visited),
 .action a,
-.action a:link,
-.action a:visited,
+.action a:is(:link, :visited),
 button,
 label.action,
 .actions input,
@@ -631,23 +606,15 @@ input::file-selector-button {
 /*========== subtypes and modes ==========*/
 
 /* hover + focus */
-.actions a:hover,
-.actions input:hover,
-.actions a:focus,
-.actions input:focus,
-.actions button:hover,
-.actions button:focus,
-label.action:hover,
-.action:hover,
-.action:focus,
-.action a:hover,
-.action a:focus,
-input[type="submit"]:hover,
-input[type="submit"]:focus,
-input::file-selector-button:hover,
-input::file-selector-button:focus,
-.listbox > .heading .action a:hover,
-.listbox > .heading .action a:focus {
+.actions a:is(:hover, :focus),
+.actions input:is(:hover, :focus),
+.actions button:is(:hover, :focus),
+label.action:is(:hover, :focus),
+.action:is(:hover, :focus),
+.action a:is(:hover, :focus),
+input[type="submit"]:is(:hover, :focus),
+input::file-selector-button:is(:hover, :focus),
+.listbox > .heading .action a:is(:hover, :focus) {
   background: linear-gradient(to right, #872D55, #D44E8D);
   border-color: #D44E8D;
   color: #F7CFD2;
@@ -1495,7 +1462,8 @@ img[src$="/images/lockblue.png"] {
 
 /*========== STATS ICONS ==========*/
 
-.stats dd:not(.skins .stats dd)::before {
+.stats:not(.skins .stats) dd::before,
+dl.statistics dt::before {
   filter: invert(34%) sepia(18%) saturate(1308%) hue-rotate(264deg) brightness(89%) contrast(96%); /* changes the color of the icons */
 }
 
