@@ -1298,7 +1298,7 @@ div.dynamic {
 }
 
 /*========== mods: SINGLE ==========*/
-/* for prominent simple forms consisting of one text input, e.g., on the blocked user page */
+/* for prominent simple forms consisting of one text input, e.g., on the blocked users page */
 
 form.single input[type="submit"] {
   vertical-align: unset;
@@ -1596,7 +1596,7 @@ span.offered.requested {
 
 /*========== arrows for the accordion widget ==========*/
 
-.collapsed:after {
+.collapsed::after {
   content: "";
   border-style: solid;
   border-width: 0 0.15em 0.15em 0;
@@ -1606,7 +1606,7 @@ span.offered.requested {
   transform: rotate(45deg);
 }
 
-.expanded:after {
+.expanded::after {
   content: "";
   border-style: solid;
   border-width: 0 0.15em 0.15em 0;
@@ -1825,7 +1825,7 @@ dl.index dd {
 
 /*========== TYPES ==========*/
 
-/* idk what this is */
+/* I don't remember what this is ... */
 .actions .reindex a {
   border-bottom: 3px solid #C72C53;
 }
@@ -1865,6 +1865,28 @@ dd.series span {
 .statistics .index li:nth-of-type(even) {
   background-color: #EDEAEA;
   border-radius: 0.25rem;
+}
+
+/*===== fix concise index (example: "Edit Multiple Works" page ) =====*/
+
+.concise.index {
+	width: unset;
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 1.5%;
+	box-sizing: border-box;
+}
+
+/* attempt at responsive layout without media queries */
+.concise li {
+	width: unset;
+	min-width: 49%;
+	flex: 1 0 18.5rem;
+	margin-right: 0;
+}
+
+.concise li label {
+	margin-right: 0.5em !important;
 }
 
 /*============================================================
@@ -2434,7 +2456,7 @@ li.comment:has(.edit_comment) {
   font-weight: 700;
 }
 
-/* modules (fovorite tags, news, unread messages etc.) */
+/* modules (favorite tags, news, unread messages etc.) */
 .splash > .module,
 .logged-in .splash > .module {
   margin-inline: 0;
@@ -2590,7 +2612,7 @@ li.comment:has(.edit_comment) {
 /*========== INTERACTION: SEARCH ==========*/
 
 form.search input[type="text"] {
-  border: 1px solid #A29696;
+  border: 1px solid #BBB2B2;
   border-radius: 0.25rem;
   background-image: none;
   background-color: #FFFFFF;
@@ -3109,6 +3131,37 @@ a.question {
 .heading a.question,
 .help.symbol.question {
   font-size: 0.75em;
+}
+
+/* new cross symbol on rejected elements to prevent it from turning into an emoji on IOS */
+span.rejected.symbol::before {
+  content: "\002716\fe0e"; /* unicode cross + variation selector to stop it from turning into an emoji */
+}
+
+/* new checkmark symbol on approved elements to prevent it from turning into an emoji on IOS */
+span.approved.symbol::before {
+	content: "\002714\fe0e"; /* unicode checkmark + variation selector to stop it from turning into an emoji */
+}
+
+/* hide old checkmark and cross symbols (see above) */
+span.rejected.symbol span,
+span.approved.symbol span {
+	display: none;
+}
+
+/* prevent checkmark symbol on replied to messages from turning into an emoji on IOS */
+/* have to do it differently than above because of different html - this hides the old checkmark symbol first */
+span.replied {
+  text-indent: -9999px;
+  line-height: 0;
+}
+
+/* new checkmark symbol */
+span.replied::after {
+  display: block;
+  content: "\002714\fe0e"; /* unicode checkmark + variation selector to stop it from turning into an emoji */
+  text-indent: 0;
+  line-height: 1.286;
 }
 
 /*========== SYMBOLS KEY (help content) ==========*/
