@@ -892,9 +892,8 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
   border: none;
   border-radius: 0;
   font-size: 0.95em;
-  color: transparent;
-  background-clip: text;
-  background-image: linear-gradient(#A1A1A1A6); /* use background image with gradient here in preparation for different colored tag groups (see below) */
+  color: #A1A1A1A6;
+  background: transparent !important;
 }
 
 h5.fandoms.heading a.tag {
@@ -917,22 +916,22 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag)::before {
 /* fandom tags */
 h5.fandoms.heading a.tag,
 dd.fandom.tags a {
-  background-image: linear-gradient(to right, #D977BA, #7C5CFF) !important;
+  color: #D977BA !important;
 }
 
 /* warning tags */
 [class^=warning] a.tag {
-  background-image: linear-gradient(to right, #FF4930, #D97568) !important;
+  color: #FF4930 !important;
 }
 
 /* relationship tags */
 [class^=relationship] a.tag {
-  background-image: linear-gradient(to right, #FF8A00, #D38A25) !important;
+  color: #FF8A00 !important;
 }
 
 /* character tags */
 [class^=character] a.tag {
-  background-image: linear-gradient(to right, #56BC8A, #56BC8A) !important;
+  color: #56BC8A !important;
 }
 
 /* tag hover */
@@ -1450,7 +1449,7 @@ img[src$="/images/skins/iconsets/default/icon_collection.png"] {
 .tagset .primary .icon, 
 .tag .primary .icon,
 .index .tagset .icon {
-  background: url("https://i.ibb.co/Y4QDmRvt/zerafina-icon-tag-01.png");
+  background: url("https://i.ibb.co/sdVVMJ9z/zerafina-icon-tag-02.png");
   background-size: cover;
   background-color: #529ECC; /* change background color here */
   border: none;
