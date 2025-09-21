@@ -1,1514 +1,191 @@
 /*============================================================
 
-
                            ~ neos ~
                    Theme: Dusky Dark Purple
 
-
 ==============================================================
->> A1 COLOR GUIDE
+GLOBAL VARIABLES
 ==============================================================
 
-1) Purple + rose: https://coolors.co/161417-872d55-ad396f-d44e8d-e882a9-bd8a96-f3cace
+Color palettes used for main backgrounds, borders, text and interaction elements:
 
-    color1:         #161417
-    color2:         #872D55
-    color3:         #AD396F   => same as icon4
-    color4:         #D44E8D
-    color5:         #E882A9
-    color6:         #BD8A96   => main font color => replaces #111, #2A2A2A
-    color7:         #F7CFD2
-
-2) Darker purple + violet: https://coolors.co/1f1b21-262029-302433-472e44-55354e-7f416e-a94c8d
-
-   Background elements (mainly):
+- Purple + rose:          https://coolors.co/161417-872d55-ad396f-d44e8d-e882a9-bd8a96-f3cace
+- Darker purple + violet: https://coolors.co/1f1b21-262029-302433-3c293c-472e44-55354e-7f416e-a94c8d
   
-    background1:    #1F1B21
-    background2:    #262029
-    background3:    #302433
+*/
 
-   Borders + some other elements:
+:root {
+
+
+/*>========== UI PARAMETERS ==========<*/
+
+  /* space on left/right side of screen */
+  --margins-header:      1rem;                     /* header on desktop */
+  --margins-main:        5%;                       /* site contents on desktop */
+  --margins-narrow:      2.5%;                     /* site contents and header on tablet/mobile */
+
+  /* border-radius (= roundness of corners) */
+  --radius-small:        0.25rem;                  /* smaller elements: list elements, input elements etc. */
+  --radius-mid:          0.25rem;                  /* midsizde elements: dropdown menus, system messages etc. */
+  --radius-big:          0.35rem;                  /* bigger elements: blurbs, forms, comments, textareas etc. */
+  --radius-alt:          0.25rem;                  /* header search box, buttons, tags */
+
+  /* icon border-radius */
+  --icon-content-radius: 0.25rem;                  /* content and bookmark icon */
+  --icon-primary-radius: 99999px;                  /* primary and comment icon */
+  --icon-index-radius:   0.25rem;                  /* index icon */
+
+
+/*>========== MAIN BACKGROUND COLORS ==========<*/
+
+  --bg1:                 #262029;                  /* main background, footer etc. */
+  --bg2:                 #302433;                  /* header */
+  --bg3:                 transparent;              /* dashboard */
+  --bg4:                 var(--bg2);               /* forms, modal dialogs, javascript context etc. */
+  --bg5:                 var(--bg1);               /* content boxes (blurbs, comments etc.), meta box */
+  --bg6:                 #3C293C;                  /* dropdown and secondary menus, tooltips etc. */
+  --bg7:                 var(--bg2);               /* own blurbs, listbox, some even/odd list items etc. */
+
+
+/*>========== MAIN BORDERS ==========<*/
+
+  /* colors */
+  --border1:             #472E44;                  /* dashboard, footer, news, blockquote, scrollbar track etc. */
+  --border2:             var(--border1);           /* header, tables, forms, input elements, listbox etc. */
+  --border3:             #55354E;                  /* content boxes (blurbs, comments etc.), dropdown and secondary menus */
+  --border4:             #7F416E;                  /* meta boxes, tooltips, scrollbar thumb etc. */
+
+  /* width */
+  --border-width:        1px;                      /* for almost all borders (experimental - changing this might cause some weirdness) */
+
+
+/*>========== SHADOWS ==========<*/
+/* replace values with "none" (without quotation marks) to remove shadows */
+
+  --shadow:              none;                     /* secondary elements, dropdowns, tooltips etc. */
+  --shadow-header:       none;
+  --shadow-buttons:      none;
+
+
+/*>========== MAIN TEXT ==========<*/
+
+  /* text size */
+  --txt-size-main:       100%;                     /* main text size (bigger than 130% causes some issues, but is still mostly functional) */
+  --txt-size-work:       110%;                     /* work text size */
+
+  /* text colors */
+  --txt-header:          #BD8A96;                  /* header text */
+  --txt-header-hgl:      var(--link-hgl);          /* selected header dropdown toggle and link items */
+  --txt-header-hgl-h1:   linear-gradient(125deg, var(--txt-header-hgl), var(--txt-main) 120%); /* gradient for selected AO3 header title */
+  --txt-main:            var(--txt-header);        /* main body text */
+  --txt-alt1:            var(--txt-main);          /* announcements */
+  --txt-alt2:            #1F1B21;                  /* checkbox checkmark, help symbol, event announcements etc. */
+
+  /* links */
+  --link:                #AD396F;                  /* link color */
+  --link-hgl:            #D44E8D;                  /* color for hovered/focused links */
+  --link-visited:        var(--border4);           /* color for already visited links + header search bar icon */
+  --link-underline:      1px solid transparent;    /* link underline => delete "transparent" to make link underlines visible */
+
+
+/*>========== INTERACTION COLORS ==========<*/
+/* = buttons, input and select elements */
+
+  /* button colors */
+  --int-btn-bg:          var(--border1);           /* background */
+  --int-btn-border:      var(--border4);           /* border */
+  --int-btn-txt:         var(--txt-main);          /* text */
+  --int-btn-hgl-bg:      linear-gradient(to right, var(--icon-id), var(--link-hgl)); /* background for hovered/focused buttons */
+  --int-btn-hgl-txt:     #F7CFD2;                  /* text for hovered/focused buttons */                                                                        
   
-    accent1:        #472E44
-    accent2:        #55354E
-    accent3:        #7F416E
-    accent4:        #A94C8D
-    transparent:    #A94C8D30 => accent4 with transparency
+  --int-bg:              var(--txt-alt2);          /* background for input and select elements */
 
-3) Roles and states + system messages: https://coolors.co/131a2a-6d8dd1-051c1a-1a9d93-171111-d06864-200811-cc376b
+  --int-current-bg:      var(--border4);           /* background for currently active elements */
+  --int-current-txt:     var(--int-btn-hgl-txt);   /* text for currently active elements */
+  --int-disabled-bg:     var(--border1);           /* background for disabled buttons and checkboxes */
+  --int-checked:         var(--link);              /* checked checkboxes and radio buttons */
   
-    system1:        #131A2A
-    system2:        #6D8DD1
-    system3:        #051C1A
-    system4:        #1A9D93
-    system5:        #171111
-    system6:        #D06864
-    system7:        #200811
-    system8:        #CC376B
+  --int-hgl:             var(--link-hgl);          /* highlight for hovered/focused/selected elements */
+  --int-hgl-bg:          var(--int-btn-hgl-bg);    /* background for hovered/focused list items */
+  --int-hgl-txt:         var(--int-btn-hgl-txt);   /* text for hovered/focused list items and for collection header */
+
+
+/*>========== ICON COLORS ==========<*/
+/* palette: https://coolors.co/4cb7c3-5e96d6-b268cf-ea5a9a */
+
+  /* bookmark and content icons (mostly) */  
+  --icon1:               #5E73C8;                  /* gen, complete, public bookmark */
+  --icon2:               #694CB8;                  /* teen */
+  --icon3:               var(--icon2);             /* m/m, external work */
+  --icon4:               #9B37A4;                  /* mature, chose not to warn, rss feed */
+  --icon5:               var(--icon4);             /* f/m */
+  --icon6:               var(--link);              /* explicit, f/f, warning, incomplete */
+  --icon7:               var(--icon4);             /* private bookmark */
+  --icon8:               var(--border3);           /* hidden bookmark */
+  --icon9:               var(--link);              /* rec bookmark */
+
+  /* other icons */
+  --icon-bg:             var(--border1);           /* background for empty icon box or uploaded icon with transparent background */
+  --icon-id:             #872D55;                  /* user, collection, skin, tag, unrevealed work, admin icon + collection header background */
+  --icon-anon:           var(--border3);           /* guest, anonymous user */
+
+  /* icon borders */
+  --icon-border1:        transparent;              /* border for most icons */
+  --icon-border2:        var(--border1);           /* uploaded, default user and mystery icon + empty symbols box */
+
+
+/*>========== TAG COLORS ==========<*/
+/* palette: https://coolors.co/f3cedf-ebd8f3-dbeaf0 */
+
+  /* background */
+  --tag-default-bg:      #A94C8D35;
+  --tag-fandom-bg:       var(--icon4);
+  --tag-warning-bg:      var(--link);
+  --tag-ship-bg:         var(--icon2);
+  --tag-character-bg:    var(--link-visited);
+  --tag-freeform-bg:     var(--tag-default-bg);
+
+  /* text */
+  --tag-default-txt:     var(--txt-main);
+  --tag-fandom-txt:      var(--int-current-txt);
+  --tag-warning-txt:     var(--int-current-txt);
+  --tag-ship-txt:        var(--int-current-txt);
+  --tag-character-txt:   var(--int-current-txt);
+  --tag-freeform-txt:    var(--txt-main);
+
+  /* border */
+  --tag-border:          transparent;
+
+  /* hover and focus */
+  --tag-hgl-bg:          var(--int-btn-hgl-bg);    /* background */
+  --tag-hgl-txt:         var(--int-hgl-txt);       /* text */
+
+
+/*>========== COLORS FOR ROLES AND STATES + SYSTEM MESSAGES ==========<*/
+/* palette: https://coolors.co/deeaf7-2e6cb2-cffff2-008f85-fff7e5-856114-fcdce2-c72c53 */
+
+  /* background */
+  --notice-bg:           #131A2A; 
+  --success-bg:          #051C1A;
+  --caution-bg:          #171111;
+  --alert-bg:            #200811;
+
+  /* text (and borders) */
+  --notice-txt:          #6D8DD1; 
+  --success-txt:         #1A9D93;
+  --caution-txt:         #D06864;
+  --alert-txt:           #CC376B;
+
+
+/*>========== FILTERS ==========<*/
+/* the colors of the following elements can only be changed using filters; adjust filter values to change colors */
+
+  --header-icon:         brightness(0) saturate(100%) invert(64%) sepia(35%) saturate(295%) hue-rotate(296deg) brightness(87%) contrast(86%);
+  --header-icon-hgl:     brightness(0) saturate(100%) invert(40%) sepia(24%) saturate(1794%) hue-rotate(282deg) brightness(100%) contrast(86%); /* hover/focus */
+  --kudos-icon:          brightness(0) saturate(100%) invert(48%) sepia(53%) saturate(3274%) hue-rotate(304deg) brightness(89%) contrast(85%);
+  --lock-icon:           var(--header-icon);
+  --stats-icon:          brightness(0) saturate(100%) invert(34%) sepia(18%) saturate(1308%) hue-rotate(264deg) brightness(89%) contrast(96%);
+  --stat-chart:          invert(100%) sepia(100%) saturate(2000%) hue-rotate(300deg) brightness(60%) contrast(70%);
+  --rich-txt-editor:     invert(100%) saturate(0) contrast(90%);
 
-4) Icon colors: https://coolors.co/5e73c8-694cb8-9b37a4-ad316b
-  
-    icon1:          #5E73C8
-    icon2:          #694CB8
-    icon3:          #9B37A4
-    icon4:          #AD396F   => same as color3
-
-
-/*============================================================
->> A2 BASIC LAYOUT SETTINGS ETC.
-============================================================*/
-
-#outer {
-  background-color: #262029; /* main background color */
-}
-
-body,
-.toggled form,
-.dynamic form,
-.secondary,
-.dropdown {
-  color: #BD8A96; /* main font color */
-}
-
-/*============================================================
->> 02 ELEMENTS
-============================================================*/
-
-/*========== links ==========*/
-
-a,
-a:link,
-a.work,
-.blurb h4 a:link {
-  color: #AD396F; /* link color */
-}
-
-a:hover,
-a:visited:hover,
-.blurb .heading a:hover,
-.blurb .heading a:visited:hover,
-div.preface .byline a:hover,
-.fandom.index.group a.tag:hover,
-h2.heading a.tag:hover {
-  color: #D44E8D; /* link hover color */
-}
-
-a:visited,
-.blurb .heading a:visited {
-  color: #7F416E; /* different color for visited links */
-}
-
-/*========== tables ==========*/
-
-table {
-  background-color: #302433;
-  border-color: #55354E;
-}
-
-thead,
-tfoot {
-  border-color: #55354E;
-}
-
-thead th,
-tbody th {
-  background-color: #262029;
-  border-color: #55354E;
-}
-
-thead td {
-  background-color: #472E44;
-  border-color: #302433;
-}
-
-tbody tr,
-tr:hover,
-col.name {
-  border-color: #262029;
-}
-
-tfoot td {
-  border-color: #7F416E;
-}
-
-/*============================================================
->> 03 REGION: HEADER
-============================================================*/
-
-#header {
-  background: #302433;
-  border-color: #472E44;
-  box-shadow: none;
-}
-
-/*========== header title/heading ==========*/
-
-/* new title/heading */
-#header .heading a::before {
-  color: #E882A9; /* change title/heading color here */
-}
-
-/* gradient text on hover etc. */
-#header .heading a:is(:hover, :focus, :active)::before {
-  background-image: linear-gradient(to right, #E882A9, #F7CFD2);
-}
-
-/*========== header dropdown menus ==========*/
-
-#header .dropdown-menu,
-#small_login {
-  box-shadow: none;
-}
-
-/* arrow on top of menu */
-#header .primary:not(:has(.open)) li.dropdown:hover::before,
-#header #greeting:not(:has(.open)) li.dropdown:hover::before,
-#header .open::before {
-  border-color: #1F1B21;
-  filter: drop-shadow(0 -1px #472E44);
-}
-
-/* dropdown menu */
-#header .navigation .dropdown .menu {
-  background-color: #1F1B21;
-  border-color: #472E44;
-}
-
-/* dropdown menu list item links */
-#header .navigation .dropdown:is(*) .menu li a {
-  color: #BD8A96;
-}
-
-/* dropdown menu list item links hover etc. */
-#header .navigation .dropdown .menu li a:is(:hover, :focus, :active) {
-  background: linear-gradient(to right, #872D55, #D44E8D);
-  color: #F7CFD2;
-}
-
-/*===== header navigation / dropdown toggles =====*/
-
-/* header navigation */
-#header .navigation a {
-  color: #E882A9;
-}
-
-/* currently selected dropdown toggle */
-#header .navigation .dropdown:is(.open, :hover, :focus, :active) > a {
-  color: #F7CFD2;
-}
-
-/*===== header icons =====*/
-
-/* change header icon colors */
-#header #greeting > ul > li > a {
-  filter: invert(65%) sepia(17%) saturate(1064%) hue-rotate(289deg) brightness(96%) contrast(85%); /* adjust filters to change header icon colors */
-}
-
-/* colors for header icons when selected */
-#header #greeting > ul > li:is(.open, :hover, :focus, :active) > a {
-  filter: invert(83%) sepia(6%) saturate(1040%) hue-rotate(307deg) brightness(104%) contrast(94%); /* adjust filters to change colors */
-}
-
-/*========== primary navigation ==========*/
-/* this is the header navigation bar with Fandoms, Browse, Search and About and the search bar */
-
-#header nav:has(> .primary) {
-  border-color: #55354E !important; /* border color here is important for the mobile skin */
-}
-
-/*===== primary navigation: header search bar =====*/
-
-/* search bar icon */
-#header li.search::before {
-  color: #7F416E;
-}
-
-/* this changes the look of header search bar */
-#header #search .text {
-  background-color: #262029;
-  border-color: #55354E;
-}
-
-/* how the search bar looks when selected */
-#header #search input:focus {
-  color: #BD8A96;
-  outline-color: #AD396F;
-  border-color: #AD396F;
-}
-
-/*========== CONTEXT: collections ==========*/
-
-/* collection header */
-#header h2 {
-  background-color: #872D55 !important;
-  border-color: #55354E;
-  color: #F7CFD2;
-}
-
-/*============================================================
->> 04 REGION: DASHBOARD
-============================================================*/
-
-#dashboard,
-#dashboard.own {
-  background-color: transparent;
-  border-color: #472E44 !important; /* needs to be like this for tablet + mobile skin */
-}
-
-#dashboard ul {
-  border-color: #472E44;
-}
-
-#dashboard a,
-#dashboard span {
-  color: #BD8A96;
-}
-
-#dashboard a:hover {
-  background: linear-gradient(to right, #872D55, #D44E8D);
-  color: #F7CFD2;
-}
-
-#dashboard .current {
-  background-color: #7F416E;
-  color: #F7CFD2;
-}
-
-#dashboard .secondary {
-  border-color: #55354E;
-  background-color: #302433;
-  box-shadow: none;
-}
-
-/*============================================================
->> 06 REGION: FOOTER
-============================================================*/
-
-#footer {
-  color: #BD8A96;
-  background: linear-gradient(to bottom, #262029, #1F1B21);
-  border-top: 1px solid #472E44;
-}
-
-/* headings for footer sections */
-#footer .heading {
-  color: #BD8A96;
-}
-
-/* links in footer */
-#footer a {
-  color: #E882A9;
-}
-
-/*============================================================
->> 07 INTERACTIONS
-============================================================*/
-
-/*========== nesting ==========*/
-
-fieldset,
-form dl,
-fieldset dl dl,
-fieldset fieldset,
-fieldset fieldset dl dl,
-fieldset fieldset fieldset,
-dd.hideme,
-form blockquote.userstuff,
-form.single fieldset {
-  background-color: #302433;
-  border-color: #472E44;
-}
-
-/*========== form rules ==========*/
-
-input,
-textarea,
-select {
-  background-color: #1F1B21;
-  border-color: #472E44;
-  color: #BD8A96;
-}
-
-input[type="text"]:focus,
-.search input[type="text"]:focus,
-input#user_password:focus,
-select:focus,
-textarea:focus {
-  background-color: #1F1B21;
-  border-color: #AD396F;
-  outline-color: #AD396F;
-}
-
-select:not(select[multiple]):hover {
-  background-color: #302433
-}
-
-option,
-.actions option,
-form code,
-form dd.required {
-  color: #BD8A96;
-}
-
-option:is(:checked, :hover, :focus, :active),
-option:checked:is(:checked, :hover, :focus, :active) {
-  background: #302433;
-  color: #BD8A96;
-}
-
-option:is(:hover, :focus, :active) {
-  background: linear-gradient(to right, #872D55, #D44E8D);
-  color: #F7CFD2;
-}
-
-form dt {
-  border-color: #472E44;
-}
-
-/* legends = little heading boxes on forms */
-form.verbose legend,
-.verbose form legend,
-form.single legend {
-  background-color: #302433;
-  border-color: #55354E;
-}
-
-/*========== INPUT ELEMENTS: checkboxes, radio buttons etc. ==========*/
-
-input[type="checkbox"],
-input[type="radio"],
-.filters [type="radio"],
-.filters [type="checkbox"],
-.actions input[type="checkbox"],
-label.action input[type="checkbox"] {
-  background-color: #262029;
-  border-color: #55354E;
-  color: #161417;
-}
-
-/* hover and focus for checkbox + radio buttons */
-input[type="checkbox"]:hover,
-input[type="checkbox"]:focus,
-input[type="radio"]:hover,
-input[type="radio"]:focus,
-.actions input[type="checkbox"]:hover,
-.actions input[type="checkbox"]:focus,
-label.action input[type="checkbox"]:hover,
-label.action input[type="checkbox"]:focus,
-.filters [type="checkbox"]:hover:not(:checked)::before,
-.filters [type="checkbox"]:focus:not(:checked)::before {
-  border-color: #E882A9;
-  color: #E882A9;
-}
-
-/* disabled checkbox + radio buttons */
-input[type="checkbox"]:disabled,
-input[type="radio"]:disabled {
-  background-color: #A94C8D !important;
-  border-color: #A94C8D !important;
-}
-
-/*===== CHECKBOXES =====*/
-
-/* checked checkboxes */
-input[type="checkbox"]:checked,
-.actions input[type="checkbox"]:checked,
-label.action input[type="checkbox"]:checked {
-  background-color: #AD396F;
-  border-color: #AD396F;
-  color: #F7CFD2;
-}
-
-/* checkmark symbol */
-input[type="checkbox"]::before,
-.filters [type="checkbox"]::before,
-.actions input[type="checkbox"]::before {
-  color: #161417;
-}
-
-/* filters checkbox symbols */
-.filters [type="checkbox"]:not(:checked)::before {
-  color: #55354E;
-}
-
-/* hover for checked checkboxes */
-input[type="checkbox"]:checked:hover,
-.actions input[type="checkbox"]:checked:hover,
-label.action input[type="checkbox"]:checked:hover {
-  background-color: #E882A9;
-  border-color: #E882A9;
-}
-
-/*===== RADIO BUTTONS =====*/
-
-input[type="radio"]:checked,
-.filters [type="radio"]:checked {
-  background-color: #AD396F;
-  border-color: #AD396F;
-  color: #262029
-}
-
-/*===== FILE UPLOAD BUTTON =====*/
-
-input[type="file"] {
-  background: #55354E;
-}
-
-/*========== WIDGET: LIVE VALIDATION ==========*/
-
-.LV_invalid {
-  background: #200811;
-  border-color: #CC376B;
-  color: #CC376B;
-}
-
-.LV_invalid_field,
-input.LV_invalid_field:is(:hover, :focus, :active),
-textarea.LV_invalid_field:is(:hover, :focus, :active) {
-  border-color: #CC376B;
-}
-
-.LV_invalid::before {
-  border-color: #CC376B transparent;
-}
-
-/*========== WIDGET: AUTO COMPLETE ==========*/
-
-/* style like a tooltip */
-.autocomplete div.dropdown ul {
-  background: #472E44;
-  border-color: #55354E;
-  color: #BD8A96;
-}
-
-.autocomplete .dropdown ul li:hover,
-.autocomplete .dropdown li.selected {
-  background: linear-gradient(to right, #872D55, #D44E8D);
-  color: #F7CFD2;
-}
-
-.required .autocomplete {
-  color: #BD8A96;
-}
-
-/* style like a tooltip */
-.autocomplete .notice {
-  background: #472E44;
-  border-color: #55354E;
-  color: #BD8A96;
-}
-
-/*========== WIDGET: SORTABLE LIST ==========*/
-
-.ui-sortable li,
-.ui-sortable li:hover {
-  background: #302433;
-  border-color: #472E44;
-}
-
-.ui-sortable li:hover:not(.ui-sortable ul.actions li:hover),
-.ui-draggable form {
-  box-shadow: none;
-}
-
-/*========== WIDGET: DATEPICKER, TIMEPICKER ==========*/
-
-#ui-datepicker-div {
-  background: #472E44;
-  border-color: #55354E;
-  box-shadow: none;
-}
-
-.ui-datepicker table {
-  background: #302433;
-}
-
-.ui-datepicker td {
-  border-color: #55354E;
-}
-
-.ui-datepicker tr:hover {
-  background: #472E44;
-}
-
-.ui-datepicker td:hover {
-  background: #262029
-}
-
-/*========== TOOLTIP ==========*/
-
-.search [role="tooltip"],
-.qtip-content,
-.stats dd::after /* stats hover text */ {
-  background: #472E44;
-  border-color: #55354E;
-  color: #BD8A96;
-}
-
-/*========== WIDGET: MODAL DIALOGS ==========*/
-/* = dialog box/popup window that is displayed on top of the page, when you click on a help symbol for example */
-
-#modal {
-  background: #262029;
-  border-color: #7F416E;
-}
-
-#modal .content {
-  border-color: #7F416E;
-}
-
-#modal.img a {
-  color: #472E44;
-}
-
-/*========== WIDGET: TOGGLED FORMS (SHOW/HIDE bookmark and collection) ==========*/
-
-.toggled form,
-.dynamic form {
-  background-color: #302433;
-  border-color: #55354E;
-  box-shadow: none;
-}
-
-/*========== INTERACTION: POST (work, chapter, comment, news, feedback, challenge etc) ==========*/
-
-.post .required .warnings,
-dd.required {
-  color: #BD8A96;
-}
-
-/*============================================================
->> 08 ACTIONS: BUTTONS
-============================================================*/
-
-.actions a,
-.actions a:is(:link, :visited),
-.actions label,
-.actions button,
-.action,
-.action:is(:link, :visited),
-.action a,
-.action a:is(:link, :visited),
-button,
-label.action,
-.actions input,
-input[type="submit"],
-.current,
-.announcement input[type="submit"],
-.announcement .action,
-input::file-selector-button {
-  background: #472E44;
-  border-color: #7F416E;
-  color: #BD8A96;
-  box-shadow: none;
-}
-
-/*========== subtypes and modes ==========*/
-
-/* hover + focus */
-.actions a:is(:hover, :focus),
-.actions input:is(:hover, :focus),
-.actions button:is(:hover, :focus),
-label.action:is(:hover, :focus),
-.action:is(:hover, :focus),
-.action a:is(:hover, :focus),
-input[type="submit"]:is(:hover, :focus),
-input::file-selector-button:is(:hover, :focus),
-.listbox > .heading .action a:is(:hover, :focus) {
-  background: linear-gradient(to right, #872D55, #D44E8D);
-  border-color: #D44E8D;
-  color: #F7CFD2;
-}
-
-/* currently selected */
-.actions a:active,
-.current,
-a.current,
-a.current:hover,
-a:link.current,
-.current a:visited {
-  background: #7F416E;
-  border-color: #A94C8D;
-  color: #F7CFD2;
-}
-
-.actions label.disabled {
-  background-color: #472E44;
-}
-
-.actions .disabled select,
-.actions .disabled select:hover {
-  background-color: transparent;
-  border-color: #A94C8D;
-  color: #BD8A96;
-}
-
-/* button to delete added tags (idk if it is anywhere else) */
-.delete a,
-span.delete,
-span.delete a {
-  color: #CC376B;
-}
-
-.delete a:hover {
-  color: #F7CFD2;
-}
-
-.secondary {
-  background-color: #302433; 
-  border-color: #55354E;
-  box-shadow: none;
-}
-
-/*============================================================
->> 09 ROLES AND STATES
-============================================================*/
-
-.own,
-li.blurb.own {
-  background-color: #302433;
-}
-
-.draft {
-  border-color: #7F416E;
-}
-
-span.claimed,
-.actions span.defaulted {
-  background-color: #472E44;
-  border-color: #7F416E;
-  color: #BD8A96;
-}
-
-.draggable,
-.droppable,
-span.requested {
-  color: #CC376B;
-}
-
-.nominations .unreviewed,
-.unreviewed.symbol {
-  background-color: #171111;
-  border-color: #D06864;
-  color: #D06864;
-}
-
-.replied,
-.nominations .approved,
-.approved.symbol {
-  background-color: #051C1A;
-  border-color: #1A9D93;
-  color: #1A9D93;
-}
-
-span.unread,
-.nominations .rejected,
-.rejected.symbol {
-  background-color: #200811;
-  border-color: #CC376B;
-  color: #CC376B;
-}
-
-span.offered {
-  color: #1A9D93;
-}
-
-span.offered.requested {
-  color: #D06864;
-}
-
-/*========== CONTEXTS ==========*/
-
-.comment span.unreviewed {
-  background-color: #472E44;
-}
-
-/*============================================================
->> 10 TYPES OF DATA, GROUPS OF DATA
-============================================================*/
-
-/*========== TYPE: TAGS ==========*/
-
-/* general formatting for the tags */
-/* excluding fandom tags, fav tags on splash page and heading tags in some places */
-a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
-.tags a[data-remote="true"],
-.unwrangled,
-.added.tag {
-  background-color: #A94C8D30;
-  border: none;
-  color: #BD8A96;
-}
-
-/* unwrangled tags */
-.unwrangled {
-  background-color: transparent;
-  border-color: #A94C8D;
-}
-
-/* fandom tags */
-h5.fandoms.heading a.tag,
-dd.fandom.tags a {
-  background-color: #9B37A4 !important;
-  color: #F7CFD2 !important;
-}
-
-/* warning tags */
-[class^=warning] a.tag {
-  background-color: #AD396F !important;
-  color: #F7CFD2 !important;
-}
-
-/* relationship tags */
-[class^=relationship] a.tag {
-  background-color: #694CB8 !important;
-  color: #F7CFD2 !important;
-}
-
-/* character tags */
-[class^=character] a.tag {
-  background-color: #7F416E !important;
-  color: #F7CFD2 !important;
-}
-
-/* tag hover */
-a.tag:not(.fandom.index.group a.tag, h2.heading a.tag):hover,
-.listbox .heading a.tag:visited:hover,
-.tags a[data-remote="true"]:hover {
-  background: linear-gradient(to right, #872D55, #D44E8D);
-  border: none;
-  color: #F7CFD2;
-}
-
-/* hover for tags that are not in little boxes */
-.fandom.index.group a.tag:hover,
-h2.heading a.tag:hover {
-  background-color: transparent;
-}
-
-/* the following code deals with added tags
-(and other added elements that look like added tags) */
-
-li.added:hover {
-  background: #CC376B;
-  color: #200811;
-}
-
-li.added:hover .delete a {
-  color: #200811;
-}
-
-li.added:hover .delete a:hover {
-  color: #F7CFD2;
-}
-
-/*===== definition lists (subscriptions, related works, edit multiple works) =====*/
-
-dl.index dt,
-dl.index dd {
-  background-color: #262029;
-  border-color: #55354E;
-}
-
-dl.index dt {
-  background: #302433;
-}
-
-/*========== TYPES ==========*/
-
-/* idk what this is */
-.actions .reindex a {
-  border-color: #CC376B;
-}
-
-/* color of the series dividers */
-span.series .divider {
-  color: #A94C8D;
-}
-
-/* make text visible again after hiding the comma */
-dd.series span {
-  color: #BD8A96;
-}
-
-.statistics .index li:nth-of-type(even) {
-  background-color: #302433;
-}
-
-/*============================================================
->> 11 GROUP: LISTBOX
-============================================================*/
-
-.listbox,
-fieldset fieldset.listbox,
-.tagset .media .listbox {
-  background-color: #302433;
-  border-color: #472E44;
-}
-
-.listbox > .heading,
-.listbox > .heading a:not(.action a, .actions a),
-.listbox > .heading a:visited:not(.action a:visited, .actions a:visited) {
-  color: #BD8A96;
-}
-
-.listbox .index {
-  background-color: #262029;
-  border-color: #472E44;
-}
-
-/* border at the bottom only in some cases */
-.listbox .index:has(+ .actions[role="navigation"], + h4, + .actions #expand-fandoms) {
-  border-color: #472E44;
-}
-
-/*============================================================
->> 12 GROUP: META
-============================================================*/
-
-dl.meta {
-  background-color: #302433;
-  border-color: #7F416E;
-}
-
-/*============================================================
->> 13 GROUP: BLURB
-============================================================*/
-
-li.blurb,
-.blurb .blurb,
-.region.own + .dashboard li.blurb.own {
-  background-color: #262029;
-}
-
-li.blurb,
-li.picture.blurb,
-.listbox li.blurb,
-.toggled.blurb {
-  border-color: #55354E;
-}
-
-/*========== blurb header ==========*/
-
-.blurb .header ul.required-tags,
-.picture.blurb:has(.icon) > .header,
-.mystery.blurb:has(.icon) > .header {
-  border-color: #55354E;
-}
-
-/* ========== various little mods ==========*/
-
-/* mod: blurbs on the manage collection items pages */
-.item dl.visibility {
-  background-color: #302433;
-}
-
-/*===== mod: BOOKMARK =====*/
-
-/* number of bookmarks */
-.bookmark .count a {
-  color: #BD8A96; /* this is technically not necessary because the symbol is hidden anyway */
-}
-
-.bookmark .count a:hover,
-.bookmark .count a:focus {
-  color: #AD396F; /* this is technically not necessary because the symbol is hidden anyway */
-}
-
-.bookmark .user {
-  border-color: #55354E;
-}
-
-/*===== mod: READING =====*/
-
-/* "last visited" */
-.reading h4.viewed {
-  background-color: #302433;
-  border-color: #55354E;
-}
-
-/*============================================================
->> 14 GROUP: PREFACE (= work prefaces)
-============================================================*/
-
-.chapter .preface,
-.preface h3 {
-  border-color: #472E44;
-}
-
-/*============================================================
-> 150 GROUP: COMMENTS
-============================================================*/
-
-/* comment body */
-li.comment:not(:has(.edit_comment)) {
-  border-color: #55354E;
-  background-color: #262029;
-}
-
-/*============================================================
->> 16 ZONE: SYSTEM
-============================================================*/
-
-/*========== ZONE: SYSTEM: SPLASH PAGE ==========*/
-
-/* headings */
-.splash > .module h3 {
-  border-color: #55354E;
-  color: #BD8A96;
-}
-
-/*===== module: "Find your favorites" =====*/
-
-/* color of the little arrows */
-.splash .browse li a::before {
-  color: #BD8A96;
-}
-
-/*===== module: favorite tags =====*/
-
-.splash .favorite a.tag {
-  color: #BD8A96;
-}
-
-.splash .favorite li:nth-of-type(odd) a.tag {
-  background-color: #302433;
-}
-
-/*===== module: news =====*/
-
-.splash .news li {
-  border-color: #472E44;
-}
-
-/*========== ZONE: SYSTEM: FAQS ==========*/
-
-.faq .categories h3 {
-  border-color: #472E44;
-}
-
-.faq .example,
-.guideline .example {
-  border-color: #6D8DD1;
-}
-
-/*========== ZONE: SYSTEM: TOS (Terms of Service) POPUP ==========*/
-
-.tos .userstuff nav.toc > details > summary {
-  border-color: #55354E;
-}
-
-#tos_prompt {
-  background: #262029;
-}
-
-#tos_prompt .heading {
-  background: #AD396F;
-  border-color: #E882A9;
-  color: #161417;
-}
-
-#tos_prompt [disabled] {
-  background: #55354E;
-}
-
-/*========== ZONE: SYSTEM: PROXY NOTICE ==========*/
-
-#proxy-notice {
-  background: #200811;
-  border-color: #CC376B;
-}
-
-/*============================================================
->> 17 ZONE: HOME
-============================================================*/
-
-.home .header h2 {
-  border-color: #472E44;
-}
-
-/* puts CSS code on skins pages in scrollable boxes */
-.skins.home .css.module blockquote {
-  background-color: #1F1B21;
-  border-color: #472E44;
-  color: #BD8A96;
-}
-
-/*============================================================
->> 18 ZONE: SEARCH/BROWSE
-============================================================*/
-
-/*========== INTERACTION: SEARCH ==========*/
-
-form.search input[type="text"] {
-  background-color: #1F1B21;
-  border-color: #472E44;
-  color: #BD8A96;
-}
-
-/*========== INTERACTION: FILTER ==========*/
-
-/* filters expander */
-.filters .expander,
-.filters .expanded .expander {
-  color: #BD8A96;
-}
-
-/* filters expander arrow */
-.filters .expander::before {
-  color: #7F416E;
-}
-
-/*===== javascript =====*/
-/* only relevant for mobile but it's better to keep it here */
-
-.javascript {
-  background: #302433;
-}
-
-/*============================================================
->> 19 ZONE: TAGS, TAGSETS, and TAG WRANGLING
-============================================================*/
-
-/* subtags */
-.tree.index ul {
-  border-color: #55354E;
-}
-
-/*============================================================
->> 21 USERSTUFF
-============================================================*/
-/* userstuff = displaying content inputted by a user into a textarea */
-
-/*========== headings ==========*/
-
-.userstuff h2 {
-  color: #BD8A96;
-}
-
-.userstuff h3 {
-  border-color: #55354E;
-}
-
-/*========== quotes and stresses ==========*/
-
-.userstuff blockquote,
-.splash .userstuff blockquote {
-  border-color: #472E44;
-}
-
-.userstuff hr {
-  border-color: #55354E;
-}
-
-/*============================================================
->> 22 SYSTEM MESSAGES
-============================================================*/
-
-/* colors for general notices */
-.notice,
-.comment_notice,
-.kudos_notice,
-ul.notes {
-  color: #6D8DD1;
-  background-color: #131A2A;
-  border-color: currentColor;
-}
-
-/* colors for warnings */
-.caution {
-  color: #D06864;
-  background-color: #171111;
-  border-color: currentColor;
-}
-
-/* colors for alerts/error messages */
-.error,
-div.error,
-.comment_error,
-.kudos_error,
-.alert.flash,
-.required.notice {
-  color: #CC376B;
-  background-color: #200811;
-  border-color: currentColor;
-}
-
-.required {
-  color: #CC376B;
-}
-
-/*========== ADMIN ANNOUNCEMENT BANNERS ==========*/
-
-.announcement {
-  background: #131A2A;
-  border-color: #FFFFFF25;
-}
-
-.announcement .userstuff {
-  color: #6D8DD1;
-}
-
-.announcement.event {
-  background: #200811;
-}
-
-.event .userstuff {
-  color: #CC376B;
-}
-
-.announcement.alert {
-  background: #171111;
-}
-
-.alert .userstuff {
-  color: #D06864;
-}
-
-/*========== thermometer JavaScript widget for fundraising drives ==========*/
-
-.announcement .thermometer .track {
-  background: #161417;
-}
-
-.announcement .thermometer .progress .amount {
-  color: #161417;
-}
-
-/* progress bar */
-.announcement .thermometer .track div.progress {
-  background-image: linear-gradient(to right, #051C1A -25%, #1A9D93 50%) !important;
-}
-
-/*========== SYMBOLS (mostly help button) ==========*/
-
-span.symbol {
-  color: #161417;
-}
-
-.question a:hover {
-  background-color: #AD396F;
-  border-color: #AD396F;
-  color: #302433;
-}
-
-span.question {
-  background-color: #7F416E;
-  border-color: #7F416E;
-}
-
-/*========== SYMBOLS KEY (help content) ==========*/
-
-#symbols-key dl {
-  border-color: #472E44;
-  background-color: #262029;
-}
-
-/*============================================================
->> Z1 REPLACE THE ICONS AND IMAGES
-============================================================*/ 
-
-/*========== ICONS FOR USERS, COLLECTIONS, TAGS etc. ==========*/
-
-/* border + background for uploaded icons */
-.icon img:not(img[src*="/images/skins/iconsets/default/"]) {
-  border: 1px solid #472E44;
-  background: #161417;
-}
-
-/* default user icon */
-img[src$="/images/skins/iconsets/default/icon_user.png"] {
-  background: #872D55; /* change background color here */
-  border: 1px solid #FFFFFF25; /* change border width and color here */
-}
-
-/* anon comment icon */
-.comment .icon .anonymous {
-  background-color: #55354E; /* change background color here */
-  border: 1px solid #FFFFFF25; /* change border width and color here */
-}
-
-/* guest comment icon */
-.comment .icon .visitor { 
-  background-color: #55354E; /* change background color here */
-  border: 1px solid #FFFFFF25; /* change border width and color here */
-}
-
-/* default collection icon */
-img[src$="/images/skins/iconsets/default/icon_collection.png"] {
-  background-image: linear-gradient(transparent, #D44E8D 45% 55%, transparent); /* subtle gradient */
-  background-color: #872D55; /* change background color here */
-  border: 1px solid #FFFFFF25; /* change border width and color here */
-}
-
-/* tag icons */
-.tagset .primary .icon, 
-.tag .primary .icon,
-.index .tagset .icon {
-  background: url("https://i.ibb.co/sdVVMJ9z/zerafina-icon-tag-02.png"), /* url of new icon */
-    linear-gradient(transparent, #D44E8D 45% 55%, transparent); /* subtle gradient */
-  background-size: cover;
-  background-color: #872D55; /* change background color here */
-  border: 1px solid #00000025; /* change border width and color here */
-}
-
-/* icon for unrevealed works */
-.index .mystery .icon {
-  background: url("https://i.ibb.co/1tbz1GYk/zerafina-icon-anon-01.png"), /* url of new icon */
-    linear-gradient(transparent, #D44E8D 45% 55%, transparent);
-  background-size: cover;
-  background-color: #872D55; /* change background color here */
-  border: 1px solid #472E44; /* change width and color of outer border here */
-  box-shadow: inset 0 0 0 3px #FFFFFF75; /* change width and color of inner border here */
-}
-
-/* admin icon => seen on news posts */
-.admin .primary .icon {
-  background-color: #872D55; /* change background color here */
-  border: 1px solid #FFFFFF25; /* change border width and color here */
-}
-
-/* default icon for skins */
-.skins .primary .icon:not(:has(a .icon)),
-.index .skins .icon:not(:has(a .icon)) {
-  background-color: #872D55; /* change icon color here */
-  border: 1px solid #FFFFFF25; /* change border width and color here */
-}
-
-/*========== CONTENT SYMBOLS ==========*/
-
-/* remove border */
-.blurb ul.required-tags li span,
-.bookmark .status span:not(.status .private),
-#symbols-key dl img,
-#bookmark-symbols-key img {
-  border: none;
-}
-
-/* empty symbols boxes (no rating, category or warning) */
-.required-tags .rating-notrated,
-.required-tags .category-none, 
-.required-tags .warning-no, 
-.status .count,
-img[src$="/images/skins/iconsets/default/rating-notrated.png"],
-img[src$="/images/skins/iconsets/default/category-none.png"],
-img[src$="/images/skins/iconsets/default/warning-no.png"] {
-  background: #472E44; /* change background color here */
-}
-
-/*===== Rating =====*/
-
-/* General Audiences */
-.required-tags .rating-general-audience,
-img[src$="/images/skins/iconsets/default/rating-general-audience.png"] { 
-  background-color: #5E73C8; /* change background color here */
-}
-
-/* Teen And Up Audiences */
-.required-tags .rating-teen,
-img[src$="/images/skins/iconsets/default/rating-teen.png"] { 
-  background-color: #694CB8; /* change background color here */
-}
-
-/* Mature */
-.required-tags .rating-mature,
-img[src$="/images/skins/iconsets/default/rating-mature.png"] { 
-  background-color: #9B37A4; /* change background color here */ 
-}
-
-/* Explicit */
-.required-tags .rating-explicit,
-img[src$="/images/skins/iconsets/default/rating-explicit.png"] { 
-  background-color: #AD396F; /* change background color here */
-}
-
-/*===== Relationships, pairings, orientations =====*/
-
-/* F/F */
-.required-tags .category-femslash, 
-img[src$="/images/skins/iconsets/default/category-femslash.png"] {
-  background-color: #AD396F; /* change background color here */
-}
-
-/* F/M */
-.required-tags .category-het, 
-img[src$="/images/skins/iconsets/default/category-het.png"] {
-  background-color: #9B37A4; /* change background color here */
-}
-
-/* Gen */
-.required-tags .category-gen,
-img[src$="/images/skins/iconsets/default/category-gen.png"] {
-  background-color: #5E73C8; /* change background color here */
-}
-
-/* M/M */
-.required-tags .category-slash,
-img[src$="/images/skins/iconsets/default/category-slash.png"] {
-  background-color: #694CB8; /* change background color here */
-}
-
-/* Multi */
-.required-tags .category-multi,
-img[src$="/images/skins/iconsets/default/category-multi.png"] {
-  background: conic-gradient(from 360deg, #9B37A4 0% 25%, #694CB8 25% 50%, #AD396F 50% 75%, #5E73C8 75% 100%); /* conic gradient with the colors of the relationship icons */
-}
-
-/* Other relationships */
-.required-tags .category-other, 
-img[src$="/images/skins/iconsets/default/category-other.png"] {
-  background: url("https://i.ibb.co/MD6r4zyH/zerafina-icon-category-other-01.png"), /* url of new icon */
-    linear-gradient(to left top, #5E73C8, #694CB8, #9B37A4, #AD396F); /* gradient with the colors of the relationship icons */
-}
-
-/*===== Content warnings =====*/
-
-/* Author chose not to warn */
-.required-tags .warning-choosenotto, 
-img[src$="/images/skins/iconsets/default/warning-choosenotto.png"] {
-  background-color: #9B37A4; /* change background color here */ 
-}
-
-/* Warnings apply */
-.required-tags .warning-yes,
-img[src$="/images/skins/iconsets/default/warning-yes.png"] { 
-  background-color: #AD396F; /* change background color here */
-}
-
-/* External work */
-.required-tags .external-work,
-img[src$="/images/skins/iconsets/default/warning-external-work.png"] {
-  background-color: #694CB8; /* change background color here */
-}
-
-/*===== Completion status =====*/
-
-/* uncomplete/unfulfilled */
-.required-tags .complete-no, 
-img[src$="/images/skins/iconsets/default/complete-no.png"] { 
-  background-color: #AD396F; /* change background color here */ 
-}
-
-/* completed/filled */
-.required-tags .complete-yes,
-img[src$="/images/skins/iconsets/default/complete-yes.png"] { 
-  background-color: #5E73C8; /* change background color here */
-}
-
-/*===== Bookmark symbols =====*/
-
-/* Rec */
-.status .rec,
-img[src$="/images/skins/iconsets/default/bookmark-rec.png"] { 
-  background-color: #AD396F; /* change background color here */
-}
-
-.bookmark .blurb p.status a:not(.short a):has(.rec)::before {
-  border-inline-color: #AD396F; /* ribbon color */
-}
-
-/* Public bookmark */
-.status .public, 
-img[src$="/images/skins/iconsets/default/bookmark-public.png"] { 
-  background-color: #694CB8; /* change background color here */
-}
-
-.bookmark .blurb p.status a:not(.short a):has(.public)::before {
-  border-inline-color: #694CB8; /* ribbon color */
-}
-
-/* Private bookmark */
-.status .private .text, 
-img[src$="/images/skins/iconsets/default/bookmark-private.png"] {
-  background-color: #9B37A4; /* change background color here */
-}
-
-.bookmark .blurb p.status a:not(.short a):has(.private)::before {
-  border-inline-color: #9B37A4; /* ribbon color */
-}
-
-/* Hidden bookmark */
-.status .hidden, 
-img[src$="/images/skins/iconsets/default/bookmark-hidden.png"] {
-  background-color: #55354E; /* change background color here */
-}
-
-.bookmark .blurb p.status a:not(.short a):has(.hidden)::before {
-  border-inline-color: #55354E; /* ribbon color */
-}
-
-/*========== KUDOS AND RSS FEED SYMBOLS ==========*/
-
-/* new rss symbol */
-.actions li a.rss::before {
-  background-color: #D44E8D; /* background color */
-}
-
-/* new kudos symbol */
-/* adding this with a pseudo element is necessary because otherwise the font color would also change when you use filters */
-div:has(> p.kudos)::before {
-  filter: invert(31%) sepia(15%) saturate(3919%) hue-rotate(289deg) brightness(96%) contrast(91%); /* adjust filter values to change color */
-}
-
-/*========== LOCK SYMBOL for restricted works ==========*/
-
-img[src$="/images/lockblue.png"] {
-  filter: invert(65%) sepia(17%) saturate(1064%) hue-rotate(289deg) brightness(96%) contrast(85%); /* adjust filter values to change color */
-}
-
-/*============================================================
->> Z2 STATS ICONS WITH HOVER TEXT
-============================================================*/
-
-/*========== STATS ICONS ==========*/
-
-.stats:not(.skins .stats) dd::before,
-dl.statistics dt::before {
-  filter: invert(34%) sepia(18%) saturate(1308%) hue-rotate(264deg) brightness(89%) contrast(96%); /* changes the color of the icons */
-}
-
-/*============================================================
->> Z3 MISCELLANEOUS
-============================================================*/
-
-* {
-  scrollbar-color: #7F416E #472E44;
-}
-
-/* text selection */
-*::selection {
-  background-color: #AD396F;
-  color: #F7CFD2;
-}
-
-/*========== stat chart on statistics page ==========*/
-/* ISSUE: filters here do not work on tablet/mobile for me */
-
-/* make chart background transparent */
-rect {
-  filter: opacity(0)
-}
-
-/* change color of chart */
-#stat_chart g > rect {
-  filter: invert(26%) sepia(35%) saturate(2460%) hue-rotate(280deg) brightness(60%) contrast(94%); /* adjust filter values to change color */
-}
-
-/* change chart text color */
-g text {
-  filter: invert(81%) sepia(6%) saturate(1465%) hue-rotate(307deg) brightness(94%) contrast(103%);
-}
-
-/*========== rich text editor ==========*/
-/* ISSUE: haven't found a way to change the font (works when applying skin directly in Firefox browser but not after saving it to AO3) :/ */
-/* changing colors also doesn't work on mobile for me but filters do work */
-
-.tox {
-  filter: invert(100%) saturate(200%) hue-rotate(195deg) brightness(70%) contrast(80%);
-}
-
-/* border colors */
-.tox,
-.tox * {
-  border-color: unset !important;
 }

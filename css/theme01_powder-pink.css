@@ -1,0 +1,191 @@
+/*============================================================
+
+                           ~ neos ~
+                     Theme: Powder & Pink
+
+==============================================================
+GLOBAL VARIABLES
+==============================================================
+
+Color palettes used for main backgrounds, borders, text and interaction elements:
+
+- Pink + cream:      https://coolors.co/ffffff-fd8abc-ff66a8-d44e8b-a8366e-6c2d52-361628
+- Gray/darker cream: https://coolors.co/fcfcfc-f7f6f5-edeaea-d8d2d2-c8c0c0-a29696-897979
+
+*/
+
+:root {
+
+
+/*>========== UI PARAMETERS ==========<*/
+
+  /* space on left/right side of screen */
+  --margins-header:      1rem;                     /* header on desktop */
+  --margins-main:        5%;                       /* site contents on desktop */
+  --margins-narrow:      2.5%;                     /* site contents and header on tablet/mobile */
+
+  /* border-radius (= roundness of corners) */
+  --radius-small:        0.25rem;                  /* smaller elements: list elements, input elements etc. */
+  --radius-mid:          0.25rem;                  /* midsizde elements: dropdown menus, system messages etc. */
+  --radius-big:          0.35rem;                  /* bigger elements: blurbs, forms, comments, textareas etc. */
+  --radius-alt:          0.25rem;                  /* header search box, buttons, tags */
+
+  /* icon border-radius */
+  --icon-content-radius: 0.25rem;                  /* content and bookmark icon */
+  --icon-primary-radius: 99999px;                  /* primary and comment icon */
+  --icon-index-radius:   0.25rem;                  /* index icon */
+
+
+/*>========== MAIN BACKGROUND COLORS ==========<*/
+
+  --bg1:                 #F7F6F5;                  /* main background, footer etc. */
+  --bg2:                 #FCFCFC;                  /* header */
+  --bg3:                 #EDEAEA;                  /* dashboard */
+  --bg4:                 var(--bg3);               /* forms, modal dialogs, javascript context etc. */
+  --bg5:                 var(--bg2);               /* content boxes (blurbs, comments etc.), meta box */
+  --bg6:                 var(--bg5);               /* dropdown and secondary menus, tooltips etc. */
+  --bg7:                 var(--bg3);               /* own blurbs, listbox, some even/odd list items etc. */
+
+
+/*>========== MAIN BORDERS ==========<*/
+
+  /* colors */
+  --border1:             #D8D2D2;                  /* dashboard, footer, news, blockquote, scrollbar track etc. */
+  --border2:             #C8C0C0;                  /* header, tables, forms, input elements, listbox etc. */
+  --border3:             var(--border2);           /* content boxes (blurbs, comments etc.), dropdown and secondary menus */
+  --border4:             #A29696;                  /* meta boxes, tooltips, scrollbar thumb etc. */
+
+  /* width */
+  --border-width:        1px;                      /* for almost all borders (experimental - changing this might cause some weirdness) */
+
+
+/*>========== SHADOWS ==========<*/
+/* replace values with "none" (without quotation marks) to remove shadows */
+
+  --shadow:              0 0.25em 0.5em #89797925; /* secondary elements, dropdowns, tooltips etc. */
+  --shadow-header:       0 0.1em 0.5em #89797925;
+  --shadow-buttons:      0 1.5px 0px 0px #89797925;
+
+
+/*>========== MAIN TEXT ==========<*/
+
+  /* text size */
+  --txt-size-main:       100%;                     /* main text size (bigger than 130% causes some issues, but is still mostly functional) */
+  --txt-size-work:       110%;                     /* work text size */
+
+  /* text colors */
+  --txt-header:          #6C2D52;                  /* header text */
+  --txt-header-hgl:      var(--link-hgl);          /* selected header dropdown toggle and link items */
+  --txt-header-hgl-h1:   linear-gradient(125deg, var(--txt-header-hgl), var(--txt-main) 120%); /* gradient for selected AO3 header title */
+  --txt-main:            var(--txt-header);        /* main body text */
+  --txt-alt1:            #361628;                  /* announcements */
+  --txt-alt2:            #FFFFFF;                  /* checkbox checkmark, help symbol, event announcements etc. */
+
+  /* links */
+  --link:                #D44E8B;                  /* link color */
+  --link-hgl:            #FF66A8;                  /* color for hovered/focused links */
+  --link-visited:        #897979;                  /* color for already visited links + header search bar icon */
+  --link-underline:      1px solid transparent;    /* link underline => delete "transparent" to make link underlines visible */
+
+
+/*>========== INTERACTION COLORS ==========<*/
+/* = buttons, input and select elements */
+
+  /* button colors */
+  --int-btn-bg:          var(--bg5);               /* background */
+  --int-btn-border:      var(--border4);           /* border */
+  --int-btn-txt:         var(--txt-main);          /* text */
+  --int-btn-hgl-bg:      linear-gradient(to right, var(--link), #FD8ABC); /* background for hovered/focused buttons */
+  --int-btn-hgl-txt:     var(--txt-alt2);          /* text for hovered/focused buttons */                                                                        
+  
+  --int-bg:              var(--txt-alt2);          /* background for input and select elements */
+
+  --int-current-bg:      var(--border1);           /* background for currently active elements */
+  --int-current-txt:     var(--txt-main);          /* text for currently active elements */
+  --int-disabled-bg:     var(--border1);           /* background for disabled buttons and checkboxes */
+  --int-checked:         #A8366E;                  /* checked checkboxes and radio buttons */
+  
+  --int-hgl:             var(--link-hgl);          /* highlight for hovered/focused/selected elements */
+  --int-hgl-bg:          var(--int-btn-hgl-bg);    /* background for hovered/focused list items */
+  --int-hgl-txt:         var(--txt-alt2);          /* text for hovered/focused list items and for collection header */
+
+
+/*>========== ICON COLORS ==========<*/
+/* palette: https://coolors.co/4cb7c3-5e96d6-b268cf-ea5a9a */
+
+  /* bookmark and content icons (mostly) */  
+  --icon1:               #4CB7C3;                  /* gen, complete, public bookmark */
+  --icon2:               #5E96D6;                  /* teen */
+  --icon3:               var(--icon2);             /* m/m, external work */
+  --icon4:               #B268CF;                  /* mature, chose not to warn, rss feed */
+  --icon5:               var(--icon4);             /* f/m */
+  --icon6:               #EA5A9A;                  /* explicit, f/f, warning, incomplete */
+  --icon7:               var(--icon4);             /* private bookmark */
+  --icon8:               var(--link-visited);      /* hidden bookmark */
+  --icon9:               var(--icon6);             /* rec bookmark */
+
+  /* other icons */
+  --icon-bg:             var(--int-bg);            /* background for empty icon box or uploaded icon with transparent background */
+  --icon-id:             var(--link);              /* user, collection, skin, tag, unrevealed work, admin icon + collection header background */
+  --icon-anon:           var(--border4);           /* guest, anonymous user */
+
+  /* icon borders */
+  --icon-border1:        #00000020;                /* border for most icons */
+  --icon-border2:        var(--border2);           /* uploaded, default user and mystery icon + empty symbols box */
+
+
+/*>========== TAG COLORS ==========<*/
+/* palette: https://coolors.co/f3cedf-ebd8f3-dbeaf0 */
+
+  /* background */
+  --tag-default-bg:      #89797925;
+  --tag-fandom-bg:       var(--tag-default-bg);
+  --tag-warning-bg:      #F3CEDF;
+  --tag-ship-bg:         #EBD8F3;
+  --tag-character-bg:    #DBEAF0;
+  --tag-freeform-bg:     var(--tag-default-bg);
+
+  /* text */
+  --tag-default-txt:     var(--txt-alt1);
+  --tag-fandom-txt:      var(--txt-alt1);
+  --tag-warning-txt:     var(--txt-alt1);
+  --tag-ship-txt:        var(--txt-alt1);
+  --tag-character-txt:   var(--txt-alt1);
+  --tag-freeform-txt:    var(--txt-alt1);
+
+  /* border */
+  --tag-border:          var(--tag-default-bg);
+
+  /* hover and focus */
+  --tag-hgl-bg:          var(--int-btn-hgl-bg);    /* background */
+  --tag-hgl-txt:         var(--txt-alt2);          /* text */
+
+
+/*>========== COLORS FOR ROLES AND STATES + SYSTEM MESSAGES ==========<*/
+/* palette: https://coolors.co/deeaf7-2e6cb2-cffff2-008f85-fff7e5-856114-fcdce2-c72c53 */
+
+  /* background */
+  --notice-bg:           #DEEAF7; 
+  --success-bg:          #CFFFF2;
+  --caution-bg:          #FFF7E5;
+  --alert-bg:            #FCDCE2;
+
+  /* text (and borders) */
+  --notice-txt:          #2E6CB2; 
+  --success-txt:         #008F85;
+  --caution-txt:         #A77916;
+  --alert-txt:           #C72C53;
+
+
+/*>========== FILTERS ==========<*/
+/* the colors of the following elements can only be changed using filters; adjust filter values to change colors */
+
+  --header-icon:         brightness(0) saturate(100%) invert(20%) sepia(10%) saturate(5089%) hue-rotate(278deg) brightness(92%) contrast(86%);
+  --header-icon-hgl:     brightness(0) saturate(100%) invert(57%) sepia(47%) saturate(1755%) hue-rotate(299deg) brightness(100%) contrast(105%); /* hover/focus */
+  --kudos-icon:          brightness(0) saturate(100%) invert(48%) sepia(53%) saturate(3274%) hue-rotate(304deg) brightness(89%) contrast(85%);
+  --lock-icon:           var(--header-icon);
+  --stats-icon:          brightness(0) saturate(100%) invert(89%) sepia(5%) saturate(274%) hue-rotate(314deg) brightness(82%) contrast(87%);
+  --stat-chart:          saturate(150%) hue-rotate(325deg) contrast(98%) sepia(3%);
+  --rich-txt-editor:     none;
+
+}

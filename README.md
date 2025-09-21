@@ -11,10 +11,15 @@ Visit the [AO3 work](https://archiveofourown.org/works/65849527) for instruction
 - Color-coded tags
 - Improved tablet and mobile compatibility
 
-## Available color schemes/themes
+## Available themes
 
-| Powder & Pink (base)  | Dusky dark purple | Tumblr blue |
-| ------------- | ------------- |------------- |
-| ![Screenshot of the AO3 homepage with the powder & pink skin applied.](/../main/images/neos_preview_splash_base_powder-pink.png) | ![Screenshot of the AO3 homepage with the dusky dark purple skin applied.](/../main/images/neos_preview_splash_dusky-dark-purple.png)  | ![Screenshot of the AO3 homepage with the tumblr blue skin applied.](/../main/images/neos_preview_splash_tumblr-blue.png)  |
+| Powder & Pink (base)  | Dusky Dark Purple |
+| ------------- | ------------- |
+| ![User bookmarks page with the Powder & Pink theme](/../main/images/preview_desktop_bookmarks_powder-pink.png) | ![User bookmarks page with the Dusky Dark Purple theme](/../main/images/preview_desktop_bookmarks_dusky-dark-purple.png) |
+
+| Tumblr Blue | Black & White |
+| ------------- | ------------- |
+| ![User bookmarks page with the Tumblr Blue theme](/../main/images/preview_desktop_bookmarks_tumblr-blue.png) | ![User bookmarks page with the Black & White theme](/../main/images/preview_desktop_bookmarks_black-white.png) |
+
 
 And more may follow!

@@ -1,11 +1,9 @@
 /*============================================================
 
-
                            ~ neos ~
 
             a site skin for the Archive of Our Own
                         by ZerafinaCSS
-
 
 ==============================================================
 LINKS & CREDITS
@@ -28,14 +26,15 @@ FIND ME ON:
 - AO3:                 https://archiveofourown.org/users/Zerafina/pseuds/ZerafinaCSS
 - Tumblr:              https://www.tumblr.com/zerafinacss
 
-
 ==============================================================
 DIRECTORY
 ==============================================================
 
->> A1 COLOR GUIDE
->> A2 BASIC LAYOUT SETTINGS ETC.
->> A3 FONTS
+Numeric      = Skin structure from the "Archive 2.0 skin"
+Alphanumeric = Additions by ZerafinaCSS
+
+>> A1 BASIC LAYOUT SETTINGS ETC.
+>> A2 FONTS
 >> 02 ELEMENTS
 >> 03 REGION: HEADER
 >> 04 REGION: DASHBOARD
@@ -44,7 +43,7 @@ DIRECTORY
 >> 07 INTERACTIONS
 >> 08 ACTIONS: BUTTONS
 >> 09 ROLES AND STATES
->> 10 TYPES OF DATA, GROUPS OF DATA
+>> 10 TYPES OF DATA, GROUPS OF DATA --> Tags are here
 >> 11 GROUP: LISTBOX
 >> 12 GROUP: META
 >> 13 GROUP: BLURB
@@ -53,101 +52,41 @@ DIRECTORY
 >> 16 ZONE: SYSTEM
 >> 17 ZONE: HOME
 >> 18 ZONE: SEARCH/BROWSE
->> 19 ZONE: TAGS, TAGSETS, and TAG WRANGLING
+>> 19 ZONE: TAG PAGES, TAGSETS, and TAG WRANGLING
 >> 21 USERSTUFF
 >> 22 SYSTEM MESSAGES
 >> Z1 REPLACE THE ICONS AND IMAGES
 >> Z2 STATS ICONS WITH HOVER TEXT
 >> Z3 MISCELLANEOUS
 
-
-==============================================================
->> A1 COLOR GUIDE: Powder & Pink Base Theme
-==============================================================
-
-1) Pink + cream: https://coolors.co/ffffff-f9d2e2-fd8abc-ff66a8-d44e8b-a8366e-6c2d52-361628
-
-    color1:           #FFFFFF => white elements
-    color2:           #F9D2E2
-    color3:           #FD8ABC
-    color4:           #FF66A8
-    color5:           #D44E8B
-    color6:           #A8366E
-    color7:           #6C2D52 => main font color, replaces #111, #2A2A2A
-    color8:           #361628 => darker font color
-
-2) Grey/darker cream: https://coolors.co/fcfcfc-f7f6f5-edeaea-d8d2d2-bbb2b2-a29696-897979
-
-   Background elements (mainly):
-
-    background1:      #FCFCFC
-    background2:      #F7F6F5
-    background3:      #EDEAEA
-
-   Borders + some other elements:
-
-    accent1:          #D8D2D2
-    accent2:          #BBB2B2
-    accent3:          #A29696
-    accent4:          #897979
-    transparent:      #89797925 => accent4 with transparency
-
-3) Roles and states + system messages: https://coolors.co/deeaf7-2e6cb2-cffff2-008f85-fff7e5-856114-fcdce2-c72c53
-
-    system1:          #DEEAF7
-    system2:          #2E6CB2
-    system3:          #CFFFF2
-    system4:          #008F85
-    system5:          #FFF7E5
-    system6:          #A77916
-    system7:          #FCDCE2
-    system8:          #C72C53
-
-4) Icon colors: https://coolors.co/4cb7c3-5e96d6-b268cf-d44e8b
-
-    icon1:            #4CB7C3
-    icon2:            #5E96D6
-    icon3:            #B268CF
-    icon4:            #EA5A9A
-
-5) Tag colors: https://coolors.co/f3cedf-ebd8f3-dbeaf0
-
-    tag-warning:      #F3CEDF;
-    tag-relationship: #EBD8F3;
-    tag-character:    #DBEAF0;
-
-
 /*============================================================
->> A2 BASIC LAYOUT SETTINGS ETC.
+>> A1 BASIC LAYOUT SETTINGS ETC.
 ============================================================*/
+
+/* main text */
+body {
+  font-size: var(--txt-size-main); /* main font size */
+  color: var(--txt-main); /* main font color */
+}
 
 /* this wraps everything (header, inner, footer) */
 #outer {
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  background-color: #F7F6F5;
+    flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg1);
 }
 
 /* this is where the content is */
 #inner {
-  min-height: 70vh;
-  display: flex;
   flex-grow: 1; /* this makes the footer stay at the bottom of the screen */
-  flex-flow: row;
-  justify-content: flex-start;
+  display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+  min-height: 70vh;
 }
 
-/* the main font color is set here */
-body,
-.toggled form,
-.dynamic form,
-.secondary,
-.dropdown {
-  color: #6C2D52; /* main font color */
-}
-
-/* this gets rid of some spaces/gaps I don't like */
+/* remove some spaces/gaps I don't like */
 .blurb li,
 .meta ul li {
   padding-left: 0;
@@ -159,6 +98,7 @@ a:focus,
 a:focus img,
 button:focus,
 #footer a:focus,
+#footer button:focus,
 .submit input:focus,
 .filters input:focus + .indicator + span,
 .filters .expander:focus {
@@ -166,7 +106,7 @@ button:focus,
 }
 
 /*============================================================
->> A3 FONTS
+>> A2 FONTS
 ============================================================*/
 
 /* main font family */
@@ -178,7 +118,6 @@ textarea,
 .secondary,
 .dropdown,
 blockquote,
-pre,
 .prompt .blurb h6,
 .bookmark .user .meta,
 a.work,
@@ -188,7 +127,7 @@ span.symbol,
 .heading span.actions,
 button,
 span.unread,
-.replied,
+span.replied,
 span.claimed,
 .actions span.defaulted {
   font-family: Verdana, Helvetica, "Trebuchet MS", "Lucida Sans", Arial, sans-serif, "GNU Unifont";
@@ -203,6 +142,8 @@ h5,
 h6,
 .heading {
   font-family: Verdana, Helvetica, "Trebuchet MS", "Lucida Sans", Arial, sans-serif, "GNU Unifont";
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 /* "code" font family */
@@ -216,8 +157,8 @@ textarea#skin_css,
 .css.module blockquote pre,
 .splash .news .meta,
 .datetime {
-  font-family: Consolas, Monaco, Courier, monospace;
   font-size: 0.9em;
+  font-family: Consolas, Monaco, Courier, monospace;
 }
 
 /*============================================================
@@ -225,40 +166,41 @@ textarea#skin_css,
 ============================================================*/
 /* see "Archive: (2) elements skin" by AO3 */
 
-/*========== links ==========*/
+/*>========== links ==========<*/
 
 a,
 a:link,
 a.work,
 .blurb h4 a:link,
+div.preface .byline a,
 .filters p a {
-  color: #D44E8B; /* link color */
-  border-bottom: none; /* remove the link underline */
+  border-bottom: var(--link-underline); /* hide the link underline */
+  color: var(--link); /* link color */
 }
 
-a:hover,
-a:visited:hover,
-.blurb .heading a:hover,
-.blurb .heading a:visited:hover,
-div.preface .byline a:hover,
-.fandom.index.group a.tag:hover,
-h2.heading a.tag:hover,
-.filters p a:hover {
-  color: #D44E8B; /* link hover color */
-  border-bottom: 1px solid; /* underline for link hover */
+a:is(:hover, :focus),
+a:visited:is(:hover, :focus),
+.blurb .heading a:is(:hover, :focus),
+.blurb .heading a:visited:is(:hover, :focus),
+div.preface .byline a:is(:hover, :focus),
+.fandom.index.group a.tag:is(:hover, :focus),
+h2.heading a.tag:is(:hover, :focus),
+.filters p a:is(:hover, :focus) {
+  border-bottom-color: inherit; /* make link underline visible on hover */
+  color: var(--link-hgl); /* link hover color */
 }
 
 a:visited,
 .blurb .heading a:visited {
-  color: #897979; /* different color for visited links */
+  color: var(--link-visited); /* different color for visited links */
 }
 
 /* remove border on images that are links */
 a img {
-  border: 0;
+  border: none;
 }
 
-/*========== text ==========*/
+/*>========== text ==========<*/
 
 /* h2 headings */
 h2 {
@@ -273,7 +215,7 @@ h2.heading:has(+ .navigation.actions.module) {
 
 /* horizontal rule/line to separate content */
 hr {
-  border: 0;
+  border: none;
   border-bottom: 3px double;
 }
 
@@ -281,39 +223,39 @@ hr {
 em,
 cite,
 i {
-  font-style: italic; /* this is oblique in default skin but I want true italics */
+  font-style: italic; /* this is oblique in the default skin but I want true italics */
 }
 
-/*========== tables ==========*/
+/*>========== tables ==========<*/
 
 table {
-  background-color: #EDEAEA;
-  border: 1px solid #BBB2B2;
+  border: var(--border-width) solid var(--border2);
+  background-color: var(--bg4);
 }
 
 thead,
 tfoot,
 tbody tr {
-  border-color: #BBB2B2;
+  border-color: var(--border2);
 }
 
 thead th {
-  background-color: #F7F6F5;
-  border-color: #BBB2B2;
+  border-color: var(--border2);
+  background-color: var(--bg1);
 }
 
 thead td {
-  background-color: #D8D2D2;
-  border-color: #EDEAEA;
+  border-color: var(--bg4);
+  background-color: var(--border1);
 }
 
 tbody th {
-  background-color: #F7F6F5;
-  border-color: #BBB2B2;
+  border-color: var(--border2);
+  background-color: var(--bg1);
 }
 
 tfoot td {
-  border-color: #A29696;
+  border-color: var(--border4);
 }
 
 td {
@@ -322,7 +264,8 @@ td {
 
 tr:hover,
 col.name {
-  background-color: #FCFCFC;
+  border-color: var(--border2);
+  background: var(--bg5);
 }
 
 /*============================================================
@@ -331,21 +274,22 @@ col.name {
 /* see "Archive 2.0: (3) region header skin" by AO3 */
 
 /* this is the header */
-#header {
+#header,
+#tos_prompt .heading {
+  display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: center;
+    column-gap: 1.25em;
+  position: unset;
+  z-index: 100;
+  box-sizing: border-box;
   width: 100%;
   max-width: 100%;
   margin: 0;
-  position: unset;
-  display: flex;
-  align-items: flex-start;
-  align-content: center;
-  flex-wrap: wrap;
-  column-gap: 1.25em;
-  box-sizing: border-box;
-  z-index: 100;
-  background-color: #FCFCFC;
-  border-bottom: 1px solid #BBB2B2;
-  box-shadow: 0 0.1em 0.5em #89797925;
+  border-bottom: var(--border-width) solid var(--border2);
+  box-shadow: var(--shadow-header);
+  background: var(--bg2);
 }
 
 /* header elements */
@@ -354,43 +298,43 @@ col.name {
 #header > nav .user,
 #header > nav .dropdown-toggle,
 #header li.search {
-  min-height: 38px; /* CHANGE HEIGHT OF HEADER HERE */
   display: flex;
-  align-items: center;
+    align-items: center;
   box-sizing: border-box;
+  min-height: 38px; /* CHANGE HEIGHT OF HEADER HERE */
 }
 
-/* this removes the space before the header title */
+/* remove space before header title */
 #header div.clear {
   display: none;
 }
 
-/*========== logo and title/heading ==========*/
+/*>========== logo and title/heading ==========<*/
 
 #header .heading {
-  margin-left: 14px;
-  padding: 0;
   order: 1;
+  margin-left: var(--margins-header);
+  padding: 0;
 }
 
-/* reset heading styling */
+/* reset heading */
 #header .heading a {
-  line-height: 1;
   font-size: 1em;
+  line-height: 1;
 }
 
-/* new title/heading */
+/* new AO3 title/heading */
 #header .heading a::before {
-  content: "AO3";
   font-weight: 700; /* make title bold */
   font-size: 1.15em;
-  color: #6C2D52; /* change title/heading color here */
+  color: var(--txt-header); /* change title/heading color here */
+  content: "AO3";
 }
 
-/* gradient text on hover etc. */
-#header .heading a:is(:hover, :focus, :active)::before {
-  background-clip: text;
-  background-image: linear-gradient(125deg, #FF66A8, #A8366E);
+/* hovered and focused title */
+#header .heading a:is(:hover, :focus)::before {
+  -webkit-background-clip: text;
+  background-image: var(--txt-header-hgl-h1);
   color: transparent;
 }
 
@@ -399,55 +343,49 @@ col.name {
   display: none;
 }
 
-/*========== header dropdown menus ==========*/
+/*>========== header dropdown menus ==========<*/
 
 #header .dropdown-menu,
 #small_login {
+  z-index: 5;
+  box-sizing: border-box;
   width: unset;
   min-width: 15em;
   padding: 0.25em 0;
-  border: 1px solid;
-  border-radius: 0.25rem;
+  border: 1px solid var(--border3);
+  border-radius: var(--radius-mid);
+  box-shadow: var(--shadow);
+  background: var(--bg6);
   font-size: 0.95em;
-  box-sizing: border-box;
-  box-shadow: 0 0.25em 0.5em #89797925;
-  z-index: 5;
 }
 
-/* add arrow on top of dropdown menu */
-#header .primary:not(:has(.open)) li.dropdown:hover::before,
-#header #greeting:not(:has(.open)) li.dropdown:hover::before,
+/* add arrow on top of open dropdown menu */
+#header nav:not(:has(.open)) li.dropdown:hover::before,
 #header .open::before {
-  content: "";
   position: absolute;
+  z-index: 6;
   width: 0; 
   height: 0; 
   border-right: 8px solid transparent !important;
+  border-bottom: 8px solid var(--bg6);
   border-left: 8px solid transparent !important;
-  border-bottom: 8px solid #FCFCFC;
-  filter: drop-shadow(0 -1px #A29696);
+  color: var(--border3); /* this is the border/drop-shadow color; I have to do it this way because otherwise AO3 won't let me use custom properties here */
   transform: translate(-50%, 31px);
-  z-index: 6;
+  filter: drop-shadow(0 -1px);
+  content: "";
 }
 
 /* arrow placement for greeting/user menu */
 #greeting .dropdown-menu {
-  transform: translateX(1.5em);
   z-index: 7;
+  transform: translateX(1.5em);
 }
 
 /* cont. arrow placement for greeting/user menu */
 #header #greeting:not(:has(.open)) li.dropdown:hover::before,
 #header #greeting .open::before {
-  transform: translate(5%, 31px);
   z-index: 8;
-}
-
-/* dropdown menu */
-#header .navigation .dropdown .menu {
-  background-image: none;
-  background-color: #FCFCFC;
-  border-color: #A29696;
+  transform: translate(5%, 31px);
 }
 
 /* dropdown menu list items */
@@ -459,42 +397,45 @@ col.name {
 
 /* dropdown menu list item links */
 #header .navigation .dropdown:is(*) .menu li a {
-  max-width: unset;
-  background-color: transparent;
   display: block;
+  max-width: unset;
   padding: 0.5em;
-  color: #6C2D52;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-small);
+  background-color: transparent;
+  color: var(--txt-main);
 }
 
 /* dropdown menu list item links hover etc. */
-#header .navigation .dropdown .menu li a:is(:hover, :focus, :active) {
-  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
-  color: #FFFFFF;
+#header .navigation .dropdown .menu li a:is(:hover, :focus) {
+  background: var(--int-hgl-bg);
+  color: var(--int-hgl-txt);
 }
 
-/*========== header navigation / dropdown toggles ==========*/
+/*>========== header navigation / dropdown toggles ==========<*/
 
 /* header navigation */
-#header .navigation a {
+#header .navigation a,
+#header .user a {
   background: transparent;
-  color: #6C2D52;
+  color: var(--txt-header);
 }
 
-/* currently selected dropdown toggle */
-#header .navigation .dropdown:is(.open, :hover, :focus, :active) > a {
+/* dropdown toggle => hovered/focused/active */
+#header .navigation.actions .dropdown:is(.open, :hover, :focus, :active) > a,
+#header .navigation.actions > .dropdown a:is(:hover, :focus, :active),
+#header .user a:is(:hover, :focus, :active) {
   background: transparent;
-  color: #FF66A8;
+  color: var(--txt-header-hgl);
 }
 
-/*========== login and greeting (= user actions in header) ==========*/
+/*>========== login and greeting (= user actions in header) ==========<*/
 
 /* placement */
 #login,
 #greeting {
   order: 3;
   width: auto;
-  margin-right: 14px;
+  margin-right: var(--margins-header);
   margin-left: auto;
   background-color: transparent;
 }
@@ -517,7 +458,7 @@ col.name {
   display: none;
 }
 
-/*===== replace user actions buttons with icons =====*/
+/*>>========== replace user actions buttons with icons ==========<<*/
 
 /* user icon (replaces the "Hi, [username]!") */
 #header #greeting .dropdown > a[href*="/users/"] {
@@ -538,15 +479,15 @@ col.name {
 #header #greeting > ul > li > a {
   display: inline-block;
   height: 18px;
-  width: 18px;
   padding: 10px 0;
   background: transparent;
-  filter: invert(20%) sepia(10%) saturate(5089%) hue-rotate(278deg) brightness(92%) contrast(86%); /* adjust filters to change header icon colors */
+  filter: var(--header-icon);
 }
 
-/* colors for header icons when selected */
-#header #greeting > ul > li:is(.open, :hover, :focus, :active) > a {
-  filter: invert(57%) sepia(47%) saturate(1755%) hue-rotate(299deg) brightness(100%) contrast(105%); /* adjust filters to change colors */
+/* colors for header icons when hovered/focused */
+#header #greeting > ul > li:is(.open, :hover, :focus) > a,
+#header #greeting > ul > li > a:is(:hover, :focus) {
+  filter: var(--header-icon-hgl);
 }
 
 /* gap between icons (works because of "display: flex" above) */
@@ -554,25 +495,26 @@ col.name {
   column-gap: 0.5em;
 }
 
-/*========== primary navigation ==========*/
+/*>========== primary navigation ==========<*/
 /* this is the header navigation bar with Fandoms, Browse, Search and About and the search bar */
 
 #header nav:has(> .primary) {
   order: 2;
   flex: 1;
   max-width: 100%;
-  border-color: #BBB2B2 !important; /* border color here is important for the mobile skin */
+  border-width: var(--border-width) !important; /* important for the mobile skin */
+  border-color: var(--border2) !important; /* important for the mobile skin */
 }
 
 #header .primary {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
-  align-content: center;
-  align-items: center;
-  background: none; /* remove red background-image and fallback color */
+    flex-wrap: wrap;
+    justify-content: left;
+    align-content: center;
+    align-items: center;
   box-sizing: border-box;
   box-shadow: none;
+  background: none; /* remove background-image and fallback color */
 }
 
 /* remove space before navigation */
@@ -580,7 +522,7 @@ col.name {
   margin-left: 0;
 }
 
-/*===== primary navigation: header search bar =====*/
+/*>>========== primary navigation: header search bar ==========<<*/
 
 #header .search {
   margin: 0;
@@ -593,12 +535,12 @@ col.name {
 /* add search bar icon */
 #header li.search::before {
   position: absolute;
-  left: 0.4em;
-  content: "\002315"; /* this is a unicode symbol that looks like a magnifying glass */
-  font-size: 1.25em;
-  font-weight: 700;
-  color: #897979;
+    left: 0.4em;
   z-index: 1;
+  font-weight: 700;
+  font-size: 1.25em;
+  color: var(--link-visited);
+  content: "\002315"; /* this is a unicode symbol that looks like a magnifying glass */
 }
 
 /* remove weird empty space before the search bar */
@@ -606,24 +548,24 @@ col.name {
   display: none;
 }
 
-/* this changes the look of header search bar */
+/* change the look of header search bar */
 #header #search .text {
-  max-width: 20vw;
   min-width: 170px;
+  max-width: 20vw;
   margin: 0;
-  padding-left: 1.8em; /* make room for the search icon icon */
-  background-color: #FFFFFF;
-  border: 1px solid #BBB2B2;
-  border-radius: 0.25rem;
+  padding-left: 1.8em; /* make room for the search icon */
+  border: var(--border-width) solid var(--border2);
+  border-radius: var(--radius-alt);
   box-shadow: none;
+  background-color: var(--int-bg);
   transition: width 0.15s;
 }
 
-/* how the search bar looks when selected */
+/* how the search bar looks when selected to receive input */
 #header #search input:focus {
-  color: #6C2D52;
-  outline: 1px solid #FF66A8;
-  border-color: #FF66A8;
+  color: var(--txt-main);
+  border-color: var(--int-hgl);
+  outline: 1px solid var(--int-hgl);
 }
 
 /* hide search button */
@@ -632,22 +574,22 @@ col.name {
   display: none;
 }
 
-/*========== CONTEXT: collections ==========*/
+/*>========== CONTEXT: collections ==========<*/
 
 /* collection header */
 #header h2 {
+  order: 4;
   display: block;
+  width: 100%;
   min-height: unset;
   max-height: 30vh;
-  width: 100%;
-  padding: 0.25em 14px;
-  font-size: 1.25em;
-  background-color: #A8366E !important;
-  background-size: auto 100% !important;
-  color: #FFFFFF;
+  padding: 0.25em var(--margins-header);
   border-inline: none;
-  border-top: 1px solid #BBB2B2;
-  order: 4;
+  border-top: var(--border-width) solid var(--border2);
+  background-color: var(--icon-id) !important;
+  background-size: auto 100% !important;
+  font-size: 1.25em;
+  color: var(--int-hgl-txt);
 }
 
 /*============================================================
@@ -661,30 +603,30 @@ col.name {
 #dashboard.own {
   position: sticky;
   top: 0;
-  max-height: 100vh;
+  box-sizing: border-box;
   width: 18%;
   min-width: 150px; /* prevent sidebar from getting too narrow */
   max-width: 230px; /* prevent sidebar from getting too wide */
-  padding: 0.5em 0.5em 0 0.5em;
-  overflow-y: auto;
+  max-height: 100vh;
   overflow-x: visible;
-  border: 0;
-  border-right: 1px solid;
+  overflow-y: auto;
+  padding: 0.429rem 0.5rem 0 0.5rem;
+  border: none;
+  border-right: var(--border-width) solid;
+  border-color: var(--border1) !important; /* needs to be like this for tablet + mobile skin */
   border-radius: 0;
-  box-sizing: border-box;
-  scrollbar-color: transparent transparent;
-  background-color: #EDEAEA;
-  border-color: #D8D2D2 !important; /* needs to be like this for tablet + mobile skin */
+  background-color: var(--bg3);
   font-size: 0.875em;
+  scrollbar-color: transparent transparent;
 }
 
 #dashboard ul {
-  float: none;
   display: block;
-  padding: 0.429em 0;
-  text-align: left;
-  border-top: 1px solid #D8D2D2;
+  float: none;
   position: relative;
+  padding: 0.429em 0;
+  border-top: var(--border-width) solid var(--border1);
+  text-align: left;
 }
 
 #dashboard ul:not(.secondary):first-of-type {
@@ -694,30 +636,31 @@ col.name {
 #dashboard a,
 #dashboard span {
   display: block;
-  max-width: 100%;
   box-sizing: border-box;
+  max-width: 100%;
   margin-block: 1px;
-  padding: 0.429em;
-  border-radius: 0.25rem;
+  padding: 0.429em 0.5rem;
+  border-radius: var(--radius-small);
+  color: var(--txt-main);
   line-height: 1.286;
-  color: #6C2D52;
 }
 
-#dashboard a:hover {
-  background: linear-gradient(90deg, #D44E8B, #FD8ABC);
-  color: #FFFFFF;
+#dashboard a:is(:hover, :focus) {
+  background: var(--int-hgl-bg);
+  color: var(--int-hgl-txt);
 }
 
 #dashboard .current {
-  background-color: #D8D2D2;
+  background-color: var(--int-current-bg);
+  color: var(--int-current-txt);
 }
 
 #dashboard .secondary {
   margin-block: 0.25em;
   padding: 0.25em;
-  border: 1px solid #BBB2B2;
-  background-color: #FCFCFC;
-  box-shadow: 0 0.2em 0.35em #89797925;
+  border: var(--border-width) solid var(--border3);
+  box-shadow: var(--shadow);
+  background-color: var(--bg6);
 }
 
 /*============================================================
@@ -728,13 +671,12 @@ col.name {
 
 #main,
 #main.dashboard {
+  flex-grow: 1;
+  box-sizing: border-box;
   min-height: unset;
   max-width: 100%;
-  flex-grow: 1;
   margin: 0;
-  padding: 1.5em 5%; /* narrower layout */
-  box-sizing: border-box;
-  font-size: 0.875em; /* change the font size here */
+  padding: 1.5em var(--margins-main);
   line-height: 1.286;
 }
 
@@ -755,6 +697,21 @@ col.name {
   margin-right: 0;
 }
 
+/* add exclamation mark icon to error pages */
+#main.errors h2.heading::before {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  padding: 0.1em;
+  border-radius: 100%;
+  background-color: var(--alert-txt);
+  line-height: 1;
+  text-align: center;
+  color: var(--txt-alt2);
+  content: "!";
+}
+
 /*============================================================
 >> 06 REGION: FOOTER
 ============================================================*/
@@ -762,55 +719,61 @@ col.name {
 /* #4 of the 4 regions shown on every page */
 
 #footer {
+  box-sizing: border-box;
   width: 100%;
   max-width: 100%;
   padding: 3% 5%;
-  font-size: 0.8em;
-  color: #6C2D52;
-  background: linear-gradient(160deg, #D8D2D2, #F9D2E2);
-  border: 0;
-  box-sizing: border-box;
+  border-top: var(--border-width) solid var(--border1);
+  background: var(--bg1);
   overflow: hidden;
+  overflow-wrap: anywhere;
+  font-size: 0.8em;
+  word-break: normal;
+  color: var(--txt-main);
 }
 
 #footer ul.navigation.actions {
   display: flex;
-  justify-content: space-between;
-  column-gap: 5%;
+    justify-content: space-between;
+    column-gap: 5%;
+  box-sizing: border-box;
   width: 100%;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 #footer ul li.module {
-  flex-basis: 25%;
-  width: unset;
+  box-sizing: border-box;
   max-width: unset;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 #footer ul li.module ul.menu {
-  width: 100%;
+  display: block;
+  float: unset;
 }
 
 /* headings for footer sections */
 #footer .heading {
-  color: #6C2D52;
+  margin-block: 0 1em;
   font-weight: 700;
+  color: var(--txt-main);
 }
 
 /* links in footer */
-#footer a {
-  color: #A8366E;
-  border-bottom: 0;
+#footer a,
+#footer button {
+  border-bottom: var(--link-underline) !important;
+  text-decoration: none;
+  color: var(--link);
 }
 
 /* hover for links in footer */
-#footer a:hover {
-  border-bottom: 1px solid;
+#footer a:is(:hover, :focus),
+#footer button:is(:hover, :focus) {
+  border-bottom-color: inherit !important;
+  color: var(--link-hgl);
 }
 
 /*============================================================
@@ -818,7 +781,7 @@ col.name {
 ============================================================*/
 /* see "Archive: (7) interactions skin" by AO3 */
 
-/*========== nesting ==========*/
+/*>========== nesting ==========<*/
 
 fieldset,
 form dl,
@@ -828,23 +791,23 @@ fieldset fieldset dl dl,
 dd.hideme,
 form blockquote.userstuff,
 form.single fieldset {
-  background-color: #EDEAEA;
-  border: 1px solid #BBB2B2;
-  border-radius: 0.25rem;
   margin: 0.643em 0;
   padding: 0.634em;
+  border: var(--border-width) solid var(--border2);
+  border-radius: var(--radius-big);
   box-shadow: none;
+  background-color: var(--bg4);
 }
 
 fieldset dl,
 fieldset.actions,
 fieldset dl fieldset dl {
-  background-color: transparent;
   border: none;
+  background-color: transparent;
 }
 
 fieldset fieldset {
-  background-color: #EDEAEA;
+  background-color: var(--bg4);
 }
 
 fieldset dd dl,
@@ -854,7 +817,7 @@ dd fieldset {
   margin: 0.643em 0;
 }
 
-/*========== form rules ==========*/
+/*>========== form rules ==========<*/
 
 label {
   margin-right: 0;
@@ -870,39 +833,50 @@ fieldset > ul > li:has(label input[type="radio"]) {
 
 input,
 textarea {
+  box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  background-color: #FFFFFF;
-  border: 1px solid #BBB2B2;
-  border-radius: 0.25rem;
+  border: var(--border-width) solid var(--border2);
+  border-radius: var(--radius-mid);
   box-shadow: none;
-  box-sizing: border-box;
-  color: #6C2D52;
+  background-color: var(--int-bg);
+  color: var(--txt-main);
 }
 
+textarea {
+  border-radius: var(--radius-big);
+}
+
+/* when element is selected to receive input */
 input[type="text"]:focus,
 .search input[type="text"]:focus,
 input#user_password:focus,
 select:focus,
 textarea:focus {
-  background-color: #FFFFFF;
-  border-color: #FF66A8;
-  outline: 1px solid #FF66A8;
+  border-color: var(--int-hgl);
+  outline: 1px solid var(--int-hgl);
+  background-color: var(--int-bg);
 }
 
 select {
-  vertical-align: middle;
   width: 100%;
   min-width: 10.5em;
-  padding: 0.15em 0.25em;
-  color: #6C2D52;
-  border: 1px solid #BBB2B2;
-  border-radius: 0.25rem;
-  background-color: #FFFFFF;
+  padding: 0.25em;
+  border: var(--border-width) solid var(--border2);
+  border-radius: var(--radius-small);
+  background-color: var(--int-bg);
+  font-size: 0.95em;
+  vertical-align: middle;
+  color: var(--txt-main);
 }
 
-select:not(select[multiple]):hover {
-  background-color: #EDEAEA
+select:not(select[multiple]):is(:hover, :focus) {
+  background: var(--bg4);
+}
+
+/* select dropdown menu */
+select:not(select[multiple]):open {
+  background: var(--bg6);
 }
 
 .datetime select {
@@ -912,33 +886,39 @@ select:not(select[multiple]):hover {
 option,
 .actions option,
 form code {
-  color: #6C2D52;
+  color: var(--txt-main);
 }
 
-option:is(:checked, :hover, :focus, :active),
-option:checked:is(:checked, :hover, :focus, :active) {
-  background: #EDEAEA;
-  color: #6C2D52;
-  border-radius: 0.25rem;
+option {
+  margin: 0;
+  padding: 0.125em;
+  border-radius: var(--radius-small);
 }
 
 option:is(:hover, :focus, :active) {
-  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
-  color: #FFFFFF;
+  background: var(--int-hgl-bg);
+  color: var(--int-hgl-txt);
 }
+
+option:is(:checked),
+option:checked:is(:hover, :focus, :active) {
+  background: var(--int-current-bg);
+  color: var(--int-current-txt);
+}
+
 
 form dt {
   display: inline-block;
+  box-sizing: border-box;
   width: 25%;
   min-width: unset;
-  border-bottom: 1px solid #BBB2B2;
-  box-sizing: border-box;
+  border-bottom: var(--border-width) solid var(--border2);
 }
 
 form dd,
 form dd.any {
-  width: 75%;
   box-sizing: border-box;
+  width: 75%;
 }
 
 form dd + dd {
@@ -946,7 +926,7 @@ form dd + dd {
 }
 
 form dd.required {
-  color: #6C2D52;
+  color: var(--txt-main);
 }
 
 form fieldset#parent-options dd:has(ul) {
@@ -957,22 +937,22 @@ form fieldset#parent-options dd:has(ul) {
 form.verbose legend,
 .verbose form legend,
 form.single legend {
-  font-weight: 700;
-  background-color: #F7F6F5;
-  border: 1px solid #BBB2B2;
-  border-radius: 0.25rem;
+  border: var(--border-width) solid var(--border2);
+  border-radius: var(--radius-small);
   box-shadow: none;
+  background-color: var(--bg6);
+  font-weight: 700;
 }
 
 /* styling the preview box for the "Comment Formatting and Preview" userscript => https://greasyfork.org/en/scripts/484002-ao3-comment-formatting-and-preview */
 div.comment-preview.userstuff {
   margin-top: 0.429em;
+  border: 1.5px dotted var(--border2) !important;
+  border-radius: var(--radius-small);
   background: transparent;
-  border: 1px solid #BBB2B2;
-  border-radius: 0.25rem;
 }
 
-/*========== INPUT ELEMENTS: checkboxes, radio buttons etc. ==========*/
+/*>========== INPUT ELEMENTS: checkboxes, radio buttons etc. ==========<*/
 
 /* remove browser-specific appearance of checkbox + radio buttons and apply new styling */
 input[type="checkbox"],
@@ -981,39 +961,40 @@ input[type="radio"],
 .filters [type="checkbox"],
 .actions input[type="checkbox"],
 label.action input[type="checkbox"] {
+  flex-shrink: 0;
   appearance: none;
-  user-select: none;
   display: inline-block;
   position: relative;
-  height: 1em;
-  width: 1em;
   top: 0.1em;
-  margin: 0;
   box-sizing: border-box;
+  width: 1em;
+  height: 1em;
+  margin: 0;
   box-shadow: none;
+  border: 1.5px solid var(--border2);
+  border-radius: var(--radius-small);
+  background-color: var(--int-bg);
   background-image: none !important;
-  background-color: #FFFFFF;
-  border: 1.5px solid #A29696;
-  border-radius: 0.25rem;
-  color: #FFFFFF;
-  flex-shrink: 0;
+  color: var(--txt-alt2);
+  user-select: none;
 }
 
-/* hover and focus for checkbox + radio buttons */
+/* hover for checkbox and radio buttons */
 input[type="checkbox"]:hover,
 input[type="radio"]:hover,
 .actions input[type="checkbox"]:hover,
 label.action input[type="checkbox"]:hover,
 .filters [type="checkbox"]:hover:not(:checked)::before {
-  border-color: #FF66A8;
-  color: #FF66A8;
+  border-color: var(--int-hgl);
+  color: var(--int-hgl);
 }
 
-/* disabled checkbox + radio buttons */
+/* disabled checkbox and radio buttons */
 input[type="checkbox"]:disabled,
 input[type="radio"]:disabled {
-  background-color: #897979 !important;
-  border-color: #897979 !important;
+  border-color: var(--int-disabled) !important;
+  background-color: var(--int-disabled) !important;
+  cursor: not-allowed;
 }
 
 input[type="radio"] + label,
@@ -1028,48 +1009,48 @@ ul:not(ul.actions) li:has(input[type="radio"] + label):not(:has(fieldset)),
 ul:not(ul.actions) li:not(.blurb ul li) > label:has(input[type="checkbox"]),
 ul:not(ul.actions) li:not(.blurb ul li) > label:has(input[type="radio"]) {
   display: flex !important;
-  align-items: baseline;
-  column-gap: 0.5em;
+    align-items: baseline;
+    column-gap: 0.5em;
+  width: fit-content;
   margin: 0;
   padding-block: 0.3215em;
-  width: fit-content;
 }
 
-/*===== CHECKBOXES =====*/
+/*>>========== CHECKBOXES ==========<<*/
 
 /* checked checkboxes */
 input[type="checkbox"]:checked,
 .actions input[type="checkbox"]:checked,
 label.action input[type="checkbox"]:checked {
-  background-color: #A8366E;
-  border-color: #A8366E;
-  color: #FFFFFF;
+  border-color: var(--int-checked);
+  background-color: var(--int-checked);
+  color: var(--txt-alt2);
 }
 
-/* this is to replace the checkmark symbol */
+/* replace the checkmark symbol */
 input[type="checkbox"]::before,
 .filters [type="checkbox"]::before,
 .actions input[type="checkbox"]::before {
-  content: "";
   position: absolute;
-  height: inherit;
   width: 50%;
-  border-bottom: 0.25em solid;
+  height: inherit;
   border-right: 0.25em solid;
+  border-bottom: 0.25em solid;
+  color: var(--txt-alt2);
+  content: "";
   transform: translate(15%, -20%) scale(0.5) rotate(45deg);
-  color: #FFFFFF;
   opacity: 0;
 }
 
 /* cross for "exclude" filter checkboxes */
 .filters .exclude [type="checkbox"]::before {
-  content: "\002716\fe0e"; /* unicode cross */
   width: 100%;
   border: none;
-  transform: unset;
   font-size: 0.75em;
   line-height: 1;
   text-align: center;
+  content: "\002716\fe0e"; /* unicode cross */
+  transform: unset;
 }
 
 /* make checkmark visible when checked */
@@ -1081,7 +1062,7 @@ input[type="checkbox"]:checked::before,
 
 /* filters checkbox symbols should be visible always */
 .filters [type="checkbox"]:not(:checked)::before {
-  color: #A29696;
+  color: var(--border2);
   opacity: 1;
 }
 
@@ -1089,8 +1070,8 @@ input[type="checkbox"]:checked::before,
 input[type="checkbox"]:checked:hover,
 .actions input[type="checkbox"]:checked:hover,
 label.action input[type="checkbox"]:checked:hover {
-  background-color: #FF66A8;
-  border-color: #FF66A8;
+  border-color: var(--int-hgl);
+  background-color: var(--int-hgl);
 }
 
 .actions input[type="checkbox"] {
@@ -1103,63 +1084,64 @@ label.action input[type="checkbox"]:checked:hover {
   display: none;
 }
 
-/*===== RADIO BUTTONS =====*/
+/*>>========== RADIO BUTTONS ==========<<*/
 
 input[type="radio"],
 .filters [type="radio"] {
-  border-radius: 100%; /* make them round again */
+  border-radius: 100%; /* make radio buttons round again */
 }
 
+/* style checked radio buttons */
 input[type="radio"]:checked,
 .filters [type="radio"]:checked {
-  background-image: none;
-  background-color: #A8366E;
-  border-color: #A8366E;
+  border-color: var(--int-checked);
   box-shadow: inset 0 0 0 2.5px;
-  color: #FFFFFF
+  background-color: var(--int-checked);
+  background-image: none;
+  color: var(--int-bg)
 }
 
-/*===== FILE UPLOAD BUTTON =====*/
+/*>>========== FILE UPLOAD BUTTON ==========<<*/
 
 input[type="file"] {
-  background: #D8D2D2;
+  background: transparent;
 }
 
 input::file-selector-button {
   box-shadow: none !important;
 }
 
-/*========== WIDGET: CHARACTER COUNTER ==========*/
+/*>========== WIDGET: CHARACTER COUNTER ==========<*/
 
 p.character_counter {
   font-size: 0.85em;
 }
 
-/*========== WIDGET: LIVE VALIDATION ==========*/
+/*>========== WIDGET: LIVE VALIDATION ==========<*/
 
 .LV_validation_message {
   display: block;
 }
 
 .LV_invalid {
-  background: #FCDCE2;
-  border: 1px solid #C72C53;
-  border-radius: 0.25rem;
-  color: #C72C53;
+  border: var(--border-width) solid var(--alert-txt);
+  border-radius: var(--radius-big);
+  color: var(--alert-txt);
+  background: var(--alert-bg);
   box-shadow: none;
 }
 
 .LV_invalid_field,
-input.LV_invalid_field:is(:hover, :focus, :active),
-textarea.LV_invalid_field:is(:hover, :focus, :active) {
-  border: 1px solid #C72C53;
+input.LV_invalid_field:is(:hover, :focus),
+textarea.LV_invalid_field:is(:hover, :focus) {
+  border: var(--border-width) solid var(--alert-txt);
 }
 
 .LV_invalid::before {
-  border-color: #C72C53 transparent;
+  border-color: var(--alert-txt) transparent;
 }
 
-/*========== WIDGET: AUTO COMPLETE ==========*/
+/*>========== WIDGET: AUTO COMPLETE ==========<*/
 
 .autocomplete div.dropdown {
   background: transparent;
@@ -1167,117 +1149,114 @@ textarea.LV_invalid_field:is(:hover, :focus, :active) {
 
 /* style like a tooltip */
 .autocomplete div.dropdown ul {
-  background: #FCFCFC;
-  color: #6C2D52;
-  border: 1px solid #A29696;
-  border-radius: 0.25rem;
-  box-shadow: none;
+  padding: 0.125em;
+  border: 1px solid var(--border4);
+  border-radius: var(--radius-small);
+  box-shadow: var(--shadow);
+  background: var(--bg6);
+  color: var(--txt-main);
 }
 
 .autocomplete .dropdown ul li {
-  border-radius: 0.25rem;
-  padding: 0.1em 0.35em;
+  margin: 0.125em;
+  padding: 0.25em;
+  border-radius: var(--radius-small);
 }
 
-.autocomplete .dropdown ul li:hover,
+.autocomplete .dropdown ul li:is(:hover, :focus),
 .autocomplete .dropdown li.selected {
-  background: linear-gradient(90deg, #D44E8B, #FD8ABC);
-  color: #FFFFFF;
+  background: var(--int-hgl-bg);
+  color: var(--int-hgl-txt);
 }
 
 .required .autocomplete {
-  color: #6C2D52;
+  color: var(--txt-main);
 }
 
 /* style like a tooltip */
 .autocomplete .notice {
-  background: #FCFCFC;
+  border: 1px solid var(--border4);
+  border-radius: var(--radius-small);
+  box-shadow: var(--shadow);
+  background: var(--bg6);
   font-size: 0.95em;
-  color: #6C2D52;
-  border: 1px solid #A29696;
-  border-radius: 0.25rem;
+  color: var(--txt-main);
 }
 
-/*========== WIDGET: SORTABLE LIST ==========*/
+/*>========== WIDGET: SORTABLE LIST ==========<*/
 
 .ui-sortable li,
-.ui-sortable li:hover {
-  background: #EDEAEA;
-  border: 1px solid #D8D2D2;
-  border-radius: 0.25rem;
+.ui-sortable li:is(:hover, :focus) {
+  border: var(--border-width) solid var(--border1);
+  border-radius: var(--radius-small);
   box-shadow: none;
+  background: var(--bg4);
 }
 
-.ui-sortable li:hover:not(.ui-sortable ul.actions li:hover) {
-  box-shadow: 0 0.2em 0.35em #89797925;
-}
-
+.ui-sortable li:hover:not(.ui-sortable ul.actions li:hover),
 .ui-draggable form {
-  box-shadow: 0 0.2em 0.35em #89797925;
+  box-shadow: var(--shadow);
 }
 
-/*========== WIDGET: DATEPICKER, TIMEPICKER ==========*/
+/*>========== WIDGET: DATEPICKER, TIMEPICKER ==========<*/
 
 #ui-datepicker-div {
-  background: #FCFCFC;
-  border: 1px solid #A29696;
-  border-radius: 0.25rem;
-  box-shadow: 0 0.2em 0.35em #89797925;
+  border: var(--border-width) solid var(--border4);
+  border-radius: var(--radius-mid);
+  box-shadow: var(--shadow);
+  background: var(--bg6);
 }
 
 .ui-datepicker-header a {
   cursor: pointer;
 }
 
-/* prevent table moving slightly down when link:hover because of underline */
-.ui-datepicker-header a:not(:hover) {
-  border-bottom: 1px solid transparent; /* width should be same as hover for links */
-}
-
 .ui-datepicker table {
-  background: #EDEAEA;
+  background: var(--bg4);
 }
 
 .ui-datepicker td {
-  border-color: #BBB2B2;
+  border-color: var(--border2);
 }
 
 .ui-datepicker tr:hover {
-  background: #D8D2D2;
+  background: var(--border1);
 }
 
 .ui-datepicker td:hover {
-  background: #F7F6F5
+  background: var(--bg1)
 }
 
-/*========== TOOLTIP ==========*/
+/*>========== TOOLTIP ==========<*/
 
 .search [role="tooltip"],
 .qtip-content {
-  background: #FCFCFC;
-  color: #6C2D52;
-  border: 1px solid #A29696;
-  border-radius: 0.25rem;
-  padding: 0.429em;
   z-index: 6;
+  padding: 0.429em;
+  border: 1px solid var(--border4);
+  border-radius: var(--radius-small);
+  box-shadow: var(--shadow);
+  background: var(--bg6);
+  color: var(--txt-main);
 }
 
 .qtip-content {
-  font-size: 1.15em;
   border-top-left-radius: 0;
+  font-size: 1.15em;
 }
 
-/*========== WIDGET: MODAL DIALOGS ==========*/
-/* = dialog box/popup window that is displayed on top of the page, when you click on a help symbol for example */
+/*>========== WIDGET: MODAL DIALOGS ==========<*/
+/* = dialog box/popup window that appears, when you click on a help symbol for example */
 
 #modal {
-  background: #F7F6F5;
-  border: 1px solid #BBB2B2;
-  border-radius: 0.25rem;
+  border: var(--border-width) solid var(--border3);
+  border-radius: var(--radius-big);
+  box-shadow: none;
+  background: var(--bg4);
 }
 
 #modal .content {
-  border-bottom: 1px solid #BBB2B2;
+  border-bottom: var(--border-width) solid var(--border2);
 }
 
 #modal .footer {
@@ -1288,32 +1267,33 @@ textarea.LV_invalid_field:is(:hover, :focus, :active) {
 }
 
 #modal.img a {
-  color: #FFFFFF;
+  color: var(--txt-alt2);
 }
 
-/*========== MODE: DYNAMIC ==========*/
+/*>========== MODE: DYNAMIC ==========<*/
 
 div.dynamic {
   background: transparent;
 }
 
-/*========== mods: SINGLE ==========*/
+/*>========== mods: SINGLE ==========<*/
 /* for prominent simple forms consisting of one text input, e.g., on the blocked users page */
 
 form.single input[type="submit"] {
   vertical-align: unset;
 }
 
-/*========== WIDGET: TOGGLED FORMS (SHOW/HIDE bookmark and collection) ==========*/
+/*>========== WIDGET: TOGGLED FORMS (SHOW/HIDE bookmark and collection) ==========<*/
 
 .toggled form,
 .dynamic form {
-  padding: 0.643em;
-  background-color: #F7F6F5;
-  border: 1px solid #BBB2B2;
-  border-radius: 0.25rem;
-  box-shadow: 0 0.2em 0.35em #89797925;
   margin-bottom: 0.429em;
+  padding: 0.643em;
+  border: var(--border-width) solid var(--border3);
+  border-radius: var(--radius-big);
+  box-shadow: var(--shadow);
+  background-color: var(--bg4);
+  color: var(--txt-main);
 }
 
 .toggled form dd,
@@ -1344,12 +1324,12 @@ form.single input[type="submit"] {
   line-height: 1;
 }
 
-/*========== INTERACTION: POST (work, chapter, comment, news, feedback, challenge etc) ==========*/
+/*>========== INTERACTION: POST (work, chapter, comment, news, feedback, challenge etc) ==========<*/
 
 .post .required .warnings,
 dd.required {
   font-weight: 400;
-  color: #6C2D52;
+  color: var(--txt-main);
 }
 
 /*============================================================
@@ -1376,13 +1356,19 @@ input[type="submit"],
 input::file-selector-button {
   height: auto;
   padding: 0.25em 0.75em;
-  background: #FCFCFC;
+  border: var(--border-width) solid var(--int-btn-border);
+  border-radius: var(--radius-alt);
+  box-shadow: var(--shadow-buttons);
+  background: var(--int-btn-bg);
   background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
-  border: 1px solid #A29696;
-  border-radius: 0.25rem;
-  color: #6C2D52;
+  font-weight: 400;
   white-space: normal; /* prevent overflow */
-  box-shadow: 0 1.5px 0px 0px #89797925;
+  color: var(--int-btn-txt);
+}
+
+/* social media buttons on homepage */
+.resp-sharing-button {
+  border-radius: var(--radius-alt) !important;
 }
 
 label.action,
@@ -1394,7 +1380,7 @@ input[type="submit"] {
   height: auto; /* DO NOT DELETE */
 }
 
-/*========== subtypes and modes ==========*/
+/*>========== subtypes and modes ==========<*/
 
 /* hover + focus */
 .actions a:is(:hover, :focus),
@@ -1403,72 +1389,78 @@ input[type="submit"] {
 label.action:is(:hover, :focus),
 .action:is(:hover, :focus),
 .action a:is(:hover, :focus),
+a.action:is(:hover, :focus),
+button:is(:hover, :focus),
 input[type="submit"]:is(:hover, :focus),
 input::file-selector-button:is(:hover, :focus),
 .listbox > .heading .action a:is(:hover, :focus) {
-  background-image: linear-gradient(90deg, #D44E8B, #FD8ABC);
-  color: #FFFFFF;
-  border-color: #D44E8B;
+  border-color: var(--link);
   box-shadow: none;
+  background: var(--int-btn-hgl-bg);
+  color: var(--int-btn-hgl-txt);
 }
 
-/* currently selected */
+/* currently active */
 .actions a:active,
 .current,
 a.current,
 a.current:hover,
 a:link.current,
 .current a:visited {
-  background: #D8D2D2;
-  border-color: #BBB2B2;
-  color: #6C2D52;
+  border-color: var(--border4);
   box-shadow: none;
+  background: var(--int-current-bg);
+  color: var(--int-current-txt);
   cursor: default;
 }
 
-.actions label.disabled {
-  background-color: #D8D2D2;
+/* disabled buttons */
+.actions label.disabled,
+#tos_prompt [disabled] {
+  border-color: var(--int-btn-border);
+  background-color: var(--int-disabled);
+  color: var(--txt-main);
+  cursor: not-allowed;
+  filter: opacity(0.75);
 }
 
+/* disabled buttons select element */
 .actions .disabled select,
 .actions .disabled select:hover {
+  border-color: var(--int-btn-border);
   background-color: transparent;
-  color: #6C2D52;
-  border-color: #897979;
+  color: var(--txt-main);
 }
 
 /* button to delete added tags (idk if it is anywhere else) */
 .delete a,
 span.delete,
 span.delete a {
-  color: #C72C53;
   margin: 0;
   padding: 0;
-  box-shadow: none;
   border: none;
+  box-shadow: none;
   background-color: transparent;
-}
-
-.delete a:hover {
-  color: #361628;
+  color: var(--alert-txt);
 }
 
 .secondary {
   position: absolute;
-  background-color: #FCFCFC; 
-  border: 1px solid #A29696;
-  border-radius: 0.25rem;
-  box-shadow: 0 0.2em 0.35em #89797925;
+  border: var(--border-width) solid var(--border3);
+  border-radius: var(--radius-mid);
+  box-shadow: var(--shadow);
+  background-color: var(--bg6);
+  color: var(--main-txt);
 }
 
 /* prevent the "Unsubscribe" button from becoming too large */
 .subscriptions-index .edit_subscription > input[type="submit"] {
-  white-space: nowrap;
-  text-overflow: ellipsis;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/*========== attempt to fix the spacing ==========*/
+/*>========== attempt to fix the spacing ==========<*/
 /* I hate this so much ... */
 
 ul.actions:not(.navigation) > *:not(:first-child),
@@ -1482,7 +1474,7 @@ fieldset.actions li:not(:first-child) {
   margin-right: 0.5em;
 }
 
-/*========== CONTEXTS ==========*/
+/*>========== CONTEXTS ==========<*/
 
 /* placement of secondary menus in fics */
 .chapter .secondary,
@@ -1498,19 +1490,40 @@ fieldset.actions li:not(:first-child) {
   display: none;
 }
 
-/*===== buttons with the the "to top" arrows and "expand"/"contract" symbols =====*/
+/*>>========== buttons with the the "to top" arrows and "expand"/"contract" symbols ==========<<*/
 /* anywhere else? */
 
 .listbox > .heading .action:has(a) {
   padding: 0;
-  background-color: transparent;
   border: none;
   box-shadow: none;
+  background-color: transparent;
 }
 
 .listbox > .heading .action a {
   padding-inline: 0.3em;
   color: inherit;
+}
+
+/*>========== sort and view actions (statistics page) ==========<*/
+
+/* display in seperate lines */
+ul.sorting.actions,
+ul.view.actions {
+  width: 100%;
+  margin-top: 0.429em;
+}
+
+.sorting.actions li:has(h4) {
+  display: none;
+}
+
+.sorting.actions::before {
+  content: "Sort by:";
+}
+
+ul.view.actions::before {
+  content: "View by:";
 }
 
 /*============================================================
@@ -1530,7 +1543,7 @@ fieldset.actions li:not(:first-child) {
 
 .own,
 li.blurb.own {
-  background-color: #F7F6F5;
+  background-color: var(--bg7);
 }
 
 .draft .wrapper {
@@ -1538,87 +1551,88 @@ li.blurb.own {
 }
 
 .draft {
+  border: 1.5px dotted var(--border4);
+  border-radius: var(--radius-big);
   background-color: transparent;
-  border: 1.5px dotted #A29696;
-  border-radius: 0.25rem;
 }
 
 span.unread,
-.replied,
+span.replied,
 span.claimed,
 .actions span.defaulted {
-  border-radius: 0.25rem;
+  border-radius: var(--radius-alt);
 }
 
 span.claimed,
 .actions span.defaulted {
-  background-color: #D8D2D2;
-  border: 1px solid #A29696;
-  color: #6C2D52;
+  border: var(--border-width) solid var(--border4);
+  background-color: var(--int-current-bg);
+  color: var(--txt-main);
 }
 
 .draggable,
 .droppable,
 span.requested {
-  color: #C72C53;
+  color: var(--alert-txt);
 }
 
 .nominations .unreviewed,
 .unreviewed.symbol {
-  background-color: #FFF7E5;
-  border: 1px solid #A77916;
-  color: #A77916;
+  border: var(--border-width) solid var(--caution-txt);
+  background-color: var(--caution-bg);
+  color: var(--caution-txt);
 }
 
-.replied,
+span.replied,
 .nominations .approved,
 .approved.symbol {
-  background-color: #CFFFF2;
-  border: 1px solid #008F85;
-  color: #008F85;
+  border: var(--border-width) solid var(--success-txt);
+  background-color: var(--success-bg);
+  color: var(--success-txt);
 }
 
 span.unread,
 .nominations .rejected,
 .rejected.symbol {
-  background-color: #FCDCE2;
-  border: 1px solid #C72C53;
-  color: #C72C53;
+  border: var(--border-width) solid var(--alert-txt);
+  background-color: var(--alert-bg);
+  color: var(--alert-txt);
 }
 
 span.offered {
-  color: #008F85;
+  color: var(--success-txt);
 }
 
 span.offered.requested {
-  color: #A77916;
+  color: var(--caution-txt);
 }
 
-/*========== arrows for the accordion widget ==========*/
+/*>========== arrows for the accordion widget ==========<*/
 
 .collapsed::after {
-  content: "";
-  border-style: solid;
-  border-width: 0 0.15em 0.15em 0;
   display: inline-block;
-  padding: 0.2em;
   margin: 0 0 0.2em 0.5em;
+  padding: 0.2em;
+  border-width: 0 0.15em 0.15em 0;
+  border-style: solid;
+  content: "";
   transform: rotate(45deg);
 }
 
 .expanded::after {
-  content: "";
-  border-style: solid;
-  border-width: 0 0.15em 0.15em 0;
   display: inline-block;
-  padding: 0.2em;
+  border-width: 0 0.15em 0.15em 0;
+  border-style: solid;
   margin: 0 0 -0.05em 0.5em;
+  padding: 0.2em;
+  content: "";
   transform: rotate(-135deg);
 }
 
-/*========== CONTEXTS ==========*/
+/*>========== CONTEXTS ==========<*/
+
 .comment span.unreviewed {
-  background-color: #FCFCFC;
+  background-color: var(--bg5);
 }
 
 /*============================================================
@@ -1626,89 +1640,127 @@ span.offered.requested {
 ============================================================*/
 /* see "Archive: (10) types groups skin" by AO3 */
 
-/*========== TYPE: TAGS ==========*/
+/*>========== TYPE: TAGS ==========<*/
 
-ul .tags.commas {
-  text-align: left;
+/*>>========== reset some of the default tag styling ==========<<*/
+
+.commas li:has(a.tag),
+.commas li a.tag,
+.commas li:has(a[data-remote="true"]) {
+  margin: unset;
+  padding: unset;
+  border: unset;
 }
 
-/* hide commas between tags */
-.commas:has(.tag, a[data-remote="true"]) li::after {
-  content: " "; /* leave space here to keep tag groups separated */
+/* remove the comma between tags */
+.commas li::after {
+  content: none;
 }
 
-/* reset space between tags */
-.commas:has(.tag) li {
-  padding: 0;
+.commas li:has(.tags a[data-remote="true"]) {
+  margin: unset;
+  padding: unset;
 }
 
-/* general formatting for the tags */
+/*>>========== new tag styling ==========<<*/
+
+/* tag layout */
+.commas:has(a.tag, a[data-remote="true"]) {
+  display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 5px; /* width of gap between neighbouring tags */
+}
+
+/* fix tag pages */
+.tag.home .listbox .tags.commas {
+  width: 100%;
+}
+
+/* change appearance of tags here */
 /* excluding fandom tags, fav tags on splash page and heading tags in some places */
 a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
-.tags a[data-remote="true"],
+.tags a[data-remote="true"], /* = hidden warnings/additional tags (can be set in preferences) */
 .unwrangled,
 .added.tag {
-  display: inline-flex;
-  text-decoration: none;
-  padding: 0.15em 0.5em;
-  margin: 0.2em 0;
-  line-height: 1.25;
-  border: 1px solid #89797925;
-  border-radius: 0.25rem;
-  background-color: #89797925;
-  color: #361628;
+  display: inline-block;
+  margin-block: 2.5px; /* gap between tag rows; needs to be done with margin because row-gap is not allowed on AO3 (as of August 2025) */
+  padding: 0.15em 0.35em;
+  border: var(--border-width) solid var(--tag-border);
+  border-radius: var(--radius-alt);
+  background-color: var(--tag-default-bg);
   font-size: 0.9em;
+  line-height: 1.25;
+  color: var(--tag-default-txt);
+  text-decoration: none;
 }
 
 /* hide commas between blurb fandom tags */
 /* this is a terrible solution - it changes the fandom tags as well so they have to be "repaired" again (see below) */
-h5.fandoms.heading {
-  letter-spacing: -10px;
+.blurb h5.fandoms.heading {
+  letter-spacing: -10em;
   color: transparent;
 }
 
-/* repair and format fandom tags */
-h5.fandoms.heading a.tag {
-  letter-spacing: 0;
-  margin-right: 0.35em !important;
+/* repair and format fandom heading tags */
+.blurb h5.fandoms.heading a.tag {
+  box-sizing: border-box;
+  margin-right: 5px;
   font-weight: 700;
+  letter-spacing: 0;
+}
+
+/* fandom tags */
+.blurb h5.fandoms.heading a.tag,
+dd.fandom.tags a {
+  background-color: var(--tag-fandom-bg) !important;
+  color: var(--tag-fandom-txt) !important;
+}
+
+/* warning tags */
+[class^="warning"] a.tag {
+  background-color: var(--tag-warning-bg) !important;
+  font-weight: 400;
+  color: var(--tag-warning-txt) !important;
+}
+
+/* relationship tags */
+[class^="relationship"] a.tag {
+  background-color: var(--tag-ship-bg) !important;
+  color: var(--tag-ship-txt) !important;
+}
+
+/* character tags */
+[class^="character"] a.tag {
+  background-color: var(--tag-character-bg) !important;
+  color: var(--tag-character-txt) !important;
+}
+
+/* freeform tags */
+[class^="freeform"] a.tag {
+  background-color: var(--tag-freeform-bg) !important;
+  color: var(--tag-freeform-txt) !important;
 }
 
 /* unwrangled tags */
 .unwrangled {
+  border: var(--border-width) dashed var(--border4);
   background-color: transparent;
-  border: 1px dashed #897979;
 }
 
-/* warning tags */
-[class^=warning] a.tag {
-  font-weight: 400;
-  background-color: #F3CEDF !important;
-}
-
-/* relationship tags */
-[class^=relationship] a.tag {
-  background-color: #EBD8F3 !important;
-}
-
-/* character tags */
-[class^=character] a.tag {
-  background-color: #DBEAF0 !important;
-}
-
-/* tag hover */
-a.tag:not(.fandom.index.group a.tag, h2.heading a.tag):hover,
-.listbox .heading a.tag:visited:hover,
-.tags a[data-remote="true"]:hover {
-  background: linear-gradient(90deg, #D44E8B, #FD8ABC);
-  background-origin: border-box; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
-  color: #FFFFFF;
+/* tag hover and focus */
+a.tag:not(.fandom.index.group a.tag, h2.heading a.tag):is(:hover, :focus),
+.listbox .heading a.tag:visited:is(:hover, :focus),
+.tags a[data-remote="true"]:is(:hover, :focus) {
+  background: var(--tag-hgl-bg) !important;
+    background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
   border-color: transparent;
+  color: var(--tag-hgl-txt) !important;
 }
 
-/* hover for tags that are not in little boxes */
-.fandom.index.group a.tag:hover,
-h2.heading a.tag:hover {
+/* hover and focus for tags that are not in little boxes */
+.fandom.index.group a.tag:is(:hover, :focus),
+h2.heading a.tag:is(:hover, :focus) {
   background-color: transparent;
 }
 
@@ -1732,33 +1784,35 @@ h2.heading a.tag {
 .autocomplete li.added,
 .post .meta dd ul li.added {
   display: inline-flex;
-  align-content: center;
-  align-items: center;
-  column-gap: 0.4em;
+    align-items: center;
+    align-content: center;
+    column-gap: 0.4em;
   margin: 0 0.4em 0.4em 0;
 }
 
 .filters li.added {
   display: flex;
-  justify-content: space-between;
+    justify-content: space-between;
   margin-right: 0;
 }
 
-li.added:hover {
-  background: #FCDCE2;
-  border-color: #C72C53;
-  color: #C72C53;
+li.added:is(:hover, :focus) {
+  border-color: var(--alert-txt);
+  background: var(--alert-bg);
+  color: var(--alert-txt);
 }
 
-li.added:hover .delete a {
-  color: #C72C53;
+li.added:is(:hover, :focus) .delete a {
+  color: var(--alert-txt);
 }
 
-li.added:hover .delete a:hover {
-  color: #FF66A8;
+/* "delete" cross */
+li.added .delete a:is(:hover, :focus) {
+  color: inherit;
+  filter: opacity(65%);
 }
 
-/*========== GROUP CLOUD (= tag clouds) ==========*/
+/*>========== GROUP CLOUD (= tag clouds) ==========<*/
 
 a.cloud1 {
   font-size: 0.9em !important;
@@ -1792,7 +1846,7 @@ a.cloud8 {
   font-size: 1.6em !important;
 }
 
-/*========== GROUPS ==========*/
+/*>========== GROUPS ==========<*/
 
 .wrapper,
 #outer.wrapper,
@@ -1800,17 +1854,18 @@ a.cloud8 {
   box-shadow: none;
 }
 
-/*===== definition lists (subscriptions, related works, edit multiple works) =====*/
+/*>>========== definition lists (subscriptions, related works, edit multiple works) ==========<<*/
 
 dl.index dt,
 dl.index dd {
   padding: 0.643em;
-  border: 1px solid #BBB2B2;
-  background-color: #FCFCFC;
+  border: var(--border-width) solid var(--border2);
+  background-color: var(--bg1);
 }
 
 dl.index dt {
-  border-radius: 0.25rem 0.25rem 0 0;
+  background-color: var(--bg7);
+  border-radius: var(--radius-mid) var(--radius-mid) 0 0;
 }
 
 dl.index dt a:first-of-type {
@@ -1818,19 +1873,19 @@ dl.index dt a:first-of-type {
 }
 
 dl.index dd {
-  border-top: 0;
-  border-radius: 0 0 0.25rem 0.25rem;
   margin-inline: 0;
+  border-top: 0;
+  border-radius: 0 0 var(--radius-mid) var(--radius-mid);
 }
 
-/*========== TYPES ==========*/
+/*>========== TYPES ==========<*/
 
 /* I don't remember what this is ... */
 .actions .reindex a {
-  border-bottom: 3px solid #C72C53;
+  border-bottom: 3px solid var(--alert-txt);
 }
 
-/* this makes each series in the blurb be displayed in a separate line */
+/* display each series in the blurb in a separate line */
 .blurb ul.series li:not(:first-of-type) {
   display: block;
   margin-block: 0.5em 0;
@@ -1838,10 +1893,10 @@ dl.index dd {
 
 /* color of the series dividers */
 span.series .divider {
-  color: #BBB2B2;
+  color: var(--border2);
 }
 
-/* this makes each series in the mata box be displayed in a separate line */
+/* display each series in the mata box in a separate line */
 span.series:not(:first-of-type) {
   display: block;
   margin-top: 0.5em;
@@ -1855,7 +1910,7 @@ dd.series {
 
 /* make text visible again after hiding the comma */
 dd.series span {
-  color: #6C2D52;
+  color: var(--txt-main);
 }
 
 .icon a {
@@ -1863,30 +1918,30 @@ dd.series span {
 }
 
 .statistics .index li:nth-of-type(even) {
-  background-color: #EDEAEA;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-small);
+  background-color: var(--bg7);
 }
 
-/*===== fix concise index (example: "Edit Multiple Works" page ) =====*/
+/*>>========== fix concise index (example: "Edit Multiple Works" page) ==========<<*/
 
 .concise.index {
-	width: unset;
-	display: flex;
-	flex-wrap: wrap;
-	column-gap: 1.5%;
-	box-sizing: border-box;
+  display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.5%;
+  box-sizing: border-box;
+  width: unset;
 }
 
 /* attempt at responsive layout without media queries */
 .concise li {
-	width: unset;
-	min-width: 49%;
-	flex: 1 0 18.5rem;
-	margin-right: 0;
+  flex: 1 0 18.5rem;
+  width: unset;
+  min-width: 49%;
+  margin-right: 0;
 }
 
 .concise li label {
-	margin-right: 0.5em !important;
+  margin-right: 0.5em !important;
 }
 
 /*============================================================
@@ -1897,13 +1952,13 @@ dd.series span {
 .listbox,
 fieldset fieldset.listbox {
   clear: right;
-  background-color: #EDEAEA;
-  border: 1px solid #BBB2B2;
-  border-radius: 0.25rem;
-  padding: 0;
-  margin: 0.643em auto 1em auto;
   overflow: hidden;
+  margin: 0.643em auto 1em auto;
+  padding: 0;
+  border: var(--border-width) solid var(--border2);
+  border-radius: var(--radius-big);
   box-shadow: none;
+  background-color: var(--bg7);
 }
 
 .listbox > .listbox {
@@ -1913,29 +1968,29 @@ fieldset fieldset.listbox {
 .listbox > .heading {
   margin: 0;
   padding: 0.5em;
-  color: #6C2D52;
+  color: var(--txt-main);
 }
 
 .listbox > .heading a:not(.action a, .actions a),
 .listbox > .heading a:visited:not(.action a:visited, .actions a:visited) {
-  color: #6C2D52;
+  color: var(--txt-main);
 }
 
 .listbox .index {
-  width: auto;
-  padding: 0.643em;
-  margin: 0;
   float: none;
   clear: right;
-  background-color: #F7F6F5;
-  box-shadow: none;
   box-sizing: border-box;
-  border-top: 1px solid #BBB2B2;
+  width: auto;
+  margin: 0;
+  padding: 0.643em;
+  border-top: var(--border-width) solid var(--border2);
+  box-shadow: none;
+  background-color: var(--bg1);
 }
 
 /* border at the bottom only in some cases */
 .listbox .index:has(+ .actions[role="navigation"], + h4, + .actions #expand-fandoms) {
-  border-bottom: 1px solid #BBB2B2;
+  border-bottom: var(--border-width) solid var(--border2);
 }
 
 /* mods: alphabet, medium */
@@ -1944,7 +1999,7 @@ fieldset fieldset.listbox {
   margin-inline: 0;
 }
 
-/*========== placement of listbox buttons ==========*/
+/*>========== placement of listbox buttons ==========<*/
 /* this is such a mess */
 
 #user-fandoms.listbox .actions,
@@ -1966,21 +2021,21 @@ fieldset fieldset.listbox {
   margin: 0.643em 0.429em;
 }
 
-/*========== fix tagset media listboxes ==========*/
+/*>========== fix tagset media listboxes ==========<*/
 
 .tagset .media .listbox {
+  box-sizing: border-box;
   width: 49.5%;
   margin-right: 1%;
-  box-sizing: border-box;
-  background-color: #EDEAEA;
-  border-color: #BBB2B2;
+  border-color: var(--border2);
+  background-color: var(--bg4);
 }
 
 .tagset .media .listbox:nth-child(even) {
   margin-right: 0;
 }
 
-/*========== INTERACTION context ==========*/
+/*>========== INTERACTION context ==========<*/
 
 .listbox .many {
   max-height: 35vh;
@@ -1992,20 +2047,20 @@ fieldset fieldset.listbox {
 /* see "Archive: (12) group meta skin" by AO3 */
 
 dl.meta {
-  background-color: #FCFCFC;
-  border: 1px solid #A29696;
-  border-radius: 0.25rem;
+  border: var(--border-width) solid var(--border4);
+  border-radius: var(--radius-big);
+  background-color: var(--bg5);
 }
 
 .meta dt {
-  min-width: unset;
-  width: 26.5%;
   box-sizing: border-box;
+  width: 26.5%;
+  min-width: unset;
 }
 
 .meta dd {
-  width: 73.5%;
   box-sizing: border-box;
+  width: 73.5%;
 }
 
 /* move meta tags up a tiny bit */
@@ -2017,11 +2072,11 @@ dl.meta dd ul {
   padding-inline-end: 0;
 }
 
-/*========== CONTEXTS ==========*/
+/*>========== CONTEXTS ==========<*/
 
 .news dl.meta {
-  background-color: transparent;
   box-shadow: none;
+  background-color: transparent;
 }
 
 /*============================================================
@@ -2033,15 +2088,17 @@ li.blurb,
 .blurb .blurb,
 .region.own + .dashboard li.blurb.own {
   padding: 0.75em 0.75em 0.643em;
-  background-color: #FCFCFC;
+  background-color: var(--bg5);
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 li.blurb,
 li.picture.blurb,
 .listbox li.blurb,
 .toggled.blurb {
-  border: 1px solid #D8D2D2;
-  border-radius: 0.25rem;
+  border: var(--border-width) solid var(--border3);
+  border-radius: var(--radius-big);
 }
 
 /* bold title */
@@ -2062,29 +2119,28 @@ li.picture.blurb,
   padding: 0; /* leave this here for own mystery blurbs */
 }
 
-/*========== new blurb header layout starts here ==========*/
+/*>========== new blurb header layout starts here ==========<*/
 
 .blurb .header:has(ul.required-tags) {
   display: flex;
-  flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
   margin: 0;
-  justify-content: space-between;
 }
 
-/* remove the space for the icons on the right side */
+/* remove space for icons on right side */
 .blurb .header .heading {
   margin: 0;
 }
 
-/* work title + author etc */
+/* work title and author etc */
 .blurb .header h4.heading {
   order: 1;
   flex: 1;
-  padding-right: 11ch;
   box-sizing: border-box;
+  padding-right: 11ch;
   font-size: 1em;
   text-align: left;
-  word-break: break-word;
 }
 
 /* fandoms tags are also part of header but I'm moving them down */
@@ -2102,13 +2158,13 @@ li.picture.blurb,
 .blurb .header ul.required-tags {
   order: 3;
   display: flex;
-  flex-wrap: wrap;
-  column-gap: 0.25em;
+    flex-wrap: wrap;
+    column-gap: 4px;
   position: unset;
   width: 100%;
   margin-top: 0.429em;
   padding-top: 0.643em;
-  border-top: 1px solid #D8D2D2;
+  border-top: var(--border-width) solid var(--border2);
 }
 
 /* this is also needed to change position of content icons */
@@ -2130,7 +2186,7 @@ li.picture.blurb,
   margin: 0.5em 0 0 0;
 }
 
-/*========== modification: PICTURE ==========*/
+/*>========== modification: PICTURE ==========<*/
 /* for indices with icon pictures, e.g. collections, users, skins + mystery blurbs */
 
 /* formatting picture blurb header */
@@ -2139,22 +2195,22 @@ li.picture.blurb,
   min-height: 45px;
   margin: 0;
   padding-bottom: 0.75em;
-  border-bottom: 1px solid #D8D2D2;
+  border-bottom: var(--border-width) solid var(--border2);
 }
 
-/* remove the border for user picture blurbs without descriptions or buttons */
+/* remove border for user picture blurbs without descriptions or buttons */
 .user.pseud.picture.blurb:not(:has(blockquote, ul.actions)) > .header {
-  border: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  border: none;
 }
 
-/* make picture blurb icons smaller */
+/* picture blurb icons */
 .picture .icon img,
 .index .picture .icon {
-  height: 45px;
   width: 45px;
-  border-radius: 0.25rem; /* also give them rounded corners */
+  height: 45px; /* slightly smaller than default */
+  border-radius: var(--icon-index-radius);
 }
 
 /* space for picture blurb icon */
@@ -2165,14 +2221,14 @@ li.picture.blurb,
   padding-left: 0.75em;
 }
 
-/* ========== various little mods ==========*/
+/*>========== various little mods ==========<*/
 
 /* mod: blurbs on the manage collection items pages */
 .item dl.visibility {
-  background-color: #EDEAEA;
+  background-color: var(--bg4);
 }
 
-/*===== mod: BOOKMARK =====*/
+/*>>========== mod: BOOKMARK ==========<<*/
 
 .bookmarks-index .bookmark.index {
   overflow: hidden;
@@ -2184,23 +2240,23 @@ li.picture.blurb,
 
 /* bookmark icon placement for blurbs */
 .bookmark p.status {
-  width: 25px;
-  margin: 0;
   top: 5px;
   right: 0.75em; /* same as blurb padding */
+  width: 25px;
+  margin: 0;
 }
 
 /* create bookmark ribbon */
 .bookmark .blurb p.status a:not(.short a)::before {
-  content: "";
-  height: 40px;
-  top: -5px;
   position: absolute;
+  top: -5px;
+  z-index: -1;
   box-sizing: border-box;
+  height: 40px;
   border-inline: 13px solid; /* width */
   border-bottom: 5.5px solid transparent;
   border-radius: 0 0 0.2rem 0.2rem;
-  z-index: -1;
+  content: "";
 }
 
 /* hide number of bookmarks icon => can be found in the stats anyway */
@@ -2208,14 +2264,14 @@ li.picture.blurb,
   display: none;
 }
 
-/* number of bookmarks */
+/* number of bookmarks => this is technically not necessary, because the symbol is hidden anyway */
 .bookmark .count a {
-  color: #6C2D52; /* this is technically not necessary because the symbol is hidden anyway */
+  color: var(--txt-main);
 }
 
-.bookmark .count a:hover,
-.bookmark .count a:focus {
-  color: #FF66A8; /* this is technically not necessary because the symbol is hidden anyway */
+/* number of bookmarks on hover/focus */
+.bookmark .count a:is(:hover, :focus) {
+  color: var(--link-hgl); /* this is technically not necessary because the symbol is hidden anyway */
 }
 
 /* move date next to bookmark icon */
@@ -2224,22 +2280,23 @@ li.picture.blurb,
 }
 
 .bookmark .user {
-  border: 1px solid #D8D2D2;
-  border-radius: 0.25rem;
   box-sizing: border-box;
   padding: 0.643em;
-  word-break: break-word;
+  border: var(--border-width) solid var(--border2);
+  border-radius: var(--radius-big);
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .bookmark .user .meta {
+  margin: 0;
   font-size: inherit;
   line-height: inherit;
-  margin: 0;
 }
 
 .bookmark .user .byline {
-  font-weight: 700;
   margin: 0 6em 0 0;
+  font-weight: 700;
 }
 
 .bookmark .module:has(.meta) > .byline,
@@ -2256,8 +2313,8 @@ li.picture.blurb,
 
 .bookmark .short.blurb .header {
   display: flex;
+    column-gap: 0.643em;
   min-height: 25px;
-  column-gap: 0.643em;
 }
 
 .bookmark .short.blurb:has(.meta) .header {
@@ -2271,36 +2328,35 @@ li.picture.blurb,
 }
 
 .bookmark .short.blurb .header .datetime {
-  position: unset;
   order: 3;
+  position: unset;
   min-width: 11ch;
   margin-left: auto;
 }
 
 .bookmark .short.blurb .header .status {
-  position: unset;
   order: 1;
+  position: unset;
 }
 
-/*===== mod: READING =====*/
+/*>>========== mod: READING ==========<<*/
 
-/* "last visited" */
+/* "last visited" (History) */
 .reading h4.viewed {
-  background-color: #EDEAEA;
+  margin-inline: -0.75em;
+  padding: 0.429em;
+  padding-inline: 0.75em;
+  background: linear-gradient(to right, var(--bg4) 25%, transparent);
   font-size: 1em;
-  padding: 0.25em 0.429em;
-  border: 1px solid #BBB2B2;
-  border-left: 5px solid #BBB2B2;
-  border-radius: 0.25rem;
 }
 
 .reading .deleted h4.viewed {
   background-color: transparent;
 }
 
-/* mod: PROMPT */
+/* mod: PROMPT => hide this to get rid of the weird space before and after promt summary; not sure if this affects anything else */
 .prompt .blurb h6 {
-  display: none; /* hide this to get rid of the weird space before and after promt summary; not sure if this affects anything else */
+  display: none;
 }
 
 /*============================================================
@@ -2318,12 +2374,12 @@ div.preface {
 }
 
 .preface h2.title {
-  font-weight: 700;
+  font-weight: 700; /* bold preface title */
 }
 
 .preface h3 {
-  border-bottom: 1.5px solid;
   margin-bottom: 1em;
+  border-bottom: 1.5px solid var(--border4);
 }
 
 div.afterword {
@@ -2335,55 +2391,57 @@ div.afterword {
 ============================================================*/
 /* see "Archive: (15) group comments skin" by AO3 */
 
-div.comment {
-  border: 0;
+/* remove borders */
+div.comment,
+.comment div.icon {
+  border: none;
 }
 
 /* comment body */
 li.comment:not(:has(.edit_comment)) {
-  border: 1px solid #D8D2D2;
-  border-radius: 0.25rem;
-  background-color: #FCFCFC;
-  padding: 0.643em 0.643em 0.429em 0.643em;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  padding: 0.75em 0.75em 0.429em;
+  border: var(--border-width) solid var(--border3);
+  border-radius: var(--radius-big);
+  background-color: var(--bg5);
 }
 
-/* comment icon => make them smaller than default size */
+/* comment icon */
 .comment div.icon,
 .comment .icon,
 .abbreviated .icon {
-  margin: 0;
-  width: 45px;
-  height: 45px;
   order: 1;
+  width: 45px; /* slightly make them smaller than default size */
+  height: 45px;
+  margin: 0;
+  border-radius: var(--icon-primary-radius);
 }
 
 /* comment byline */
 .comment h4.byline {
-  background-color: transparent;
-  padding: 0 0 0 0.642em;
-  margin: 0;
-  line-height: 1.25;
-  order: 2;
-  flex-basis: 0;
-  flex-grow: 1;
   align-content: center;
+  order: 2;
+  flex-grow: 1;
+  flex-basis: 0;
+  margin: 0;
+  padding: 0 0 0 0.642em;
+  background-color: transparent;
   font-size: 1em;
-  word-break: break-word;
+  line-height: 1.25;
 }
 
 /* comment text */
 .comment .userstuff,
 .splash .comment .userstuff {
+  order: 3;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: unset;
   margin: 0;
   padding: 0.643em 0;
-  min-height: unset;
-  order: 3;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 /* date posted */
@@ -2412,14 +2470,19 @@ li.comment:not(:has(.edit_comment)) {
 
 /* reply form */
 .comment div:has(.post.comment) {
-  margin-top: 0.429em;
-  width: 100%;
   order: 7;
+  width: 100%;
+  margin-top: 0.429em;
 }
 
 /* edit comment */
 li.comment:has(.edit_comment) {
   border: none;
+}
+
+/* no more gigantic images in comments */
+.comment img {
+  max-height: 500px;
 }
 
 /* thread indent */
@@ -2436,110 +2499,105 @@ li.comment:has(.edit_comment) {
   max-width: unset;
 }
 
-/*========== ZONE: SYSTEM: SPLASH PAGE ==========*/
+/*>========== ZONE: SYSTEM: SPLASH PAGE ==========<*/
 
 /* create flexbox layout */
 .splash {
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   box-sizing: border-box;
   max-width: unset;
   margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 /* headings */
 .splash > .module h3 {
-  border-bottom: 1.5px solid;
-  color: #6C2D52;
-  font-size: 1.4em;
+  border-bottom: 1.5px solid var(--border4);
   font-weight: 700;
+  font-size: 1.4em;
+  color: var(--txt-main);
 }
 
 /* modules (favorite tags, news, unread messages etc.) */
 .splash > .module,
 .logged-in .splash > .module {
+  box-sizing: border-box;
   margin-inline: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 .logged-in .splash > .module {
   width: 49%;
 }
 
-/*===== module: "Find your favorites" =====*/
+/*>>========== module: "Find your favorites" ==========<<*/
 
 /* color of the little arrows */
 .splash .browse li a::before {
-  color: #6C2D52;
+  color: var(--txt-main);
 }
 
-/*===== module: favorite tags =====*/
+/*>>========== module: favorite tags ==========<<*/
 
+/* style favorite tags */
 .splash .favorite a.tag {
-  border: 0;
+  border: none;
+  border-radius: var(--radius-alt);
   background-color: transparent;
-  border-radius: 0.25rem;
-  color: #6C2D52;
+  color: var(--taxt-main);
 }
 
+/* different styling for odd favorite tags */
 .splash .favorite li:nth-of-type(odd) a.tag {
-  background-color: #EDEAEA;
+  background-color: var(--bg7);
 }
 
-/*===== module: news =====*/
+/*>>========== module: news ==========<<*/
 
+/* heading */
 .splash .news h4 {
   font-weight: 700;
   font-size: 1em;
 }
 
 .splash .news li {
-  border-bottom: 1.5px solid #D8D2D2;
+  border-bottom: 1.5px solid var(--border1);
 }
 
 .splash .news li:last-of-type {
   border-bottom: none;
 }
 
-/*========== ZONE: SYSTEM: FAQS ==========*/
+/*>========== ZONE: SYSTEM: FAQS ==========<*/
 
 .faq .categories h3 {
-  border-color: #6C2D52;
+  border-color: var(--border4);
 }
 
 .faq .example,
 .guideline .example {
-  border: 1px solid #2E6CB2;
+  border: var(--border-width) solid var(--notice-txt);
 }
 
-/*========== ZONE: SYSTEM: TOS (Terms of Service) POPUP ==========*/
+/*>========== ZONE: SYSTEM: TOS (Terms Of Service), TOS FAQ, AND TOS POPUP ==========<*/
+/* to view this log out, delete cookies and visit random work */
 
 .tos .userstuff nav.toc > details > summary {
   border-color: inherit;
 }
 
+/*>========== tos promt ==========<*/
+
 #tos_prompt {
-  background: #F7F6F5;
+  background: var(--bg1);
 }
 
-#tos_prompt .heading {
-  background: #FF66A8;
-  color: #FFFFFF;
-  border-bottom: 1px solid #A8366E
-}
-
-#tos_prompt [disabled] {
-  background: #BBB2B2;
-  box-shadow: none;
-}
-
-/*========== ZONE: SYSTEM: PROXY NOTICE ==========*/
+/*>========== ZONE: SYSTEM: PROXY NOTICE ==========<*/
 
 #proxy-notice {
-  background: #FCDCE2;
-  border-bottom: 1px solid #C72C53;
+  border-bottom: var(--border-width) solid var(--alert-txt);
+  background: var(--alert-bg);
 }
 
 /*============================================================
@@ -2547,26 +2605,27 @@ li.comment:has(.edit_comment) {
 ============================================================*/
 /* see "Archive: (17) zone home skin" by AO3 */
 
-/* user home, collections and challenges home, tag home, admin comms home 
+/* home for: user, collections/challenges, tags, admin comms 
 --this zone always shows a dashboard styled in region-dashboard and its parent is #main.dashboard */
 
+/* layout */
 .home .primary.header.module {
-  margin-bottom: 1em;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  margin-bottom: 1em;
 }
 
 .home .header h2 {
-  margin-block: 0.429em 0;
   width: 100%;
   height: fit-content;
-  border-bottom: 1.5px solid #D8D2D2;
+  margin-block: 0.429em 0;
+  border-bottom: 1.5px solid var(--border1);
 }
 
 .home .header ul.actions {
-  margin-left: 100px;
   width: 100%;
+  margin-left: 100px;
   text-align: right;
 }
 
@@ -2580,20 +2639,24 @@ li.comment:has(.edit_comment) {
 }
 
 .home .header dl.stats {
-  margin-left: auto;
   width: 100%;
+  margin-left: auto;
 }
 
-/* puts CSS code on skins pages in scrollable boxes */
+/* round primary icons */
+.primary .icon {
+  border-radius: var(--icon-primary-radius);
+}
+
+/* put CSS code on skins pages in scrollable boxes */
 .skins.home .css.module blockquote {
-  max-height: 60vh;
   overflow: auto;
+  max-height: 60vh;
   margin-inline: 0;
   padding: 0.643em;
-  border-radius: 0.25rem;
-  border: 1px solid #6C2D52;
-  background-color: #6C2D52;
-  color: #F9D2E2;
+  border: var(--border-width) solid var(--border2);
+  border-radius: var(--radius-big);
+  background-color: var(--bg7);
 }
 
 /*============================================================
@@ -2601,7 +2664,7 @@ li.comment:has(.edit_comment) {
 ============================================================*/
 /* see "Archive: (18) zone searchbrowse skin" by AO3 */
 
-/*========== INDEX PAGES (with filters) ==========*/
+/*>========== INDEX PAGES (with filters) ==========<*/
 
 /* some pages are marked as "filtered" but there are no filters ... */
 /* so they don't need the space on the right for the filters */
@@ -2609,14 +2672,14 @@ li.comment:has(.edit_comment) {
   width: 100%;
 }
 
-/*========== INTERACTION: SEARCH ==========*/
+/*>========== INTERACTION: SEARCH ==========<*/
 
 form.search input[type="text"] {
-  border: 1px solid #BBB2B2;
-  border-radius: 0.25rem;
+  border: var(--border-width) solid var(--border2);
+  border-radius: var(--radius-small);
+  background-color: var(--int-bg);
   background-image: none;
-  background-color: #FFFFFF;
-  color: #6C2D52;
+  color: var(--txt-main);
 }
 
 li.search fieldset {
@@ -2624,7 +2687,7 @@ li.search fieldset {
   font-size: 1em;
 }
 
-/*========== INTERACTION: FILTER ==========*/
+/*>========== INTERACTION: FILTER ==========<*/
 
 /* sticky filters box */
 form.filters {
@@ -2634,31 +2697,30 @@ form.filters {
   overflow-y: scroll;
   overflow-wrap: anywhere;
   box-sizing: border-box;
-  max-height: 96vh;
   width: 25%;
-  max-width: 400px;
-  border-radius: 0.25rem;
+  max-height: 96vh;
+  border-radius: var(--radius-small);
   margin-block: 0.643em !important; /* same as blurbs */
   padding: 0 0.643em 0 2%; /* leave a little more space on the right for the scrollbar */
-  scrollbar-color: #BBB2B2 transparent;
+  scrollbar-color: var(--border4) transparent;
 }
 
-/* hide scrollbar here except for hover */
+/* hide scrollbar except on hover */
 form.filters:not(:hover) {
   scrollbar-color: transparent transparent;
 }
 
-/* prevent the filter box from overlapping the pagination buttons */
+/* prevent filter box from overlapping pagination buttons */
 .region:has(ol.pagination.actions) form.filters {
   margin-bottom: 4.5em !important;
 }
 
 .filters fieldset {
-  padding: 0;
-  margin: 0;
   overflow: visible;
-  background: transparent;
+  margin: 0;
+  padding: 0;
   border: none;
+  background: transparent;
 }
 
 .filters fieldset li {
@@ -2677,8 +2739,8 @@ form.filters:not(:hover) {
 form.filters dl,
 form.filters dt,
 form.filters dl dl {
-  margin: 0;
   overflow: visible;
+  margin: 0;
   border: none;
 }
 
@@ -2689,8 +2751,8 @@ form.filters dl dl {
 
 .filters .submit,
 .filters .group {
-  text-align: unset;
   width: 100%;
+  text-align: unset;
 }
 
 .filters .submit:first-of-type:not(:only-of-type) input {
@@ -2712,20 +2774,20 @@ form.filters dl dl {
 /* filters expander */
 .filters .expander,
 .filters .expanded .expander {
-  background-image: none; /* remove expander arrow */
-  color: #6C2D52;
-  box-shadow: none;
   padding-left: 1em;
+  box-shadow: none;
+  background-image: none; /* remove expander arrow */
+  color: var(--txt-main);
 }
 
 /* create new filters expander arrow */
 .filters .expander::before {
-  content: "";
   position: absolute;
-  left: 0.2em;
   top: 0.6em;
+  left: 0.2em;
   border-block: 0.3em solid transparent;
   border-left: 0.5em solid;
+  content: "";
 }
 
 /* rotate arrow when expanded */
@@ -2755,13 +2817,13 @@ form.filters dl dl {
   padding-block: 0.25em !important;
 }
 
-/*===== style range filters (wordcount, date updated) =====*/
+/*>>========== style range filters (wordcount, date updated) ==========<<*/
 
 .filters dl.range {
   display: grid;
-  grid-template-columns: auto auto;
-  column-gap: 0.5em;
-  align-items: baseline;
+    grid-template-columns: auto auto;
+    column-gap: 0.5em;
+    align-items: baseline;
 }
 
 .filters dl.range dt {
@@ -2772,42 +2834,42 @@ form.filters dl dl {
   grid-column: 2;
 }
 
-/*===== javascript =====*/
+/*>>========== javascript context ==========<<*/
 /* only relevant for mobile but it's better to keep it here */
 
 .javascript {
-  background: #EDEAEA;
+  background: var(--bg4);
 }
 
 /*============================================================
->> 19 ZONE: TAGS, TAGSETS, and TAG WRANGLING
+>> 19 ZONE: TAG PAGES, TAGSETS, and TAG WRANGLING
 ============================================================*/
 /* see "Archive: (19) zone tags skin" by AO3 */
 
 /* scrollable tag-listboxes */
 .tag.home.profile .listbox > .tags.index {
-  max-height: 60vh;
   overflow: auto;
+  max-height: 60vh;
 }
 
 /* subtags */
 .tree.index ul {
-  background-color: transparent;
-  border-left: 1px solid #BBB2B2;
-  border-top: 0;
   margin-left: 0.643em;
   padding-block: 0;
   padding-right: 0;
+  border-top: 0;
+  border-left: var(--border-width) solid var(--border2);
+  background-color: transparent;
 }
 
-/*========== TAGSETS ==========*/
+/*>========== TAGSETS ==========<*/
 /* tagsets look terrible with the default skin and I didn't really make it much better */
 
 .tagset .tags li.listbox {
   padding: 0;
 }
 
-/*reviewing nominations*/
+/* reviewing nominations */
 dl.nomination {
   border-radius: 0;
 }
@@ -2827,8 +2889,6 @@ dl.nomination {
 /* see "Archive: (21) userstuff skin" by AO3 */
 /* userstuff = displaying content inputted by a user into a textarea */
 
-
-
 .userstuff p,
 .userstuff details {
   margin: 1em auto; /* slightly narrower space between paragraphs than in default AO3 skin */
@@ -2840,7 +2900,7 @@ dl.nomination {
   margin-block: 0.5em; /* reduce space (line height) between list items */
 }
 
-/*========== bio on profile page ==========*/
+/*>========== bio on profile page ==========<*/
 
 .bio.module {
   margin-block: 0.5em;
@@ -2850,42 +2910,43 @@ dl.nomination {
   margin-inline: 0;
 }
 
-/*========== headings ==========*/
+/*>========== headings ==========<*/
 
 .userstuff h2 {
-  color: #6C2D52;
+  color: var(--txt-main);
 }
 
 .userstuff h3 {
-  border-color: inherit;
+  border-color: var(--border4);
 }
 
-/*========== quotes and stresses ==========*/
+/*>========== quotes and stresses ==========<*/
 
 .userstuff blockquote,
 .splash .userstuff blockquote {
   margin-inline-start: 0.75em;
   padding: 0.75em;
-  border-inline-start: 2px solid #D8D2D2;
+  border-inline-start: 2px solid var(--border1);
 }
 
 .userstuff blockquote blockquote {
   padding: 0.25em;
-  border: 0;
+  border: none;
 }
 
 .userstuff hr {
-  border: 1px solid #BBB2B2;
+  margin-block: 2em;
+  border: var(--border-width) solid var(--border2);
 }
 
-/*========== expected behaviours, exceptioning ==========*/
+/*>========== expected behaviours, exceptioning ==========<*/
 
 /* work margins and text */
 #workskin {
   max-width: 70em; /* slightly more narrow than default */
   margin: 0 auto;
   padding: 0 2%;
-  font-size: 1.1em; /* change font size of works here */
+  font-size: var(--txt-size-work); /* change font size of works here */
 }
 
 /*============================================================
@@ -2913,9 +2974,9 @@ form .notice,
 form ul.notes {
   margin-inline: 0;
   padding: 0.429em;
-  border: 1px solid;
+  border: var(--border-width) solid;
   border-left: 5px solid;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-mid);
   box-shadow: none;
   line-height: 1.2em;
 }
@@ -2942,16 +3003,16 @@ ul.notes li,
 .comment_notice,
 .kudos_notice,
 ul.notes {
-  color: #2E6CB2;
-  background-color: #DEEAF7;
   border-color: currentColor;
+  background-color: var(--notice-bg);
+  color: var(--notice-txt);
 }
 
 /* colors for warnings */
 .caution {
-  color: #A77916;
-  background-color: #FFF7E5;
   border-color: currentColor;
+  background-color: var(--caution-bg);
+  color: var(--caution-txt);
 }
 
 /* colors for alerts/error messages */
@@ -2961,54 +3022,58 @@ div.error,
 .kudos_error,
 .alert.flash,
 .required.notice {
-  color: #C72C53;
-  background-color: #FCDCE2;
   border-color: currentColor;
+  background-color: var(--alert-bg);
+  color: var(--alert-txt);
 }
 
 .required {
-  color: #C72C53;
+  color: var(--alert-txt);
 }
 
 /* links */
-.notice a,
-.notice a:visited,
-.error a,
-.error a:visited,
+.alert a:not(.action),
+.alert a:not(.action):visited,
+.notice a:not(.action),
+.notice a:not(.action):visited,
+.error a:not(.action),
+.error a:not(.action):visited,
 .announcement .userstuff a,
 .announcement .userstuff a:visited {
+  border-bottom: 1px solid !important;
   color: inherit !important;
-  border-bottom: 1px solid;
 }
 
-/* link hover */
-.notice a:hover,
-.error a:hover,
-.announcement .userstuff a:hover,
-.announcement input[type="submit"]:hover,
-.announcement .action:hover {
+/* link hover and focus */
+.alert a:not(.action):is(:hover, :focus),
+.notice a:not(.action):is(:hover, :focus),
+.error a:not(.action):is(:hover, :focus),
+.announcement .userstuff a:is(:hover, :focus),
+.announcement input[type="submit"]:is(:hover, :focus),
+.announcement .action:is(:hover, :focus) {
   filter: opacity(60%);
 }
 
-/*========== ADMIN ANNOUNCEMENT BANNERS ==========*/
+/*>========== ADMIN ANNOUNCEMENT BANNERS ==========<*/
 
 .announcement {
   display: flex;
-  align-items: end;
-  border-bottom: 1px solid #00000020;
-  padding: 1em 0 1em 2em;
+    align-items: end;
   z-index: 1;
-  background: #DEEAF7;
+  padding: 1em 0 1em 2em;
+  border-bottom: var(--border-width) solid #00000020;
+  background: var(--notice-bg);
 }
 
 .announcement .userstuff {
-  background: transparent;
   margin: 0;
   padding: 0;
-  color: #361628;
-  border: 0;
+  border: none;
+  background: transparent;
+  overflow-wrap: anywhere;
   font-size: 0.95em;
-  word-break: break-word;
+  word-break: normal;
+  color: var(--txt-alt1);
 }
 
 .announcement .userstuff p {
@@ -3018,55 +3083,55 @@ div.error,
 /* button placement */
 .announcement p.submit {
   position: unset;
-  text-align: center;
-  width: 2em;
   z-index: 3;
+  width: 2em;
+  text-align: center;
 }
 
 /* button */
 .announcement input[type="submit"],
 .announcement .action {
-  line-height: 1;
   margin: 0 !important;
   padding: 0 !important;
-  background: transparent !important;
   border: none !important;
   box-shadow: none;
+  background: transparent !important;
   font-size: 0.95em;
-  color: #361628;
+  line-height: 1;
+  color: var(--txt-alt1);
 }
 
 .announcement.event {
-  background: #C72C53;
+  background: var(--alert-txt);
 }
 
 .event .userstuff {
   background: transparent;
-  color: #FFFFFF;
+  color: var(--txt-alt2);
 }
 
 .announcement.alert {
-  background: #FFF7E5;
+  background: var(--caution-bg);
 }
 
 .alert .userstuff {
   background: transparent;
-  color: #361628;
+  color: var(--txt-alt1);
 }
 
-/*========== thermometer JavaScript widget for fundraising drives ==========*/
+/*>========== thermometer JavaScript widget for fundraising drives ==========<*/
 
 .announcement .thermometer-content {
-  height: 1.5em;
   width: 50%;
+  height: 1.5em;
   margin-top: 1em;
 }
 
 .announcement .thermometer .track {
-  background: #FFFFFF;
+  margin: 0.5em 0;
   border: 1.5px solid;
   border-radius: 9999px;
-  margin: 0.5em 0;
+  background: var(--txt-alt2); /* same as text color, maybe change later */
 }
 
 .announcement .thermometer .goal .amount {
@@ -3077,27 +3142,27 @@ div.error,
   top: 0;
   right: 0.2em;
   left: unset;
-  color: #FFFFFF;
+  color: var(--txt-alt2);
 }
 
 /* progress bar */
 .announcement .thermometer .track div.progress {
-  background-image: linear-gradient(to right, #CFFFF2 -25%, #008F85 50%) !important;
   border-radius: 9999px;
+  background-image: linear-gradient(to right, var(--success-bg) -25%, var(--success-txt) 50%) !important;
 }
 
-/*========== SYMBOLS (mostly help button) ==========*/
+/*>========== SYMBOLS (mostly help button) ==========<*/
 
 span.symbol {
   display: inline-block;
   width: 1.4em;
   height: 1.4em;
-  line-height: 1.4;
   border: none;
   border-radius: 100%;
+  line-height: 1.4;
   text-align: center;
-  color: #FFFFFF;
   vertical-align: unset;
+  color: var(--txt-alt2);
 }
 
 span.symbol span {
@@ -3106,22 +3171,22 @@ span.symbol span {
 
 .symbols a,
 .symbol a {
-  text-decoration: none;
   border: none;
+  text-decoration: none;
 }
 
-.question a:hover {
-  background-color: #FF66A8;
-  border-color: #FF66A8;
-  color: #EDEAEA;
+.question a:is(:hover, :focus) {
+  border-color: var(--int-hgl);
+  background-color: var(--int-hgl);
+  color: var(--bg4);
   cursor: help;
 }
 
 span.question {
-  background-color: #D44E8B;
   box-shadow: none;
-  vertical-align: super;
+  background-color: var(--link-visited);
   font-size: 0.9em;
+  vertical-align: super;
 }
 
 a.question {
@@ -3140,31 +3205,31 @@ span.rejected.symbol::before {
 
 /* new checkmark symbol on approved elements to prevent it from turning into an emoji on IOS */
 span.approved.symbol::before {
-	content: "\002714\fe0e"; /* unicode checkmark + variation selector to stop it from turning into an emoji */
+  content: "\002714\fe0e"; /* unicode checkmark + variation selector to stop it from turning into an emoji */
 }
 
 /* hide old checkmark and cross symbols (see above) */
 span.rejected.symbol span,
 span.approved.symbol span {
-	display: none;
+  display: none;
 }
 
 /* prevent checkmark symbol on replied to messages from turning into an emoji on IOS */
 /* have to do it differently than above because of different html - this hides the old checkmark symbol first */
 span.replied {
-  text-indent: -9999px;
   line-height: 0;
+  text-indent: -9999px;
 }
 
 /* new checkmark symbol */
 span.replied::after {
   display: block;
-  content: "\002714\fe0e"; /* unicode checkmark + variation selector to stop it from turning into an emoji */
-  text-indent: 0;
   line-height: 1.286;
+  text-indent: 0;
+  content: "\002714\fe0e"; /* unicode checkmark + variation selector to stop it from turning into an emoji */
 }
 
-/*========== SYMBOLS KEY (help content) ==========*/
+/*>========== SYMBOLS KEY (help content) ==========<*/
 
 #symbols-key h4 {
   margin: 1em 0;
@@ -3182,9 +3247,9 @@ dl#symbols-key dd {
   width: auto;
   margin: 0;
   padding: 0.643em 0.643em 0 0.643em ;
-  border: 1px solid #D8D2D2;
-  border-radius: 0.25rem;
-  background-color: #FCFCFC;
+  border: var(--border-width) solid var(--border1);
+  border-radius: var(--radius-mid);
+  background-color: var(--bg5);
 }
 
 #symbols-key dl dd,
@@ -3194,58 +3259,49 @@ dl#symbols-key dd {
 
 /*============================================================
 >> Z1 REPLACE THE ICONS AND IMAGES
-============================================================*/ 
+============================================================*/
 
-/*========== ICONS FOR USERS, COLLECTIONS, TAGS etc. ==========*/
+/*>========== ICONS FOR USERS, COLLECTIONS, TAGS etc. ==========<*/
 
-/* rounded corners */
-.icon,
-.icon img,
-.comment div.icon {
-  border-radius: 100%;
-  border: none;
-}
-
-/* border + white background for uploaded icons */
+/* border + background for uploaded icons */
 .icon img:not(img[src*="/images/skins/iconsets/default/"]) {
   box-sizing: border-box;
-  border: 1px solid #D8D2D2;
-  background: #FFFFFF;
+  border: var(--border-width) solid var(--icon-border2);
+  background: var(--icon-bg);
 }
 
 /* default user icon */
 img[src$="/images/skins/iconsets/default/icon_user.png"] {
   box-sizing: border-box;
+  border: var(--border-width) solid var(--icon-border2); /* change border width and color here */
+  background-image: radial-gradient(var(--icon-id) 60%, var(--icon-border2) 60%); /* change icon color here */
   content: url("https://i.ibb.co/Wv3mdf19/zerafina-icon-user-default-02.png"); /* url of new icon */
-  background-image: radial-gradient(#D44E8B 60%, #D8D2D2 60% ); /* change icon color here */
-  border: 1px solid #BBB2B2; /* change border width and color here */
 }
 
 /* anon comment icon */
 .comment .icon .anonymous {
   box-sizing: border-box;
+  border: var(--border-width) solid var(--icon-border1); /* change border width and color here */
   background: url("https://i.ibb.co/1tbz1GYk/zerafina-icon-anon-01.png"); /* url of new icon */
-  background-size: cover;
-  background-color: #A29696; /* change background color here */
-  border: 1px solid #00000025; /* change border width and color here */
+    background-color: var(--icon-anon); /* change background color here */
+    background-size: cover;
 }
 
 /* guest comment icon */
 .comment .icon .visitor { 
   box-sizing: border-box;
+  border: var(--border-width) solid var(--icon-border1); /* change border width and color here */
   background: url("https://i.ibb.co/JWmJv92v/zerafina-icon-user-visitor-02.png"); /* url of new icon */
-  background-size: cover;
-  background-color: #A29696; /* change background color here */
-  border: 1px solid #00000025; /* change border width and color here */
+    background-color: var(--icon-anon); /* change background color here */
+    background-size: cover;
 }
 
 /* default collection icon */
 img[src$="/images/skins/iconsets/default/icon_collection.png"] {
   box-sizing: border-box;
+  border: var(--border-width) solid var(--icon-border1); /* change border width and color here */
+  background-color: var(--icon-id); /* change background color here */
   content: url("https://i.ibb.co/LX19mpdV/zerafina-icon-collection-02.png"); /* url of new icon */
-  background-image: linear-gradient(transparent, #ffffff50 45% 55%, transparent); /* subtle gradient */
-  background-color: #D44E8B; /* change background color here */
-  border: 1px solid #00000025; /* change border width and color here */
 }
 
 /* tag icons */
@@ -3253,57 +3309,47 @@ img[src$="/images/skins/iconsets/default/icon_collection.png"] {
 .tag .primary .icon,
 .index .tagset .icon {
   box-sizing: border-box;
-  background: url("https://i.ibb.co/sdVVMJ9z/zerafina-icon-tag-02.png"), /* url of new icon */
-    linear-gradient(transparent, #FFFFFF50 45% 55%, transparent); /* subtle gradient */
-  background-size: cover;
-  background-color: #D44E8B; /* change background color here */
-  border: 1px solid #00000025; /* change border width and color here */
+  border: var(--border-width) solid var(--icon-border1); /* change border width and color here */
+  background: url("https://i.ibb.co/sdVVMJ9z/zerafina-icon-tag-02.png"); /* url of new icon */
+    background-color: var(--icon-id); /* change background color here */
+    background-size: cover;
 }
 
 /* icon for unrevealed works */
 .index .mystery .icon {
   box-sizing: border-box;
-  background: url("https://i.ibb.co/1tbz1GYk/zerafina-icon-anon-01.png"), /* url of new icon */
-    linear-gradient(transparent, #FFFFFF50 45% 55%, transparent); /* subtle gradient */
-  background-size: cover;
-  background-color: #D44E8B; /* change background color here */
-  border: 1px solid #D8D2D2; /* change width and color of outer border here */
+  border: var(--border-width) solid var(--icon-border2); /* change width and color of outer border here */
   box-shadow: inset 0 0 0 3px #FFFFFF; /* change width and color of inner border here */
+  background: url("https://i.ibb.co/1tbz1GYk/zerafina-icon-anon-01.png"); /* url of new icon */
+    background-color: var(--icon-id); /* change background color here */
+    background-size: cover;
 }
 
 /* admin icon => seen on news posts */
 .admin .primary .icon {
   box-sizing: border-box;
+  border: var(--border-width) solid var(--icon-border1); /* change border width and color here */
   background: url("https://i.ibb.co/TBW1YD5b/zerafina-icon-admin-02.png"); /* url of new icon */
-  background-size: cover;
-  background-color: #D44E8B; /* change background color here */
-  border: 1px solid #00000025; /* change border width and color here */
+    background-color: var(--icon-id); /* change background color here */
+    background-size: cover;
 }
 
 /* default icon for skins */
 .skins .primary .icon:not(:has(a .icon)),
 .index .skins .icon:not(:has(a .icon)) {
   box-sizing: border-box;
+  border: var(--border-width) solid var(--icon-border1); /* change border width and color here */
   background: url("https://i.ibb.co/Qj9QDRCZ/zerafina-icon-skins-02.png"); /* url of new icon */
-  background-size: cover;
-  background-color: #D44E8B; /* change icon color here */
-  border: 1px solid #00000025; /* change border width and color here */
+    background-color: var(--icon-id); /* change icon color here */
+    background-size: cover;
 }
 
 /* remove default skin icon under uploaded icons */
-.skins .primary .icon:has(a img.icon) {
+.skins .primary .icon:has(a .icon) {
   background: none;
 }
 
-/*========== CONTENT SYMBOLS ==========*/
-
-/* rounded corners for content symbols */
-.blurb ul.required-tags li span,
-.bookmark .status span:not(.status .private),
-#symbols-key dl img,
-#bookmark-symbols-key img {
-  border-radius: 0.25rem;
-}
+/*>========== CONTENT SYMBOLS ==========<*/
 
 /* sets the size of the symbols keys icons */
 #symbols-key dl img,
@@ -3314,14 +3360,15 @@ img[src$="/images/skins/iconsets/default/icon_collection.png"] {
 }
 
 /* sizing and borders for content symbols */
-.blurb ul.required-tags li span,
-.bookmark .status span:not(.status .private),
+.blurb ul.required-tags li a > span,
+.bookmark p.status a > span,
 #symbols-key dl img,
 #bookmark-symbols-key img {
+  box-sizing: border-box;
+  border: var(--border-width) solid var(--icon-border1);
+  border-radius: var(--icon-content-radius);
   background-size: cover;
   background-origin: border-box;
-  box-sizing: border-box;
-  border: 1px solid; /* change border width here or delete this if you don't want the borders */
 }
 
 /* empty symbols boxes (no rating, category or warning) */
@@ -3332,8 +3379,8 @@ img[src$="/images/skins/iconsets/default/icon_collection.png"] {
 img[src$="/images/skins/iconsets/default/rating-notrated.png"],
 img[src$="/images/skins/iconsets/default/category-none.png"],
 img[src$="/images/skins/iconsets/default/warning-no.png"] {
-  background: #FFFFFF; /* change background color here */
-  color: #D8D2D2; /* change border color here */
+  border-color: var(--icon-border2) !important; /* change border color here */
+  background: var(--icon-bg); /* change background color here */
 }
 
 /*
@@ -3342,193 +3389,182 @@ This automatically gives the icons borders that have a slightly darker color tha
 You can replace the border color with any other rgb, rgba, or hex color, transparent or not.
 */
 
-/*===== Rating =====*/
+/*>>========== Rating ==========<<*/
 
 /* General Audiences */
 .required-tags .rating-general-audience,
 img[src$="/images/skins/iconsets/default/rating-general-audience.png"] { 
   background: url("https://i.ibb.co/cXk9HdYH/zerafina-icon-rating-gen-01.png"); /* url of new icon */
-  background-color: #4CB7C3; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon1); /* change background color here */
 }
 
 /* Teen And Up Audiences */
 .required-tags .rating-teen,
 img[src$="/images/skins/iconsets/default/rating-teen.png"] { 
   background: url("https://i.ibb.co/xSmwW6CN/zerafina-icon-rating-teen-01.png"); /* url of new icon */
-  background-color: #5E96D6; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon2); /* change background color here */
 }
 
 /* Mature */
 .required-tags .rating-mature,
 img[src$="/images/skins/iconsets/default/rating-mature.png"] { 
   background: url("https://i.ibb.co/chYzvd2w/zerafina-icon-rating-mature-01.png"); /* url of new icon */
-  background-color: #B268CF; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon4); /* change background color here */
 }
 
 /* Explicit */
 .required-tags .rating-explicit,
 img[src$="/images/skins/iconsets/default/rating-explicit.png"] { 
   background: url("https://i.ibb.co/Kp2nk21k/zerafina-icon-rating-explicit-01.png"); /* url of new icon */
-  background-color: #EA5A9A; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon6); /* change background color here */
 }
 
-/*===== Relationships, pairings, orientations =====*/
+/*>>========== Relationships, pairings, orientations ==========<<*/
 
 /* F/F */
 .required-tags .category-femslash, 
 img[src$="/images/skins/iconsets/default/category-femslash.png"] {
   background: url("https://i.ibb.co/JwHx18Ht/zerafina-icon-category-ff-01.png"); /* url of new icon */
-  background-color: #EA5A9A; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon6); /* change background color here */
 }
 
 /* F/M */
 .required-tags .category-het, 
 img[src$="/images/skins/iconsets/default/category-het.png"] {
   background: url("https://i.ibb.co/0yD62BY2/zerafina-icon-category-mf-01.png"); /* url of new icon */
-  background-color: #B268CF; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon5); /* change background color here */
 }
 
 /* Gen */
 .required-tags .category-gen,
 img[src$="/images/skins/iconsets/default/category-gen.png"] {
   background: url("https://i.ibb.co/8gwHmMQX/zerafina-icon-category-gen-01.png"); /* url of new icon */
-  background-color: #4CB7C3; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon1); /* change background color here */
 }
 
 /* M/M */
 .required-tags .category-slash,
 img[src$="/images/skins/iconsets/default/category-slash.png"] {
   background: url("https://i.ibb.co/GQ2YZ686/zerafina-icon-category-mm-01.png"); /* url of new icon */
-  background-color: #5E96D6; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon3); /* change background color here */
 }
 
 /* Multi */
 .required-tags .category-multi,
 img[src$="/images/skins/iconsets/default/category-multi.png"] {
-  background: conic-gradient(from 360deg, #B268CF 0% 25%, #5E96D6 25% 50%, #EA5A9A 50% 75%, #4CB7C3 75% 100%); /* conic gradient with the colors of the relationship icons */
-  color: #0000001a; /* change border color here */
+  background: conic-gradient(from 360deg, var(--icon5) 0% 25%, var(--icon3) 25% 50%, var(--icon6) 50% 75%, var(--icon1) 75% 100%); /* conic gradient with the colors of the relationship icons */
 }
 
 /* Other relationships */
 .required-tags .category-other, 
 img[src$="/images/skins/iconsets/default/category-other.png"] {
   background: url("https://i.ibb.co/MD6r4zyH/zerafina-icon-category-other-01.png"), /* url of new icon */
-    linear-gradient(to left top, #4CB7C3, #5E96D6, #B268CF, #EA5A9A); /* gradient with the colors of the relationship icons */
-  background-color: #897979; /* change background color here */
-  color: #0000001a; /* change border color here */
+    linear-gradient(to left top, var(--icon1), var(--icon3), var(--icon5), var(--icon6)); /* gradient with the colors of the relationship icons */
 }
 
-/*===== Content warnings =====*/
+/*>>========== Content warnings ==========<<*/
 
 /* Author chose not to warn */
 .required-tags .warning-choosenotto, 
 img[src$="/images/skins/iconsets/default/warning-choosenotto.png"] {
   background: url("https://i.ibb.co/m5Yk1TtQ/zerafina-icon-warning-choosenotto-01.png"); /* url of new icon */
-  background-color: #B268CF; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon4); /* change background color here */
 }
 
 /* Warnings apply */
 .required-tags .warning-yes,
 img[src$="/images/skins/iconsets/default/warning-yes.png"] { 
   background: url("https://i.ibb.co/Jj9yFqFq/zerafina-icon-warning-yes-01.png"); /* url of new icon */
-  background-color: #EA5A9A; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon6); /* change background color here */
 }
 
 /* External work */
 .required-tags .external-work,
 img[src$="/images/skins/iconsets/default/warning-external-work.png"] {
   background: url("https://i.ibb.co/p635NXjk/zerafina-icon-warning-external-work-02.png"); /* url of new icon */
-  background-color: #5E96D6; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon3); /* change background color here */
 }
 
-/*===== Completion status =====*/
+/*>>========== Completion status ==========<<*/
 
 /* uncomplete/unfulfilled */
 .required-tags .complete-no, 
 img[src$="/images/skins/iconsets/default/complete-no.png"] { 
   background: url("https://i.ibb.co/pYzPL49/zerafina-icon-complete-no-01.png"); /* url of new icon */
-  background-color: #EA5A9A; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon6); /* change background color here */
 }
 
 /* completed/filled */
 .required-tags .complete-yes,
 img[src$="/images/skins/iconsets/default/complete-yes.png"] { 
   background: url("https://i.ibb.co/6JBN1vhz/zerafina-icon-complete-yes-01.png"); /* url of new icon */
-  background-color: #4CB7C3; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon1); /* change background color here */
 }
 
-/*===== Bookmark symbols =====*/
+/*>>========== Bookmark symbols ==========<<*/
 
-/* Rec */
+/* remove borders from bookmark ribbons */
+.bookmark .blurb:not(.short) .status span {
+  border: none;
+}
+
+/* Rec bookmark */
 .status .rec,
 img[src$="/images/skins/iconsets/default/bookmark-rec.png"] { 
   background: url("https://i.ibb.co/jPq89bqP/zerafina-icon-bookmark-rec-01.png"); /* url of new icon */
-  background-color: #EA5A9A; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon9); /* change background color here */
 }
 
+/* Rec bookmark ribbon color */
 .bookmark .blurb p.status a:not(.short a):has(.rec)::before {
-  border-inline-color: #EA5A9A; /* ribbon color */
+  border-inline-color: var(--icon9); /* ribbon color */
 }
 
 /* Public bookmark */
 .status .public, 
 img[src$="/images/skins/iconsets/default/bookmark-public.png"] { 
   background: url("https://i.ibb.co/KjDwkXfk/zerafina-icon-bookmark-public-02.png"); /* url of new icon */
-  background-color: #4CB7C3; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon1); /* change background color here */
 }
 
+/* Public bookmark ribbon color */
 .bookmark .blurb p.status a:not(.short a):has(.public)::before {
-  border-inline-color: #4CB7C3; /* ribbon color */
+  border-inline-color: var(--icon1); /* ribbon color */
 }
 
 /* Private bookmark */
-.status .private .text, 
+.status .private, 
 img[src$="/images/skins/iconsets/default/bookmark-private.png"] {
-  font-size: inherit;
-  text-indent: -9999px;
-  white-space: nowrap;
   background: url("https://i.ibb.co/4wjGjfhb/zerafina-icon-bookmark-locked-02.png"); /* url of new icon */
-  background-color: #B268CF; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon7); /* change background color here */
+  font-size: 0;
 }
 
+/* fix private bookmark */
+.status .private .text {
+  background: none;
+  /* This seems to be the only bookmark icon where the background is put in the .text element instead of it's parent.
+  I want it to match the rest, so I'm hiding the background of the .text element. */
+}
+
+/* Private bookmark ribbon color  */
 .bookmark .blurb p.status a:not(.short a):has(.private)::before {
-  border-inline-color: #B268CF; /* ribbon color */
+  border-inline-color: var(--icon7); /* ribbon color */
 }
 
 /* Hidden bookmark */
 .status .hidden, 
 img[src$="/images/skins/iconsets/default/bookmark-hidden.png"] {
   background: url("https://i.ibb.co/tp1vXhJ3/zerafina-icon-bookmark-hidden-01.png"); /* url of new icon */
-  background-color: #897979; /* change background color here */
-  color: #0000001a; /* change border color here */
+    background-color: var(--icon8); /* change background color here */
 }
 
+/* Hidden bookmark ribbon color */
 .bookmark .blurb p.status a:not(.short a):has(.hidden)::before {
-  border-inline-color: #897979; /* ribbon color */
+  border-inline-color: var(--icon8); /* ribbon color */
 }
 
-/* remove borders from bookmark ribbons */
-.bookmark .blurb:not(.short) .status span:not(.status .private) {
-  border: none;
-}
-
-/*========== RSS ICON ==========*/
+/*>========== RSS ICON ==========<*/
 
 /* hide old rss icon */
 a.rss span {
@@ -3539,25 +3575,26 @@ a.rss span {
 /* setup for the new rss icon */
 .actions li a.rss {
   display: inline-flex;
-  align-content: center;
-  align-items: center;
-  column-gap: 0.3em;
+    align-content: center;
+    align-items: center;
+    column-gap: 0.3em;
 }
 
 /* new rss icon */
 .actions li a.rss::before {
-  content: "";
-  height: 0.85em;
+  box-sizing: border-box;
   width: 0.85em;
+  height: 0.85em;
+  border: 1px solid var(--icon-border1);
+  border-radius: var(--radius-small);
+  background-color: var(--icon4); /* background color */
   background-image: url("https://i.ibb.co/35VLs1PW/zerafina-icon-rss-01.png"); /* url of new icon */
   background-size: cover;
-  background-color: #FF66A8; /* background color */
-  box-shadow: inset 0 0 0 1px; /* border */
-  border-radius: 2px;
-  color: #00000025; /* change border color here */
+  background-repeat: no-repeat;
+  content: "";
 }
 
-/*========== KUDOS ICON ==========*/
+/*>========== KUDOS ICON ==========<*/
 
 /* hide old kudos icon */
 p.kudos {
@@ -3566,67 +3603,85 @@ p.kudos {
 
 /* new kudos icon */
 div:has(> p.kudos)::before {
-  content: "";
-  height: 55px;
-  width: 55px;
   position: absolute;
+  width: 55px;
+  height: 55px;
   background-image: url("https://i.ibb.co/fdCwtNqS/zerafina-icon-kudos-03.png"); /* url of new icon */
   background-size: cover;
-  filter: invert(48%) sepia(53%) saturate(3274%) hue-rotate(304deg) brightness(89%) contrast(85%); /* adjust filter values to change color */
+  content: "";
+  filter: var(--kudos-icon); /* adjust filter values to change color */
 }
 
-/*========== LOCK ICON for restricted works ==========*/
+/*>========== LOCK ICON for restricted works ==========<*/
 
 img[src$="/images/lockblue.png"] {
   content: url("https://i.ibb.co/kVCsBwzY/zerafina-icon-lock-01.png"); /* url of new icon */
-  filter: invert(20%) sepia(10%) saturate(5089%) hue-rotate(278deg) brightness(92%) contrast(86%); /* adjust filter values to change color */
+  filter: var(--lock-icon); /* adjust filter values to change color */
 }
 
 /*============================================================
 >> Z2 STATS ICONS WITH HOVER TEXT
 ============================================================*/
 
-/*========== STATS ICONS ==========*/
+/*>========== STATS ICONS ==========<*/
 
-/* adjust space on right side */
-.stats:not(.skins .stats) dd {
-  margin-inline: 0 1em;
+/*>>========== stats placement + spacing ==========<<*/
+
+/* reset margin and padding */
+dl.stats dd,
+dl.stats dt,
+.meta .stats dl dd {
+  margin: 0;
   padding: 0;
 }
 
-/* slight adjustments to align stats with other elements */
-/* not the prettiest solution but it works ... */
-dl.stats:not(.skins .stats) {
-  margin-right: -1em;
-  word-spacing: -0.3em;
+dl.stats {
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    column-gap: 0.9em; /* gap between individual stats */
 }
 
+/* stats in meta boxes should be left-aligned */
+.meta dl.stats {
+  justify-content: left;
+}
+
+/* indent for stats icons in meta box on statistics page */
 dl.meta.statistics dd {
-  padding-left: 5px;
+  padding-left: 5px; /* this should be the same as margin-right below */
 }
 
-/*===== setup for the stats icons =====*/
+/* position of icon in relation to corresponding value */
+dl.stats dd,
+dl.statistics dt {
+  display: flex;
+    align-items: baseline;
+}
+
+/*>>========== setup for the stats icons ==========<<*/
 
 /* hide the text before the stats */
 .stats:not(.skins .stats) dt {
   display: none;
 }
 
+/* styling the icons */
 .stats:not(.skins .stats) dd::before,
 dl.statistics dt::before {
   display: inline-block;
   width: 1em;
   height: 1em;
-  margin-bottom: -0.1em;
-  margin-right: 5px;
-  content: "";
+  margin-right: 5px; /* space between icon and stat value; this should be the same as padding-left above */
+  background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
-  filter: invert(89%) sepia(5%) saturate(274%) hue-rotate(314deg) brightness(82%) contrast(87%); /* changes the color of the icons */
+  content: "";
+  transform: translate(0, 1px);
+  filter: var(--stats-icon); /* changes the color of the icons */
 }
 
-/*======= stats icons (images) =======*/
+/*>>========== stats icons (images) ==========<<*/
 
 /* language */
 .stats dd.language::before {
@@ -3748,25 +3803,29 @@ dl.statistics dt.comment::before {
   background-image: url("https://i.ibb.co/ynKkVZyk/zerafina-stats-icon-tags-freeform-01.png");
 }
 
-/*========== STATS HOVER TEXT ==========*/
+/*>========== STATS HOVER TEXT ==========<*/
 
-/*===== general formatting/styling stuff =====*/
+/*>>========== general formatting/styling ==========<<*/
+
+dl.stats dd {
+  justify-content: center;
+  position: relative;
+}
 
 /* text container (tooltip) */
 .stats dd::after {
   display: none;
   position: absolute;
+  top: 2em;
   z-index: 99999;
-  margin: 2em 0 0 -4em;
   padding: 0.3em;
-  border-radius: 0.25rem;
-  border: 1px solid #A29696;
-  background: #FFFFFF;
+  border: 1px solid var(--border4);
+  border-radius: var(--radius-small);
+  box-shadow: var(--shadow);
+  background: var(--bg6);
   font-size: 0.8em;
-  line-height: 1em;
+  line-height: 1;
   text-align: center;
-  word-break: break-word; /* prevent overflow by breaking the word if necessary - not the best solution */
-  white-space: normal; /* see comment above */
 }
 
 /* makes text appear on hover */
@@ -3774,7 +3833,7 @@ dl.statistics dt.comment::before {
   display: inline-block;
 }
 
-/* this is to prevent the hover text from breaking or getting cut off in some places */
+/* prevent hover text from breaking or getting cut off in some places */
 /* haven't found a better solution yet :/ */
 .statistics .stats dd:last-of-type::after,
 .index .stats dd:last-of-type:has(a[href$=bookmarks])::after,
@@ -3783,7 +3842,7 @@ dl.statistics dt.comment::before {
   right: 0;
 }
 
-/*===== hover text for individual stats =====*/
+/*>>========== hover text for individual stats ==========<<*/
 
 /* language */
 .stats dd.language::after {
@@ -3908,24 +3967,24 @@ dl.statistics dt.comment::before {
 
 /* scrollbar */
 * {
-  scrollbar-color: #BBB2B2 #D8D2D2;
+  scrollbar-color: var(--border4) var(--border1); /* first value = thumb, second value = track */
   scrollbar-width: thin;
 }
 
 /* text selection */
 *::selection {
-  background-color: #FF66A8;
-  color: #FFFFFF;
+  background-color: var(--int-hgl);
+  color: var(--int-hgl-txt);
 }
 
-/*========== fix the Fandoms Index ==========*/
+/*>========== fix the Fandoms Index ==========<*/
 /* still not perfect but it's okay for now */
 
 .media-index .media.fandom.index.group {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .media-index .media .listbox {
@@ -3934,86 +3993,59 @@ dl.statistics dt.comment::before {
   margin-block: 1%;
 }
 
-/*========== statistics page ==========*/
+/*>========== statistics page ==========<*/
 
-/*=====stat chart =====*/
-/* ISSUE: filters here do not work on tablet/mobile for me */
+/*>>========== stat chart ==========<<*/
 
 #stat_chart {
-  border-radius: 0.25rem; /* can't add border because it causes a weird error */
+  overflow: hidden;
   margin-top: 1em;
-  overflow: clip;
+  border-radius: var(--radius-mid); /* can't add border because it causes a weird error */
+  filter: var(--stat-chart);
 }
 
 /* make chart background transparent */
-rect {
+svg > rect {
   filter: opacity(0)
 }
 
-/* change color of chart */
-#stat_chart g > rect {
-  filter: brightness(0) saturate(100%) invert(34%) sepia(12%) saturate(3983%) hue-rotate(284deg) brightness(88%) contrast(96%);
+/*>>========== fandoms index: place work title and stats next to each other (if possible) ==========<<*/
+
+.statistics ul.index li {
+  margin: 0;
+  padding: 0.643em;
 }
 
-/*===== fandoms index: place work title and stats next to each other (if possible) =====*/
-
-.statistics .fandom ul li,
-.statistics .fandom ul li > dl > dd > dl {
+.statistics ul.index li > dl > dd > dl {
   margin: 0;
 }
 
-.statistics .fandom ul li > dl {
+.statistics ul.index li > dl {
   display: flex;
-  flex-wrap: wrap;
-  column-gap: 1em;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 0.3em;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 1em;
 }
 
-.statistics .fandom ul li > dl > dt {
+.statistics ul.index li > dl > dt {
   margin-block: 0.3em;
 }
 
-.statistics .fandom ul li > dl > dd {
+.statistics ul.index li > dl > dd {
+  margin-block: 0.3em;
   margin-left: auto;
-  margin-block: 0.3em;
 }
 
-/*========== rich text editor ==========*/
+/*>========== rich text editor ==========<*/
 /* ISSUE: haven't found a way to change the font (works when applying skin directly in Firefox browser but not after saving it to AO3) :/ */
-/* changing colors also doesn't work on mobile for me but filters do work */
 
-.tox {
-  border-radius: 0.25rem;
+.tox.tox-tinymce {
+  border-radius: var(--radius-big);
 }
 
-/* border colors */
-.tox,
-.tox * {
-  border-color: #A29696 !important;
-}
-
-/* toolbar (top) and statusbar (bottom) */
-.tox .tox-toolbar,
-.tox .tox-statusbar,
-.tox .tox-statusbar__path-item {
-  background-color: #EDEAEA;
-  color: #6C2D52;
-}
-
-/* toolbar icons background */
-.tox .tox-tbtn--enabled,
-.tox .tox-tbtn:hover {
-  background: #BBB2B2;
-}
-
-/* toolbar icons color */
-.tox .tox-tbtn svg {
-  filter: brightness(0) saturate(100%) invert(34%) sepia(12%) saturate(3983%) hue-rotate(284deg) brightness(88%) contrast(96%);
-}
-
-/* text edit area */
-.tox .tox-edit-area__iframe {
-  background-color: #FFFFFF;
+.tox-editor-container,
+.tox-statusbar,
+.tox-dialog {
+  filter: var(--rich-txt-editor);
 }

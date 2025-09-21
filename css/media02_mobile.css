@@ -1,20 +1,19 @@
 /*============================================================
 
-
                            ~ neos ~
           MOBILE / NARROW SCREENS (max-width: 42em)
 
-
 ============================================================*/
 /* IMPORTANT: This is very much reliant on the tablet skin, so that needs to be added beforehand! */
- 
+
+
 /* centered headings */
 h2.heading,
 h2.heading + h3.heading:not(.landmark) {
-  text-align: center;
-  width: 100%;
   display: inline-block;
+  width: 100%;
   margin-top: 0;
+  text-align: center;
 }
 
 /*============================================================
@@ -26,8 +25,8 @@ h2.heading + h3.heading:not(.landmark) {
   width: 100%;
   max-width: unset;
   min-width: unset;
-  border-radius: 0;
   border-inline: none;
+  border-radius: 0;
   transform: unset;
 }
 
@@ -46,7 +45,7 @@ h2.heading + h3.heading:not(.landmark) {
 #header nav:has(> .primary) {
   min-width: 100%;
   max-width: 100%;
-  border-top: 1px solid;
+  border-top: var(--border-width) solid;
 }
 
 /* header search bar positioning */
@@ -63,9 +62,8 @@ h2.heading + h3.heading:not(.landmark) {
   transition: width 0.15s;
 }
 
-/* wider search bar when active */
-#header #search .text:active,
-#header #search .text:focus {
+/* wider search bar when focused/active */
+#header #search .text:is(:focus, :active) {
   width: 95vw;
   max-width: unset;
 }
@@ -82,10 +80,10 @@ form dt,
 form .meta dd,
 form .meta dt,
 form.inbox {
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
   float: none;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 
 /*============================================================
@@ -94,7 +92,6 @@ form.inbox {
 
 #footer {
   padding-block: 5%;
-  word-break: break-word;
 }
 
 #footer ul.navigation.actions {
@@ -133,8 +130,8 @@ p.navigation.actions {
 
 /* make the primary icons a little smaller on mobile */
 .icon {
-  height: 85px;
   width: 85px;
+  height: 85px;
 }
 
 /*============================================================
@@ -145,7 +142,6 @@ p.navigation.actions {
 .tagset .media .listbox {
   width: 100%;
   margin-right: 0;
-  box-sizing: border-box;
 }
 
 /*============================================================
@@ -164,20 +160,20 @@ p.navigation.actions {
 
 .home .header h2,
 .home .header ul.actions {
-  text-align: center;
-  border-bottom: 0;
   margin-left: 0;
+  border-bottom: 0;
+  text-align: center;
 }
 
 .home .header h2 {
-  margin-block: 0.429em;
   order: 2;
+  margin-block: 0.429em;
 }
 
 .primary .icon {
+  order: 1;
   position: unset;
   margin: 0 auto;
-  order: 1;
 }
 
 .home .header ul.actions,
@@ -191,6 +187,8 @@ p.navigation.actions {
 
 .home .header .type {
   order: 5;
+  width: 100%;
+  text-align: center;
 }
 
 .home .header dl.stats {
@@ -203,6 +201,7 @@ p.navigation.actions {
 
 /* filters with JavaScript */
 .javascript form.filters {
+  overflow-y: visible;
   max-height: unset;
   padding: 0 0.643em;
 }
