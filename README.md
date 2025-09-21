@@ -13,7 +13,7 @@ Visit the [AO3 work](https://archiveofourown.org/works/65849527) for instruction
 
 ## Available themes
 
-| Powder & Pink (base)  | Dusky Dark Purple |
+| Powder & Pink | Dusky Dark Purple |
 | ------------- | ------------- |
 | ![User bookmarks page with the Powder & Pink theme](/../main/images/preview_desktop_bookmarks_powder-pink.png) | ![User bookmarks page with the Dusky Dark Purple theme](/../main/images/preview_desktop_bookmarks_dusky-dark-purple.png) |
 
