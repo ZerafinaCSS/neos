@@ -75,7 +75,7 @@ https://coolors.co/000000-8b8b8b-b4b4b4-c1c1c1-d6d6d6-f0f0f0-f4f4f4-f8f8f8-fffff
   --txt-header:          var(--bg1);               /* header text */
   --txt-header-hgl:      var(--border4);           /* selected header dropdown toggle and link items */
   --txt-header-hgl-h1:   linear-gradient(125deg, var(--bg1), var(--txt-header-hgl)); /* gradient for selected AO3 header title */
-  --txt-main:            #000000;                  /* main body text */
+  --txt-main:            var(--bg2);               /* main body text */
   --txt-alt1:            var(--txt-main);          /* announcements */
   --txt-alt2:            var(--bg1);               /* checkbox checkmark, help symbol, event announcements etc. */
 
@@ -159,21 +159,19 @@ https://coolors.co/000000-8b8b8b-b4b4b4-c1c1c1-d6d6d6-f0f0f0-f4f4f4-f8f8f8-fffff
 
 
 /*>========== COLORS FOR ROLES AND STATES + SYSTEM MESSAGES ==========<*/
-/* palette: https://coolors.co/deeaf7-2e6cb2-cffff2-008f85-fff7e5-856114-fcdce2-c72c53 */
-
-   /* TO-DO: FEHLT NOCH */
-  
+/* palette: https://coolors.co/dff2f7-3083a1-dff7f1-3da188-fff3d9-ab7500-ffe6e9-df3047 */
+ 
   /* background */
-  --notice-bg:           #DEEAF7; 
-  --success-bg:          #CFFFF2;
-  --caution-bg:          #FFF7E5;
-  --alert-bg:            #FCDCE2;
+  --notice-bg:           #DFF2F7; 
+  --success-bg:          #DFF7F1;
+  --caution-bg:          #FFF3D9;
+  --alert-bg:            #FFE6E9;
 
   /* text (and borders) */
-  --notice-txt:          #2E6CB2; 
-  --success-txt:         #008F85;
-  --caution-txt:         #A77916;
-  --alert-txt:           #F9677A;
+  --notice-txt:          #3083A1; 
+  --success-txt:         #3DA188;
+  --caution-txt:         #AB7500;
+  --alert-txt:           #DF3047;
 
 
 /*>========== FILTERS ==========<*/
