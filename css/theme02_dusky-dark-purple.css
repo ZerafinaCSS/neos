@@ -60,7 +60,6 @@ Color palettes used for main backgrounds, borders, text and interaction elements
 
 
 /*>========== SHADOWS ==========<*/
-/* replace values with "none" (without quotation marks) to remove shadows */
 
   --shadow:              none;                     /* secondary elements, dropdowns, tooltips etc. */
   --shadow-header:       none;

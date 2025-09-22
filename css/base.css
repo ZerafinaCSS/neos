@@ -64,7 +64,7 @@ Alphanumeric = Additions by ZerafinaCSS
 ============================================================*/
 
 /* main text */
-body {
+body:not(#tinymce) {
   font-size: var(--txt-size-main); /* main font size */
   color: var(--txt-main); /* main font color */
 }
@@ -535,7 +535,7 @@ col.name {
 /* add search bar icon */
 #header li.search::before {
   position: absolute;
-    left: 0.4em;
+  left: 0.4em;
   z-index: 1;
   font-weight: 700;
   font-size: 1.25em;
@@ -992,8 +992,8 @@ label.action input[type="checkbox"]:hover,
 /* disabled checkbox and radio buttons */
 input[type="checkbox"]:disabled,
 input[type="radio"]:disabled {
-  border-color: var(--int-disabled) !important;
-  background-color: var(--int-disabled) !important;
+  border-color: var(--border2) !important;
+  background-color: var(--int-disabled-bg) !important;
   cursor: not-allowed;
 }
 
@@ -1418,7 +1418,7 @@ a:link.current,
 .actions label.disabled,
 #tos_prompt [disabled] {
   border-color: var(--int-btn-border);
-  background-color: var(--int-disabled);
+  background-color: var(--int-disabled-bg);
   color: var(--txt-main);
   cursor: not-allowed;
   filter: opacity(0.75);
@@ -3586,7 +3586,7 @@ a.rss span {
   width: 0.85em;
   height: 0.85em;
   border: 1px solid var(--icon-border1);
-  border-radius: var(--radius-small);
+  border-radius: var(--icon-content-radius);
   background-color: var(--icon4); /* background color */
   background-image: url("https://i.ibb.co/35VLs1PW/zerafina-icon-rss-01.png"); /* url of new icon */
   background-size: cover;
@@ -4041,6 +4041,7 @@ svg > rect {
 /* ISSUE: haven't found a way to change the font (works when applying skin directly in Firefox browser but not after saving it to AO3) :/ */
 
 .tox.tox-tinymce {
+  border-color: var(--border1);
   border-radius: var(--radius-big);
 }
 
