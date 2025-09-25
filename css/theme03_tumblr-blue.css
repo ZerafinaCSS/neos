@@ -501,7 +501,8 @@ div.error,
 .alert.flash,
 .required.notice,
 form .notice,
-form ul.notes {
+form ul.notes,
+.alert .userstuff {
   border: none;
   color: var(--txt-alt2);
 }
