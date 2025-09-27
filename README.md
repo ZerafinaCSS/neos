@@ -1,4 +1,4 @@
-# AO3 Site Skin: neos
+# AO3 Site Skin: *neos*
 
 A site skin that gives AO3 a slightly modernized, semi-flat look. It also fixes some bugs and usability issues.
 
