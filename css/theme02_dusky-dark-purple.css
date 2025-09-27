@@ -142,7 +142,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --tag-fandom-bg:       var(--icon4);
   --tag-warning-bg:      var(--link);
   --tag-ship-bg:         var(--icon2);
-  --tag-character-bg:    var(--bg8);
+  --tag-character-bg:    var(--border4);
   --tag-freeform-bg:     var(--tag-default-bg);
 
   /* text */
