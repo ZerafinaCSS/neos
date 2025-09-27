@@ -45,6 +45,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --bg5:                 var(--bg1);               /* content boxes (blurbs, comments etc.), meta box */
   --bg6:                 #3C293C;                  /* dropdown and secondary menus, tooltips etc. */
   --bg7:                 var(--bg2);               /* own blurbs, listbox, some even/odd list items etc. */
+  --bg8:                 #872D55;                  /* collection header */
 
 
 /*>========== MAIN BORDERS ==========<*/
@@ -83,7 +84,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   /* links */
   --link:                #AD396F;                  /* link color */
   --link-hgl:            #D44E8D;                  /* color for hovered/focused links */
-  --link-visited:        var(--border4);           /* color for already visited links + header search bar icon */
+  --link-visited:        var(--bg8);               /* color for already visited links + header search bar icon */
   --link-underline:      1px solid transparent;    /* link underline => delete "transparent" to make link underlines visible */
 
 
@@ -94,7 +95,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --int-btn-bg:          var(--border1);           /* background */
   --int-btn-border:      var(--border4);           /* border */
   --int-btn-txt:         var(--txt-main);          /* text */
-  --int-btn-hgl-bg:      linear-gradient(to right, var(--icon-id), var(--link-hgl)); /* background for hovered/focused buttons */
+  --int-btn-hgl-bg:      linear-gradient(125deg, var(--bg8), var(--link-hgl)); /* background for hovered/focused buttons */
   --int-btn-hgl-txt:     #F7CFD2;                  /* text for hovered/focused buttons */                                                                        
   
   --int-bg:              var(--txt-alt2);          /* background for input and select elements */
@@ -125,7 +126,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
 
   /* other icons */
   --icon-bg:             var(--border1);           /* background for empty icon box or uploaded icon with transparent background */
-  --icon-id:             #872D55;                  /* user, collection, skin, tag, unrevealed work, admin icon + collection header background */
+  --icon-id:             linear-gradient(125deg, var(--link-hgl), var(--bg8)); /* user, collection, skin, tag, unrevealed work, admin icon */
   --icon-anon:           var(--border3);           /* guest, anonymous user */
 
   /* icon borders */
@@ -141,7 +142,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --tag-fandom-bg:       var(--icon4);
   --tag-warning-bg:      var(--link);
   --tag-ship-bg:         var(--icon2);
-  --tag-character-bg:    var(--link-visited);
+  --tag-character-bg:    var(--bg8);
   --tag-freeform-bg:     var(--tag-default-bg);
 
   /* text */

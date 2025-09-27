@@ -47,6 +47,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --bg5:                 #263B53;                  /* content boxes (blurbs, comments etc.), meta box */
   --bg6:                 #3D4C62;                  /* dropdown and secondary menus, tooltips etc. */
   --bg7:                 #26323F;                  /* own blurbs, listbox, some even/odd list items etc. */
+  --bg8:                 #529ECC;                  /* collection header */
 
 
 /*>========== MAIN BORDERS ==========<*/
@@ -77,14 +78,14 @@ Color palettes used for main backgrounds, borders, text and interaction elements
 
   /* text colors */
   --txt-header:          #B3B3B3;                  /* header text */
-  --txt-header-hgl:      var(--link);              /* selected header dropdown toggle and link items */
+  --txt-header-hgl:      var(--bg8);               /* selected header dropdown toggle and link items */
   --txt-header-hgl-h1:   linear-gradient(to right, var(--icon3), var(--icon1), var(--icon2), var(--icon4), var(--icon6), var(--icon9), var(--icon5)); /* gradient for selected AO3 header title */
   --txt-main:            var(--txt-header);        /* main body text */
   --txt-alt1:            var(--txt-main);          /* announcements */
   --txt-alt2:            #000000;                  /* checkbox checkmark, help symbol, event announcements etc. */
 
   /* links */
-  --link:                #529ECC;                  /* link color */
+  --link:                var(--bg8);               /* link color */
   --link-hgl:            #00B8FF;                  /* color for hovered/focused links */
   --link-visited:        #596578;                  /* color for already visited links + header search bar icon */
   --link-underline:      1px solid transparent;    /* link underline => delete "transparent" to make link underlines visible */
@@ -105,7 +106,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --int-current-bg:      #BFBFBF26;                /* background for currently active elements */
   --int-current-txt:     #D9D9D9;                  /* text for currently active elements */
   --int-disabled-bg:     var(--bg7);               /* background for disabled buttons and checkboxes */
-  --int-checked:         var(--link);              /* checked checkboxes and radio buttons */
+  --int-checked:         var(--bg8);               /* checked checkboxes and radio buttons */
   
   --int-hgl:             var(--link-hgl);          /* highlight for hovered/focused/selected elements */
   --int-hgl-bg:          var(--int-current-bg);    /* background for hovered/focused list items */
@@ -118,17 +119,17 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   /* bookmark and content icons (mostly) */  
   --icon1:               #56BC8A;                  /* gen, complete, public bookmark */
   --icon2:               #CDAE00;                  /* teen */
-  --icon3:               var(--link);              /* m/m, external work */
+  --icon3:               var(--bg8);               /* m/m, external work */
   --icon4:               #D38A25;                  /* mature, chose not to warn, rss feed */
   --icon5:               #AF73D4;                  /* f/m */
   --icon6:               #D9664A;                  /* explicit, f/f, warning, incomplete */
-  --icon7:               var(--link);              /* private bookmark */
+  --icon7:               var(--bg8);               /* private bookmark */
   --icon8:               var(--icon6);             /* hidden bookmark */
   --icon9:               #D977BA;                  /* rec bookmark */
 
   /* other icons */
   --icon-bg:             #48566A;                  /* background for empty icon box or uploaded icon with transparent background */
-  --icon-id:             var(--link);              /* user, collection, skin, tag, unrevealed work, admin icon + collection header background */
+  --icon-id:             var(--bg8);               /* user, collection, skin, tag, unrevealed work, admin icon */
   --icon-anon:           var(--icon-bg);           /* guest, anonymous user */
 
   /* icon borders */
@@ -434,7 +435,7 @@ span.unread {
 }
 
 /* change appearance of tags here */
-/* excluding fandom tags, fav tags on splash page and heading tags in some places */
+/* excluding fandom list, fav tags on splash page and heading tags in some places */
 a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
 .tags a[data-remote="true"], /* = hidden warnings/additional tags (can be set in preferences) */
 .unwrangled,
@@ -447,8 +448,9 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
   text-decoration: none;
 }
 
-/* repair and format fandom heading tags */
-.blurb h5.fandoms.heading a.tag {
+/* repair and format fandom and collection heading tags */
+.blurb h5.fandoms.heading a.tag,
+.blurb h5.tags.heading a.tag {
   margin-right: 12px;
 }
 
@@ -464,8 +466,7 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag):
   box-shadow: 0 0 0 1.75px var(--tag-hgl-bg);
 }
 
-/* the following code deals with added tags
-(and other added elements that look like added tags) */
+/*>>========== added tags (search, filters, bookmarks etc.) ==========<<*/
 
 .autocomplete li.added,
 .post .meta dd ul li.added {
