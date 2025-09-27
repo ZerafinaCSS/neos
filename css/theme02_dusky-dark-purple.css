@@ -84,7 +84,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   /* links */
   --link:                #AD396F;                  /* link color */
   --link-hgl:            #D44E8D;                  /* color for hovered/focused links */
-  --link-visited:        var(--bg8);               /* color for already visited links + header search bar icon */
+  --link-visited:        var(--border4);           /* color for already visited links + header search bar icon */
   --link-underline:      1px solid transparent;    /* link underline => delete "transparent" to make link underlines visible */
 
 
