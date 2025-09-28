@@ -486,6 +486,20 @@ li.added:is(:hover, :focus) .delete a {
 }
 
 /*============================================================
+>> 13 GROUP: BLURB
+============================================================*/
+/* see "Archive: (13) group blurb skin" by AO3 */
+
+/*>========== various little mods ==========<*/
+
+/*>>========== mod: READING ==========<<*/
+
+/* "last visited" (History) */
+.reading h4.viewed {
+  background: linear-gradient(to right, var(--bg4) 25%, transparent);
+}
+
+/*============================================================
 >> 22 SYSTEM MESSAGES
 ============================================================*/
 

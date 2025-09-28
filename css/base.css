@@ -405,7 +405,7 @@ col.name {
   color: var(--txt-main);
 }
 
-/* dropdown menu list item links hover etc. */
+/* dropdown menu list item links hover and focus */
 #header .navigation .dropdown .menu li a:is(:hover, :focus) {
   background: var(--int-hgl-bg);
   color: var(--int-hgl-txt);
@@ -792,7 +792,7 @@ dd.hideme,
 form blockquote.userstuff,
 form.single fieldset {
   margin: 0.643em 0;
-  padding: 0.634em;
+  padding: 0.643em;
   border: var(--border-width) solid var(--border2);
   border-radius: var(--radius-big);
   box-shadow: none;
@@ -1394,7 +1394,7 @@ button:is(:hover, :focus),
 input[type="submit"]:is(:hover, :focus),
 input::file-selector-button:is(:hover, :focus),
 .listbox > .heading .action a:is(:hover, :focus) {
-  border-color: var(--link);
+  border: var(--border-width) solid var(--link);
   box-shadow: none;
   background: var(--int-btn-hgl-bg);
   color: var(--int-btn-hgl-txt);
@@ -1407,7 +1407,7 @@ a.current,
 a.current:hover,
 a:link.current,
 .current a:visited {
-  border-color: var(--border4);
+  border: var(--border-width) solid var(--border4);
   box-shadow: none;
   background: var(--int-current-bg);
   color: var(--int-current-txt);
@@ -1417,7 +1417,7 @@ a:link.current,
 /* disabled buttons */
 .actions label.disabled,
 #tos_prompt [disabled] {
-  border-color: var(--int-btn-border);
+  border: var(--border-width) solid var(--int-btn-border);
   background-color: var(--int-disabled-bg);
   color: var(--txt-main);
   cursor: not-allowed;
@@ -1427,7 +1427,7 @@ a:link.current,
 /* disabled buttons select element */
 .actions .disabled select,
 .actions .disabled select:hover {
-  border-color: var(--int-btn-border);
+  border: var(--border-width) solid var(--int-btn-border);
   background-color: transparent;
   color: var(--txt-main);
 }
@@ -1688,7 +1688,8 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
   padding: 0.15em 0.35em;
   border: var(--border-width) solid var(--tag-border);
   border-radius: var(--radius-alt);
-  background-color: var(--tag-default-bg);
+  background: var(--tag-default-bg);
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
   font-size: 0.9em;
   line-height: 1.25;
   color: var(--tag-default-txt);
@@ -1720,39 +1721,39 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
 /* fandom tags */
 .blurb h5.fandoms.heading a.tag,
 dd.fandom.tags a {
-  background-color: var(--tag-fandom-bg) !important;
+  background: var(--tag-fandom-bg) !important;
   color: var(--tag-fandom-txt) !important;
 }
 
 /* warning tags */
 [class^="warning"] a.tag {
-  background-color: var(--tag-warning-bg) !important;
+  background: var(--tag-warning-bg) !important;
   font-weight: 400;
   color: var(--tag-warning-txt) !important;
 }
 
 /* relationship tags */
 [class^="relationship"] a.tag {
-  background-color: var(--tag-ship-bg) !important;
+  background: var(--tag-ship-bg) !important;
   color: var(--tag-ship-txt) !important;
 }
 
 /* character tags */
 [class^="character"] a.tag {
-  background-color: var(--tag-character-bg) !important;
+  background: var(--tag-character-bg) !important;
   color: var(--tag-character-txt) !important;
 }
 
 /* freeform tags */
 [class^="freeform"] a.tag {
-  background-color: var(--tag-freeform-bg) !important;
+  background: var(--tag-freeform-bg) !important;
   color: var(--tag-freeform-txt) !important;
 }
 
 /* unwrangled tags */
 .unwrangled {
   border: var(--border-width) dashed var(--border4);
-  background-color: transparent;
+  background: transparent;
 }
 
 /* tag hover and focus */
@@ -1760,7 +1761,7 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag):is(:hover, :focus),
 .listbox .heading a.tag:visited:is(:hover, :focus),
 .tags a[data-remote="true"]:is(:hover, :focus) {
   background: var(--tag-hgl-bg) !important;
-    background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
   border-color: transparent;
   color: var(--tag-hgl-txt) !important;
 }
@@ -1768,7 +1769,7 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag):is(:hover, :focus),
 /* hover and focus for tags that are not in little boxes */
 .fandom.index.group a.tag:is(:hover, :focus),
 h2.heading a.tag:is(:hover, :focus) {
-  background-color: transparent;
+  background: transparent;
 }
 
 /* create right facing triangle before "show" on hidden tags */
@@ -2357,7 +2358,7 @@ li.picture.blurb,
   margin-inline: -0.75em;
   padding: 0.429em;
   padding-inline: 0.75em;
-  background: linear-gradient(to right, var(--bg4) 25%, transparent);
+  background: linear-gradient(to right, var(--bg7) 25%, transparent);
   font-size: 1em;
 }
 
@@ -3280,7 +3281,7 @@ dl#symbols-key dd {
   border: var(--border-width) solid var(--icon-border2);
   background:
     var(--icon-bg) /* change background color here */
-    border-box;
+    content-box;
 }
 
 /* default user icon */
@@ -3345,7 +3346,7 @@ img[src$="/images/skins/iconsets/default/icon_collection.png"] {
   background:
     url("https://i.ibb.co/1tbz1GYk/zerafina-icon-anon-01.png"), /* url of new icon */
     var(--icon-id) /* change background color here */
-    border-box;
+    content-box;
   background-size: cover;
 }
 
@@ -3637,7 +3638,7 @@ a.rss span {
   background:
     url("https://i.ibb.co/35VLs1PW/zerafina-icon-rss-01.png") /* url of new icon */
     var(--icon4); /* background color */
-    background-size: cover;
+  background-size: cover;
   content: "";
 }
 
