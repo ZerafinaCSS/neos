@@ -21,4 +21,4 @@ Visit the [AO3 work](https://archiveofourown.org/works/65849527) for instruction
 | ------------- | ------------- | ------------- |
 | ![User bookmarks page with the Black & White theme](/../main/images/preview_desktop_bookmarks_black-white.png) | ![User bookmarks page with the Midnight Black theme](/../main/images/preview_desktop_bookmarks_midnight-black.png) | *More may follow* |
 
-Find more previews are in the ![images folder](/../main/images) .
+Find more previews in the [images folder](/../main/images).
