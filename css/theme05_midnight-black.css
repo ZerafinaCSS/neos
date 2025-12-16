@@ -28,7 +28,8 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
   --radius-small:        4px;                      /* smaller elements: list elements, input elements etc. */
   --radius-mid:          6px;                      /* midsizde elements: dropdown menus, system messages etc. */
   --radius-big:          8px;                      /* bigger elements: blurbs, forms, comments, textareas etc. */
-  --radius-alt:          12px;                     /* header search box, buttons, tags */
+  --radius-btn:          12px;                     /* header search box, buttons */
+  --radius-tag:          12px;                     /* tags */
 
   /* icon border-radius */
   --icon-content-radius: 4px;                      /* content and bookmark icon */
@@ -131,8 +132,8 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
   --icon-anon:           var(--border1);           /* guest, anonymous user */
 
   /* icon borders */
-  --icon-border1:        none;              /* border for most icons */
-  --icon-border2:        none;              /* uploaded, default user and mystery icon + empty symbols box */
+  --icon-border1:        none;                     /* border for most icons */
+  --icon-border2:        none;                     /* uploaded, default user and mystery icon + empty symbols box */
 
 
 /*>========== TAG COLORS ==========<*/

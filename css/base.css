@@ -364,8 +364,8 @@ col.name {
 #header .open::before {
   position: absolute;
   z-index: 6;
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-right: 8px solid transparent !important;
   border-bottom: 8px solid var(--bg6);
   border-left: 8px solid transparent !important;
@@ -555,7 +555,7 @@ col.name {
   margin: 0;
   padding-left: 1.8em; /* make room for the search icon */
   border: var(--border-width) solid var(--border2);
-  border-radius: var(--radius-alt);
+  border-radius: var(--radius-btn);
   box-shadow: none;
   background-color: var(--int-bg);
   transition: width 0.15s;
@@ -1357,7 +1357,7 @@ input::file-selector-button {
   height: auto;
   padding: 0.25em 0.75em;
   border: var(--border-width) solid var(--int-btn-border);
-  border-radius: var(--radius-alt);
+  border-radius: var(--radius-btn);
   box-shadow: var(--shadow-buttons);
   background: var(--int-btn-bg);
   background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
@@ -1368,7 +1368,7 @@ input::file-selector-button {
 
 /* social media buttons on homepage */
 .resp-sharing-button {
-  border-radius: var(--radius-alt) !important;
+  border-radius: var(--radius-btn) !important;
 }
 
 label.action,
@@ -1444,7 +1444,8 @@ span.delete a {
   color: var(--alert-txt);
 }
 
-.secondary {
+.secondary,
+.javascript .work.navigation .download .secondary {
   position: absolute;
   border: var(--border-width) solid var(--border3);
   border-radius: var(--radius-mid);
@@ -1477,13 +1478,13 @@ fieldset.actions li:not(:first-child) {
 /*>========== CONTEXTS ==========<*/
 
 /* placement of secondary menus in fics */
-.chapter .secondary,
-.download .secondary {
+.javascript .work.navigation .secondary {
   top: unset;
-  right: unset;
-  left: 50%;
-  width: fit-content;
-  transform: translate(-50%, 2.6em);
+}
+
+/* "Full-Page Index" chapter button in secondary menu */
+.javascript .work.navigation li .secondary a {
+  white-space: nowrap;
 }
 
 .dashboard .header .landmark {
@@ -1560,7 +1561,7 @@ span.unread,
 span.replied,
 span.claimed,
 .actions span.defaulted {
-  border-radius: var(--radius-alt);
+  border-radius: var(--radius-btn);
 }
 
 span.claimed,
@@ -1687,7 +1688,7 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
   margin-block: 2.5px; /* gap between tag rows; needs to be done with margin because row-gap is not allowed on AO3 (as of August 2025) */
   padding: 0.15em 0.35em;
   border: var(--border-width) solid var(--tag-border);
-  border-radius: var(--radius-alt);
+  border-radius: var(--radius-tag);
   background: var(--tag-default-bg);
   background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
   font-size: 0.9em;
@@ -2175,10 +2176,10 @@ li.picture.blurb,
 }
 
 /* this is also needed to change position of content icons */
-.blurb ul.required-tags, 
+.blurb ul.required-tags,
 .blurb ul.required-tags li,
 .blurb ul.required-tags li+li+li,
-.blurb ul.required-tags li+li+li+li, 
+.blurb ul.required-tags li+li+li+li,
 .blurb ul.required-tags li a {
   position: unset;
   width: unset;
@@ -2366,9 +2367,16 @@ li.picture.blurb,
   background-color: transparent;
 }
 
-/* mod: PROMPT => hide this to get rid of the weird space before and after promt summary; not sure if this affects anything else */
-.prompt .blurb h6 {
+/*>>========== mod: PROMPT ==========<<*/
+
+/* hide this to get rid of the weird space before and after promt summary; not sure if this affects anything else */
+.prompt .blurb h6.landmark {
   display: none;
+}
+
+/* this needs to be here so the optional tags are displayed correctly */
+.prompt .blurb ul.optional {
+  display: inline-flex;
 }
 
 /*============================================================
@@ -2555,7 +2563,7 @@ li.comment:has(.edit_comment) {
 /* style favorite tags */
 .splash .favorite a.tag {
   border: none;
-  border-radius: var(--radius-alt);
+  border-radius: var(--radius-tag);
   background-color: transparent;
   color: var(--taxt-main);
 }
@@ -3258,7 +3266,7 @@ dl#symbols-key dd {
 #symbols-key dl {
   width: auto;
   margin: 0;
-  padding: 0.643em 0.643em 0 0.643em ;
+  padding: 0.643em 0.643em 0 0.643em;
   border: var(--border-width) solid var(--border1);
   border-radius: var(--radius-mid);
   background-color: var(--bg5);
@@ -3326,7 +3334,7 @@ img[src$="/images/skins/iconsets/default/icon_collection.png"] {
 }
 
 /* tag icons */
-.tagset .primary .icon, 
+.tagset .primary .icon,
 .tag .primary .icon,
 .index .tagset .icon {
   box-sizing: border-box;
@@ -3402,8 +3410,8 @@ img[src$="/images/skins/iconsets/default/icon_collection.png"] {
 
 /* empty symbols boxes (no rating, category or warning) */
 .required-tags .rating-notrated,
-.required-tags .category-none, 
-.required-tags .warning-no, 
+.required-tags .category-none,
+.required-tags .warning-no,
 .status .count,
 img[src$="/images/skins/iconsets/default/rating-notrated.png"],
 img[src$="/images/skins/iconsets/default/category-none.png"],
@@ -3455,7 +3463,7 @@ img[src$="/images/skins/iconsets/default/rating-explicit.png"] {
 /*>>========== Relationships, pairings, orientations ==========<<*/
 
 /* F/F */
-.required-tags .category-femslash, 
+.required-tags .category-femslash,
 img[src$="/images/skins/iconsets/default/category-femslash.png"] {
   background:
     url("https://i.ibb.co/JwHx18Ht/zerafina-icon-category-ff-01.png"), /* url of new icon */
@@ -3463,7 +3471,7 @@ img[src$="/images/skins/iconsets/default/category-femslash.png"] {
 }
 
 /* F/M */
-.required-tags .category-het, 
+.required-tags .category-het,
 img[src$="/images/skins/iconsets/default/category-het.png"] {
   background:
     url("https://i.ibb.co/0yD62BY2/zerafina-icon-category-mf-01.png"), /* url of new icon */
@@ -3494,7 +3502,7 @@ img[src$="/images/skins/iconsets/default/category-multi.png"] {
 }
 
 /* Other relationships */
-.required-tags .category-other, 
+.required-tags .category-other,
 img[src$="/images/skins/iconsets/default/category-other.png"] {
   background:
     url("https://i.ibb.co/MD6r4zyH/zerafina-icon-category-other-01.png"), /* url of new icon */
@@ -3504,7 +3512,7 @@ img[src$="/images/skins/iconsets/default/category-other.png"] {
 /*>>========== Content warnings ==========<<*/
 
 /* Author chose not to warn */
-.required-tags .warning-choosenotto, 
+.required-tags .warning-choosenotto,
 img[src$="/images/skins/iconsets/default/warning-choosenotto.png"] {
   background:
     url("https://i.ibb.co/m5Yk1TtQ/zerafina-icon-warning-choosenotto-01.png"), /* url of new icon */
@@ -3530,7 +3538,7 @@ img[src$="/images/skins/iconsets/default/warning-external-work.png"] {
 /*>>========== Completion status ==========<<*/
 
 /* uncomplete/unfulfilled */
-.required-tags .complete-no, 
+.required-tags .complete-no,
 img[src$="/images/skins/iconsets/default/complete-no.png"] { 
   background:
     url("https://i.ibb.co/pYzPL49/zerafina-icon-complete-no-01.png"), /* url of new icon */
@@ -3600,7 +3608,7 @@ img[src$="/images/skins/iconsets/default/bookmark-private.png"] {
 }
 
 /* Hidden bookmark */
-.status .hidden, 
+.status .hidden,
 img[src$="/images/skins/iconsets/default/bookmark-hidden.png"] {
   background:
     url("https://i.ibb.co/tp1vXhJ3/zerafina-icon-bookmark-hidden-01.png"), /* url of new icon */

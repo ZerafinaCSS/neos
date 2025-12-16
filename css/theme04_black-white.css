@@ -23,15 +23,16 @@ https://coolors.co/000000-8b8b8b-b4b4b4-c1c1c1-d6d6d6-f0f0f0-f4f4f4-f8f8f8-fffff
   --margins-narrow:      2.5%;                     /* site contents and header on tablet/mobile */
 
   /* border-radius (= roundness of corners) */
-  --radius-small:        0rem;                     /* smaller elements: list elements, input elements etc. */
-  --radius-mid:          0rem;                     /* midsizde elements: dropdown menus, system messages etc. */
-  --radius-big:          0rem;                     /* bigger elements: blurbs, forms, comments, textareas etc. */
-  --radius-alt:          0rem;                     /* header search box, buttons, tags */
+  --radius-small:        0;                        /* smaller elements: list elements, input elements etc. */
+  --radius-mid:          0;                        /* midsizde elements: dropdown menus, system messages etc. */
+  --radius-big:          0;                        /* bigger elements: blurbs, forms, comments, textareas etc. */
+  --radius-btn:          0;                        /* header search box, buttons */
+  --radius-tag:          0;                        /* tags */
 
   /* icon border-radius */
-  --icon-content-radius: 0rem;                     /* content and bookmark icon */
-  --icon-primary-radius: 0rem;                     /* primary and comment icon */
-  --icon-index-radius:   0rem;                     /* index icon */
+  --icon-content-radius: 0;                        /* content and bookmark icon */
+  --icon-primary-radius: 0;                        /* primary and comment icon */
+  --icon-index-radius:   0;                        /* index icon */
 
 
 /*>========== MAIN BACKGROUND COLORS ==========<*/

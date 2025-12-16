@@ -28,7 +28,8 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --radius-small:        0.25rem;                  /* smaller elements: list elements, input elements etc. */
   --radius-mid:          0.25rem;                  /* midsizde elements: dropdown menus, system messages etc. */
   --radius-big:          0.35rem;                  /* bigger elements: blurbs, forms, comments, textareas etc. */
-  --radius-alt:          0.25rem;                  /* header search box, buttons, tags */
+  --radius-btn:          0.25rem;                  /* header search box, buttons */
+  --radius-tag:          0.25rem;                  /* tags */
 
   /* icon border-radius */
   --icon-content-radius: 0.25rem;                  /* content and bookmark icon */
