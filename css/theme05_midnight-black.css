@@ -42,9 +42,9 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
   --bg1:                 #000000;                  /* main background, footer etc. */
   --bg2:                 #111515;                  /* header */
   --bg3:                 transparent;              /* dashboard */
-  --bg4:                 var(--bg2);               /* forms, modal dialogs, javascript context etc. */
-  --bg5:                 var(--bg1);               /* content boxes (blurbs, comments etc.), meta box */
-  --bg6:                 var(--bg2);               /* dropdown and secondary menus, tooltips etc. */
+  --bg4:                 #111515;                  /* forms, modal dialogs, javascript context etc. */
+  --bg5:                 #000000;                  /* content boxes (blurbs, comments etc.), meta box */
+  --bg6:                 #111515;                  /* dropdown and secondary menus, tooltips etc. */
   --bg7:                 #181E1E;                  /* own blurbs, listbox, some even/odd list items etc. */
   --bg8:                 #00767A;                  /* collection header */
 
@@ -53,9 +53,9 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
 
   /* colors */
   --border1:             #333B3B;                  /* dashboard, footer, news, blockquote, scrollbar track etc. */
-  --border2:             var(--border1);           /* header, tables, forms, input elements, listbox etc. */
-  --border3:             var(--border1);           /* content boxes (blurbs, comments etc.), dropdown and secondary menus */
-  --border4:             var(--border1);           /* meta boxes, tooltips, scrollbar thumb etc. */
+  --border2:             #333B3B;                  /* header, tables, forms, input elements, listbox etc. */
+  --border3:             #333B3B;                  /* content boxes (blurbs, comments etc.), dropdown and secondary menus */
+  --border4:             #333B3B;                  /* meta boxes, tooltips, scrollbar thumb etc. */
 
   /* width */
   --border-width:        1.5px;                    /* for almost all borders (experimental - changing this might cause some weirdness) */
@@ -78,14 +78,14 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
   /* text colors */
   --txt-header:          #DAE6E1;                  /* header text */
   --txt-header-hgl:      #00C5CC;                  /* selected header dropdown toggle and link items */
-  --txt-header-hgl-h1:   linear-gradient(125deg, var(--txt-header), var(--txt-header-hgl)); /* gradient for selected AO3 header title */
-  --txt-main:            var(--txt-header);        /* main body text */
-  --txt-alt1:            var(--txt-header);        /* announcements */
-  --txt-alt2:            var(--bg1);               /* checkbox checkmark, help symbol, event announcements etc. */
+  --txt-header-hgl-h1:   linear-gradient(125deg, #DAE6E1, #00C5CC); /* gradient for selected AO3 header title */
+  --txt-main:            #DAE6E1;                  /* main body text */
+  --txt-alt1:            #DAE6E1;                  /* announcements */
+  --txt-alt2:            #000000;                  /* checkbox checkmark, help symbol, event announcements etc. */
 
   /* links */
   --link:                #00A8AD;                  /* link color */
-  --link-hgl:            var(--txt-header-hgl);    /* color for hovered/focused links */
+  --link-hgl:            #00C5CC;                  /* color for hovered/focused links */
   --link-visited:        #627A7A;                  /* color for already visited links + header search bar icon */
   --link-underline:      1px solid transparent;    /* link underline => delete "transparent" to make link underlines visible */
 
@@ -94,22 +94,22 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
 /* = buttons, input and select elements */
 
   /* button colors */
-  --int-btn-bg:          var(--border1);           /* background */
-  --int-btn-border:      var(--border1);           /* border */
-  --int-btn-txt:         var(--txt-header);        /* text */
-  --int-btn-hgl-bg:      var(--link);              /* background for hovered/focused buttons */
+  --int-btn-bg:          #333B3B;                  /* background */
+  --int-btn-border:      #333B3B;                  /* border */
+  --int-btn-txt:         #DAE6E1;                  /* text */
+  --int-btn-hgl-bg:      #00A8AD;                  /* background for hovered/focused buttons */
   --int-btn-hgl-txt:     #FFFFFF;                  /* text for hovered/focused buttons */                                                                        
   
   --int-bg:              #090B0B;                  /* background for input and select elements */
 
   --int-current-bg:      #1F2626;                  /* background for currently active elements */
-  --int-current-txt:     var(--int-btn-hgl-txt);   /* text for currently active elements */
-  --int-disabled-bg:     var(--bg6);               /* background for disabled buttons and checkboxes */
-  --int-checked:         var(--link);              /* checked checkboxes and radio buttons */
+  --int-current-txt:     #FFFFFF;                  /* text for currently active elements */
+  --int-disabled-bg:     #111515;                  /* background for disabled buttons and checkboxes */
+  --int-checked:         #00A8AD;                  /* checked checkboxes and radio buttons */
   
-  --int-hgl:             var(--txt-header-hgl);    /* highlight for hovered/focused/selected elements */
-  --int-hgl-bg:          var(--link);              /* background for hovered/focused list items */
-  --int-hgl-txt:         var(--int-btn-hgl-txt);   /* text for hovered/focused list items and for collection header */
+  --int-hgl:             #00C5CC;                  /* highlight for hovered/focused/selected elements */
+  --int-hgl-bg:          #00A8AD;                  /* background for hovered/focused list items */
+  --int-hgl-txt:         #FFFFFF;                  /* text for hovered/focused list items and for collection header */
 
 
 /*>========== ICON COLORS ==========<*/
@@ -118,18 +118,18 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
   /* bookmark and content icons (mostly) */  
   --icon1:               #009172;                  /* gen, complete, public bookmark */
   --icon2:               #0085A6;                  /* teen */
-  --icon3:               var(--icon2);             /* m/m, external work */
+  --icon3:               #0085A6;                  /* m/m, external work */
   --icon4:               #773AC7;                  /* mature, chose not to warn, rss feed */
-  --icon5:               var(--icon4);             /* f/m */
+  --icon5:               #773AC7;                  /* f/m */
   --icon6:               #B31F5B;                  /* explicit, f/f, warning, incomplete */
-  --icon7:               var(--icon2);             /* private bookmark */
+  --icon7:               #0085A6;                  /* private bookmark */
   --icon8:               #292F2F;                  /* hidden bookmark */
-  --icon9:               var(--icon6);             /* rec bookmark */
+  --icon9:               #B31F5B;                  /* rec bookmark */
 
   /* other icons */
-  --icon-bg:             var(--icon8);             /* background for empty icon box or uploaded icon with transparent background */
-  --icon-id:             linear-gradient(125deg, var(--txt-header-hgl), var(--bg8)); /* user, collection, skin, tag, unrevealed work, admin icon */
-  --icon-anon:           var(--border1);           /* guest, anonymous user */
+  --icon-bg:             #292F2F;                  /* background for empty icon box or uploaded icon with transparent background */
+  --icon-id:             linear-gradient(125deg, #00C5CC, #00767A); /* user, collection, skin, tag, unrevealed work, admin icon */
+  --icon-anon:           #333B3B;                  /* guest, anonymous user */
 
   /* icon borders */
   --icon-border1:        none;                     /* border for most icons */
@@ -145,7 +145,7 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
   --tag-warning-bg:      #B31F5BB3;
   --tag-ship-bg:         #773AC7B3;
   --tag-character-bg:    #009172B3;
-  --tag-freeform-bg:     var(--tag-default-bg);
+  --tag-freeform-bg:     #3F4B4B;
 
   /* text */
   --tag-default-txt:     #FFFFFFE6;
@@ -159,8 +159,8 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
   --tag-border:          transparent;
 
   /* hover and focus */
-  --tag-hgl-bg:          var(--link);              /* background */
-  --tag-hgl-txt:         var(--int-btn-hgl-txt);   /* text */
+  --tag-hgl-bg:          #00A8AD;                  /* background */
+  --tag-hgl-txt:         #FFFFFF;                  /* text */
 
 
 /*>========== COLORS FOR ROLES AND STATES + SYSTEM MESSAGES ==========<*/
@@ -185,7 +185,7 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
   --header-icon:         brightness(0) saturate(100%) invert(86%) sepia(15%) saturate(102%) hue-rotate(103deg) brightness(108%) contrast(84%);
   --header-icon-hgl:     brightness(0) saturate(100%) invert(62%) sepia(23%) saturate(6137%) hue-rotate(139deg) brightness(88%) contrast(102%); /* hover/focus */
   --kudos-icon:          brightness(0) saturate(100%) invert(23%) sepia(60%) saturate(2452%) hue-rotate(308deg) brightness(89%) contrast(89%);
-  --lock-icon:           var(--header-icon);
+  --lock-icon:           brightness(0) saturate(100%) invert(86%) sepia(15%) saturate(102%) hue-rotate(103deg) brightness(108%) contrast(84%);
   --stats-icon:          brightness(0) saturate(100%) invert(46%) sepia(13%) saturate(265%) hue-rotate(131deg) brightness(94%) contrast(92%);
   --stat-chart:          invert(100%) hue-rotate(350deg) brightness(85%) contrast(80%) saturate(150%);
   --rich-txt-editor:     invert(95%) saturate(0);
@@ -201,5 +201,5 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
 
 /* default user icon */
 img[src$="/images/skins/iconsets/default/icon_user.png"] {
-  content: url("https://i.ibb.co/JWmJv92v/zerafina-icon-user-visitor-02.png"); /* url of new icon */
+  content: url("https://zerafinacss.github.io/ao3/icons/user-visitor-02.png"); /* url of new icon */
 }

@@ -55,9 +55,9 @@ Color palettes used for main backgrounds, borders, text and interaction elements
 
   /* colors */
   --border1:             #FFFFFF21;                /* dashboard, footer, news, blockquote, scrollbar track etc. */
-  --border2:             var(--border1);           /* header, tables, forms, input elements, listbox etc. */
+  --border2:             #FFFFFF21;                /* header, tables, forms, input elements, listbox etc. */
   --border3:             none;                     /* content boxes (blurbs, comments etc.), dropdown and secondary menus */
-  --border4:             var(--bg6);               /* meta boxes, tooltips, scrollbar thumb etc. */
+  --border4:             #3D4C62;                  /* meta boxes, tooltips, scrollbar thumb etc. */
 
   /* width */
   --border-width:        1px;                      /* for almost all borders (experimental - changing this might cause some weirdness) */
@@ -79,14 +79,14 @@ Color palettes used for main backgrounds, borders, text and interaction elements
 
   /* text colors */
   --txt-header:          #B3B3B3;                  /* header text */
-  --txt-header-hgl:      var(--bg8);               /* selected header dropdown toggle and link items */
-  --txt-header-hgl-h1:   linear-gradient(to right, var(--icon3), var(--icon1), var(--icon2), var(--icon4), var(--icon6), var(--icon9), var(--icon5)); /* gradient for selected AO3 header title */
-  --txt-main:            var(--txt-header);        /* main body text */
-  --txt-alt1:            var(--txt-main);          /* announcements */
+  --txt-header-hgl:      #529ECC;                  /* selected header dropdown toggle and link items */
+  --txt-header-hgl-h1:   linear-gradient(to right, #529ECC, #56BC8A, #CDAE00, #D38A25, #D9664A, #D977BA, #AF73D4); /* gradient for selected AO3 header title */
+  --txt-main:            #B3B3B3;                  /* main body text */
+  --txt-alt1:            #B3B3B3;                  /* announcements */
   --txt-alt2:            #000000;                  /* checkbox checkmark, help symbol, event announcements etc. */
 
   /* links */
-  --link:                var(--bg8);               /* link color */
+  --link:                #529ECC;                  /* link color */
   --link-hgl:            #00B8FF;                  /* color for hovered/focused links */
   --link-visited:        #596578;                  /* color for already visited links + header search bar icon */
   --link-underline:      1px solid transparent;    /* link underline => delete "transparent" to make link underlines visible */
@@ -97,20 +97,20 @@ Color palettes used for main backgrounds, borders, text and interaction elements
 
   /* button colors */
   --int-btn-bg:          transparent;              /* background */
-  --int-btn-border:      var(--border1);           /* border */
-  --int-btn-txt:         var(--txt-main);          /* text */
-  --int-btn-hgl-bg:      var(--icon3);             /* background for hovered/focused buttons */
-  --int-btn-hgl-txt:     var(--txt-alt2);          /* text for hovered/focused buttons */                                                                        
+  --int-btn-border:      #FFFFFF21;                /* border */
+  --int-btn-txt:         #B3B3B3;                  /* text */
+  --int-btn-hgl-bg:      #529ECC;                  /* background for hovered/focused buttons */
+  --int-btn-hgl-txt:     #000000;                  /* text for hovered/focused buttons */                                                                        
 
   --int-bg:              #0D141B10;                /* background for input and select elements */
 
   --int-current-bg:      #BFBFBF26;                /* background for currently active elements */
   --int-current-txt:     #D9D9D9;                  /* text for currently active elements */
-  --int-disabled-bg:     var(--bg7);               /* background for disabled buttons and checkboxes */
-  --int-checked:         var(--bg8);               /* checked checkboxes and radio buttons */
+  --int-disabled-bg:     #26323F;                  /* background for disabled buttons and checkboxes */
+  --int-checked:         #529ECC;                  /* checked checkboxes and radio buttons */
   
-  --int-hgl:             var(--link-hgl);          /* highlight for hovered/focused/selected elements */
-  --int-hgl-bg:          var(--int-current-bg);    /* background for hovered/focused list items */
+  --int-hgl:             #00B8FF;                  /* highlight for hovered/focused/selected elements */
+  --int-hgl-bg:          #BFBFBF26;                /* background for hovered/focused list items */
   --int-hgl-txt:         #F2F2F2;                  /* text for hovered/focused list items and for collection header */
 
 
@@ -120,18 +120,18 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   /* bookmark and content icons (mostly) */  
   --icon1:               #56BC8A;                  /* gen, complete, public bookmark */
   --icon2:               #CDAE00;                  /* teen */
-  --icon3:               var(--bg8);               /* m/m, external work */
+  --icon3:               #529ECC;                  /* m/m, external work */
   --icon4:               #D38A25;                  /* mature, chose not to warn, rss feed */
   --icon5:               #AF73D4;                  /* f/m */
   --icon6:               #D9664A;                  /* explicit, f/f, warning, incomplete */
-  --icon7:               var(--bg8);               /* private bookmark */
-  --icon8:               var(--icon6);             /* hidden bookmark */
+  --icon7:               #529ECC;                  /* private bookmark */
+  --icon8:               #D9664A;                  /* hidden bookmark */
   --icon9:               #D977BA;                  /* rec bookmark */
 
   /* other icons */
   --icon-bg:             #48566A;                  /* background for empty icon box or uploaded icon with transparent background */
-  --icon-id:             var(--bg8);               /* user, collection, skin, tag, unrevealed work, admin icon */
-  --icon-anon:           var(--icon-bg);           /* guest, anonymous user */
+  --icon-id:             #529ECC;                  /* user, collection, skin, tag, unrevealed work, admin icon */
+  --icon-anon:           #48566A;                  /* guest, anonymous user */
 
   /* icon borders */
   --icon-border1:        none;                     /* border for most icons */
@@ -151,18 +151,18 @@ Color palettes used for main backgrounds, borders, text and interaction elements
 
   /* text */
   --tag-default-txt:     #828790;
-  --tag-fandom-txt:      var(--icon9);
+  --tag-fandom-txt:      #D977BA;
   --tag-warning-txt:     #EC583D;
-  --tag-ship-txt:        var(--icon4);
-  --tag-character-txt:   var(--icon1);
-  --tag-freeform-txt:    var(--tag-default-txt);
+  --tag-ship-txt:        #D38A25;
+  --tag-character-txt:   #56BC8A;
+  --tag-freeform-txt:    #828790;
 
   /* border */
   --tag-border:          none;
 
   /* hover and focus */
-  --tag-hgl-bg:          var(--link-hgl);          /* background */
-  --tag-hgl-txt:         var(--txt-alt2);          /* text */
+  --tag-hgl-bg:          #00B8FF;                  /* background */
+  --tag-hgl-txt:         #000000;                  /* text */
 
 
 /*>========== COLORS FOR ROLES AND STATES + SYSTEM MESSAGES ==========<*/
@@ -175,10 +175,10 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --alert-bg:            #D97568;
 
   /* text (and borders) => system messages/notices get overridden below */
-  --notice-txt:          var(--icon5);
-  --success-txt:         var(--icon1);
-  --caution-txt:         var(--icon4);
-  --alert-txt:           var(--tag-warning-txt);
+  --notice-txt:          #AF73D4;
+  --success-txt:         #56BC8A;
+  --caution-txt:         #D38A25;
+  --alert-txt:           #EC583D;
 
 
 /*>========== FILTERS ==========<*/
@@ -272,17 +272,17 @@ textarea#skin_css,
 
 /* user icon (replaces the "Hi, [username]!") */
 #header #greeting .dropdown > a[href*="/users/"] {
-  content: url(https://i.ibb.co/VR2xSgJ/zerafina-header-icon-user-tumblr.png);
+  content: url(https://zerafinacss.github.io/ao3/header-icons/user-02.png);
 }
 
 /* "Post" icon */
 #header #greeting .dropdown > a[href*="/works/new"] {
-  content: url(https://i.ibb.co/ymNNFb70/zerafina-header-icon-new-work-tumblr.png);
+  content: url(https://zerafinacss.github.io/ao3/header-icons/new-work-02.png);
 }
 
 /* "Log Out" icon */
 #header #greeting a[href*="/users/logout"] {
-  content: url(https://i.ibb.co/p67W6qhk/zerafina-header-icon-logout-tumblr.png);
+  content: url(https://zerafinacss.github.io/ao3/header-icons/logout-02.png);
 }
 
 /* settings for the icons */

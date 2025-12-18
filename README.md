@@ -17,8 +17,8 @@ Visit the [AO3 work](https://archiveofourown.org/works/65849527) for instruction
 | ------------- | ------------- | ------------- |
 | ![User bookmarks page with the Powder & Pink theme](/../main/images/preview_desktop_bookmarks_powder-pink.png) | ![User bookmarks page with the Dusky Dark Purple theme](/../main/images/preview_desktop_bookmarks_dusky-dark-purple.png) | ![User bookmarks page with the Tumblr Blue theme](/../main/images/preview_desktop_bookmarks_tumblr-blue.png) |
 
- Black & White | Midnight Black |  |
+ Black & White | Midnight Black | ... |
 | ------------- | ------------- | ------------- |
-| ![User bookmarks page with the Black & White theme](/../main/images/preview_desktop_bookmarks_black-white.png) | ![User bookmarks page with the Midnight Black theme](/../main/images/preview_desktop_bookmarks_midnight-black.png) | *More may follow* |
+| ![User bookmarks page with the Black & White theme](/../main/images/preview_desktop_bookmarks_black-white.png) | ![User bookmarks page with the Midnight Black theme](/../main/images/preview_desktop_bookmarks_midnight-black.png) | ![Blank image](/../main/images/blank.png) |
 
 Find more previews in the [images folder](/../main/images).
