@@ -3116,9 +3116,9 @@ div.error,
   border: none !important;
   box-shadow: none;
   background: transparent !important;
-  font-size: 0.95em;
+  font-size: 1em;
   line-height: 1;
-  color: var(--txt-alt1);
+  color: var(--txt-alt2);
 }
 
 .announcement.event {
@@ -3148,6 +3148,7 @@ div.error,
 }
 
 .announcement .thermometer .track {
+  overflow: hidden;
   margin: 0.5em 0;
   border: 1.5px solid;
   border-radius: 9999px;
@@ -3160,14 +3161,13 @@ div.error,
 
 .announcement .thermometer .progress .amount {
   top: 0;
-  right: 0.2em;
+  right: 0.25em;
   left: unset;
   color: var(--txt-alt2);
 }
 
 /* progress bar */
 .announcement .thermometer .track div.progress {
-  border-radius: 9999px;
   background-image: linear-gradient(to right, var(--success-bg) -25%, var(--success-txt) 50%) !important;
 }
 
