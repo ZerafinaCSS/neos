@@ -107,7 +107,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --int-checked:         #AD396F;                  /* checked checkboxes and radio buttons */
   
   --int-hgl:             #D44E8D;                  /* highlight for hovered/focused/selected elements */
-  --int-hgl-bg:          inear-gradient(125deg, #872D55, #D44E8D); /* background for hovered/focused list items */
+  --int-hgl-bg:          linear-gradient(125deg, #872D55, #D44E8D); /* background for hovered/focused list items */
   --int-hgl-txt:         #F7CFD2;                  /* text for hovered/focused list items and for collection header */
 
 
@@ -158,7 +158,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --tag-border:          transparent;
 
   /* hover and focus */
-  --tag-hgl-bg:          inear-gradient(125deg, #872D55, #D44E8D); /* background */
+  --tag-hgl-bg:          linear-gradient(125deg, #872D55, #D44E8D); /* background */
   --tag-hgl-txt:         #F7CFD2;                  /* text */
 
 

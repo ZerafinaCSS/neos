@@ -1444,8 +1444,7 @@ span.delete a {
   color: var(--alert-txt);
 }
 
-.secondary,
-.javascript .work.navigation .download .secondary {
+.secondary {
   position: absolute;
   border: var(--border-width) solid var(--border3);
   border-radius: var(--radius-mid);
@@ -1480,11 +1479,25 @@ fieldset.actions li:not(:first-child) {
 /* placement of secondary menus in fics */
 .javascript .work.navigation .secondary {
   top: unset;
+  right: unset;
+  left: 50%;
+  transform: translateX(-50%)
 }
 
 /* "Full-Page Index" chapter button in secondary menu */
 .javascript .work.navigation li .secondary a {
   white-space: nowrap;
+}
+
+/* styling the secondary menus in fics */
+.work.navigation .download,
+.javascript .work.navigation .download .secondary {
+  position: absolute;
+  border: var(--border-width) solid var(--border3);
+  border-radius: var(--radius-mid);
+  box-shadow: var(--shadow);
+  background-color: var(--bg6);
+  color: var(--main-txt);
 }
 
 .dashboard .header .landmark {
