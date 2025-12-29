@@ -1,0 +1,225 @@
+/*============================================================
+
+                           ~ neos ~
+                  Theme: AO3 Default Colors
+
+==============================================================
+GLOBAL VARIABLES
+==============================================================
+
+Grayscale color palette used for main backgrounds, borders, text and interaction elements:
+https://coolors.co/000000-2a2a2a-8b8b8b-b4b4b4-c1c1c1-d6d6d6-f0f0f0-f4f4f4-f8f8f8-ffffff
+
+*/
+
+:root {
+
+
+/*>========== UI PARAMETERS ==========<*/
+
+  /* space on left/right side of screen */
+  --margins-header:      1rem;                     /* header on desktop */
+  --margins-main:        5%;                       /* site contents on desktop */
+  --margins-narrow:      2.5%;                     /* site contents and header on tablet/mobile */
+
+  /* border-radius (= roundness of corners) */
+  --radius-small:        4px;                      /* smaller elements: list elements, input elements etc. */
+  --radius-mid:          4px;                      /* midsizde elements: dropdown menus, system messages etc. */
+  --radius-big:          4px;                      /* bigger elements: blurbs, forms, comments, textareas etc. */
+  --radius-btn:          4px;                      /* header search box, buttons */
+  --radius-tag:          4px;                      /* tags */
+
+  /* icon border-radius */
+  --icon-content-radius: 4px;                      /* content and bookmark icon */
+  --icon-primary-radius: 4px;                      /* primary and comment icon */
+  --icon-index-radius:   4px;                      /* index icon */
+
+
+/*>========== MAIN BACKGROUND COLORS ==========<*/
+
+  --bg1:                 #FFFFFF;                  /* main background, footer etc. */
+  --bg2:                 #900000;                  /* header, footer */
+  --bg3:                 #F0F0F0;                  /* dashboard */
+  --bg4:                 #F4F4F4;                  /* forms, modal dialogs, javascript context etc. */
+  --bg5:                 #FFFFFF;                  /* content boxes (blurbs, comments etc.), meta box */
+  --bg6:                 #F8F8F8;                  /* dropdown and secondary menus, tooltips etc. */
+  --bg7:                 #F0F0F0;                  /* own blurbs, listbox, some even/odd list items etc. */
+  --bg8:                 #616C90;                  /* collection header */
+
+
+/*>========== MAIN BORDERS ==========<*/
+
+  /* colors */
+  --border1:             #D6D6D6;                  /* dashboard, footer, news, blockquote, scrollbar track etc. */
+  --border2:             #C1C1C1;                  /* header, tables, forms, input elements, listbox etc. */
+  --border3:             #B4B4B4;                  /* content boxes (blurbs, comments etc.), dropdown and secondary menus */
+  --border4:             #B4B4B4;                  /* meta box, tooltips, scrollbar thumb etc. */
+
+  /* width */
+  --border-width:        1px;                      /* for almost all borders (experimental - changing this might cause some weirdness) */
+
+
+/*>========== SHADOWS ==========<*/
+/* replace values with "none" (without quotation marks) to remove shadows */
+
+  --shadow:              0 2.5px 15px 0 #B4B4B450; /* secondary elements, dropdowns, tooltips etc. */
+  --shadow-header:       none;
+  --shadow-buttons:      1px 1px 0 0 #D6D6D6;
+
+
+/*>========== MAIN TEXT ==========<*/
+
+  /* text size */
+  --txt-size-main:       100%;                     /* main text size (bigger than 130% causes some issues, but is still mostly functional) */
+  --txt-size-work:       110%;                     /* work text size */
+
+  /* text colors */
+  --txt-header:          #FFFFFF;                  /* header and footer text */
+  --txt-header-hgl:      #FFFFFF95;                /* selected header dropdown toggle and link items */
+  --txt-header-hgl-h1:   linear-gradient(125deg, #FFFFFF, #FFFFFF95); /* gradient for selected AO3 header title */
+  --txt-main:            #2A2A2A;                  /* main body text */
+  --txt-alt1:            #000000;                  /* announcements */
+  --txt-alt2:            #FFFFFF;                  /* checkbox checkmark, help symbol, event announcements etc. */
+
+  /* links */
+  --link:                #2A2A2A;                  /* link color */
+  --link-hgl:            #B4B4B4;                  /* color for hovered/focused links */
+  --link-visited:        #8B8B8B;                  /* color for already visited links + header search bar icon */
+  --link-underline:      1px solid;                /* link underline => add "transparent" (without quotation marks) after "solid" to make link underlines invisible */
+
+
+/*>========== INTERACTION COLORS ==========<*/
+/* = buttons, input and select elements */
+
+  /* button colors */
+  --int-btn-bg:          #F8F8F8;                  /* background */
+  --int-btn-border:      #B4B4B4;                  /* border */
+  --int-btn-txt:         #2A2A2A;                  /* text */
+  --int-btn-hgl-bg:      #F8F8F8;                  /* background for hovered/focused buttons */
+  --int-btn-hgl-txt:     #900000;                  /* text for hovered/focused buttons */                                                                        
+  
+  --int-bg:              #FFFFFF;                  /* background for input and select elements */
+
+  --int-current-bg:      #c1c1c1;                  /* background for currently active elements */
+  --int-current-txt:     #2A2A2A;                  /* text for currently active elements */
+  --int-disabled-bg:     #D6D6D6;                  /* background for disabled buttons and checkboxes */
+  --int-checked:         #1636D9;                  /* checked checkboxes and radio buttons */
+  
+  --int-hgl:             #70ACFF;                  /* highlight for hovered/focused/selected elements */
+  --int-hgl-bg:          #D6D6D6;                  /* background for hovered/focused list items */
+  --int-hgl-txt:         #2A2A2A;                  /* text for hovered/focused list items and for collection header */
+
+
+/*>========== ICON COLORS ==========<*/
+
+  /* bookmark and content icons (mostly) */  
+  --icon1:               #8BC101;                  /* gen, complete, public bookmark */
+  --icon2:               #F5CE00;                  /* teen */
+  --icon3:               #0054D4;                  /* m/m, external work */
+  --icon4:               #EF851C;                  /* mature, chose not to warn, rss feed */
+  --icon5:               #910679;                  /* f/m */
+  --icon6:               #B0021F;                  /* explicit, f/f, warning, incomplete */
+  --icon7:               #2A2A2A;                  /* private bookmark */
+  --icon8:               #B0021F;                  /* hidden bookmark */
+  --icon9:               #107CB9;                  /* rec bookmark */
+  
+  /* gradient overlay for the bookmark and content icons above */
+  --icon-grd:       linear-gradient(135deg, #FFFFFF80, transparent);
+
+  /* other icons */
+  --icon-bg:             linear-gradient(135deg, #00000025, #FFFFFF 75%); /* background for empty icon box or uploaded icon with transparent background */
+  --icon-id:             linear-gradient(135deg, #FFFFFF85, transparent) #900; /* user, skin, tag, admin */
+  --icon-coll:           linear-gradient(135deg, #FFFFFF85, transparent) #616C90; /* collection, unrevealed work */
+  --icon-anon:           linear-gradient(135deg, #FFFFFF85, transparent) #8B8B8B; /* guest, anonymous user */
+
+  /* icon borders */
+  --icon-border1:        #00000025;                /* border for most icons */
+  --icon-border2:        #C1C1C1;                  /* uploaded, default user and mystery icon + empty symbols box */
+
+
+/*>========== TAG COLORS ==========<*/
+
+  /* background */
+  --tag-default-bg:      #0000000D;
+  --tag-fandom-bg:       #0000000D;
+  --tag-warning-bg:      #B0021F35;
+  --tag-ship-bg:         #0054D430;
+  --tag-character-bg:    #8BC10140;
+  --tag-freeform-bg:     #0000000D;
+
+  /* text */
+  --tag-default-txt:     #000000;
+  --tag-fandom-txt:      #000000;
+  --tag-warning-txt:     #000000;
+  --tag-ship-txt:        #000000;
+  --tag-character-txt:   #000000;
+  --tag-freeform-txt:    #000000;
+
+  /* border */
+  --tag-border:          #00000025;
+
+  /* hover and focus */
+  --tag-hgl-bg:          #900000;                  /* background */
+  --tag-hgl-txt:         #FFFFFF;                  /* text */
+
+
+/*>========== COLORS FOR ROLES AND STATES + SYSTEM MESSAGES ==========<*/
+ 
+  /* background */
+  --notice-bg:           #D1E1EF; 
+  --success-bg:          #D1F0D1;
+  --caution-bg:          #FFE34E;
+  --alert-bg:            #EFD1D1;
+
+  /* text (and borders) */
+  --notice-txt:          #00518F; 
+  --success-txt:         #008000;
+  --caution-txt:         #8F7700;
+  --alert-txt:           #900000;
+
+
+/*>========== FILTERS ==========<*/
+/* the colors of the following elements can only be changed using filters; adjust filter values to change colors */
+
+  --header-icon:         invert(100%);
+  --header-icon-hgl:     invert(100%) opacity(60%); /* hover/focus */
+  --kudos-icon:          invert(18%) sepia(86%) saturate(2463%) hue-rotate(345deg) brightness(88%) contrast(95%);
+  --lock-icon:           invert(12%) sepia(100%) saturate(4991%) hue-rotate(244deg) brightness(71%) contrast(144%);
+  --stats-icon:          invert(65%);
+  --stat-chart:          none;
+  --rich-txt-editor:     none;
+
+}
+
+/*============================================================
+>> 03 REGION: HEADER
+============================================================*/
+
+/*>========== CONTEXT: collections ==========<*/
+
+/* collection header */
+#header h2 {
+  color: var(--txt-header);
+}
+
+/*============================================================
+>> 06 REGION: FOOTER
+============================================================*/
+
+/* footer background */
+#footer {
+  background: var(--bg2);
+}
+
+/* footer text */
+#footer,
+#footer .heading,
+#footer a, #footer button {
+  color: var(--txt-header);
+}
+
+/* hover for links in footer */
+#footer a:is(:hover, :focus),
+#footer button:is(:hover, :focus) {
+  color: var(--txt-header-hgl);
+}

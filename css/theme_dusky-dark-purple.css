@@ -125,10 +125,14 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --icon8:               #55354E;                  /* hidden bookmark */
   --icon9:               #AD396F;                  /* rec bookmark */
 
+  /* gradient overlay for the bookmark and content icons above */
+  --icon-grd:       none;
+
   /* other icons */
   --icon-bg:             #472E44;                  /* background for empty icon box or uploaded icon with transparent background */
-  --icon-id:             linear-gradient(125deg, #D44E8D, #872D55); /* user, collection, skin, tag, unrevealed work, admin icon */
+  --icon-id:             linear-gradient(125deg, #D44E8D, #872D55); /* user, skin, tag, admin */
   --icon-anon:           #55354E;                  /* guest, anonymous user */
+  --icon-coll:           linear-gradient(125deg, #D44E8D, #872D55); /* collection, unrevealed work */
 
   /* icon borders */
   --icon-border1:        transparent;              /* border for most icons */
@@ -189,4 +193,15 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --stat-chart:          invert(100%) sepia(100%) saturate(2000%) hue-rotate(300deg) brightness(60%) contrast(70%);
   --rich-txt-editor:     invert(100%) saturate(0) contrast(90%);
 
+}
+
+/*============================================================
+>> Z1 REPLACE THE ICONS AND IMAGES
+============================================================*/
+
+/*>========== ICONS FOR USERS, COLLECTIONS, TAGS etc. ==========<*/
+
+/* default user icon */
+img[src$="/images/skins/iconsets/default/icon_user.png"] {
+  content: url("https://zerafinacss.github.io/ao3/icons/user-visitor-02.png"); /* url of new icon */
 }

@@ -327,7 +327,7 @@ col.name {
 #header .heading a::before {
   font-weight: 700; /* make title bold */
   font-size: 1.15em;
-  color: var(--txt-header); /* change title/heading color here */
+  color: var(--txt-header); /* title/heading color */
   content: "AO3";
 }
 
@@ -971,7 +971,9 @@ label.action input[type="checkbox"] {
   height: 1em;
   margin: 0;
   box-shadow: none;
-  border: 1.5px solid var(--border2);
+  border-width: 1.5px !important;
+  border-style: solid;
+  border-color: var(--border2);
   border-radius: var(--radius-small);
   background-color: var(--int-bg);
   background-image: none !important;
@@ -1125,7 +1127,7 @@ p.character_counter {
 
 .LV_invalid {
   border: var(--border-width) solid var(--alert-txt);
-  border-radius: var(--radius-big);
+  border-radius: var(--radius-mid);
   color: var(--alert-txt);
   background: var(--alert-bg);
   box-shadow: none;
@@ -1479,9 +1481,6 @@ fieldset.actions li:not(:first-child) {
 /* placement of secondary menus in fics */
 .javascript .work.navigation .secondary {
   top: unset;
-  right: unset;
-  left: 50%;
-  transform: translateX(-50%)
 }
 
 /* "Full-Page Index" chapter button in secondary menu */
@@ -2185,7 +2184,7 @@ li.picture.blurb,
   width: 100%;
   margin-top: 0.429em;
   padding-top: 0.643em;
-  border-top: var(--border-width) solid var(--border2);
+  border-top: var(--border-width) solid var(--border2); /* add border between icons and heading */
 }
 
 /* this is also needed to change position of content icons */
@@ -2979,7 +2978,7 @@ dl.nomination {
   max-width: 70em; /* slightly more narrow than default */
   margin: 0 auto;
   padding: 0 2%;
-  font-size: var(--txt-size-work); /* change font size of works here */
+  font-size: var(--txt-size-work); /* font size of works */
 }
 
 /*============================================================
@@ -3252,6 +3251,7 @@ span.approved.symbol span {
 span.replied {
   line-height: 0;
   text-indent: -9999px;
+  color: transparent;
 }
 
 /* new checkmark symbol */
@@ -3259,6 +3259,7 @@ span.replied::after {
   display: block;
   line-height: 1.286;
   text-indent: 0;
+  color: var(--success-txt);
   content: "\002714\fe0e"; /* unicode checkmark + variation selector to stop it from turning into an emoji */
 }
 
@@ -3298,20 +3299,21 @@ dl#symbols-key dd {
 /* have to use "content" instead of "background" to replace some of these icons, as they were coded differently in the default archive skin */
 
 /* border + background for uploaded icons */
-.icon img:not(img[src*="/images/skins/iconsets/default/"]) {
+.icon img:not(img[src*="/images/skins/iconsets/default/"]),
+.skins .icon:has(a .icon) a .icon {
   box-sizing: border-box;
   border: var(--border-width) solid var(--icon-border2);
   background:
-    var(--icon-bg) /* change background color here */
+    var(--icon-bg) /* background color */
     content-box;
 }
 
 /* default user icon */
 img[src$="/images/skins/iconsets/default/icon_user.png"] {
   box-sizing: border-box;
-  border: var(--border-width) solid var(--icon-border2); /* change border width and color here */
+  border: var(--border-width) solid var(--icon-border2); /* border width and color */
   background:
-    var(--icon-id) /* change icon color here */
+    var(--icon-id) /* icon color */
     content-box;
   content: url("https://zerafinacss.github.io/ao3/icons/user-default-02.png"); /* url of new icon */
 }
@@ -3319,10 +3321,10 @@ img[src$="/images/skins/iconsets/default/icon_user.png"] {
 /* anon comment icon */
 .comment .icon .anonymous {
   box-sizing: border-box;
-  border: var(--border-width) solid var(--icon-border1); /* change border width and color here */
+  border: var(--border-width) solid var(--icon-border1); /* border width and color */
   background:
     url("https://zerafinacss.github.io/ao3/icons/anon-01.png"), /* url of new icon */
-    var(--icon-anon) /* change background color here */
+    var(--icon-anon) /* background color */
     border-box;
   background-size: cover;
 }
@@ -3330,19 +3332,19 @@ img[src$="/images/skins/iconsets/default/icon_user.png"] {
 /* guest comment icon */
 .comment .icon .visitor {
   box-sizing: border-box;
-  border: var(--border-width) solid var(--icon-border1); /* change border width and color here */
+  border: var(--border-width) solid var(--icon-border1); /* border width and color */
   background:
     url("https://zerafinacss.github.io/ao3/icons/user-visitor-02.png"), /* url of new icon */
-    var(--icon-anon) /* change background color here */
+    var(--icon-anon) /* background color */
     border-box;
   background-size: cover;
 }
 
 /* default collection icon */
 img[src$="/images/skins/iconsets/default/icon_collection.png"] {
-  border: var(--border-width) solid var(--icon-border1); /* change border width and color here */
+  border: var(--border-width) solid var(--icon-border1); /* border width and color */
   background:
-    var(--icon-id) /* change background color here */
+    var(--icon-coll) /* background color */
     border-box;
   content: url("https://zerafinacss.github.io/ao3/icons/collection-02.png"); /* url of new icon */
 }
@@ -3352,10 +3354,10 @@ img[src$="/images/skins/iconsets/default/icon_collection.png"] {
 .tag .primary .icon,
 .index .tagset .icon {
   box-sizing: border-box;
-  border: var(--border-width) solid var(--icon-border1); /* change border width and color here */
+  border: var(--border-width) solid var(--icon-border1); /* border width and color */
   background:
     url("https://zerafinacss.github.io/ao3/icons/tag-02.png"), /* url of new icon */
-    var(--icon-id) /* change background color here */
+    var(--icon-id) /* background color */
     border-box;
   background-size: cover;
 }
@@ -3363,11 +3365,11 @@ img[src$="/images/skins/iconsets/default/icon_collection.png"] {
 /* icon for unrevealed works */
 .index .mystery .icon {
   box-sizing: border-box;
-  border: var(--border-width) solid var(--icon-border2); /* change width and color of outer border here */
-  box-shadow: inset 0 0 0 3px #FFFFFF; /* change width and color of inner border here */
+  border: var(--border-width) solid var(--icon-border2); /* width and color of outer border */
+  box-shadow: inset 0 0 0 3px #FFFFFF; /* width and color of inner border */
   background:
     url("https://zerafinacss.github.io/ao3/icons/anon-01.png"), /* url of new icon */
-    var(--icon-id) /* change background color here */
+    var(--icon-coll) /* background color */
     content-box;
   background-size: cover;
 }
@@ -3375,28 +3377,27 @@ img[src$="/images/skins/iconsets/default/icon_collection.png"] {
 /* admin icon => seen on news posts */
 .admin .primary .icon {
   box-sizing: border-box;
-  border: var(--border-width) solid var(--icon-border1); /* change border width and color here */
+  border: var(--border-width) solid var(--icon-border1); /* border width and color */
   background:
     url("https://zerafinacss.github.io/ao3/icons/admin-02.png"), /* url of new icon */
-    var(--icon-id) /* change background color here */
+    var(--icon-id) /* background color */
     border-box;
   background-size: cover;
 }
 
 /* default icon for skins */
-.skins .primary .icon:not(:has(a .icon)),
-.index .skins .icon:not(:has(a .icon)) {
+.skins .icon:not(:has(a .icon)) {
   box-sizing: border-box;
-  border: var(--border-width) solid var(--icon-border1); /* change border width and color here */
+  border: var(--border-width) solid var(--icon-border1); /* border width and color */
   background:
     url("https://zerafinacss.github.io/ao3/icons/skins-02.png"), /* url of new icon */
-    var(--icon-id) /* change icon color here */
+    var(--icon-id) /* icon color */
     border-box;
   background-size: cover;
 }
 
 /* remove default skin icon under uploaded icons */
-.skins .primary .icon:has(a .icon) {
+.skins .icon:has(a .icon) {
   background: none;
 }
 
@@ -3430,8 +3431,8 @@ img[src$="/images/skins/iconsets/default/icon_collection.png"] {
 img[src$="/images/skins/iconsets/default/rating-notrated.png"],
 img[src$="/images/skins/iconsets/default/category-none.png"],
 img[src$="/images/skins/iconsets/default/warning-no.png"] {
-  border-color: var(--icon-border2) !important; /* change border color here */
-  background: var(--icon-bg); /* change background color here */
+  border-color: var(--icon-border2) !important; /* border color */
+  background: var(--icon-bg); /* background color */
 }
 
 /*
@@ -3447,7 +3448,8 @@ You can replace the border color with any other rgb, rgba, or hex color, transpa
 img[src$="/images/skins/iconsets/default/rating-general-audience.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/rating-gen-01.png"), /* url of new icon */
-    var(--icon1); /* change background color here */
+    var(--icon-grd),
+    var(--icon1); /* background color */
 }
 
 /* Teen And Up Audiences */
@@ -3455,7 +3457,8 @@ img[src$="/images/skins/iconsets/default/rating-general-audience.png"] {
 img[src$="/images/skins/iconsets/default/rating-teen.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/rating-teen-01.png"), /* url of new icon */
-    var(--icon2); /* change background color here */
+    var(--icon-grd),
+    var(--icon2); /* background color */
 }
 
 /* Mature */
@@ -3463,7 +3466,8 @@ img[src$="/images/skins/iconsets/default/rating-teen.png"] {
 img[src$="/images/skins/iconsets/default/rating-mature.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/rating-mature-01.png"), /* url of new icon */
-    var(--icon4); /* change background color here */
+    var(--icon-grd),
+    var(--icon4); /* background color */
 }
 
 /* Explicit */
@@ -3471,7 +3475,8 @@ img[src$="/images/skins/iconsets/default/rating-mature.png"] {
 img[src$="/images/skins/iconsets/default/rating-explicit.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/rating-explicit-01.png"), /* url of new icon */
-    var(--icon6); /* change background color here */
+    var(--icon-grd),
+    var(--icon6); /* background color */
 }
 
 /*>>========== Relationships, pairings, orientations ==========<<*/
@@ -3481,7 +3486,8 @@ img[src$="/images/skins/iconsets/default/rating-explicit.png"] {
 img[src$="/images/skins/iconsets/default/category-femslash.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/category-ff-01.png"), /* url of new icon */
-    var(--icon6); /* change background color here */
+    var(--icon-grd),
+    var(--icon6); /* background color */
 }
 
 /* F/M */
@@ -3489,7 +3495,8 @@ img[src$="/images/skins/iconsets/default/category-femslash.png"] {
 img[src$="/images/skins/iconsets/default/category-het.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/category-mf-01.png"), /* url of new icon */
-    var(--icon5); /* change background color here */
+    var(--icon-grd),
+    var(--icon5); /* background color */
 }
 
 /* Gen */
@@ -3497,7 +3504,8 @@ img[src$="/images/skins/iconsets/default/category-het.png"] {
 img[src$="/images/skins/iconsets/default/category-gen.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/category-gen-01.png"), /* url of new icon */
-    var(--icon1); /* change background color here */
+    var(--icon-grd),
+    var(--icon1); /* background color */
 }
 
 /* M/M */
@@ -3505,13 +3513,15 @@ img[src$="/images/skins/iconsets/default/category-gen.png"] {
 img[src$="/images/skins/iconsets/default/category-slash.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/category-mm-01.png"), /* url of new icon */
-    var(--icon3); /* change background color here */
+    var(--icon-grd),
+    var(--icon3); /* background color */
 }
 
 /* Multi */
 .required-tags .category-multi,
 img[src$="/images/skins/iconsets/default/category-multi.png"] {
   background:
+    var(--icon-grd),
     conic-gradient(from 360deg, var(--icon5) 0% 25%, var(--icon3) 25% 50%, var(--icon6) 50% 75%, var(--icon1) 75% 100%); /* conic gradient with the colors of the relationship icons */
 }
 
@@ -3520,6 +3530,7 @@ img[src$="/images/skins/iconsets/default/category-multi.png"] {
 img[src$="/images/skins/iconsets/default/category-other.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/category-other-01.png"), /* url of new icon */
+    var(--icon-grd),
     linear-gradient(to left top, var(--icon1), var(--icon3), var(--icon5), var(--icon6)); /* gradient with the colors of the relationship icons */
 }
 
@@ -3530,7 +3541,8 @@ img[src$="/images/skins/iconsets/default/category-other.png"] {
 img[src$="/images/skins/iconsets/default/warning-choosenotto.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/warning-choosenotto-01.png"), /* url of new icon */
-    var(--icon4); /* change background color here */
+    var(--icon-grd),
+    var(--icon4); /* background color */
 }
 
 /* Warnings apply */
@@ -3538,7 +3550,8 @@ img[src$="/images/skins/iconsets/default/warning-choosenotto.png"] {
 img[src$="/images/skins/iconsets/default/warning-yes.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/warning-yes-01.png"), /* url of new icon */
-    var(--icon6); /* change background color here */
+    var(--icon-grd),
+    var(--icon6); /* background color */
 }
 
 /* External work */
@@ -3546,7 +3559,8 @@ img[src$="/images/skins/iconsets/default/warning-yes.png"] {
 img[src$="/images/skins/iconsets/default/warning-external-work.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/warning-external-work-02.png"), /* url of new icon */
-    var(--icon3); /* change background color here */
+    var(--icon-grd),
+    var(--icon3); /* background color */
 }
 
 /*>>========== Completion status ==========<<*/
@@ -3556,7 +3570,8 @@ img[src$="/images/skins/iconsets/default/warning-external-work.png"] {
 img[src$="/images/skins/iconsets/default/complete-no.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/complete-no-01.png"), /* url of new icon */
-    var(--icon6); /* change background color here */
+    var(--icon-grd),
+    var(--icon6); /* background color */
 }
 
 /* completed/filled */
@@ -3564,7 +3579,8 @@ img[src$="/images/skins/iconsets/default/complete-no.png"] {
 img[src$="/images/skins/iconsets/default/complete-yes.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/complete-yes-01.png"), /* url of new icon */
-    var(--icon1); /* change background color here */
+    var(--icon-grd),
+    var(--icon1); /* background color */
 }
 
 /*>>========== Bookmark symbols ==========<<*/
@@ -3579,7 +3595,13 @@ img[src$="/images/skins/iconsets/default/complete-yes.png"] {
 img[src$="/images/skins/iconsets/default/bookmark-rec.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/bookmark-rec-01.png"), /* url of new icon */
-    var(--icon9); /* change background color here */
+    var(--icon-grd),
+    var(--icon9); /* background color */
+}
+
+/* Rec bookmark ribbon icon */
+.blurb:not(:is(.short)) .status .rec {
+  background-image: url("https://i.ibb.co/jPq89bqP/zerafina-icon-bookmark-rec-01.png"); /* url of new icon */
 }
 
 /* Rec bookmark ribbon color */
@@ -3592,7 +3614,13 @@ img[src$="/images/skins/iconsets/default/bookmark-rec.png"] {
 img[src$="/images/skins/iconsets/default/bookmark-public.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/bookmark-public-02.png"), /* url of new icon */
-    var(--icon1); /* change background color here */
+    var(--icon-grd),
+    var(--icon1); /* background color */
+}
+
+/* Rec bookmark ribbon icon */
+.blurb:not(:is(.short)) .status .public {
+  background-image: url("https://zerafinacss.github.io/ao3/icons/bookmark-public-02.png"); /* url of new icon */
 }
 
 /* Public bookmark ribbon color */
@@ -3605,7 +3633,8 @@ img[src$="/images/skins/iconsets/default/bookmark-public.png"] {
 img[src$="/images/skins/iconsets/default/bookmark-private.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/bookmark-locked-02.png"), /* url of new icon */
-    var(--icon7); /* change background color here */
+    var(--icon-grd),
+    var(--icon7); /* background color */
   font-size: 0;
 }
 
@@ -3614,6 +3643,11 @@ img[src$="/images/skins/iconsets/default/bookmark-private.png"] {
   background: none;
   /* This seems to be the only bookmark icon where the background is put in the .text element instead of it's parent.
   I want it to match the rest, so I'm hiding the background of the .text element. */
+}
+
+/* Private bookmark ribbon icon */
+.blurb:not(:is(.short)) .status .private {
+  background-image: url("https://zerafinacss.github.io/ao3/icons/bookmark-locked-02.png"); /* url of new icon */
 }
 
 /* Private bookmark ribbon color  */
@@ -3626,7 +3660,13 @@ img[src$="/images/skins/iconsets/default/bookmark-private.png"] {
 img[src$="/images/skins/iconsets/default/bookmark-hidden.png"] {
   background:
     url("https://zerafinacss.github.io/ao3/icons/bookmark-hidden-01.png"), /* url of new icon */
-    var(--icon8); /* change background color here */
+    var(--icon-grd),
+    var(--icon8); /* background color */
+}
+
+/* Hidden bookmark ribbon icon */
+.blurb:not(:is(.short)) .status .hidden {
+  background-image: url("https://zerafinacss.github.io/ao3/icons/bookmark-hidden-01.png"); /* url of new icon */
 }
 
 /* Hidden bookmark ribbon color */
@@ -3658,9 +3698,11 @@ a.rss span {
   border: 1px solid var(--icon-border1);
   border-radius: var(--icon-content-radius);
   background:
-    url("https://zerafinacss.github.io/ao3/icons/rss-01.png") /* url of new icon */
+    url("https://zerafinacss.github.io/ao3/icons/rss-01.png"), /* url of new icon */
+    var(--icon-grd),
     var(--icon4); /* background color */
   background-size: cover;
+  background-origin: border-box;
   content: "";
 }
 

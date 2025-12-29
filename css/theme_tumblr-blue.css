@@ -128,10 +128,14 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --icon8:               #D9664A;                  /* hidden bookmark */
   --icon9:               #D977BA;                  /* rec bookmark */
 
+  /* gradient overlay for the bookmark and content icons above */
+  --icon-grd:       none;
+
   /* other icons */
   --icon-bg:             #48566A;                  /* background for empty icon box or uploaded icon with transparent background */
-  --icon-id:             #529ECC;                  /* user, collection, skin, tag, unrevealed work, admin icon */
+  --icon-id:             #529ECC;                  /* user, skin, tag, admin */
   --icon-anon:           #48566A;                  /* guest, anonymous user */
+  --icon-coll:           #529ECC;                  /* collection, unrevealed work */
 
   /* icon borders */
   --icon-border1:        none;                     /* border for most icons */
@@ -194,7 +198,6 @@ Color palettes used for main backgrounds, borders, text and interaction elements
 
 }
 
-
 /*============================================================
 >> A2 FONTS
 ============================================================*/
@@ -210,7 +213,6 @@ textarea,
 .secondary,
 .dropdown,
 blockquote,
-pre,
 .prompt .blurb h6,
 .bookmark .user .meta,
 a.work,
@@ -335,7 +337,7 @@ textarea:focus {
 /* style checked radio buttons */
 input[type="radio"]:checked,
 .filters [type="radio"]:checked {
-  border-width: 3.5px;
+  border-width: 3.5px !important;
   background-color: transparent;
 }
 

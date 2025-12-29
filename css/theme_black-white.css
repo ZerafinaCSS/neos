@@ -124,10 +124,15 @@ https://coolors.co/000000-8b8b8b-b4b4b4-c1c1c1-d6d6d6-f0f0f0-f4f4f4-f8f8f8-fffff
   --icon8:               #8B8B8B;                  /* hidden bookmark */
   --icon9:               #D04091;                  /* rec bookmark */
 
+  /* gradient overlay for the bookmark and content icons above */
+  --icon-grd:       none;
+
+
   /* other icons */
   --icon-bg:             #FFFFFF;                  /* background for empty icon box or uploaded icon with transparent background */
-  --icon-id:             #8B8B8B;                  /* user, collection, skin, tag, unrevealed work, admin icon */
+  --icon-id:             #8B8B8B;                  /* user, skin, tag, admin */
   --icon-anon:           #8B8B8B;                  /* guest, anonymous user */
+  --icon-coll:           #8B8B8B;                  /* collection, unrevealed work */
 
   /* icon borders */
   --icon-border1:        #00000025;                /* border for most icons */
@@ -188,7 +193,6 @@ https://coolors.co/000000-8b8b8b-b4b4b4-c1c1c1-d6d6d6-f0f0f0-f4f4f4-f8f8f8-fffff
   --rich-txt-editor:     none;
 
 }
-
 
 /*============================================================
 >> 13 GROUP: BLURB

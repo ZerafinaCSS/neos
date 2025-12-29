@@ -46,7 +46,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --bg5:                 #FCFCFC;                  /* content boxes (blurbs, comments etc.), meta box */
   --bg6:                 #FCFCFC;                  /* dropdown and secondary menus, tooltips etc. */
   --bg7:                 #EDEAEA;                  /* own blurbs, listbox, some even/odd list items etc. */
-  --bg8:                 #D44E8B;                  /* collection header */
+  --bg8:                 #A8366E;                  /* collection header */
 
 
 /*>========== MAIN BORDERS ==========<*/
@@ -126,10 +126,14 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --icon8:               #897979;                  /* hidden bookmark */
   --icon9:               #EA5A9A;                  /* rec bookmark */
 
+  /* gradient overlay for the bookmark and content icons above */
+  --icon-grd:       none;
+
   /* other icons */
   --icon-bg:             #FFFFFF;                  /* background for empty icon box or uploaded icon with transparent background */
-  --icon-id:             linear-gradient(125deg, #FD8ABC, #D44E8B); /* user, collection, skin, tag, unrevealed work, admin icon */
+  --icon-id:             linear-gradient(125deg, #FD8ABC, #D44E8B); /* user, skin, tag, admin */
   --icon-anon:           #A29696;                  /* guest, anonymous user */
+  --icon-coll:           linear-gradient(125deg, #D44E8B, #A8366E); /* collection, unrevealed work */
 
   /* icon borders */
   --icon-border1:        #00000020;                /* border for most icons */

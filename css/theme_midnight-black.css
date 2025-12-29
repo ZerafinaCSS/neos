@@ -28,7 +28,7 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
   --radius-small:        4px;                      /* smaller elements: list elements, input elements etc. */
   --radius-mid:          6px;                      /* midsizde elements: dropdown menus, system messages etc. */
   --radius-big:          8px;                      /* bigger elements: blurbs, forms, comments, textareas etc. */
-  --radius-btn:          12px;                     /* header search box, buttons */
+  --radius-btn:          14px;                     /* header search box, buttons */
   --radius-tag:          12px;                     /* tags */
 
   /* icon border-radius */
@@ -78,7 +78,7 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
   /* text colors */
   --txt-header:          #DAE6E1;                  /* header text */
   --txt-header-hgl:      #00C5CC;                  /* selected header dropdown toggle and link items */
-  --txt-header-hgl-h1:   linear-gradient(125deg, #DAE6E1, #00C5CC); /* gradient for selected AO3 header title */
+  --txt-header-hgl-h1:   linear-gradient(135deg, #DAE6E1, #00C5CC); /* gradient for selected AO3 header title */
   --txt-main:            #DAE6E1;                  /* main body text */
   --txt-alt1:            #DAE6E1;                  /* announcements */
   --txt-alt2:            #000000;                  /* checkbox checkmark, help symbol, event announcements etc. */
@@ -126,10 +126,14 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
   --icon8:               #292F2F;                  /* hidden bookmark */
   --icon9:               #B31F5B;                  /* rec bookmark */
 
+  /* gradient overlay for the bookmark and content icons above */
+  --icon-grd:       none;
+
   /* other icons */
-  --icon-bg:             #292F2F;                  /* background for empty icon box or uploaded icon with transparent background */
-  --icon-id:             linear-gradient(125deg, #00C5CC, #00767A); /* user, collection, skin, tag, unrevealed work, admin icon */
-  --icon-anon:           #333B3B;                  /* guest, anonymous user */
+  --icon-bg:             #292F2F; /* background for empty icon box or uploaded icon with transparent background */
+  --icon-id:             linear-gradient(135deg, #00C5CC, #00767A); /* user, skin, tag, admin */
+  --icon-anon:           linear-gradient(135deg, #3F4B4B, #292F2F); /* guest, anonymous user */
+  --icon-coll:           linear-gradient(135deg, #00C5CC, #00767A); /* collection, unrevealed work */
 
   /* icon borders */
   --icon-border1:        none;                     /* border for most icons */
@@ -191,7 +195,6 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
   --rich-txt-editor:     invert(95%) saturate(0);
 
 }
-
 
 /*============================================================
 >> Z1 REPLACE THE ICONS AND IMAGES
