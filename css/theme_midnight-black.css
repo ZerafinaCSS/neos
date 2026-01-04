@@ -10,7 +10,7 @@ GLOBAL VARIABLES
 Color palette used for main backgrounds, borders, text and interaction elements:
 
 Grayscale: https://coolors.co/000000-090b0b-111515-181e1e-1f2626-333b3b-3f4b4b-627a7a-dae6e1
-Cyan:      https://coolors.co/00767a-009ea3-00c5cc
+Cyan:      https://coolors.co/00767a-00a8ad-00c5cc
   
 */
 
@@ -55,7 +55,7 @@ Cyan:      https://coolors.co/00767a-009ea3-00c5cc
   --border1:             #333B3B;                  /* dashboard, footer, news, blockquote, scrollbar track etc. */
   --border2:             #333B3B;                  /* header, tables, forms, input elements, listbox etc. */
   --border3:             #333B3B;                  /* content boxes (blurbs, comments etc.), dropdown and secondary menus */
-  --border4:             #333B3B;                  /* meta boxes, tooltips, scrollbar thumb etc. */
+  --border4:             #627A7A;                  /* meta boxes, tooltips, some heading underlines, scrollbar thumb etc. */
 
   /* width */
   --border-width:        1.5px;                    /* for almost all borders (experimental - changing this might cause some weirdness) */

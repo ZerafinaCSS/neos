@@ -53,7 +53,7 @@ https://coolors.co/000000-8b8b8b-b4b4b4-c1c1c1-d6d6d6-f0f0f0-f4f4f4-f8f8f8-fffff
   --border1:             #D6D6D6;                  /* dashboard, footer, news, blockquote, scrollbar track etc. */
   --border2:             #C1C1C1;                  /* header, tables, forms, input elements, listbox etc. */
   --border3:             #C1C1C1;                  /* content boxes (blurbs, comments etc.), dropdown and secondary menus */
-  --border4:             #B4B4B4;                  /* meta box, tooltips, scrollbar thumb etc. */
+  --border4:             #B4B4B4;                  /* meta boxes, tooltips, some heading underlines, scrollbar thumb etc. */
 
   /* width */
   --border-width:        1px;                      /* for almost all borders (experimental - changing this might cause some weirdness) */

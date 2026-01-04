@@ -582,12 +582,11 @@ col.name {
   display: block;
   width: 100%;
   min-height: unset;
-  max-height: 30vh;
+  max-height: 50vh;
   padding: 0.25em var(--margins-header);
   border-inline: none;
   border-top: var(--border-width) solid var(--border2);
   background-color: var(--bg8) !important;
-  background-size: auto 100% !important;
   font-size: 1.25em;
   color: var(--int-hgl-txt);
 }
@@ -1679,7 +1678,7 @@ span.offered.requested {
 
 /* tag layout */
 .commas:has(a.tag, a[data-remote="true"]) {
-  display: inline-flex;
+  display: flex;
     flex-wrap: wrap;
     align-items: center;
     column-gap: 5px; /* width of gap between neighbouring tags */
@@ -1709,8 +1708,8 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
   text-decoration: none;
 }
 
-/* hide commas between blurb fandom and collection tags */
-/* this is a terrible solution - it changes the fandom tags as well so they have to be "repaired" again (see below) */
+/* hide commas between fandom blurb tags and between collection tags */
+/* this is a terrible solution - it changes the tags as well so they have to be "repaired" again (see below) */
 .blurb h5.fandoms.heading,
 .blurb h5.tags.heading {
   margin-right: -5px; /* trick to align these tags with other tags/elements despite "margin-right: 5px" below */
@@ -1718,7 +1717,7 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
   color: transparent;
 }
 
-/* repair and format fandom and collection heading tags */
+/* repair and format fandom blurb tags and collection tags */
 .blurb h5.fandoms.heading a.tag,
 .blurb h5.tags.heading a.tag {
   box-sizing: border-box;

@@ -29,6 +29,9 @@
 
 /* collection header */
 #header h2 {
+  max-height: 30vh;
+  background-size: cover !important;
+  background-position: center;
   text-align: center;
 }
 

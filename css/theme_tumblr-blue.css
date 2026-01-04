@@ -57,7 +57,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --border1:             #FFFFFF21;                /* dashboard, footer, news, blockquote, scrollbar track etc. */
   --border2:             #FFFFFF21;                /* header, tables, forms, input elements, listbox etc. */
   --border3:             none;                     /* content boxes (blurbs, comments etc.), dropdown and secondary menus */
-  --border4:             #3D4C62;                  /* meta boxes, tooltips, scrollbar thumb etc. */
+  --border4:             #3D4C62;                  /* meta boxes, tooltips, some heading underlines, scrollbar thumb etc. */
 
   /* width */
   --border-width:        1px;                      /* for almost all borders (experimental - changing this might cause some weirdness) */
