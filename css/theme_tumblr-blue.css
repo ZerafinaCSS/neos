@@ -339,6 +339,7 @@ input[type="radio"]:checked,
 .filters [type="radio"]:checked {
   border-width: 3.5px !important;
   background-color: transparent;
+  color: transparent;
 }
 
 /*>========== WIDGET: LIVE VALIDATION ==========<*/

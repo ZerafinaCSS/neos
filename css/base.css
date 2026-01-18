@@ -826,6 +826,10 @@ fieldset > fieldset > dl > dt > label {
   font-weight: 700;
 }
 
+fieldset > .heading {
+  margin-inline: 0.5em;
+}
+
 fieldset > ul > li:has(label input[type="radio"]) {
   margin: 0 !important;
 }
@@ -905,7 +909,6 @@ option:checked:is(:hover, :focus, :active) {
   color: var(--int-current-txt);
 }
 
-
 form dt {
   display: inline-block;
   box-sizing: border-box;
@@ -930,6 +933,10 @@ form dd.required {
 
 form fieldset#parent-options dd:has(ul) {
   margin: 0;
+}
+
+form dd p {
+  padding-inline: 0;
 }
 
 /* legends = little heading boxes on forms */
@@ -1099,7 +1106,7 @@ input[type="radio"]:checked,
   box-shadow: inset 0 0 0 2.5px;
   background-color: var(--int-checked);
   background-image: none;
-  color: var(--int-bg)
+  color: var(--txt-alt2);
 }
 
 /*>>========== FILE UPLOAD BUTTON ==========<<*/
@@ -1136,6 +1143,7 @@ p.character_counter {
 input.LV_invalid_field:is(:hover, :focus),
 textarea.LV_invalid_field:is(:hover, :focus) {
   border: var(--border-width) solid var(--alert-txt);
+  outline-color: var(--alert-txt);
 }
 
 .LV_invalid::before {
@@ -1317,12 +1325,6 @@ form.single input[type="submit"] {
 .secondary .toggled form,
 .secondary form {
   overflow: visible;
-}
-
-.toggled form p.footnote,
-.dynamic form p.footnote {
-  margin-bottom: 0.643em;
-  line-height: 1;
 }
 
 /*>========== INTERACTION: POST (work, chapter, comment, news, feedback, challenge etc) ==========<*/
@@ -1697,7 +1699,7 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
 .added.tag {
   display: inline-block;
   margin-block: 2.5px; /* gap between tag rows; needs to be done with margin because row-gap is not allowed on AO3 (as of August 2025) */
-  padding: 0.15em 0.35em;
+  padding: 0.15em 0.4em;
   border: var(--border-width) solid var(--tag-border);
   border-radius: var(--radius-tag);
   background: var(--tag-default-bg);
@@ -2493,10 +2495,28 @@ li.comment:not(:has(.edit_comment)) {
   order: 5;
 }
 
-/* delete confirmation */
+/* delete confirmation box */
 .comment div[id^="delete_comment"] {
   order: 6;
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
+  padding: 0.429em 0.75em;
+  border: var(--border-width) solid var(--alert-txt);
+  border-radius: var(--radius-big);
+  outline: 1px solid var(--alert-txt)
+}
+
+/* delete confirmation text */
+.comment div[id^="delete_comment"] h3 {
+  font-weight: 700;
+  font-size: var(--txt-size-main);
+  line-height: inherit;
+}
+
+/* delete confirmation buttons */
+.comment div[id^="delete_comment"] ul.actions {
+  margin-left: auto;
 }
 
 /* reply form */
@@ -2661,6 +2681,8 @@ li.comment:has(.edit_comment) {
 }
 
 .home .header .userstuff {
+  overflow-wrap: anywhere;
+  word-break: normal;
   margin: 0;
   padding-top: 2em;
 }
@@ -2800,6 +2822,12 @@ form.filters dl dl {
 .filters dt.words:has(+ dd input[value]) .expander,
 .filters dt.dates:has(+ dd input[value]) .expander {
   font-weight: 700;
+}
+
+/* hide empty filter categories */
+/* for example, if there are no relationships, the relationship filter option will not appear */
+.filters dt:not(:has(+ dd input)).filter-toggle * {
+  display: none;
 }
 
 /* filters expander */
@@ -2987,7 +3015,6 @@ dl.nomination {
 
 .footnote {
   font-size: 0.9em;
-  text-align: right;
 }
 
 /* formatting for all messages */

@@ -1,0 +1,206 @@
+/*============================================================
+
+                           ~ neos ~
+                     Theme: Charcoal Rose
+
+==============================================================
+GLOBAL VARIABLES
+==============================================================
+
+Color palettes used:
+
+Charcoal: https://coolors.co/111111-1d1d1d-242424-2b2b2b-323232-434343-545454-6f6567-89767a-d3c5c8
+Rose:     https://coolors.co/ab6f7d-c93b6a-d83f6c-d96aa9-e077ac-f59db3-ffabdf-ffb3d8
+  
+*/
+
+:root {
+
+
+/*>========== UI PARAMETERS ==========<*/
+
+  /* space on left/right side of screen */
+  --margins-header:      1rem;                     /* header on desktop */
+  --margins-main:        5%;                       /* site contents on desktop */
+  --margins-narrow:      2.5%;                     /* site contents and header on tablet/mobile */
+
+  /* border-radius (= roundness of corners) */
+  --radius-small:        4px;                      /* smaller elements: list elements, input elements etc. */
+  --radius-mid:          6px;                      /* midsizde elements: dropdown menus, system messages etc. */
+  --radius-big:          8px;                      /* bigger elements: blurbs, forms, comments, textareas etc. */
+  --radius-btn:          14px;                     /* header search box, buttons */
+  --radius-tag:          8px;                      /* tags */
+
+  /* icon border-radius */
+  --icon-content-radius: 6px;                      /* content and bookmark icon */
+  --icon-primary-radius: 8px;                      /* primary and comment icon */
+  --icon-index-radius:   8px;                      /* index icon */
+
+
+/*>========== MAIN BACKGROUND COLORS ==========<*/
+
+  --bg1:                 #1D1D1D;                  /* main background, footer etc. */
+  --bg2:                 #2B2B2B;                  /* header */
+  --bg3:                 transparent;              /* dashboard */
+  --bg4:                 #2B2B2B;                  /* forms, modal dialogs, javascript context etc. */
+  --bg5:                 #2B2B2B;                  /* content boxes (blurbs, comments etc.), meta box */
+  --bg6:                 #2B2B2B;                  /* dropdown and secondary menus, tooltips etc. */
+  --bg7:                 #323232;                  /* own blurbs, listbox, some even/odd list items etc. */
+  --bg8:                 #F59DB3;                  /* collection header */
+
+
+/*>========== MAIN BORDERS ==========<*/
+
+  /* colors */
+  --border1:             #434343;                  /* dashboard, footer, news, blockquote, scrollbar track etc. */
+  --border2:             #434343;                  /* header, tables, forms, input elements, listbox etc. */
+  --border3:             #434343;                  /* content boxes (blurbs, comments etc.), dropdown and secondary menus */
+  --border4:             #6F6567;                  /* meta boxes, tooltips, some heading underlines, scrollbar thumb etc. */
+
+  /* width */
+  --border-width:        1px;                      /* for almost all borders (experimental - changing this might cause some weirdness) */
+
+
+/*>========== SHADOWS ==========<*/
+/* replace values with "none" (without quotation marks) to remove shadows */
+
+  --shadow:              none;                     /* secondary elements, dropdowns, tooltips etc. */
+  --shadow-header:       none;
+  --shadow-buttons:      none;
+
+
+/*>========== MAIN TEXT ==========<*/
+
+  /* text size */
+  --txt-size-main:       100%;                     /* main text size (bigger than 130% causes some issues, but is still mostly functional) */
+  --txt-size-work:       110%;                     /* work text size */
+
+  /* text colors */
+  --txt-header:          #F59DB3;                  /* header text */
+  --txt-header-hgl:      #FDEDF1;                  /* selected header dropdown toggle and link items */
+  --txt-header-hgl-h1:   linear-gradient(135deg, #FDEDF1, #FFB3D8, #AB6F7D); /* gradient for selected AO3 header title */
+  --txt-main:            #D3C5C8;                  /* main body text */
+  --txt-alt1:            #D3C5C8;                  /* announcements */
+  --txt-alt2:            #111111;                  /* checkbox checkmark, help symbol, event announcements etc. */
+
+  /* links */
+  --link:                #F59DB3;                  /* link color */
+  --link-hgl:            #FFB3D8;                  /* color for hovered/focused links */
+  --link-visited:        #89767A;                  /* color for already visited links + header search bar icon */
+  --link-underline:      1px solid transparent;    /* link underline => delete "transparent" to make link underlines visible */
+
+
+/*>========== INTERACTION COLORS ==========<*/
+/* = buttons, input and select elements */
+
+  /* button colors */
+  --int-btn-bg:          #2B2B2B;                  /* background */
+  --int-btn-border:      #AB6F7D8C;                /* border */
+  --int-btn-txt:         #F59DB3;                  /* text */
+  --int-btn-hgl-bg:      linear-gradient(135deg, #D3C5C8, #FFB3D8, #F59DB3); /* background for hovered/focused buttons */
+  --int-btn-hgl-txt:     #111111;                  /* text for hovered/focused buttons */                                                                        
+  
+  --int-bg:              #11111159;                /* background for input and select elements */
+
+  --int-current-bg:      #323232;                  /* background for currently active elements */
+  --int-current-txt:     #D3C5C8;                  /* text for currently active elements */
+  --int-disabled-bg:     #2B2B2B;                  /* background for disabled buttons and checkboxes */
+  --int-checked:         #F59DB3;                  /* checked checkboxes and radio buttons */
+  
+  --int-hgl:             #FFB3D8;                  /* highlight for hovered/focused/selected elements */
+  --int-hgl-bg:          linear-gradient(135deg, #D3C5C8, #FFB3D8, #F59DB3); /* background for hovered/focused list items */
+  --int-hgl-txt:         #111111;                  /* text for hovered/focused list items and for collection header */
+
+
+/*>========== ICON COLORS ==========<*/
+
+  /* bookmark and content icons (mostly) */  
+  --icon1:               #FFABDF;                  /* gen, complete, public bookmark */
+  --icon2:               #F59DB3;                  /* teen */
+  --icon3:               #F59DB3;                  /* m/m, external work */
+  --icon4:               #D96AA9;                  /* mature, chose not to warn, rss feed */
+  --icon5:               #D96AA9;                  /* f/m */
+  --icon6:               #C93B6A;                  /* explicit, f/f, warning, incomplete */
+  --icon7:               #AB6F7D;                  /* private bookmark */
+  --icon8:               #89767A;                  /* hidden bookmark */
+  --icon9:               #D96AA9;                  /* rec bookmark */
+
+  /* gradient overlay for the bookmark and content icons above */
+  --icon-grd:            linear-gradient(135deg, transparent, #1D1D1D75);
+
+  /* other icons */
+  --icon-bg:             linear-gradient(135deg, #323232, #545454); /* background for empty icon box or uploaded icon with transparent background */
+  --icon-id:             linear-gradient(135deg, #FFABDF, #434343); /* user, skin, tag, admin */
+  --icon-anon:           linear-gradient(135deg, #6F6567, #323232); /* guest, anonymous user */
+  --icon-coll:           linear-gradient(135deg, #F59DB3, #434343); /* collection, unrevealed work */
+
+  /* icon borders */
+  --icon-border1:        none;                     /* border for most icons */
+  --icon-border2:        none;                     /* uploaded, default user and mystery icon + empty symbols box */
+
+
+/*>========== TAG COLORS ==========<*/
+
+  /* background */
+  --tag-default-bg:      linear-gradient(135deg, #FFABDF0D, #00000026);
+  --tag-fandom-bg:       linear-gradient(135deg, #FFABDF0D, #00000026);
+  --tag-warning-bg:      #C93B6A linear-gradient(135deg, #D3C5C84D, #1D1D1D33);
+  --tag-ship-bg:         #D96AA9 linear-gradient(135deg, #D3C5C84D, #1D1D1D4D);
+  --tag-character-bg:    linear-gradient(135deg, #FFABDF0D, #00000026);
+  --tag-freeform-bg:     linear-gradient(135deg, #FFABDF0D, #00000026);
+
+  /* text */
+  --tag-default-txt:     #D3C5C8;
+  --tag-fandom-txt:      #D3C5C8;
+  --tag-warning-txt:     #111111;
+  --tag-ship-txt:        #111111;
+  --tag-character-txt:   #E077AC;
+  --tag-freeform-txt:    #FFB3D8;
+
+  /* border */
+  --tag-border:          #AB6F7D59;
+
+  /* hover and focus */
+  --tag-hgl-bg:          linear-gradient(135deg, #D3C5C8, #FFB3D8, #F59DB3); /* background */
+  --tag-hgl-txt:         #111111;                  /* text */
+
+
+/*>========== COLORS FOR ROLES AND STATES + SYSTEM MESSAGES ==========<*/
+/* palette: https://coolors.co/24051a-bb589d-171221-bf9867-1c1813-8f6ccb-24050d-e6436e */
+
+  /* background */
+  --notice-bg:           #24051A; 
+  --success-bg:          #171221;
+  --caution-bg:          #1C1813;
+  --alert-bg:            #24050D;
+
+  /* text (and borders) */
+  --notice-txt:          #BB589D; 
+  --success-txt:         #8F6CCB;
+  --caution-txt:         #BF9867;
+  --alert-txt:           #E6436E;
+
+
+/*>========== FILTERS ==========<*/
+/* the colors of the following elements can only be changed using filters; adjust filter values to change colors */
+
+  --header-icon:         brightness(0) saturate(100%) invert(70%) sepia(24%) saturate(723%) hue-rotate(299deg) brightness(99%) contrast(94%);
+  --header-icon-hgl:     brightness(0) saturate(100%) invert(90%) sepia(9%) saturate(185%) hue-rotate(295deg) brightness(101%) contrast(104%); /* hover/focus */
+  --kudos-icon:          brightness(0) saturate(100%) invert(52%) sepia(26%) saturate(736%) hue-rotate(287deg) brightness(102%) contrast(93%);
+  --lock-icon:           brightness(0) saturate(100%) invert(52%) sepia(26%) saturate(736%) hue-rotate(287deg) brightness(102%) contrast(93%);
+  --stats-icon:          brightness(0) saturate(100%) invert(74%) sepia(8%) saturate(1115%) hue-rotate(296deg) brightness(108%) contrast(79%) opacity(75%);
+  --stat-chart:          invert(100%) hue-rotate(150deg) brightness(85%) contrast(77%);
+  --rich-txt-editor:     invert(95%) saturate(0);
+
+}
+
+/*============================================================
+>> Z1 REPLACE THE ICONS AND IMAGES
+============================================================*/
+
+/*>========== ICONS FOR USERS, COLLECTIONS, TAGS etc. ==========<*/
+
+/* default user icon */
+img[src$="/images/skins/iconsets/default/icon_user.png"] {
+  content: url("https://zerafinacss.github.io/ao3/icons/user-visitor-02.png"); /* url of new icon */
+}
