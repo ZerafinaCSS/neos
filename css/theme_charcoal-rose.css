@@ -16,6 +16,8 @@ Rose:     https://coolors.co/ab6f7d-c93b6a-d83f6c-d96aa9-e077ac-f59db3-ffabdf-ff
 
 :root {
 
+  color-scheme:          dark;                     /* which system color scheme an (unstyleable) element should render with */
+
 
 /*>========== UI PARAMETERS ==========<*/
 

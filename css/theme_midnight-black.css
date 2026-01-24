@@ -16,6 +16,8 @@ Cyan:      https://coolors.co/00767a-00a8ad-00c5cc
 
 :root {
 
+  color-scheme:          dark;                     /* which system color scheme an (unstyleable) element should render with */
+
 
 /*>========== UI PARAMETERS ==========<*/
 

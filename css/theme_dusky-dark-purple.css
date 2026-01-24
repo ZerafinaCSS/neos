@@ -16,6 +16,8 @@ Color palettes used for main backgrounds, borders, text and interaction elements
 
 :root {
 
+  color-scheme:          dark;                     /* which system color scheme an (unstyleable) element should render with */
+
 
 /*>========== UI PARAMETERS ==========<*/
 

@@ -14,6 +14,8 @@ https://coolors.co/000000-8b8b8b-b4b4b4-c1c1c1-d6d6d6-f0f0f0-f4f4f4-f8f8f8-fffff
 
 :root {
 
+  color-scheme:          light;                    /* which system color scheme an (unstyleable) element should render with */
+
 
 /*>========== UI PARAMETERS ==========<*/
 
