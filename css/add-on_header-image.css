@@ -11,7 +11,7 @@
   display: block;
   order: 3;
   width: 100%;
-  height: 17vw;
+  height: 16.75vw;
   border-top: var(--border-width) solid var(--border2); /* same as header bottom border */
   background:
     url("") /* paste image url between quotation marks; recommended size: 2240x375px (or same aspect ratio) */

@@ -522,7 +522,9 @@ div.error,
 .required.notice,
 form .notice,
 form ul.notes,
-.alert .userstuff {
+.alert .userstuff,
+.announcement.alert input[type="submit"],
+.announcement.alert .action {
   border: none;
   color: var(--txt-alt2);
 }

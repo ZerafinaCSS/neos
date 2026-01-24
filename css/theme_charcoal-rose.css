@@ -103,7 +103,7 @@ Rose:     https://coolors.co/ab6f7d-c93b6a-d83f6c-d96aa9-e077ac-f59db3-ffabdf-ff
   --int-bg:              #11111159;                /* background for input and select elements */
 
   --int-current-bg:      #323232;                  /* background for currently active elements */
-  --int-current-txt:     #D3C5C8;                  /* text for currently active elements */
+  --int-current-txt:     #EFEAEB;                  /* text for currently active elements */
   --int-disabled-bg:     #2B2B2B;                  /* background for disabled buttons and checkboxes */
   --int-checked:         #F59DB3;                  /* checked checkboxes and radio buttons */
   

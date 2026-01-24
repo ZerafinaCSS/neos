@@ -3172,7 +3172,9 @@ div.error,
   background: var(--caution-bg);
 }
 
-.alert .userstuff {
+.alert .userstuff,
+.announcement.alert input[type="submit"],
+.announcement.alert .action {
   background: transparent;
   color: var(--txt-alt1);
 }
