@@ -297,6 +297,7 @@ col.name {
 #header > h2,
 #header > nav .user,
 #header > nav .dropdown-toggle,
+#header #greeting > ul > li > a,
 #header li.search {
   display: flex;
     align-items: center;
@@ -478,8 +479,8 @@ col.name {
 /* settings for the icons */
 #header #greeting > ul > li > a {
   display: inline-block;
-  height: 18px;
-  padding: 10px 0;
+  height: 38px; /* same as header elements min-height (see above) */
+  padding-block: 10px;
   background: transparent;
   filter: var(--header-icon);
 }
