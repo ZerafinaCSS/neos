@@ -273,6 +273,11 @@ col.name {
 ============================================================*/
 /* see "Archive 2.0: (3) region header skin" by AO3 */
 
+/* define variable for header height */
+#header {
+  --header-height: 38px;
+}
+
 /* this is the header */
 #header,
 #tos_prompt .heading {
@@ -302,7 +307,7 @@ col.name {
   display: flex;
     align-items: center;
   box-sizing: border-box;
-  min-height: 38px; /* CHANGE HEIGHT OF HEADER HERE */
+  min-height: var(--header-height); 
 }
 
 /* remove space before header title */
@@ -479,8 +484,8 @@ col.name {
 /* settings for the icons */
 #header #greeting > ul > li > a {
   display: inline-block;
-  height: 38px; /* same as header elements min-height (see above) */
-  padding-block: 10px;
+  height: var(--header-height);
+  padding-block: 10px; /* change icon size here */
   background: transparent;
   filter: var(--header-icon);
 }
@@ -681,7 +686,7 @@ col.name {
 }
 
 #main.dashboard {
-  width: 82%; /* dashboard is 18% wide so #main with dahsboard should take up the remaining space */
+  width: 82%; /* dashboard is 18% wide, so #main with dahsboard should take up the remaining space */
 }
 
 /* hide the error message pictures */
@@ -2106,10 +2111,16 @@ dl.meta dd ul {
 ============================================================*/
 /* see "Archive: (13) group blurb skin" by AO3 */
 
+/* define variable for blurb padding */
+.blurb {
+  --blurb-padding: 0.75em;
+  --blurb-padding-neg: -0.75em; /* = negative blurb-padding */
+}
+
 li.blurb,
 .blurb .blurb,
 .region.own + .dashboard li.blurb.own {
-  padding: 0.75em 0.75em 0.643em;
+  padding: var(--blurb-padding) var(--blurb-padding) 0.643em;
   background-color: var(--bg5);
   overflow-wrap: anywhere;
   word-break: normal;
@@ -2216,7 +2227,7 @@ li.picture.blurb,
 .mystery.blurb:has(.icon) > .header {
   min-height: 45px;
   margin: 0;
-  padding-bottom: 0.75em;
+  padding-bottom: var(--blurb-padding);
   border-bottom: var(--border-width) solid var(--border2);
 }
 
@@ -2240,7 +2251,7 @@ li.picture.blurb,
 .blurb:has(.icon) > .header h5,
 .blurb > .header > .mods.commas {
   margin-left: 45px;
-  padding-left: 0.75em;
+  padding-left: var(--blurb-padding);
 }
 
 /* space for collection tags */
@@ -2268,7 +2279,7 @@ li.picture.blurb,
 /* bookmark icon placement for blurbs */
 .bookmark p.status {
   top: 5px;
-  right: 0.75em; /* same as blurb padding */
+  right: var(--blurb-padding);
   width: 25px;
   margin: 0;
 }
@@ -2333,7 +2344,7 @@ li.picture.blurb,
 
 .bookmark div.user .datetime {
   top: 0.7em;
-  right: 0.75em;
+  right: var(--blurb-padding);
 }
 
 /* the following part is for the overview pages of who has bookmarked a specific work */
@@ -2370,9 +2381,9 @@ li.picture.blurb,
 
 /* "last visited" (History) */
 .reading h4.viewed {
-  margin-inline: -0.75em;
+  margin-inline: var(--blurb-padding-neg);
   padding: 0.429em;
-  padding-inline: 0.75em;
+  padding-inline: var(--blurb-padding);
   background: linear-gradient(to right, var(--bg7) 25%, transparent);
   font-size: 1em;
 }
@@ -2726,6 +2737,12 @@ li.comment:has(.edit_comment) {
   width: 100%;
 }
 
+/* hide filters on work/bookmark pages if there are no works/bookmarks */
+.dashboard.filtered.region:not(:has(ol.index > li.blurb)) form.filters,
+.dashboard.filtered.region:not(:has(ol.index > li.blurb)) li:has(#go_to_filters) {
+	display: none;
+}
+
 /*>========== INTERACTION: SEARCH ==========<*/
 
 form.search input[type="text"] {
@@ -2827,7 +2844,13 @@ form.filters dl dl {
 
 /* hide empty filter categories */
 /* for example, if there are no relationships, the relationship filter option will not appear */
-.filters dt:not(:has(+ dd input)).filter-toggle * {
+.filters dt:not(:has(+ dd input)).filter-toggle {
+  display: none;
+}
+
+/* hide search bar for bookmarkers tags if there are none */
+.filters dt#toggle_include_tag_tags:not(:has(+ dd input)).filter-toggle ~ .bookmarker.autocomplete.search,
+.filters dt#toggle_exclude_tag_tags:not(:has(+ dd input)).filter-toggle ~ .bookmarker.autocomplete.search {
   display: none;
 }
 
@@ -2954,10 +2977,19 @@ dl.nomination {
   margin: 1em auto; /* slightly narrower space between paragraphs than in default AO3 skin */
 }
 
-/* lists */
-.userstuff li,
-.userstuff ol ul li {
-  margin-block: 0.5em; /* reduce space (line height) between list items */
+/*>========== lists ==========<*/
+
+.userstuff :is(ul, ol) {
+  margin: 1em auto;
+  padding: 0 0 0 2.5em;
+}
+
+.userstuff :is(ul, ol) :is(ul, ol) {
+  margin: 0.75em auto;
+}
+
+.userstuff :is(ol, ul) li {
+  margin: 0 0 0.5em 0;
 }
 
 /*>========== bio on profile page ==========<*/
@@ -3038,6 +3070,10 @@ form ul.notes {
   border-radius: var(--radius-mid);
   box-shadow: none;
   line-height: 1.2em;
+}
+
+.notice p {
+  margin: 0;
 }
 
 ul.notes,
@@ -3750,14 +3786,14 @@ div:has(> p.kudos)::before {
   background: url("https://zerafinacss.github.io/ao3/icons/kudos-03.png"); /* url of new icon */
   background-size: cover;
   content: "";
-  filter: var(--kudos-icon); /* adjust filter values to change color */
+  filter: var(--kudos-icon);
 }
 
 /*>========== LOCK ICON for restricted works ==========<*/
 
 img[src$="/images/lockblue.png"] {
   content: url("https://zerafinacss.github.io/ao3/icons/lock-01.png"); /* url of new icon */
-  filter: var(--lock-icon); /* adjust filter values to change color */
+  filter: var(--lock-icon);
 }
 
 /*============================================================
@@ -3767,6 +3803,12 @@ img[src$="/images/lockblue.png"] {
 /*>========== STATS ICONS ==========<*/
 
 /*>>========== stats placement + spacing ==========<<*/
+
+/* define variable for stats indent */
+.stats,
+.statistics {
+  --stats-indent: 5px;
+}
 
 /* reset margin and padding */
 dl.stats dd,
@@ -3790,7 +3832,7 @@ dl.stats {
 
 /* indent for stats icons in meta box on statistics page */
 dl.meta.statistics dd {
-  padding-left: 5px; /* this should be the same as margin-right below */
+  padding-left: var(--stats-indent);
 }
 
 /* position of icon in relation to corresponding value */
@@ -3813,7 +3855,7 @@ dl.statistics dt::before {
   display: inline-block;
   width: 1em;
   height: 1em;
-  margin-right: 5px; /* space between icon and stat value; this should be the same as padding-left above */
+  margin-right: var(--stats-indent);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
