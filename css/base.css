@@ -2738,9 +2738,9 @@ li.comment:has(.edit_comment) {
 }
 
 /* hide filters on work/bookmark pages if there are no works/bookmarks */
-.dashboard.filtered.region:not(:has(ol.index > li.blurb)) form.filters,
-.dashboard.filtered.region:not(:has(ol.index > li.blurb)) li:has(#go_to_filters) {
-	display: none;
+.dashboard.filtered.region:not(:has(ol.index > li.blurb)) form.filters:not(:has(dt.tags + dd input)),
+.dashboard.filtered.region:not(:has(ol.index > li.blurb, form.filters dt.tags + dd input)) li:has(#go_to_filters) {
+  display: none;
 }
 
 /*>========== INTERACTION: SEARCH ==========<*/
@@ -2844,7 +2844,7 @@ form.filters dl dl {
 
 /* hide empty filter categories */
 /* for example, if there are no relationships, the relationship filter option will not appear */
-.filters dt:not(:has(+ dd input)).filter-toggle {
+.filters dt.tags:not(:has(+ dd input)).filter-toggle {
   display: none;
 }
 
