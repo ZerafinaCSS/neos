@@ -113,6 +113,7 @@ button:focus,
 body,
 input,
 textarea,
+select,
 .toggled form,
 .dynamic form,
 .secondary,
@@ -146,7 +147,7 @@ h6,
   word-break: normal;
 }
 
-/* "code" font family */
+/* code/monospace font family */
 kbd,
 tt,
 code,
@@ -686,7 +687,7 @@ col.name {
 }
 
 #main.dashboard {
-  width: 82%; /* dashboard is 18% wide, so #main with dahsboard should take up the remaining space */
+  width: 82%; /* dashboard is 18% wide, so #main with dashboard should take up the remaining space */
 }
 
 /* hide the error message pictures */
@@ -836,7 +837,7 @@ fieldset > .heading {
   margin-inline: 0.5em;
 }
 
-fieldset > ul > li:has(label input[type="radio"]) {
+fieldset > ul > li:has(label input[type=radio]) {
   margin: 0 !important;
 }
 
@@ -857,8 +858,8 @@ textarea {
 }
 
 /* when element is selected to receive input */
-input[type="text"]:focus,
-.search input[type="text"]:focus,
+input[type=text]:focus,
+.search input[type=text]:focus,
 input#user_password:focus,
 select:focus,
 textarea:focus {
@@ -967,12 +968,12 @@ div.comment-preview.userstuff {
 /*>========== INPUT ELEMENTS: checkboxes, radio buttons etc. ==========<*/
 
 /* remove browser-specific appearance of checkbox + radio buttons and apply new styling */
-input[type="checkbox"],
-input[type="radio"],
-.filters [type="radio"],
-.filters [type="checkbox"],
-.actions input[type="checkbox"],
-label.action input[type="checkbox"] {
+input[type=checkbox],
+input[type=radio],
+.filters [type=radio],
+.filters [type=checkbox],
+.actions input[type=checkbox],
+label.action input[type=checkbox] {
   flex-shrink: 0;
   appearance: none;
   display: inline-block;
@@ -994,34 +995,34 @@ label.action input[type="checkbox"] {
 }
 
 /* hover for checkbox and radio buttons */
-input[type="checkbox"]:hover,
-input[type="radio"]:hover,
-.actions input[type="checkbox"]:hover,
-label.action input[type="checkbox"]:hover,
-.filters [type="checkbox"]:hover:not(:checked)::before {
+input[type=checkbox]:hover,
+input[type=radio]:hover,
+.actions input[type=checkbox]:hover,
+label.action input[type=checkbox]:hover,
+.filters [type=checkbox]:hover:not(:checked)::before {
   border-color: var(--int-hgl);
   color: var(--int-hgl);
 }
 
 /* disabled checkbox and radio buttons */
-input[type="checkbox"]:disabled,
-input[type="radio"]:disabled {
+input[type=checkbox]:disabled,
+input[type=radio]:disabled {
   border-color: var(--border2) !important;
   background-color: var(--int-disabled-bg) !important;
   cursor: not-allowed;
 }
 
-input[type="radio"] + label,
-input[type="checkbox"] + label {
+input[type=radio] + label,
+input[type=checkbox] + label {
   padding-left: 0;
 }
 
 /* attempt at fixing positioning of checkbox labels */
 /* I probably made this unnecessarily complicated and idek if it works everywhere */
-ul:not(ul.actions) li:has(input[type="checkbox"] + label):not(:has(fieldset)),
-ul:not(ul.actions) li:has(input[type="radio"] + label):not(:has(fieldset)),
-ul:not(ul.actions) li:not(.blurb ul li) > label:has(input[type="checkbox"]),
-ul:not(ul.actions) li:not(.blurb ul li) > label:has(input[type="radio"]) {
+ul:not(ul.actions) li:has(input[type=checkbox] + label):not(:has(fieldset)),
+ul:not(ul.actions) li:has(input[type=radio] + label):not(:has(fieldset)),
+ul:not(ul.actions) li:not(.blurb ul li) > label:has(input[type=checkbox]),
+ul:not(ul.actions) li:not(.blurb ul li) > label:has(input[type=radio]) {
   display: flex !important;
     align-items: baseline;
     column-gap: 0.5em;
@@ -1033,18 +1034,18 @@ ul:not(ul.actions) li:not(.blurb ul li) > label:has(input[type="radio"]) {
 /*>>========== CHECKBOXES ==========<<*/
 
 /* checked checkboxes */
-input[type="checkbox"]:checked,
-.actions input[type="checkbox"]:checked,
-label.action input[type="checkbox"]:checked {
+input[type=checkbox]:checked,
+.actions input[type=checkbox]:checked,
+label.action input[type=checkbox]:checked {
   border-color: var(--int-checked);
   background-color: var(--int-checked);
   color: var(--txt-alt2);
 }
 
 /* replace the checkmark symbol */
-input[type="checkbox"]::before,
-.filters [type="checkbox"]::before,
-.actions input[type="checkbox"]::before {
+input[type=checkbox]::before,
+.filters [type=checkbox]::before,
+.actions input[type=checkbox]::before {
   position: absolute;
   width: 50%;
   height: inherit;
@@ -1057,7 +1058,7 @@ input[type="checkbox"]::before,
 }
 
 /* cross for "exclude" filter checkboxes */
-.filters .exclude [type="checkbox"]::before {
+.filters .exclude [type=checkbox]::before {
   width: 100%;
   border: none;
   font-size: 0.75em;
@@ -1068,46 +1069,46 @@ input[type="checkbox"]::before,
 }
 
 /* make checkmark visible when checked */
-input[type="checkbox"]:checked::before,
-.filters [type="checkbox"]:checked::before,
-.actions input[type="checkbox"]:checked::before {
+input[type=checkbox]:checked::before,
+.filters [type=checkbox]:checked::before,
+.actions input[type=checkbox]:checked::before {
   opacity: 1;
 }
 
 /* filters checkbox symbols should be visible always */
-.filters [type="checkbox"]:not(:checked)::before {
+.filters [type=checkbox]:not(:checked)::before {
   color: var(--border2);
   opacity: 1;
 }
 
 /* hover for checked checkboxes */
-input[type="checkbox"]:checked:hover,
-.actions input[type="checkbox"]:checked:hover,
-label.action input[type="checkbox"]:checked:hover {
+input[type=checkbox]:checked:hover,
+.actions input[type=checkbox]:checked:hover,
+label.action input[type=checkbox]:checked:hover {
   border-color: var(--int-hgl);
   background-color: var(--int-hgl);
 }
 
-.actions input[type="checkbox"] {
+.actions input[type=checkbox] {
   vertical-align: baseline;
 }
 
 /* hide filter checkbox dublicates */
-.filters [type="radio"] + .indicator,
-.filters [type="checkbox"] + .indicator {
+.filters [type=radio] + .indicator,
+.filters [type=checkbox] + .indicator {
   display: none;
 }
 
 /*>>========== RADIO BUTTONS ==========<<*/
 
-input[type="radio"],
-.filters [type="radio"] {
+input[type=radio],
+.filters [type=radio] {
   border-radius: 100%; /* make radio buttons round again */
 }
 
 /* style checked radio buttons */
-input[type="radio"]:checked,
-.filters [type="radio"]:checked {
+input[type=radio]:checked,
+.filters [type=radio]:checked {
   border-color: var(--int-checked);
   box-shadow: inset 0 0 0 2.5px;
   background-color: var(--int-checked);
@@ -1117,7 +1118,7 @@ input[type="radio"]:checked,
 
 /*>>========== FILE UPLOAD BUTTON ==========<<*/
 
-input[type="file"] {
+input[type=file] {
   background: transparent;
 }
 
@@ -1261,7 +1262,7 @@ textarea.LV_invalid_field:is(:hover, :focus) {
 }
 
 /*>========== WIDGET: MODAL DIALOGS ==========<*/
-/* = dialog box/popup window that appears, when you click on a help symbol for example */
+/* = dialog box/popup window that appears when you click on a help symbol, for example */
 
 #modal {
   border: var(--border-width) solid var(--border3);
@@ -1294,7 +1295,7 @@ div.dynamic {
 /*>========== mods: SINGLE ==========<*/
 /* for prominent simple forms consisting of one text input, e.g., on the blocked users page */
 
-form.single input[type="submit"] {
+form.single input[type=submit] {
   vertical-align: unset;
 }
 
@@ -1345,34 +1346,37 @@ dd.required {
 >> 08 ACTIONS: BUTTONS
 ============================================================*/
 /* see "Archive: (8) actions skin" by AO3 */
-/* subtypes: .action, .navigation, .sorting, .submit, .cancel, .close, .delete, .pagination, .current, .landmark, #skiplinks, input[type="submit"], button */
+/* subtypes: .action, .navigation, .sorting, .submit, .cancel, .close, .delete, .pagination, .current, .landmark, #skiplinks, input[type=submit], button */
 
-.actions a,
-.actions a:is(:link, :visited),
-.actions label,
-.actions button,
 .action,
 .action:is(:link, :visited),
 .action a,
 .action a:is(:link, :visited),
-button,
-label.action,
+.actions a,
+.actions a:is(:link, :visited),
+.actions button,
 .actions input,
-input[type="submit"],
-.current,
-.announcement input[type="submit"],
+.actions label,
+label.action,
+label.action:is(:hover, :focus),
+input[type=submit],
+input[type=button],
+input::file-selector-button,
+.announcement input[type=submit],
 .announcement .action,
-input::file-selector-button {
+button,
+.current {
   height: auto;
   padding: 0.25em 0.75em;
   border: var(--border-width) solid var(--int-btn-border);
   border-radius: var(--radius-btn);
   box-shadow: var(--shadow-buttons);
   background: var(--int-btn-bg);
-  background-origin: border-box !important; /* border-box because if I add a background image (gradient) it should start from the corner of the border, NOT the corner of the padding edge */
+  background-origin: border-box !important; /* make background images/gradients start from the corner of the border, NOT the corner of the padding edge */
   font-weight: 400;
   white-space: normal; /* prevent overflow */
   color: var(--int-btn-txt);
+  cursor: pointer;
 }
 
 /* social media buttons on homepage */
@@ -1385,36 +1389,36 @@ label.action,
   box-shadow: none;
 }
 
-input[type="submit"] {
+input[type=submit] {
   height: auto; /* DO NOT DELETE */
 }
 
 /*>========== subtypes and modes ==========<*/
 
-/* hover + focus */
-.actions a:is(:hover, :focus),
-.actions input:is(:hover, :focus),
-.actions button:is(:hover, :focus),
-label.action:is(:hover, :focus),
+/* hovered + focused buttons */
 .action:is(:hover, :focus),
 .action a:is(:hover, :focus),
+.listbox > .heading .action a:is(:hover, :focus),
+.actions a:is(:hover, :focus),
+.actions button:is(:hover, :focus),
+.actions input:is(:hover, :focus),
 a.action:is(:hover, :focus),
-button:is(:hover, :focus),
-input[type="submit"]:is(:hover, :focus),
+input[type=submit]:is(:hover, :focus),
+input[type=button]:is(:hover, :focus),
 input::file-selector-button:is(:hover, :focus),
-.listbox > .heading .action a:is(:hover, :focus) {
+button:is(:hover, :focus) {
   border: var(--border-width) solid var(--link);
   box-shadow: none;
   background: var(--int-btn-hgl-bg);
   color: var(--int-btn-hgl-txt);
 }
 
-/* currently active */
+/* currently active/selected */
 .actions a:active,
-.current,
 a.current,
-a.current:hover,
+a.current:is(:hover, :focus),
 a:link.current,
+.current,
 .current a:visited {
   border: var(--border-width) solid var(--border4);
   box-shadow: none;
@@ -1433,7 +1437,7 @@ a:link.current,
   filter: opacity(0.75);
 }
 
-/* disabled buttons select element */
+/* select element on disabled buttons */
 .actions .disabled select,
 .actions .disabled select:hover {
   border: var(--border-width) solid var(--int-btn-border);
@@ -1463,7 +1467,7 @@ span.delete a {
 }
 
 /* prevent the "Unsubscribe" button from becoming too large */
-.subscriptions-index .edit_subscription > input[type="submit"] {
+.subscriptions-index .edit_subscription > input[type=submit] {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1485,7 +1489,7 @@ fieldset.actions li:not(:first-child) {
 
 /*>========== CONTEXTS ==========<*/
 
-/* placement of secondary menus in fics */
+/* placement of secondary menus inside of works */
 .javascript .work.navigation .secondary {
   top: unset;
 }
@@ -1495,7 +1499,7 @@ fieldset.actions li:not(:first-child) {
   white-space: nowrap;
 }
 
-/* styling the secondary menus in fics */
+/* styling the secondary menus inside of works */
 .work.navigation .download,
 .javascript .work.navigation .download .secondary {
   position: absolute;
@@ -1510,7 +1514,7 @@ fieldset.actions li:not(:first-child) {
   display: none;
 }
 
-/*>>========== buttons with the the "to top" arrows and "expand"/"contract" symbols ==========<<*/
+/*>>========== buttons with "to top" arrows and "expand"/"contract" symbols ==========<<*/
 /* anywhere else? */
 
 .listbox > .heading .action:has(a) {
@@ -1527,7 +1531,7 @@ fieldset.actions li:not(:first-child) {
 
 /*>========== sort and view actions (statistics page) ==========<*/
 
-/* display in seperate lines */
+/* display in separate lines */
 ul.sorting.actions,
 ul.view.actions {
   width: 100%;
@@ -1756,6 +1760,12 @@ dd.fandom.tags a {
 [class^="relationship"] a.tag {
   background: var(--tag-ship-bg) !important;
   color: var(--tag-ship-txt) !important;
+}
+
+/* relationship tags with "&" separator => non-sexual, non-romantic  */
+[class^="relationship"] a.tag[href*="%20*a*%20"] {
+  background: var(--tag-platonic-bg) !important;
+  color: var(--tag-platonic-txt) !important;
 }
 
 /* character tags */
@@ -2731,7 +2741,7 @@ li.comment:has(.edit_comment) {
 
 /*>========== INDEX PAGES (with filters) ==========<*/
 
-/* some pages are marked as "filtered" but there are no filters ... */
+/* some pages are marked as "filtered", but there are no filters ... */
 /* so they don't need the space on the right for the filters */
 .filtered .index:not(:has(+ form.filters)) {
   width: 100%;
@@ -2745,7 +2755,7 @@ li.comment:has(.edit_comment) {
 
 /*>========== INTERACTION: SEARCH ==========<*/
 
-form.search input[type="text"] {
+form.search input[type=text] {
   border: var(--border-width) solid var(--border2);
   border-radius: var(--radius-small);
   background-color: var(--int-bg);
@@ -2988,8 +2998,22 @@ dl.nomination {
   margin: 0.75em auto;
 }
 
-.userstuff :is(ol, ul) li {
+.userstuff:not(.docs .userstuff) :is(ol, ul) li {
   margin: 0 0 0.5em 0;
+}
+
+.userstuff ul ul li,
+.userstuff ul blockquote ul ul li {
+  list-style-type: circle;
+}
+
+.userstuff ul ul ul li,
+.userstuff ul blockquote ul ul ul li {
+  list-style-type: square;
+}
+
+.userstuff ul blockquote ul li {
+  list-style-type: disc;
 }
 
 /*>========== bio on profile page ==========<*/
@@ -3144,7 +3168,7 @@ div.error,
 .notice a:not(.action):is(:hover, :focus),
 .error a:not(.action):is(:hover, :focus),
 .announcement .userstuff a:is(:hover, :focus),
-.announcement input[type="submit"]:is(:hover, :focus),
+.announcement input[type=submit]:is(:hover, :focus),
 .announcement .action:is(:hover, :focus) {
   filter: opacity(60%);
 }
@@ -3184,7 +3208,7 @@ div.error,
 }
 
 /* button */
-.announcement input[type="submit"],
+.announcement input[type=submit],
 .announcement .action {
   margin: 0 !important;
   padding: 0 !important;
@@ -3210,7 +3234,7 @@ div.error,
 }
 
 .alert .userstuff,
-.announcement.alert input[type="submit"],
+.announcement.alert input[type=submit],
 .announcement.alert .action {
   background: transparent;
   color: var(--txt-alt1);

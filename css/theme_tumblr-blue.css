@@ -153,6 +153,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --tag-fandom-bg:       transparent;
   --tag-warning-bg:      transparent;
   --tag-ship-bg:         transparent;
+  --tag-platonic-bg:     transparent;
   --tag-character-bg:    transparent;
   --tag-freeform-bg:     transparent;
 
@@ -161,6 +162,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --tag-fandom-txt:      #D977BA;
   --tag-warning-txt:     #EC583D;
   --tag-ship-txt:        #D38A25;
+  --tag-platonic-txt:    #D38A25;
   --tag-character-txt:   #56BC8A;
   --tag-freeform-txt:    #828790;
 
@@ -211,6 +213,7 @@ Additionally, I recommend downloading and installing the open source font "Instr
 body,
 input,
 textarea,
+select,
 .toggled form,
 .dynamic form,
 .secondary,
@@ -243,7 +246,7 @@ h6,
   font-family: "Favorit Modern", "Instrument Sans", "Favorit", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
 }
 
-/* "code" font family */
+/* code/monospace font family */
 kbd,
 tt,
 code,
@@ -277,17 +280,17 @@ textarea#skin_css,
 
 /* user icon (replaces the "Hi, [username]!") */
 #header #greeting .dropdown > a[href*="/users/"] {
-  content: url(https://zerafinacss.github.io/ao3/header-icons/user-02.png);
+  content: url("https://zerafinacss.github.io/ao3/header-icons/user-02.png");
 }
 
 /* "Post" icon */
 #header #greeting .dropdown > a[href*="/works/new"] {
-  content: url(https://zerafinacss.github.io/ao3/header-icons/new-work-02.png);
+  content: url("https://zerafinacss.github.io/ao3/header-icons/new-work-02.png");
 }
 
 /* "Log Out" icon */
 #header #greeting a[href*="/users/logout"] {
-  content: url(https://zerafinacss.github.io/ao3/header-icons/logout-02.png);
+  content: url("https://zerafinacss.github.io/ao3/header-icons/logout-02.png");
 }
 
 /* settings for the icons */
@@ -324,8 +327,8 @@ textarea#skin_css,
 /*>========== form rules ==========<*/
 
 /* when element is selected to receive input */
-input[type="text"]:focus,
-.search input[type="text"]:focus,
+input[type=text]:focus,
+.search input[type=text]:focus,
 #header #search input:focus,
 input#user_password:focus,
 select:focus,
@@ -338,8 +341,8 @@ textarea:focus {
 /*>>========== RADIO BUTTONS ==========<<*/
 
 /* style checked radio buttons */
-input[type="radio"]:checked,
-.filters [type="radio"]:checked {
+input[type=radio]:checked,
+.filters [type=radio]:checked {
   border-width: 3.5px !important;
   background-color: transparent;
   color: transparent;
@@ -357,22 +360,24 @@ input[type="radio"]:checked,
 ============================================================*/
 /* see "Archive: (8) actions skin" by AO3 */
 
-.actions a,
-.actions a:is(:link, :visited),
-.actions label,
-.actions button,
 .action,
 .action:is(:link, :visited),
 .action a,
 .action a:is(:link, :visited),
-button,
-label.action,
+.actions a,
+.actions a:is(:link, :visited),
+.actions button,
 .actions input,
-input[type="submit"],
-.current,
-.announcement input[type="submit"],
+.actions label,
+label.action,
+label.action:is(:hover, :focus),
+input[type=submit],
+input[type=button],
+input::file-selector-button,
+.announcement input[type=submit],
 .announcement .action,
-input::file-selector-button {
+button,
+.current {
   padding: 4px 14px;
   border-width: 1.5px !important;
 }
@@ -438,12 +443,12 @@ span.unread {
 /*>>========== new tag styling ==========<<*/
 
 /* tag layout */
-.tags.commas:has(a.tag, a[data-remote="true"]) {
+.commas:has(a.tag, a[data-remote="true"]) {
   column-gap: 12px; /* width of gap between neighbouring tags */
 }
 
 /* change appearance of tags here */
-/* excluding fandom list, fav tags on splash page and heading tags in some places */
+/* excluding fandoms list, fav tags on splash page and heading tags in some places */
 a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
 .tags a[data-remote="true"], /* = hidden warnings/additional tags (can be set in preferences) */
 .unwrangled,
@@ -456,7 +461,7 @@ a.tag:not(.fandom.index.group a.tag, h2.heading a.tag, .splash .favorite a.tag),
   text-decoration: none;
 }
 
-/* repair and format fandom and collection heading tags */
+/* repair and format fandom blurb tags and collection tags */
 .blurb h5.fandoms.heading a.tag,
 .blurb h5.tags.heading a.tag {
   margin-right: 12px;
@@ -526,7 +531,7 @@ div.error,
 form .notice,
 form ul.notes,
 .alert .userstuff,
-.announcement.alert input[type="submit"],
+.announcement.alert input[type=submit],
 .announcement.alert .action {
   border: none;
   color: var(--txt-alt2);

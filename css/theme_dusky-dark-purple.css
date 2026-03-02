@@ -149,6 +149,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --tag-fandom-bg:       #9B37A4;
   --tag-warning-bg:      #AD396F;
   --tag-ship-bg:         #694CB8;
+  --tag-platonic-bg:     #694CB8;
   --tag-character-bg:    #7F416E;
   --tag-freeform-bg:     #A94C8D35;
 
@@ -157,6 +158,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --tag-fandom-txt:      #F7CFD2;
   --tag-warning-txt:     #F7CFD2;
   --tag-ship-txt:        #F7CFD2;
+  --tag-platonic-txt:    #F7CFD2;
   --tag-character-txt:   #F7CFD2;
   --tag-freeform-txt:    #BD8A96;
 

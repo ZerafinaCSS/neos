@@ -148,6 +148,7 @@ Rose:     https://coolors.co/ab6f7d-c93b6a-d83f6c-d96aa9-e077ac-f59db3-ffabdf-ff
   --tag-fandom-bg:       linear-gradient(135deg, #FFABDF0D, #00000026);
   --tag-warning-bg:      #C93B6A linear-gradient(135deg, #D3C5C84D, #1D1D1D33);
   --tag-ship-bg:         #D96AA9 linear-gradient(135deg, #D3C5C84D, #1D1D1D4D);
+  --tag-platonic-bg:     #D96AA9 linear-gradient(135deg, #D3C5C84D, #1D1D1D4D);
   --tag-character-bg:    linear-gradient(135deg, #FFABDF0D, #00000026);
   --tag-freeform-bg:     linear-gradient(135deg, #FFABDF0D, #00000026);
 
@@ -156,6 +157,7 @@ Rose:     https://coolors.co/ab6f7d-c93b6a-d83f6c-d96aa9-e077ac-f59db3-ffabdf-ff
   --tag-fandom-txt:      #D3C5C8;
   --tag-warning-txt:     #111111;
   --tag-ship-txt:        #111111;
+  --tag-platonic-txt:    #111111;
   --tag-character-txt:   #E077AC;
   --tag-freeform-txt:    #FFB3D8;
 
@@ -189,7 +191,7 @@ Rose:     https://coolors.co/ab6f7d-c93b6a-d83f6c-d96aa9-e077ac-f59db3-ffabdf-ff
   --header-icon:         brightness(0) saturate(100%) invert(70%) sepia(24%) saturate(723%) hue-rotate(299deg) brightness(99%) contrast(94%);
   --header-icon-hgl:     brightness(0) saturate(100%) invert(90%) sepia(9%) saturate(185%) hue-rotate(295deg) brightness(101%) contrast(104%); /* hover/focus */
   --kudos-icon:          brightness(0) saturate(100%) invert(52%) sepia(26%) saturate(736%) hue-rotate(287deg) brightness(102%) contrast(93%);
-  --lock-icon:           brightness(0) saturate(100%) invert(52%) sepia(26%) saturate(736%) hue-rotate(287deg) brightness(102%) contrast(93%);
+  --lock-icon:           brightness(0) saturate(100%) invert(87%) sepia(12%) saturate(152%) hue-rotate(297deg) brightness(90%) contrast(95%);
   --stats-icon:          brightness(0) saturate(100%) invert(74%) sepia(8%) saturate(1115%) hue-rotate(296deg) brightness(108%) contrast(79%) opacity(75%);
   --stat-chart:          invert(100%) hue-rotate(150deg) brightness(85%) contrast(77%);
   --rich-txt-editor:     invert(95%) saturate(0);
