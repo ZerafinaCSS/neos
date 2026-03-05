@@ -1,4 +1,4 @@
-/*============================================================
+﻿/*============================================================
 
                            ~ neos ~
 
@@ -3002,18 +3002,12 @@ dl.nomination {
   margin: 0 0 0.5em 0;
 }
 
-.userstuff ul ul li,
-.userstuff ul blockquote ul ul li {
+.userstuff ul > li > ul > li  {
   list-style-type: circle;
 }
 
-.userstuff ul ul ul li,
-.userstuff ul blockquote ul ul ul li {
+.userstuff ul > li > ul > li > ul > li {
   list-style-type: square;
-}
-
-.userstuff ul blockquote ul li {
-  list-style-type: disc;
 }
 
 /*>========== bio on profile page ==========<*/
