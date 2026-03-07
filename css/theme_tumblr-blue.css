@@ -1,11 +1,17 @@
+.site-skin-metadata {
+  content: "==================================================
+
+  - Skin:         neos/theme_tumblr-blue
+  - Author:       ZerafinaCSS [https://www.tumblr.com/zerafinacss]
+  - Instructions: https://archiveofourown.org/works/65849527
+  - Repository:   https://github.com/ZerafinaCSS/neos
+  - License:      MIT
+  - Updated:      2026-Mar-07 14:40 UTC
+
+  ==========================================================";
+}
+
 /*============================================================
-
-                           ~ neos ~
-                      Theme: Tumblr Blue
-                      
-Inspired by the "Low-contrast classic" tumblr color palette
-
-==============================================================
 GLOBAL VARIABLES
 ==============================================================
 
@@ -14,6 +20,8 @@ Color palettes used for main backgrounds, borders, text and interaction elements
 - Grayblue:    https://coolors.co/0d141b-1a2735-26323f-263b53-36465d-3d4c62-48566a-596578-687384
 - Gray:        https://coolors.co/000000-828790-b3b3b3-bfbfbf-d9d9d9-f2f2f2-ffffff
 - Accent blue: https://coolors.co/529ecc-00b8ff
+
+Inspired by the "Low-contrast classic" tumblr color palette.
 
 */
 

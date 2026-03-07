@@ -1,9 +1,11 @@
-/*============================================================
+.site-skin-metadata {
+  content: "==================================================
 
-                           ~ neos ~
-                     Add-On: Header Image
+  - Skin:         neos/add-on_header-image
+  - Updated:      2026-Mar-07 14:40 UTC
 
-============================================================*/
+  ==========================================================";
+}
 
 /* Example images: https://github.com/ZerafinaCSS/zerafinacss.github.io/tree/main/ao3/header-image */
 

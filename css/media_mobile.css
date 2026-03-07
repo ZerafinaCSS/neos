@@ -1,11 +1,15 @@
-/*============================================================
+﻿.site-skin-metadata {
+  content: "==================================================
 
-                           ~ neos ~
-          MOBILE / NARROW SCREENS (max-width: 42em)
+  - Skin:         neos/media_mobile
+  - Author:       ZerafinaCSS [https://www.tumblr.com/zerafinacss]
+  - Instructions: https://archiveofourown.org/works/65849527
+  - Repository:   https://github.com/ZerafinaCSS/neos
+  - License:      MIT
+  - Updated:      2026-Mar-07 14:40 UTC
 
-============================================================*/
-/* IMPORTANT: This is very much reliant on the tablet skin, so that needs to be added beforehand! */
-
+  ==========================================================";
+}
 
 /* centered headings */
 h2.heading,

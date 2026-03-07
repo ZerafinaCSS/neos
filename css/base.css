@@ -3,28 +3,33 @@
                            ~ neos ~
 
             a site skin for the Archive of Our Own
-                        by ZerafinaCSS
 
+============================================================*/
+
+
+.site-skin-metadata {
+  content: "==================================================
+
+  - Skin:         neos/base
+  - Author:       ZerafinaCSS [https://www.tumblr.com/zerafinacss]
+  - Instructions: https://archiveofourown.org/works/65849527
+  - Repository:   https://github.com/ZerafinaCSS/neos
+  - License:      MIT
+  - Updated:      2026-Mar-07 14:40 UTC
+
+  ==========================================================";
+}
+
+
+/*============================================================
+CREDITS
 ==============================================================
-LINKS & CREDITS
-==============================================================
 
-CODE & INSTRUCTIONS:
+Base:             "Archive 2.0 skin" by AO3           https://archiveofourown.org/skins/873
 
-- Code (GitHub):       https://github.com/ZerafinaCSS/neos
-- Instructions (AO3):  https://archiveofourown.org/works/65849527
+Inspired by:      "Tide" by ElectricAlice             https://github.com/electricalice/Ao3-tide
+                  "Flat Squares Skin" by milkfatzero  https://ao3-skins.dreamwidth.org/6156.html
 
-CREDITS:
-
-- Base:                "Archive 2.0 skin" by AO3           https://archiveofourown.org/skins/873
-- Inspired by:         "Tide" by ElectricAlice             https://github.com/electricalice/Ao3-tide
-                       "Flat Squares Skin" by milkfatzero  https://ao3-skins.dreamwidth.org/6156.html
-
-FIND ME ON:
-
-- GitHub:              https://github.com/ZerafinaCSS
-- AO3:                 https://archiveofourown.org/users/Zerafina/pseuds/ZerafinaCSS
-- Tumblr:              https://www.tumblr.com/zerafinacss
 
 ==============================================================
 DIRECTORY
@@ -59,7 +64,7 @@ Alphanumeric = Additions by ZerafinaCSS
 >> Z2 STATS ICONS WITH HOVER TEXT
 >> Z3 MISCELLANEOUS
 
-/*============================================================
+=============================================================
 >> A1 BASIC LAYOUT SETTINGS ETC.
 ============================================================*/
 
@@ -2732,6 +2737,12 @@ li.comment:has(.edit_comment) {
   border: var(--border-width) solid var(--border2);
   border-radius: var(--radius-big);
   background-color: var(--bg7);
+}
+
+/* vertical scrolling instead of line-break in code blocks */
+.skins.home .css.module blockquote pre,
+.skins-edit textarea#skin_css {
+  white-space: pre;
 }
 
 /*============================================================

@@ -1,10 +1,15 @@
-/*============================================================
+﻿.site-skin-metadata {
+  content: "==================================================
 
-                           ~ neos ~
-          TABLET / MIDSIZE SCREENS (max-width: 62em)
+  - Skin:         neos/media_tablet
+  - Author:       ZerafinaCSS [https://www.tumblr.com/zerafinacss]
+  - Instructions: https://archiveofourown.org/works/65849527
+  - Repository:   https://github.com/ZerafinaCSS/neos
+  - License:      MIT
+  - Updated:      2026-Mar-07 14:40 UTC
 
-============================================================*/
-
+  ==========================================================";
+}
 
 #inner {
   flex-flow: column; /* converts dashboard from sidebar to top menu */
