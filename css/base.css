@@ -11,11 +11,11 @@
   content: "==================================================
 
   - Skin:         neos/base
-  - Author:       ZerafinaCSS [https://www.tumblr.com/zerafinacss]
-  - Instructions: https://archiveofourown.org/works/65849527
+  - Author:       ZerafinaCSS [https://tumblr.com/zerafinacss]
+  - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Mar-07 14:40 UTC
+  - Updated:      2026-Mar-14 18:47 UTC
 
   ==========================================================";
 }
@@ -25,7 +25,7 @@
 CREDITS
 ==============================================================
 
-Base:             "Archive 2.0 skin" by AO3           https://archiveofourown.org/skins/873
+Base:             "Archive 2.0 skin" by AO3           https://ao3.org/skins/873
 
 Inspired by:      "Tide" by ElectricAlice             https://github.com/electricalice/Ao3-tide
                   "Flat Squares Skin" by milkfatzero  https://ao3-skins.dreamwidth.org/6156.html
@@ -1699,6 +1699,7 @@ span.offered.requested {
     flex-wrap: wrap;
     align-items: center;
     column-gap: 5px; /* width of gap between neighbouring tags */
+  width: 100%;
 }
 
 /* fix tag pages */
@@ -2119,6 +2120,12 @@ dl.meta dd ul {
 .news dl.meta {
   box-shadow: none;
   background-color: transparent;
+}
+
+.news .meta dt,
+.news .meta dd,
+.news .meta ul {
+  display: inline;
 }
 
 /*============================================================
@@ -4010,7 +4017,7 @@ dl.statistics dt.comment::before {
   background-image: url("https://zerafinacss.github.io/ao3/stats-icons/tags-additional-01.png");
 }
 
-/* tagsets: freeform tags *//* example: https://archiveofourown.org/tag_sets/19213 */
+/* tagsets: freeform tags *//* example: https://ao3.org/tag_sets/19213 */
 .tagset .meta .stats dd:nth-of-type(4)::before {
   background-image: url("https://zerafinacss.github.io/ao3/stats-icons/tags-freeform-01.png");
 }
