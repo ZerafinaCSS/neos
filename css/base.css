@@ -15,7 +15,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Mar-14 18:47 UTC
+  - Updated:      2026-Mar-21 14:57 UTC
 
   ==========================================================";
 }
@@ -836,10 +836,6 @@ label {
 
 fieldset > fieldset > dl > dt > label {
   font-weight: 700;
-}
-
-fieldset > .heading {
-  margin-inline: 0.5em;
 }
 
 fieldset > ul > li:has(label input[type=radio]) {
@@ -3827,9 +3823,16 @@ div:has(> p.kudos)::before {
 
 /*>========== LOCK ICON for restricted works ==========<*/
 
+/* only visible for logged in users */
 img[src$="/images/lockblue.png"] {
   content: url("https://zerafinacss.github.io/ao3/icons/lock-01.png"); /* url of new icon */
   filter: var(--lock-icon);
+}
+
+/* hidden by admin */
+img[src$="/images/lockred.png"] {
+  content: url("https://zerafinacss.github.io/ao3/icons/lock-01.png"); /* url of new icon */
+  filter: brightness(0) saturate(100%) invert(14%) sepia(41%) saturate(7481%) hue-rotate(340deg) brightness(85%) contrast(111%); /* adjust filter values to change color */
 }
 
 /*============================================================
@@ -4223,9 +4226,9 @@ dl.stats dd {
   filter: var(--stat-chart);
 }
 
-/* make chart background transparent */
+/* remove white chart background */
 svg > rect {
-  filter: opacity(0)
+  display: none;
 }
 
 /*>>========== fandoms index: place work title and stats next to each other (if possible) ==========<<*/

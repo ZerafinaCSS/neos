@@ -6,7 +6,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Mar-14 18:47 UTC
+  - Updated:      2026-Mar-21 14:57 UTC
 
   ==========================================================";
 }
@@ -202,7 +202,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --kudos-icon:          brightness(0) saturate(100%) invert(48%) sepia(53%) saturate(3274%) hue-rotate(304deg) brightness(89%) contrast(85%);
   --lock-icon:           brightness(0) saturate(100%) invert(64%) sepia(35%) saturate(295%) hue-rotate(296deg) brightness(87%) contrast(86%);
   --stats-icon:          brightness(0) saturate(100%) invert(34%) sepia(18%) saturate(1308%) hue-rotate(264deg) brightness(89%) contrast(96%);
-  --stat-chart:          invert(100%) sepia(100%) saturate(2000%) hue-rotate(300deg) brightness(60%) contrast(70%);
+  --stat-chart:          invert(100%) sepia(100%) saturate(600%) hue-rotate(285deg) brightness(65%) contrast(70%);
   --rich-txt-editor:     invert(100%) saturate(0) contrast(90%);
 
 }
