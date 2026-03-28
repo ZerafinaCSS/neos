@@ -6,7 +6,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Mar-14 18:47 UTC
+  - Updated:      2026-Mar-28 18:02 UTC
 
   ==========================================================";
 }
@@ -75,12 +75,17 @@
   margin-block: var(--border-width);
 }
 
+/* pseuds */
 #dashboard .secondary {
   position: absolute;
   left: 50%;
   width: fit-content;
-  max-width: 95%;
-  transform: translate(-50%, 0);
+  max-width: 75vw;
+  transform: translateX(-50%);
+}
+
+#dashboard .secondary li a {
+  margin: 1px;
 }
 
 /*============================================================

@@ -15,7 +15,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Mar-21 14:57 UTC
+  - Updated:      2026-Mar-28 18:19 UTC
 
   ==========================================================";
 }
@@ -947,6 +947,11 @@ form dd p {
   padding-inline: 0;
 }
 
+/* prevent parent skins dropdown from being cut off */
+form.skin.verbose.post fieldset {
+  overflow: visible;
+}
+
 /* legends = little heading boxes on forms */
 form.verbose legend,
 .verbose form legend,
@@ -1377,7 +1382,6 @@ button,
   font-weight: 400;
   white-space: normal; /* prevent overflow */
   color: var(--int-btn-txt);
-  cursor: pointer;
 }
 
 /* social media buttons on homepage */
@@ -1490,20 +1494,21 @@ fieldset.actions li:not(:first-child) {
 
 /*>========== CONTEXTS ==========<*/
 
-/* placement of secondary menus inside of works */
-.javascript .work.navigation .secondary {
-  top: unset;
+.dashboard .header .landmark {
+  display: none;
 }
 
-/* "Full-Page Index" chapter button in secondary menu */
-.javascript .work.navigation li .secondary a {
-  white-space: nowrap;
-}
+/*>>========== secondary menus inside of works ==========<<*/
+/* chapter index and download menus */
 
-/* styling the secondary menus inside of works */
-.work.navigation .download,
+.javascript .work.navigation .secondary,
+.javascript .work.navigation .chapter .secondary,
 .javascript .work.navigation .download .secondary {
-  position: absolute;
+  top: unset;
+  box-sizing: border-box;
+  width: min-content;
+  min-width: 97.5%;
+  max-width: 200%;
   border: var(--border-width) solid var(--border3);
   border-radius: var(--radius-mid);
   box-shadow: var(--shadow);
@@ -1511,8 +1516,20 @@ fieldset.actions li:not(:first-child) {
   color: var(--main-txt);
 }
 
-.dashboard .header .landmark {
-  display: none;
+.javascript .work.navigation .expanded + .secondary, 
+.javascript .work.navigation .secondary li, 
+.javascript .work.navigation .secondary p, 
+.javascript .work.navigation .secondary a {
+  display: block;
+}
+
+.javascript .work.navigation .secondary form p {
+  display: flex;
+  padding: 0;
+}
+
+.javascript .work.navigation .secondary form p select {
+  width: 100%;
 }
 
 /*>>========== buttons with "to top" arrows and "expand"/"contract" symbols ==========<<*/
@@ -2093,13 +2110,14 @@ dl.meta {
 
 .meta dt {
   box-sizing: border-box;
-  width: 26.5%;
+  width: 27.5%;
   min-width: unset;
+  padding-right: 1em;
 }
 
 .meta dd {
   box-sizing: border-box;
-  width: 73.5%;
+  width: 72.5%;
 }
 
 /* move meta tags up a tiny bit */
@@ -2428,14 +2446,15 @@ li.picture.blurb,
 /* see "Archive: (14) group preface skin" by AO3 */
 
 div.preface {
-  margin-inline: 5%;
-  padding-inline: 0;
+  margin: 1.5em 5%;
+  padding: 0.643em 0 0 0;
 }
 
 .chapter .preface {
   border-top: 1.5px solid;
 }
 
+/* work title */
 .preface h2.title {
   font-weight: 700; /* bold preface title */
 }
@@ -2443,6 +2462,11 @@ div.preface {
 .preface h3 {
   margin-bottom: 1em;
   border-bottom: 1.5px solid var(--border4);
+}
+
+/* chapter title */
+.preface h3.title {
+  margin-bottom: 1.5em;
 }
 
 div.afterword {
