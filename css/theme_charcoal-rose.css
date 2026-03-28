@@ -6,7 +6,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Mar-14 18:47 UTC
+  - Updated:      2026-Mar-28 20:05 UTC
 
   ==========================================================";
 }
@@ -74,7 +74,7 @@ Rose:     https://coolors.co/ab6f7d-c93b6a-d83f6c-d96aa9-e077ac-f59db3-ffabdf-ff
 /*>========== SHADOWS ==========<*/
 /* replace values with "none" (without quotation marks) to remove shadows */
 
-  --shadow:              none;                     /* secondary elements, dropdowns, tooltips etc. */
+  --shadow:              0 5px 10px #111111B3;     /* secondary elements, dropdowns, tooltips etc. */
   --shadow-header:       none;
   --shadow-buttons:      none;
 
