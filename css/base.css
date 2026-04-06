@@ -15,7 +15,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Mar-28 18:19 UTC
+  - Updated:      2026-Apr-06 13:04 UTC
 
   ==========================================================";
 }
@@ -193,7 +193,7 @@ div.preface .byline a:is(:hover, :focus),
 h2.heading a.tag:is(:hover, :focus),
 .filters p a:is(:hover, :focus) {
   border-bottom-color: inherit; /* make link underline visible on hover */
-  color: var(--link-hgl); /* link hover color */
+  color: var(--link-hgl); /* link hover and focus color */
 }
 
 a:visited,
@@ -350,7 +350,7 @@ col.name {
   color: transparent;
 }
 
-/* hide "Archive of Our Own beta" title + logo */
+/* hide "Archive of Our Own" title + logo */
 #header .heading a * {
   display: none;
 }
