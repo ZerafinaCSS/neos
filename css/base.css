@@ -15,7 +15,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Apr-06 13:04 UTC
+  - Updated:      2026-Apr-11 20:41 UTC
 
   ==========================================================";
 }
@@ -2587,6 +2587,8 @@ li.comment:has(.edit_comment) {
 
 /* no more gigantic images in comments */
 .comment img {
+  width: 100%;
+  max-width: 750px;
   max-height: 500px;
 }
 
