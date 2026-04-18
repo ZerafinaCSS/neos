@@ -15,7 +15,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Apr-11 20:41 UTC
+  - Updated:      2026-Apr-18 11:30 UTC
 
   ==========================================================";
 }
@@ -961,14 +961,6 @@ form.single legend {
   box-shadow: none;
   background-color: var(--bg6);
   font-weight: 700;
-}
-
-/* styling the preview box for the "Comment Formatting and Preview" userscript => https://greasyfork.org/en/scripts/484002-ao3-comment-formatting-and-preview */
-div.comment-preview.userstuff {
-  margin-top: 0.429em;
-  border: 1.5px dotted var(--border2) !important;
-  border-radius: var(--radius-small);
-  background: transparent;
 }
 
 /*>========== INPUT ELEMENTS: checkboxes, radio buttons etc. ==========<*/
@@ -4253,7 +4245,7 @@ dl.stats dd {
 }
 
 /* remove white chart background */
-svg > rect {
+#stat_chart svg > rect {
   display: none;
 }
 
@@ -4297,4 +4289,21 @@ svg > rect {
 .tox-statusbar,
 .tox-dialog {
   filter: var(--rich-txt-editor);
+}
+
+/*>========== "Comment Formatting and Preview" userscript ==========<*/
+/* https://greasyfork.org/en/scripts/484002-ao3-comment-formatting-and-preview */
+
+/* styling the preview box */
+div.fmtPreview.userstuff {
+  margin-top: 0.429em;
+  padding: 2px !important;
+  border: 1.5px dotted var(--border2) !important;
+  border-radius: var(--radius-small);
+  background: transparent;
+}
+
+/* display code inline */
+div.fmtPreview.userstuff p code {
+  display: inline;
 }
