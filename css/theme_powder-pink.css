@@ -6,7 +6,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Mar-14 18:47 UTC
+  - Updated:      2026-Apr-19 11:03 UTC
 
   ==========================================================";
 }
@@ -137,7 +137,7 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --icon9:               #EA5A9A;                  /* rec bookmark */
 
   /* gradient overlay for the bookmark and content icons above */
-  --icon-grd:       none;
+  --icon-grd:            none;
 
   /* other icons */
   --icon-bg:             #FFFFFF;                  /* background for empty icon box or uploaded icon with transparent background */

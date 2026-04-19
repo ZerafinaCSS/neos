@@ -15,7 +15,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Apr-18 11:30 UTC
+  - Updated:      2026-Apr-19 10:13 UTC
 
   ==========================================================";
 }
@@ -862,6 +862,7 @@ textarea {
 input[type=text]:focus,
 .search input[type=text]:focus,
 input#user_password:focus,
+input.text:focus,
 select:focus,
 textarea:focus {
   border-color: var(--int-hgl);
@@ -2083,6 +2084,22 @@ fieldset fieldset.listbox {
   margin-right: 0;
 }
 
+/*>========== fix parent skins listbox ==========<*/
+
+#advanced_skin > .group.listbox {
+  padding-inline: 0.643em;
+  background: var(--bg1);
+}
+
+#advanced_skin > .group.listbox > .index {
+  border-top: none;
+  background: none;
+}
+
+#advanced_skin > .group.listbox fieldset > p {
+  padding-inline: 0;
+}
+
 /*>========== INTERACTION context ==========<*/
 
 .listbox .many {
@@ -2119,6 +2136,10 @@ dl.meta dd ul {
 
 .meta dd ul li {
   padding-inline-end: 0;
+}
+
+.meta p {
+  padding: 0;
 }
 
 /*>========== CONTEXTS ==========<*/

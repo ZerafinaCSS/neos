@@ -6,7 +6,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Apr-08 18:21 UTC
+  - Updated:      2026-Apr-19 11:03 UTC
 
   ==========================================================";
 }
@@ -135,7 +135,7 @@ https://coolors.co/000000-8b8b8b-b4b4b4-c1c1c1-d6d6d6-f0f0f0-f4f4f4-f8f8f8-fffff
   --icon9:               #D04091;                  /* rec bookmark */
 
   /* gradient overlay for the bookmark and content icons above */
-  --icon-grd:       none;
+  --icon-grd:            none;
 
 
   /* other icons */

@@ -6,7 +6,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Mar-14 18:47 UTC
+  - Updated:      2026-Apr-19 11:03 UTC
 
   ==========================================================";
 }
@@ -140,7 +140,7 @@ Inspired by the "Low-contrast classic" tumblr color palette.
   --icon9:               #D977BA;                  /* rec bookmark */
 
   /* gradient overlay for the bookmark and content icons above */
-  --icon-grd:       none;
+  --icon-grd:            none;
 
   /* other icons */
   --icon-bg:             #48566A;                  /* background for empty icon box or uploaded icon with transparent background */
