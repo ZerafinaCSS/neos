@@ -15,7 +15,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Apr-19 10:13 UTC
+  - Updated:      2026-May-05 16:39 UTC
 
   ==========================================================";
 }
@@ -2431,8 +2431,7 @@ li.picture.blurb,
 /* "last visited" (History) */
 .reading h4.viewed {
   margin-inline: var(--blurb-padding-neg);
-  padding: 0.429em;
-  padding-inline: var(--blurb-padding);
+  padding: 0.429em var(--blurb-padding);
   background: linear-gradient(to right, var(--bg7) 25%, transparent);
   font-size: 1em;
 }
@@ -4318,13 +4317,8 @@ dl.stats dd {
 /* styling the preview box */
 div.fmtPreview.userstuff {
   margin-top: 0.429em;
-  padding: 2px !important;
+  padding: 0 1em !important;
   border: 1.5px dotted var(--border2) !important;
   border-radius: var(--radius-small);
   background: transparent;
-}
-
-/* display code inline */
-div.fmtPreview.userstuff p code {
-  display: inline;
 }
