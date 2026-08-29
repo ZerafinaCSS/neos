@@ -15,7 +15,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Aug-29 08:33 UTC
+  - Updated:      2026-Aug-29 19:54 UTC
 
   ==========================================================";
 }
@@ -2655,10 +2655,8 @@ li.comment:has(.edit_comment) {
 }
 
 /* no more gigantic images in comments */
-.comment img {
-  width: 100%;
-  max-width: 750px;
-  max-height: 500px;
+.comment .userstuff img {
+  max-height: 400px;
 }
 
 /* thread indent */
@@ -2858,8 +2856,9 @@ li.comment:has(.edit_comment) {
 }
 
 /* hide filters on work/bookmark pages if there are no works/bookmarks */
-.dashboard.filtered.region:not(:has(ol.index > li.blurb)) form.filters:not(:has(dt.tags + dd input)),
-.dashboard.filtered.region:not(:has(ol.index > li.blurb, form.filters dt.tags + dd input)) li:has(#go_to_filters) {
+/* I have not found a way to do this on user collection pages */
+.dashboard.filtered.region:not(.collections-index, :has(.index > li.blurb)) form.filters:not(:has(dt.tags + dd input)),
+.dashboard.filtered.region:not(:has(.index > li.blurb, form.filters dt.tags + dd input)) li:has(#go_to_filters) {
   display: none;
 }
 
