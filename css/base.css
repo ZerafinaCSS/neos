@@ -15,7 +15,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Jun-21 14:33 UTC
+  - Updated:      2026-Aug-29 08:33 UTC
 
   ==========================================================";
 }
@@ -588,6 +588,21 @@ col.name {
 #header #search .button,
 #header #search span.actions {
   display: none;
+}
+
+/*>========== header image ==========<*/
+/* this is the container for the optional header image; the actual image is added in the theme skin(s) */
+
+#header::after {
+  display: none;
+  order: 3;
+  width: 100%;
+  height: 16.75vw;
+  border-top: var(--border-width) solid var(--border2); /* same as header bottom border */
+  background-color: var(--bg8); /* fallback background color */
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: "";
 }
 
 /*>========== CONTEXT: collections ==========<*/
@@ -1925,9 +1940,7 @@ a.cloud8 {
 
 /*>========== GROUPS ==========<*/
 
-.wrapper,
-#outer.wrapper,
-#inner.wrapper {
+.wrapper:has(> table, > .meta) {
   box-shadow: none;
 }
 

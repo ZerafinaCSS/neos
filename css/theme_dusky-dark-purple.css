@@ -6,7 +6,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-May-30 16:21 UTC
+  - Updated:      2026-Aug-29 08:41 UTC
 
   ==========================================================";
 }
@@ -203,6 +203,17 @@ Color palettes used for main backgrounds, borders, text and interaction elements
   --stats-icon:          brightness(0) saturate(100%) invert(34%) sepia(18%) saturate(1308%) hue-rotate(264deg) brightness(89%) contrast(96%);
   --rich-txt-content:    invert(64%) sepia(35%) saturate(295%) hue-rotate(296deg) brightness(87%) contrast(86%);
 
+}
+
+/*============================================================
+>> 03 REGION: HEADER
+============================================================*/
+
+/*>========== header image ==========<*/
+
+#header::after {
+  display: none; /* set to "block" to display the header image; set to "none" to hide it */
+  background-image: url("https://zerafinacss.github.io/ao3/header-image/celestial-dusky-dark-purple.png");
 }
 
 /*============================================================

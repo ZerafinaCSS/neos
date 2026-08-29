@@ -6,7 +6,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-May-30 10:17 UTC
+  - Updated:      2026-Aug-29 08:41 UTC
 
   ==========================================================";
 }
@@ -203,6 +203,17 @@ https://coolors.co/000000-8b8b8b-b4b4b4-c1c1c1-d6d6d6-f0f0f0-f4f4f4-f8f8f8-fffff
   --stats-icon:          invert(55%);
   --rich-txt-content:    none;
 
+}
+
+/*============================================================
+>> 03 REGION: HEADER
+============================================================*/
+
+/*>========== header image ==========<*/
+
+#header::after {
+  display: none; /* set to "block" to display the header image; set to "none" to hide it */
+  background-image: url("https://zerafinacss.github.io/ao3/header-image/celestial-bw.png");
 }
 
 /*============================================================
