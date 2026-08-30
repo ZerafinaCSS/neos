@@ -6,7 +6,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Aug-29 08:41 UTC
+  - Updated:      2026-Aug-30 12:20 UTC
 
   ==========================================================";
 }
@@ -211,7 +211,7 @@ Rose:     https://coolors.co/ab6f7d-c93b6a-d83f6c-d96aa9-e077ac-f59db3-ffabdf-ff
 
 /*>========== header image ==========<*/
 
-#header::after {
+#outer > #header::after {
   display: none; /* set to "block" to display the header image; set to "none" to hide it */
   background-image: url("https://zerafinacss.github.io/ao3/header-image/celestial-charcoal-rose.png");
 }

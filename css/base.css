@@ -15,7 +15,7 @@
   - Instructions: https://ao3.org/works/65849527
   - Repository:   https://github.com/ZerafinaCSS/neos
   - License:      MIT
-  - Updated:      2026-Aug-29 19:54 UTC
+  - Updated:      2026-Aug-30 12:28 UTC
 
   ==========================================================";
 }
@@ -593,8 +593,8 @@ col.name {
 /*>========== header image ==========<*/
 /* this is the container for the optional header image; the actual image is added in the theme skin(s) */
 
-#header::after {
-  display: none;
+/*use #outer > #header to ensure compatibility with some userscripts */
+#outer > #header::after {
   order: 3;
   width: 100%;
   height: 16.75vw;
